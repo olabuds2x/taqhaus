@@ -54,7 +54,7 @@ export default function Navigation() {
             className="text-xl font-display font-semibold"
           >
             <Link to="/" className="inline-flex items-center px-1" aria-label="TaqHaus - Home">
-              <img src="/taqhaus-logo-light.png" alt="TaqHaus" className="h-40 md:h-48 w-auto" />
+              <img src="/taqhaus-logo-light.png" alt="TaqHaus" className="h-16 md:h-32 w-auto" />
             </Link>
           </motion.div>
 
@@ -127,19 +127,19 @@ export default function Navigation() {
                 aria-hidden="true"
               />
 
-              {/* Slide-in Panel */}
               <motion.div
                 id="mobile-menu"
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-dark-900 z-50 md:hidden shadow-2xl"
+                className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm !bg-[#0D0D0D] z-50 md:hidden shadow-2xl"
+                style={{ backgroundColor: '#0D0D0D' }}
                 role="menu"
               >
-                <div className="flex flex-col h-full">
+                <div className="flex flex-col h-full bg-[#0D0D0D]">
                   {/* Header */}
-                  <div className="flex items-center justify-between p-6 border-b border-white/10">
+                  <div className="flex items-center justify-between p-6 border-b border-white/10 bg-[#0D0D0D]">
                     <span className="text-lg font-semibold text-white">Menu</span>
                     <button
                       onClick={() => setMobileMenuOpen(false)}
@@ -151,7 +151,7 @@ export default function Navigation() {
                   </div>
 
                   {/* Navigation Links */}
-                  <nav className="flex-1 overflow-y-auto py-8 px-6">
+                  <nav className="flex-1 overflow-y-auto py-8 px-6 bg-[#0D0D0D]">
                     <div className="space-y-2">
                       {navLinks.map((link, idx) => (
                         <motion.div
@@ -174,7 +174,7 @@ export default function Navigation() {
                   </nav>
 
                   {/* CTA Buttons */}
-                  <div className="p-6 space-y-3 border-t border-white/10">
+                  <div className="p-6 space-y-3 border-t border-white/10 bg-[#0D0D0D]">
                     <Button
                       size="lg"
                       className="w-full rounded-lg shadow-[0_12px_30px_rgba(233,122,31,0.28)]"

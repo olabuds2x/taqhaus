@@ -31,6 +31,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-dark text-white font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -38,7 +39,12 @@
     line-height: 1.6;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display text-white;
     letter-spacing: -0.02em;
     font-weight: 600;
@@ -110,6 +116,11 @@
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* TaqHaus Brand Colors */
@@ -257,6 +268,7 @@ html {
   .btn {
     transition: none;
   }
+
   .btn-primary:hover,
   .btn-secondary:hover {
     transform: none;

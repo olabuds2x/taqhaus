@@ -272,7 +272,7 @@ export default function Home() {
         canonical="/"
       />
       {/* Hero */}
-      <section id="home" className="relative overflow-hidden">
+      <section id="home" className="relative overflow-hidden overflow-x-hidden">
         <div className="absolute inset-0">
           <video
             className="h-full w-full object-cover opacity-35"
@@ -286,7 +286,7 @@ export default function Home() {
           </video>
           <div className="absolute inset-0 bg-gradient-to-br from-black via-black/85 to-black/80" />
         </div>
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-40">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-8 sm:pb-40">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -332,7 +332,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="absolute left-1/2 bottom-12 w-full max-w-5xl -translate-x-1/2 px-4"
+            className="relative sm:absolute left-0 sm:left-1/2 bottom-auto sm:bottom-12 w-full max-w-5xl sm:-translate-x-1/2 mt-12 sm:mt-0 px-0 sm:px-4"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6 }}
@@ -416,7 +416,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The TaqHaus Model™</span>
-            <h2 className="mt-6 text-4xl font-semibold">Choose Your Growth Path</h2>
+            <h2 className="mt-6 text-2xl sm:text-4xl font-semibold">Choose Your Growth Path</h2>
             <p className="mt-6 text-neutral-light/80">
               Whether you need strategy, execution, or both — TaqHaus gives you the clarity, systems, and performance to scale.
             </p>
@@ -535,7 +535,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Proof That Strategy Outperforms Guesswork</span>
-            <h2 className="mt-6 text-4xl font-semibold">Real Systems. Real Results.</h2>
+            <h2 className="mt-6 text-2xl sm:text-4xl font-semibold">Real Systems. Real Results.</h2>
             <p className="mt-4 text-neutral-light/70">Swipe to explore our case studies</p>
           </div>
 
@@ -603,8 +603,8 @@ export default function Home() {
                 key={index}
                 onClick={() => setActiveCaseStudy(index)}
                 className={`h-2.5 rounded-full transition-all duration-300 ${activeCaseStudy === index
-                    ? 'w-8 bg-accent'
-                    : 'w-2.5 bg-white/20 hover:bg-accent/40'
+                  ? 'w-8 bg-accent'
+                  : 'w-2.5 bg-white/20 hover:bg-accent/40'
                   }`}
                 aria-label={`Go to case study ${index + 1}`}
               />
@@ -669,7 +669,7 @@ export default function Home() {
       <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-semibold">Who We Work With</h2>
+            <h2 className="text-2xl sm:text-4xl font-semibold">Who We Work With</h2>
             <p className="mt-6 text-neutral-light/80">
               Whether you’re scaling revenue or reputation, we help you command both.
             </p>
@@ -692,7 +692,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Partnership Frameworks</span>
-            <h2 className="mt-6 text-4xl font-semibold">Clarity on Investment. Zero Ambiguity on Accountability.</h2>
+            <h2 className="mt-6 text-2xl sm:text-4xl font-semibold">Clarity on Investment. Zero Ambiguity on Accountability.</h2>
             <p className="mt-6 text-neutral-light/80">
               Every engagement begins with a strategic audit defining growth levers, perception risks, and operational gaps. From there we activate the framework aligned to your mandate.
             </p>
@@ -750,7 +750,7 @@ export default function Home() {
               <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">
                 Your Growth &amp; Influence, Engineered
               </span>
-              <h2 id="final-cta-title" className="mt-6 text-4xl md:text-5xl font-semibold max-w-3xl mx-auto">
+              <h2 id="final-cta-title" className="mt-6 text-3xl sm:text-4xl md:text-5xl font-semibold max-w-3xl mx-auto">
                 Let's Build the System That Drives Your Next Stage of Growth.
               </h2>
               <p className="mt-6 text-lg text-neutral-light/80 max-w-2xl mx-auto">
@@ -829,7 +829,7 @@ export default function Home() {
             <div>
               © 2026 TaqHaus — Marketing. Consulting. Influence.
             </div>
-            <nav className="flex flex-wrap gap-4 uppercase tracking-[0.2em]">
+            <nav className="flex flex-wrap gap-x-6 gap-y-3 uppercase tracking-[0.2em]">
               {footerLinks.map((link) => (
                 <a key={link.label} href={link.href} className="hover:text-white transition-colors">
                   {link.label}
