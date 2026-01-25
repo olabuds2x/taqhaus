@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
     title: 'The Email Marketing Mistake That\'s Costing You Thousands (And How to Fix It)',
     excerpt: 'Most brands treat their welcome email like an afterthought. Big mistake. Your welcome sequence is your first impression and the most profitable email you\'ll ever send. Here\'s how to build one that converts.',
     category: 'Email Marketing',
-    date: 'March 15, 2025',
+    date: 'March 15, 2026',
     readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop',
     author: 'Sarah Chen',
@@ -82,11 +82,11 @@ export const blogPosts: BlogPost[] = [
     ]
   },
   {
-    slug: 'rank-1-google-2025-seo-strategies',
-    title: 'How to Rank #1 on Google in 2025: The SEO Strategies That Actually Work',
+    slug: 'rank-1-google-2026-seo-strategies',
+    title: 'How to Rank #1 on Google in 2026: The SEO Strategies That Actually Work',
     excerpt: 'Google\'s algorithm is constantly evolving, but the fundamentals of ranking haven\'t changed. In this guide, we break down the exact SEO strategies we use to get clients to page one and keep them there.',
     category: 'SEO',
-    date: 'March 12, 2025',
+    date: 'March 12, 2026',
     readTime: '12 min read',
     image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&auto=format&fit=crop',
     author: 'Alex Rivera',
@@ -95,7 +95,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: 'paragraph',
-        text: 'SEO in 2025 isn\'t about gaming the system. It\'s about understanding user intent, creating exceptional content, and building authority in your niche. Here\'s exactly what\'s working right now.'
+        text: 'SEO in 2026 isn\'t about gaming the system. It\'s about understanding user intent, creating exceptional content, and building authority in your niche. Here\'s exactly what\'s working right now.'
       },
       {
         type: 'heading',
@@ -167,7 +167,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'heading',
-        text: 'What Actually Works in 2025'
+        text: 'What Actually Works in 2026'
       },
       {
         type: 'paragraph',
@@ -184,7 +184,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Why Your Content Isn\'t Converting (And What to Do About It)',
     excerpt: 'Publishing blog posts isn\'t enough. If your content isn\'t driving traffic, building your email list, or generating leads, you\'re wasting time. Here\'s how to create content that actually moves the needle.',
     category: 'Content Strategy',
-    date: 'March 8, 2025',
+    date: 'March 8, 2026',
     readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&auto=format&fit=crop',
     author: 'Marcus Johnson',
@@ -262,7 +262,7 @@ export const blogPosts: BlogPost[] = [
     title: '7 Email Subject Lines That Get 50%+ Open Rates (With Examples)',
     excerpt: 'Your subject line is the difference between an opened email and one that goes straight to trash. Here are the 7 proven formulas we use to consistently achieve 50%+ open rates for our clients.',
     category: 'Email Marketing',
-    date: 'March 5, 2025',
+    date: 'March 5, 2026',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&auto=format&fit=crop',
     author: 'Sarah Chen',

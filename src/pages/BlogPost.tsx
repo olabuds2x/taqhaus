@@ -257,7 +257,7 @@ export default function BlogPost() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Ready to Scale with Swift Nexus?
+              Ready to Scale with TaqHaus?
             </h2>
             <p className="text-xl mb-8 text-white/90">
               Get your free growth audit and start dominating search results.

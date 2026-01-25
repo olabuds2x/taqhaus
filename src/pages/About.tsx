@@ -50,7 +50,7 @@ export default function About() {
               <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
               <div className="space-y-4 text-lg text-neutral-light/80">
                 <p>
-                  At Swift Nexus, we do not chase vanity metrics. We do not care about likes, followers, or brand awareness that does not convert. We care about <strong>measurable growth</strong>: the kind that shows up in your revenue reports, not just your analytics dashboard.
+                  At TaqHaus, we do not chase vanity metrics. We do not care about likes, followers, or brand awareness that does not convert. We care about <strong>measurable growth</strong>: the kind that shows up in your revenue reports, not just your analytics dashboard.
                 </p>
                 <p>
                   We built this agency on a simple truth: your most valuable digital asset is not your social media following. It is your email list. It is your search rankings. It is the content that brings qualified buyers to your door, ready to invest. That is why we focus on SEO, email marketing, and content strategy: the three pillars that actually move the needle.

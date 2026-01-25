@@ -219,7 +219,7 @@ export default function CaseStudyFashion() {
           >
             <Quote className="h-10 w-10 text-accent/60 mb-4" />
             <p className="text-xl italic text-neutral-light/90">
-              "We were leaving so much money on the table. Swift Nexus turned our email list into our most profitable channel in less than 3 months."
+              "We were leaving so much money on the table. TaqHaus turned our email list into our most profitable channel in less than 3 months."
             </p>
             <p className="mt-4 text-sm uppercase tracking-[0.3em] text-accent/80">
               — Sarah Mitchell, Founder, Luxe Apparel Co.
@@ -389,7 +389,7 @@ export default function CaseStudyFashion() {
             Let's build an email system that works while you sleep.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(212,175,55,0.33)]" asChild>
+            <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 Book a Strategy Call
               </a>

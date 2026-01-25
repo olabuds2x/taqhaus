@@ -136,7 +136,7 @@ export default function CaseStudyTopTier() {
     <div className="min-h-screen bg-dark text-white">
       <SEO
         title="TopTier Trader Case Study - Reputation Management & Growth"
-        description="How Swift Nexus stabilized TopTier Trader's reputation, increased branded search by 142%, and built a sustainable growth engine through strategic content and reputation management."
+        description="How TaqHaus stabilized TopTier Trader's reputation, increased branded search by 142%, and built a sustainable growth engine through strategic content and reputation management."
         keywords="reputation management case study, brand perception, review management, trading platform marketing, fintech case study"
         canonical="/case-studies/toptier-trader"
       />
@@ -545,7 +545,7 @@ export default function CaseStudyTopTier() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="px-10 py-6 rounded-full font-semibold text-lg shadow-[0_20px_50px_rgba(212,175,55,0.4)]"
+                className="px-10 py-6 rounded-full font-semibold text-lg shadow-[0_20px_50px_rgba(233,122,31,0.4)]"
                 asChild
               >
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">

@@ -75,7 +75,7 @@ export default function CaseStudiesIndex() {
   return (
     <>
       <SEO
-        title="Case Studies - Swift Nexus"
+        title="Case Studies - TaqHaus"
         description="Explore our portfolio of successful marketing campaigns across fintech, e-commerce, SaaS, and political sectors. See how we drive measurable results."
         keywords="marketing case studies, fintech marketing, saas growth, ecommerce success stories, political campaigns"
       />
@@ -189,7 +189,7 @@ export default function CaseStudiesIndex() {
               </p>
               <Link
                 to="/contact"
-                className="inline-flex items-center px-8 py-4 bg-accent text-dark rounded-full font-semibold hover:bg-accent/90 transition-all shadow-[0_12px_30px_rgba(212,175,55,0.28)] hover:shadow-[0_16px_40px_rgba(212,175,55,0.35)]"
+                className="inline-flex items-center px-8 py-4 bg-accent text-dark rounded-full font-semibold hover:bg-accent/90 transition-all shadow-[0_12px_30px_rgba(233,122,31,0.28)] hover:shadow-[0_16px_40px_rgba(233,122,31,0.35)]"
               >
                 Request Your Strategic Audit
                 <ArrowRight className="ml-3 h-5 w-5" />

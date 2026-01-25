@@ -137,7 +137,7 @@ export default function CaseStudyTFT() {
     <div className="min-h-screen bg-dark text-white">
       <SEO
         title="The Funded Trader Case Study - Scaling Growth & Reducing CAC"
-        description="How Swift Nexus helped The Funded Trader achieve 188% organic signup growth and reduce customer acquisition costs by 34% through strategic SEO, conversion optimization, and lifecycle marketing."
+        description="How TaqHaus helped The Funded Trader achieve 188% organic signup growth and reduce customer acquisition costs by 34% through strategic SEO, conversion optimization, and lifecycle marketing."
         keywords="prop trading marketing, funded trader case study, CAC reduction, conversion optimization, trading platform growth, fintech marketing"
         canonical="/case-studies/the-funded-trader"
       />
@@ -545,7 +545,7 @@ export default function CaseStudyTFT() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="px-10 py-6 rounded-full font-semibold text-lg shadow-[0_20px_50px_rgba(212,175,55,0.4)]"
+                className="px-10 py-6 rounded-full font-semibold text-lg shadow-[0_20px_50px_rgba(233,122,31,0.4)]"
                 asChild
               >
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">

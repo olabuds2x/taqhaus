@@ -386,7 +386,7 @@ export default function CaseStudyPublicOfficial() {
             Let's build a reputation strategy that protects and amplifies your message.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(212,175,55,0.33)]" asChild>
+            <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 Book a Confidential Consultation
               </a>

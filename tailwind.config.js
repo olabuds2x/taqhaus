@@ -52,30 +52,36 @@ export default {
         display: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
+        // TaqHaus Brand Colors
         dark: {
           DEFAULT: '#0D0D0D',
           700: '#151515',
           800: '#101010',
           900: '#0D0D0D'
         },
+        // Primary brand orange
         accent: {
-          DEFAULT: '#D4AF37',
-          light: '#E5C964',
-          dark: '#9E8229',
+          DEFAULT: '#E97A1F',
+          light: '#F5A623',
+          dark: '#B85C1A',
         },
+        // Warm neutrals
         neutral: {
           DEFAULT: '#9CA3AF',
-          light: '#C6CBD3',
-          lighter: '#F4F1EE',
+          light: '#D4CFC7',
+          lighter: '#FAF7F2',
         },
+        // Navy for depth
         navy: {
           DEFAULT: '#0F1E35',
           700: '#132746',
           800: '#0D1A2A'
         },
+        // Keep energy color
         energy: {
-          DEFAULT: '#FF1A1A'
+          DEFAULT: '#E97A1F'
         },
+        // Additional semantic colors
         ...{
           border: "hsl(var(--border))",
           input: "hsl(var(--input))",

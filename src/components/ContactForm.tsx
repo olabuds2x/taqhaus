@@ -37,7 +37,7 @@ export default function ContactForm() {
     try {
       // Use Web3Forms for form submission (free, privacy-friendly, no backend needed)
       // Get your access key from https://web3forms.com
-      const accessKey = (import.meta as any).env?.VITE_WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY'
+      const accessKey = (import.meta as any).env?.VITE_WEB3FORMS_KEY || 'efb2b493-290e-4baf-99ae-336133845142'
 
       const formData = {
         access_key: accessKey,
@@ -45,8 +45,11 @@ export default function ContactForm() {
         email: data.email,
         company: data.company || '',
         message: data.message,
-        subject: 'New Contact Form Submission from Swift Nexus',
-        from_name: 'Swift Nexus Website'
+        subject: 'New Growth Audit Request from TaqHaus Website',
+        from_name: 'TaqHaus Website',
+        // Send notification to this email (requires Web3Forms access key from this email)
+        // Get your access key at https://web3forms.com using taqhausinc@gmail.com
+        replyto: data.email
       }
 
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -97,9 +100,8 @@ export default function ContactForm() {
       {toast && (
         <div
           role="status"
-          className={`pointer-events-none absolute -top-4 right-4 translate-y-[-100%] rounded-lg px-4 py-2 text-sm shadow-lg ${
-            toast.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
-          }`}
+          className={`pointer-events-none absolute -top-4 right-4 translate-y-[-100%] rounded-lg px-4 py-2 text-sm shadow-lg ${toast.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+            }`}
         >
           {toast.message}
         </div>
@@ -116,7 +118,7 @@ export default function ContactForm() {
             <Input
               {...register('name')}
               placeholder="Your Name"
-              className="bg-white/90 border-white/30 placeholder:text-gray-400"
+              className="bg-white/90 border-white/30 text-gray-900 placeholder:text-gray-400"
               aria-label="Your name"
               aria-invalid={errors.name ? 'true' : 'false'}
               aria-describedby={errors.name ? 'name-error' : undefined}
@@ -133,7 +135,7 @@ export default function ContactForm() {
               {...register('email')}
               type="email"
               placeholder="Your Email"
-              className="bg-white/90 border-white/30 placeholder:text-gray-400"
+              className="bg-white/90 border-white/30 text-gray-900 placeholder:text-gray-400"
               aria-label="Your email address"
               aria-invalid={errors.email ? 'true' : 'false'}
               aria-describedby={errors.email ? 'email-error' : undefined}
@@ -149,7 +151,7 @@ export default function ContactForm() {
             <Input
               {...register('company')}
               placeholder="Company (Optional)"
-              className="bg-white/90 border-white/30 placeholder:text-gray-400"
+              className="bg-white/90 border-white/30 text-gray-900 placeholder:text-gray-400"
               aria-label="Your company name"
             />
           </div>
@@ -158,7 +160,7 @@ export default function ContactForm() {
             <Textarea
               {...register('message')}
               placeholder="Tell us about your business and growth goals..."
-              className="bg-white/90 border-white/30 placeholder:text-gray-400 min-h-[150px]"
+              className="bg-white/90 border-white/30 text-gray-900 placeholder:text-gray-400 min-h-[150px]"
               aria-label="Your message"
               aria-invalid={errors.message ? 'true' : 'false'}
               aria-describedby={errors.message ? 'message-error' : undefined}

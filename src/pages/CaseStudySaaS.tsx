@@ -217,7 +217,7 @@ export default function CaseStudySaaS() {
           >
             <Quote className="h-10 w-10 text-accent/60 mb-4" />
             <p className="text-xl italic text-neutral-light/90">
-              "We were burning cash on ads with no clear path to profitability. Swift Nexus helped us build a growth engine that actually compounds over time."
+              "We were burning cash on ads with no clear path to profitability. TaqHaus helped us build a growth engine that actually compounds over time."
             </p>
             <p className="mt-4 text-sm uppercase tracking-[0.3em] text-accent/80">
               — Head of Growth, SaaS Startup
@@ -387,7 +387,7 @@ export default function CaseStudySaaS() {
             Let's design a strategy that turns traffic into revenue—sustainably.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(212,175,55,0.33)]" asChild>
+            <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 Book a Strategy Call
               </a>

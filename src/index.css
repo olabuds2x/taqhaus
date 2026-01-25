@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 6%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 15%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 160 84% 39%;
+    --background: 30 20% 5%;
+    --foreground: 30 10% 96%;
+    --card: 30 10% 12%;
+    --card-foreground: 30 10% 96%;
+    --popover: 30 10% 8%;
+    --popover-foreground: 30 10% 96%;
+    --primary: 25 83% 52%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 64%;
-    --accent: 160 84% 39%;
+    --secondary: 30 10% 15%;
+    --secondary-foreground: 30 10% 96%;
+    --muted: 30 10% 15%;
+    --muted-foreground: 30 10% 60%;
+    --accent: 25 83% 52%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 160 84% 39%;
+    --destructive-foreground: 30 10% 96%;
+    --border: 30 10% 15%;
+    --input: 30 10% 15%;
+    --ring: 25 83% 52%;
     --radius: 0.5rem;
   }
 }
@@ -71,7 +71,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #10B981, #34D399);
+    background: linear-gradient(135deg, #E97A1F, #F5A623);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -112,14 +112,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* TaqHaus Brand Colors */
 :root {
-  --bg: #F4F1EE;
+  --bg: #FAF7F2;
   --ink-800: #0F172A;
   --ink-700: #1F2937;
   --ink-600: #374151;
   --ink-200: #E5E7EB;
-  --brand-emerald: #10B981;
-  --brand-emerald-400: #34D399;
+  --brand-orange: #E97A1F;
+  --brand-orange-light: #F5A623;
+  --brand-orange-dark: #B85C1A;
 }
 
 .dark {
@@ -131,7 +133,7 @@ html {
 }
 
 #final-cta {
-  background: #000; /* unify with site dark theme */
+  background: #000;
   color: #fff;
 }
 
@@ -164,7 +166,7 @@ html {
   font-size: clamp(0.7rem, 0.6rem + 0.3vw, 0.85rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--brand-emerald);
+  color: var(--brand-orange);
 }
 
 #final-cta .final-cta__headline {
@@ -184,7 +186,6 @@ html {
   color: rgba(243, 244, 246, 0.85);
 }
 
-
 .cta-vignette {
   position: relative;
   margin-top: 2.5rem;
@@ -197,7 +198,7 @@ html {
   height: 220px;
   margin: auto;
   filter: blur(36px);
-  background: radial-gradient(60% 60% at 50% 50%, rgba(16, 185, 129, 0.22), rgba(16, 185, 129, 0) 70%);
+  background: radial-gradient(60% 60% at 50% 50%, rgba(233, 122, 31, 0.22), rgba(233, 122, 31, 0) 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -227,19 +228,19 @@ html {
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--brand-emerald-400);
+  outline: 3px solid var(--brand-orange-light);
   outline-offset: 3px;
 }
 
 .btn-primary {
-  background: var(--brand-emerald);
+  background: var(--brand-orange);
   color: #fff;
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.28);
+  box-shadow: 0 8px 24px rgba(233, 122, 31, 0.28);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px rgba(16, 185, 129, 0.34);
+  box-shadow: 0 12px 28px rgba(233, 122, 31, 0.34);
 }
 
 .btn-secondary {
@@ -289,5 +290,5 @@ html {
 }
 
 .dark .microtrust .alt {
-  color: var(--brand-emerald-400);
+  color: var(--brand-orange-light);
 }

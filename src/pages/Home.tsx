@@ -113,7 +113,7 @@ const caseStudies = [
 
 const testimonials = [
   {
-    quote: 'Before Swift Nexus, we were guessing. Now, our marketing and messaging are engineered for results.',
+    quote: 'Before TaqHaus, we were guessing. Now, our marketing and messaging are engineered for results.',
     author: 'Marcus Chen, CEO, Maverick SaaS'
   },
   {
@@ -121,7 +121,7 @@ const testimonials = [
     author: 'Anonymous, Elected Official'
   },
   {
-    quote: 'Swift Nexus didn’t just execute our campaigns — they reshaped our strategy.',
+    quote: 'TaqHaus didn’t just execute our campaigns — they reshaped our strategy.',
     author: 'Sarah Mitchell, Founder, Luxe Apparel Co.'
   }
 ]
@@ -173,7 +173,7 @@ const pricingTiers = [
 
 const faqs = [
   {
-    question: 'What makes Swift Nexus different from a traditional agency?',
+    question: 'What makes TaqHaus different from a traditional agency?',
     answer:
       'We blend strategy and execution under one roof. You get consulting-level diagnostics paired with implementation teams that execute with precision and accountability.'
   },
@@ -293,7 +293,7 @@ export default function Home() {
             transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <span className="text-sm uppercase tracking-[0.4em] text-accent/80">Swift Nexus — Marketing. Consulting. Influence.</span>
+            <span className="text-sm uppercase tracking-[0.4em] text-accent/80">TaqHaus — Marketing. Consulting. Influence.</span>
             <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight">
               We Engineer Growth That Scales and Influence That Sticks.
             </h1>
@@ -310,7 +310,7 @@ export default function Home() {
           >
             <Button
               size="lg"
-              className="px-8 sm:px-10 py-5 rounded-full font-semibold text-sm sm:text-base shadow-[0_18px_45px_rgba(212,175,55,0.35)]"
+              className="px-8 sm:px-10 py-5 rounded-full font-semibold text-sm sm:text-base shadow-[0_18px_45px_rgba(233,122,31,0.35)]"
               asChild
             >
               <Link to="/contact" aria-label="Request a Strategic Audit">
@@ -370,9 +370,9 @@ export default function Home() {
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Most agencies chase clicks. Most consultants stop at slides.</span>
             <h2 className="mt-6 text-4xl font-semibold">We bridge both — clarity of consulting, power of execution.</h2>
             <p className="mt-6 text-neutral-light/80">
-              Swift Nexus operates as your Chief Growth & Influence Office. We interrogate the data, design the mandate, and command the execution so nothing gets lost between strategy and action.
+              TaqHaus operates as your Chief Growth & Influence Office. We interrogate the data, design the mandate, and command the execution so nothing gets lost between strategy and action.
             </p>
-            <Button className="mt-8 px-8 py-4 rounded-full font-semibold shadow-[0_12px_32px_rgba(212,175,55,0.33)]" asChild>
+            <Button className="mt-8 px-8 py-4 rounded-full font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
               <a href="#services">
                 See How Our Model Works
                 <ArrowRight className="ml-3 h-5 w-5" />
@@ -415,10 +415,10 @@ export default function Home() {
       <section id="services" className="py-24 bg-dark-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The Swift Nexus Model™</span>
+            <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The TaqHaus Model™</span>
             <h2 className="mt-6 text-4xl font-semibold">Choose Your Growth Path</h2>
             <p className="mt-6 text-neutral-light/80">
-              Whether you need strategy, execution, or both — Swift Nexus gives you the clarity, systems, and performance to scale.
+              Whether you need strategy, execution, or both — TaqHaus gives you the clarity, systems, and performance to scale.
             </p>
           </div>
           <div className="mt-16 grid gap-8 lg:grid-cols-2">
@@ -522,7 +522,7 @@ export default function Home() {
               Not sure which path fits your brand? Start with a Strategic Audit — we’ll guide you.
             </p>
             <div className="mt-5">
-              <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(212,175,55,0.33)]" asChild>
+              <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
                 <Link to="/contact">Request a Strategic Audit</Link>
               </Button>
             </div>
@@ -716,7 +716,7 @@ export default function Home() {
                   ))}
                 </CardContent>
                 <div className="px-6 pb-6">
-                  <Button className="w-full rounded-full px-6 py-3 font-semibold shadow-[0_10px_30px_rgba(212,175,55,0.32)]" asChild>
+                  <Button className="w-full rounded-full px-6 py-3 font-semibold shadow-[0_10px_30px_rgba(233,122,31,0.32)]" asChild>
                     <a href={CALENDLY_URL}>Book a Consultation</a>
                   </Button>
                 </div>
@@ -729,10 +729,10 @@ export default function Home() {
       {/* Ethos */}
       <section className="py-24 bg-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The Swift Nexus Ethos — Built for the Bold</span>
+          <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The TaqHaus Ethos — Built for the Bold</span>
           <h2 className="mt-6 text-4xl font-semibold">We don’t chase trends. We build systems that outlast them.</h2>
           <p className="mt-6 text-neutral-light/80">
-            Swift Nexus was built for leaders who would rather define the market than follow it. Growth isn’t luck—it’s engineered through clarity, conviction, and disciplined execution.
+            TaqHaus was built for leaders who would rather define the market than follow it. Growth isn’t luck—it’s engineered through clarity, conviction, and disciplined execution.
           </p>
           <p className="mt-4 text-neutral-light/80">
             Every partnership is governed like a capital investment: transparent dashboards, accountable reporting, and measurable progress.
@@ -764,7 +764,7 @@ export default function Home() {
               <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                 <Button
                   size="lg"
-                  className="px-10 py-5 rounded-full font-semibold text-base shadow-[0_18px_45px_rgba(212,175,55,0.35)]"
+                  className="px-10 py-5 rounded-full font-semibold text-base shadow-[0_18px_45px_rgba(233,122,31,0.35)]"
                   asChild
                 >
                   <Link to="/contact">
@@ -786,8 +786,8 @@ export default function Home() {
 
               <p className="mt-8 text-sm text-neutral-light/70 flex items-center justify-center gap-2 flex-wrap">
                 <span aria-hidden="true">🔒</span> Free audit. No obligation.
-                <a href="mailto:contact@swiftnexus.com" className="underline text-accent hover:text-accent/80 transition-colors ml-2">
-                  Prefer email? contact@swiftnexus.com
+                <a href="mailto:contact@taqhaus.com" className="underline text-accent hover:text-accent/80 transition-colors ml-2">
+                  Prefer email? contact@taqhaus.com
                 </a>
               </p>
             </motion.div>
@@ -828,7 +828,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-neutral-light/70 text-sm">
             <div>
-              © 2025 Swift Nexus — Marketing. Consulting. Influence.
+              © 2026 TaqHaus — Marketing. Consulting. Influence.
             </div>
             <nav className="flex flex-wrap gap-4 uppercase tracking-[0.2em]">
               {footerLinks.map((link) => (

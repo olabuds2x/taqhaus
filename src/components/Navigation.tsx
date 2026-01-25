@@ -47,14 +47,14 @@ export default function Navigation() {
       transition={{ duration: 0.3 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="text-xl font-display font-semibold"
           >
-            <Link to="/" className="inline-flex items-center px-1" aria-label="Swift Nexus - Home">
-              <img src="/logo.svg" alt="Swift Nexus" className="h-8 md:h-9 w-auto" />
+            <Link to="/" className="inline-flex items-center px-1" aria-label="TaqHaus - Home">
+              <img src="/taqhaus-logo-light.png" alt="TaqHaus" className="h-40 md:h-48 w-auto" />
             </Link>
           </motion.div>
 
@@ -85,7 +85,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center gap-4">
             <Button
               size="sm"
-              className="px-5 py-2 rounded-lg transition-all duration-200 text-sm font-semibold shadow-[0_12px_30px_rgba(212,175,55,0.28)]"
+              className="px-5 py-2 rounded-lg transition-all duration-200 text-sm font-semibold shadow-[0_12px_30px_rgba(233,122,31,0.28)]"
               asChild
             >
               <Link to="/contact" aria-label="Request a strategic audit">Request Audit</Link>
@@ -177,7 +177,7 @@ export default function Navigation() {
                   <div className="p-6 space-y-3 border-t border-white/10">
                     <Button
                       size="lg"
-                      className="w-full rounded-lg shadow-[0_12px_30px_rgba(212,175,55,0.28)]"
+                      className="w-full rounded-lg shadow-[0_12px_30px_rgba(233,122,31,0.28)]"
                       asChild
                     >
                       <Link to="/contact" onClick={() => setMobileMenuOpen(false)} aria-label="Request a strategic audit">Request Audit</Link>
