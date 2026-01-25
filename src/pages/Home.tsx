@@ -602,11 +602,10 @@ export default function Home() {
               <button
                 key={index}
                 onClick={() => setActiveCaseStudy(index)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  activeCaseStudy === index
+                className={`h-2.5 rounded-full transition-all duration-300 ${activeCaseStudy === index
                     ? 'w-8 bg-accent'
                     : 'w-2.5 bg-white/20 hover:bg-accent/40'
-                }`}
+                  }`}
                 aria-label={`Go to case study ${index + 1}`}
               />
             ))}
@@ -786,8 +785,8 @@ export default function Home() {
 
               <p className="mt-8 text-sm text-neutral-light/70 flex items-center justify-center gap-2 flex-wrap">
                 <span aria-hidden="true">🔒</span> Free audit. No obligation.
-                <a href="mailto:contact@taqhaus.com" className="underline text-accent hover:text-accent/80 transition-colors ml-2">
-                  Prefer email? contact@taqhaus.com
+                <a href="mailto:info@taqhaus.com" className="underline text-accent hover:text-accent/80 transition-colors ml-2">
+                  Prefer email? info@taqhaus.com
                 </a>
               </p>
             </motion.div>
