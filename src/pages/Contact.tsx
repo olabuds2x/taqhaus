@@ -18,7 +18,7 @@ export default function Contact() {
             Prefer email over a call? Share a few details below and we’ll reply within 1 business day. If you’d rather book directly, you can use our Calendly instead.
           </p>
           <div className="mt-6">
-            <Button variant="outline" className="rounded-full border-white/15 text-white hover:text-dark hover:bg-neutral-lighter" asChild>
+            <Button className="rounded-full bg-[#ff5724] hover:bg-[#e04d1f] text-white border-none" asChild>
               <a href={CALENDLY_URL}>Book via Calendly</a>
             </Button>
           </div>
