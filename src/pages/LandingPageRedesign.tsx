@@ -60,7 +60,7 @@ export default function LandingPageRedesign() {
             <header className="fixed top-0 left-0 right-0 z-50 bg-[#0d0d0d]/90 backdrop-blur-md border-b border-white/5">
                 <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
                     <Link to="/" className="flex items-center">
-                        <img src="/taqhaus-logo.png" alt="TaqHaus" className="h-24 w-auto" />
+                        <img src="/taqhaus-logo.png" alt="TaqHaus" className="h-16 sm:h-24 w-auto" />
                     </Link>
                     <Link
                         to="/contact"
@@ -88,7 +88,7 @@ export default function LandingPageRedesign() {
                             Growth & Influence Consultancy
                         </p>
 
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] tracking-tight">
+                        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] tracking-tight">
                             Marketing That Scales.
                             <br />
                             <span className="text-white/60">Influence That Lasts.</span>
@@ -160,21 +160,21 @@ export default function LandingPageRedesign() {
 
                     <div className="flex gap-16 animate-scroll-logos items-center">
                         {[...Array(2)].map((_, setIdx) => (
-                            <div key={setIdx} className="flex gap-16 items-center shrink-0">
-                                <img src="/logos/gymshark.jpg" alt="Gymshark" className="h-6 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/sft.png" alt="SFT" className="h-8 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/gtbank.png" alt="GTBank" className="h-8 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/redtag.jpg" alt="redtag.ca" className="h-6 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/zerofilter.jpg" alt="Zero Filter Co." className="h-10 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/shopify.svg" alt="Shopify" className="h-7 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/stripe.svg" alt="Stripe" className="h-7 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/hubspot.svg" alt="HubSpot" className="h-7 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/mailchimp.svg" alt="Mailchimp" className="h-7 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/slack.svg" alt="Slack" className="h-7 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/notion.svg" alt="Notion" className="h-7 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/zapier.svg" alt="Zapier" className="h-6 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/intercom.svg" alt="Intercom" className="h-7 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                                <img src="/logos/asana.svg" alt="Asana" className="h-6 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
+                            <div key={setIdx} className="flex gap-12 sm:gap-16 items-center shrink-0">
+                                <img src="/logos/gymshark.jpg" alt="Gymshark" className="h-8 sm:h-10 w-auto grayscale brightness-200 opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/sft.png" alt="SFT" className="h-10 sm:h-12 w-auto grayscale brightness-200 opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/gtbank.png" alt="GTBank" className="h-10 sm:h-12 w-auto grayscale brightness-200 opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/redtag.jpg" alt="redtag.ca" className="h-8 sm:h-10 w-auto grayscale brightness-200 opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/zerofilter.jpg" alt="Zero Filter Co." className="h-12 sm:h-14 w-auto grayscale brightness-200 opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/shopify.svg" alt="Shopify" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/stripe.svg" alt="Stripe" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/hubspot.svg" alt="HubSpot" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/mailchimp.svg" alt="Mailchimp" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/slack.svg" alt="Slack" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/notion.svg" alt="Notion" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/zapier.svg" alt="Zapier" className="h-8 sm:h-10 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/intercom.svg" alt="Intercom" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
+                                <img src="/logos/asana.svg" alt="Asana" className="h-8 sm:h-10 w-auto grayscale brightness-[3] opacity-60 hover:opacity-90 transition-opacity" />
                             </div>
                         ))}
                     </div>
@@ -358,7 +358,7 @@ export default function LandingPageRedesign() {
                                 to={study.href}
                                 className="group relative overflow-hidden rounded-2xl bg-[#141414] border border-white/5 hover:border-[#ff5724]/30 transition-colors"
                             >
-                                <div className="aspect-[4/3] overflow-hidden">
+                                <div className="aspect-[16/9] md:aspect-[4/3] overflow-hidden">
                                     <img
                                         src={study.image}
                                         alt={study.title}
@@ -444,10 +444,11 @@ export default function LandingPageRedesign() {
                                         <button
                                             key={idx}
                                             onClick={() => setCurrentIndex(idx)}
-                                            className={`w-2.5 h-2.5 rounded-full transition-all ${idx === currentIndex
+                                            className={`h-3 rounded-full transition-all touch-none p-2 box-content ${idx === currentIndex
                                                 ? 'bg-[#ff5724] w-8'
-                                                : 'bg-white/20 hover:bg-white/40'
+                                                : 'bg-white/20 hover:bg-white/40 w-3'
                                                 }`}
+                                            style={{ backgroundClip: 'content-box' }}
                                         />
                                     ))}
                                 </div>
