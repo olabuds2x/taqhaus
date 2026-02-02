@@ -385,7 +385,7 @@ export default function LandingPageRedesign() {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <h2 className="text-2xl sm:text-4xl font-semibold mb-4">
-                            Our rating based on 20+<br />verified client reviews
+                            Our rating based on<br />verified client reviews
                         </h2>
                     </div>
 
