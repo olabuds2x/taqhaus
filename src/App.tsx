@@ -16,14 +16,15 @@ import LandingPageRedesign from '@/pages/LandingPageRedesign'
 // Wrapper component that conditionally renders Navigation
 function AppContent() {
   const location = useLocation();
-  const isLandingNew = location.pathname === '/landing-new';
+  const isHomepage = location.pathname === '/' || location.pathname === '/landing-new';
 
   return (
     <>
       <ScrollToTop />
-      {!isLandingNew && <Navigation />}
+      {!isHomepage && <Navigation />}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LandingPageRedesign />} />
+        <Route path="/home-old" element={<Home />} />
         <Route path="/case-studies" element={<CaseStudiesIndex />} />
         <Route path="/case-studies/the-funded-trader" element={<CaseStudyTFT />} />
         <Route path="/case-studies/toptier-trader" element={<CaseStudyTopTier />} />
