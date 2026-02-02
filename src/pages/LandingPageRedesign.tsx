@@ -59,8 +59,8 @@ export default function LandingPageRedesign() {
             ═══════════════════════════════════════════════════════════════ */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-[#0d0d0d]/90 backdrop-blur-md border-b border-white/5">
                 <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <Link to="/" className="text-xl font-bold tracking-tight">
-                        TaqHaus
+                    <Link to="/" className="flex items-center">
+                        <img src="/taqhaus-logo.png" alt="TaqHaus" className="h-8 w-auto" />
                     </Link>
                     <Link
                         to="/contact"
