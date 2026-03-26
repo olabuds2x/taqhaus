@@ -675,33 +675,18 @@ export default function LandingPageRedesign() {
                 Partnership Frameworks
               </p>
               <h2 className="font-headline font-bold text-white mb-6">
-                Custom Engagement. Clear Outcomes.
+                Every Engagement Is Scoped to Your Goals.
               </h2>
               <p className="text-ink-secondary text-lg max-w-2xl mx-auto mb-12 font-body">
-                Every partnership begins with a strategic audit. From there, we design the framework that fits your growth goals — whether that's a one-time strategy engagement or an ongoing retainer.
+                We don't do cookie-cutter packages. Every partnership starts with a strategy call where we diagnose your biggest opportunities and build a custom plan. You'll know exactly what you're getting and what it costs before committing to anything.
               </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-                <div className="rounded-2xl bg-noir-low p-8 text-center">
-                  <p className="text-xs uppercase tracking-[0.3em] text-strike font-label font-medium mb-3">Strategic Audit</p>
-                  <p className="text-sm text-ink-secondary font-body">One-time deep dive into your marketing infrastructure</p>
-                </div>
-                <div className="rounded-2xl bg-noir-low p-8 text-center">
-                  <p className="text-xs uppercase tracking-[0.3em] text-strike font-label font-medium mb-3">Growth Retainer</p>
-                  <p className="text-sm text-ink-secondary font-body">Ongoing strategy + execution across your key channels</p>
-                </div>
-                <div className="rounded-2xl bg-noir-low p-8 text-center">
-                  <p className="text-xs uppercase tracking-[0.3em] text-strike font-label font-medium mb-3">Advisory</p>
-                  <p className="text-sm text-ink-secondary font-body">Fractional CMO oversight for your internal team</p>
-                </div>
-              </div>
 
               <div className="mt-10">
                 <a
                   href={CALENDLY_URL}
                   className="btn-strike inline-flex items-center gap-3 text-base"
                 >
-                  Let's Talk — Book a Strategy Call
+                  Book a Strategy Call
                   <ArrowRight className="w-5 h-5" />
                 </a>
               </div>
