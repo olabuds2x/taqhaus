@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, TrendingUp, Users, Target } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SEO from '@/components/SEO'
+import { CALENDLY_URL } from '@/lib/constants'
 
 export default function CaseStudiesIndex() {
   const caseStudies = [
@@ -75,13 +76,14 @@ export default function CaseStudiesIndex() {
   return (
     <>
       <SEO
-        title="Case Studies - TaqHaus"
-        description="Explore our portfolio of successful marketing campaigns across fintech, e-commerce, SaaS, and political sectors. See how we drive measurable results."
+        title="Results — TaqHaus | Selected Case Studies"
+        description="A look at selected results across fintech, e-commerce, SaaS, and political sectors. See how TaqHaus drives measurable growth."
         keywords="marketing case studies, fintech marketing, saas growth, ecommerce success stories, political campaigns"
+        canonical="/case-studies"
       />
 
-      <div className="min-h-screen bg-dark text-white pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-noir-void text-ink font-body pt-32 sm:pt-40 pb-16">
+        <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -89,11 +91,16 @@ export default function CaseStudiesIndex() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-accent">Success Stories</span>
+            <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-6">
+              Selected Results
+            </p>
+            <h1 className="font-headline font-bold text-white">
+              A Few of the Brands
+              <br />
+              <span className="text-ink-secondary">We've Helped Grow.</span>
             </h1>
-            <p className="text-xl text-neutral-light max-w-3xl mx-auto">
-              Explore how we've helped businesses across industries achieve remarkable growth through strategic marketing.
+            <p className="mt-8 text-lg text-ink-secondary max-w-2xl mx-auto leading-relaxed">
+              We've worked across industries and sectors — from fintech to fashion, SaaS to politics. Here are some of the results we can share.
             </p>
           </motion.div>
 
@@ -176,24 +183,36 @@ export default function CaseStudiesIndex() {
           {/* CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="mt-20 text-center"
           >
-            <div className="bg-gradient-to-br from-accent/10 to-transparent border border-accent/20 rounded-3xl p-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to Write Your Success Story?
-              </h2>
-              <p className="text-neutral-light text-lg mb-8 max-w-2xl mx-auto">
-                Let's discuss how we can help your business achieve similar results.
+            <div className="rounded-2xl bg-gradient-to-b from-maroon-deep/20 to-noir-void border border-white/5 p-12 sm:p-16">
+              <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-4">
+                More Where That Came From
               </p>
-              <Link
-                to="/contact"
-                className="inline-flex items-center px-8 py-4 bg-accent text-dark rounded-full font-semibold hover:bg-accent/90 transition-all shadow-[0_12px_30px_rgba(233,122,31,0.28)] hover:shadow-[0_16px_40px_rgba(233,122,31,0.35)]"
-              >
-                Request Your Strategic Audit
-                <ArrowRight className="ml-3 h-5 w-5" />
-              </Link>
+              <h2 className="font-headline font-bold text-white">
+                Want Results Like These?
+              </h2>
+              <p className="mt-6 text-lg text-ink-secondary max-w-xl mx-auto">
+                These are just a few of the brands we work with. Book a call to discuss how we'd approach your growth.
+              </p>
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href={CALENDLY_URL}
+                  className="btn-strike inline-flex items-center justify-center gap-3 text-base"
+                >
+                  Book a Strategy Call
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+                <Link
+                  to="/contact"
+                  className="btn-ghost inline-flex items-center justify-center gap-3 text-base"
+                >
+                  Get a Free Audit
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
