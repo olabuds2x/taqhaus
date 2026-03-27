@@ -1,10 +1,9 @@
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { CALENDLY_URL } from '@/lib/constants'
-import { Card, CardContent } from '@/components/ui/card'
-import { Calendar, Clock, ArrowLeft, Share2, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft, Linkedin, Twitter, ArrowRight } from 'lucide-react'
 import { blogPosts } from '@/data/blogPosts'
+import { SEO } from '@/components/SEO'
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
@@ -12,259 +11,213 @@ export default function BlogPost() {
   // Find the blog post by slug
   const post = blogPosts.find(p => p.slug === slug)
 
-  // If post not found, show 404-like message
+  // If post not found
   if (!post) {
     return (
-      <div className="min-h-screen bg-dark pt-16 flex items-center justify-center">
+      <div className="min-h-screen bg-noir-void text-ink font-body pt-32 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="text-gray-600 mb-8">The blog post you're looking for doesn't exist.</p>
-          <Button asChild>
-            <Link to="/blog">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Back to Blog
-            </Link>
-          </Button>
+          <h1 className="text-4xl font-headline font-bold mb-4 text-white">Post Not Found</h1>
+          <p className="text-ink-secondary mb-8">The strategy insight you're looking for doesn't exist.</p>
+          <Link to="/insights" className="inline-flex items-center text-strike hover:text-strike/80 transition-colors">
+            <ArrowLeft className="mr-2 w-4 h-4" />
+            Back to Insights
+          </Link>
         </div>
       </div>
     )
   }
 
-  // Get related posts (same category, exclude current)
+  // Get related posts
   const relatedPosts = blogPosts
     .filter(p => p.category === post.category && p.slug !== post.slug)
     .slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-dark pt-16">
-      {/* Back Button */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Button variant="ghost" asChild>
-          <Link to="/blog">
-            <ArrowLeft className="mr-2 w-4 h-4" />
-            Back to Blog
-          </Link>
-        </Button>
-      </div>
+    <div className="min-h-screen bg-noir-void text-ink font-body">
+      <SEO
+        title={`${post.title} — TaqHaus Insights`}
+        description={post.excerpt}
+        canonical={`/insights/${post.slug}`}
+      />
 
-      {/* Article Header */}
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-accent text-white text-sm rounded-full">
-              {post.category}
-            </span>
-            <div className="flex items-center gap-4 text-sm text-gray-600">
-              <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                {post.date}
-              </div>
-              <div className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
-                {post.readTime}
-              </div>
-            </div>
+      {/* Hero Section */}
+      <section className="pt-32 sm:pt-40 pb-12 px-6 bg-gradient-to-b from-maroon-deep/20 to-noir-void">
+        <div className="max-w-4xl mx-auto">
+          {/* Back Button */}
+          <div className="mb-12">
+            <Link 
+              to="/insights"
+              className="inline-flex items-center text-ink-muted hover:text-white transition-colors text-sm font-label uppercase tracking-widest"
+            >
+              <ArrowLeft className="mr-3 w-4 h-4" />
+              Back to Insights
+            </Link>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-            {post.title}
-          </h1>
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-white font-semibold">
-                {post.author.split(' ').map(n => n[0]).join('')}
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">{post.author}</p>
-                <p className="text-sm text-gray-600">{post.authorRole}</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <span className="px-3 py-1 bg-white/5 border border-white/10 text-white text-[10px] font-label tracking-[0.2em] uppercase rounded-full">
+                {post.category}
+              </span>
+              <div className="flex items-center gap-4 text-sm text-ink-muted font-label uppercase tracking-widest">
+                <div className="flex items-center gap-1.5">
+                  <Calendar className="w-3 h-3" />
+                  {post.date}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-3 h-3" />
+                  {post.readTime}
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm">
-                <Share2 className="w-4 h-4 mr-2" />
-                Share
-              </Button>
-            </div>
-          </div>
-        </motion.div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-headline font-bold text-white leading-[1.1] mb-12">
+              {post.title}
+            </h1>
 
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 py-6 border-y border-white/5">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-noir-surface border border-white/10 flex items-center justify-center text-white font-headline font-bold text-lg hidden sm:flex">
+                  {post.author.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <p className="font-bold text-white font-headline tracking-wide">{post.author}</p>
+                  <p className="text-xs text-ink-muted uppercase tracking-widest">{post.authorRole}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-ink-muted font-label uppercase tracking-widest mr-2">Share</span>
+                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-ink-muted hover:text-white hover:bg-white/10 transition-colors">
+                  <Twitter className="w-4 h-4" />
+                </a>
+                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-ink-muted hover:text-white hover:bg-white/10 transition-colors">
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Article Content */}
+      <article className="max-w-3xl mx-auto px-6 pb-24">
         {/* Featured Image */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-12"
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="mb-16 -mt-6"
         >
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full h-96 object-cover rounded-2xl shadow-xl"
-          />
+          <div className="aspect-[2/1] w-full relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/5">
+            <div className="absolute inset-0 bg-noir-void/30 mix-blend-overlay z-10" />
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-full object-cover grayscale opacity-80"
+            />
+            {/* Noir overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-noir-void via-transparent to-transparent z-20" />
+          </div>
         </motion.div>
 
-        {/* Article Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="prose prose-lg max-w-none"
+          className="prose prose-lg prose-invert max-w-none"
         >
-          <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+          <p className="text-2xl md:text-3xl text-white max-w-2xl font-headline italic mb-16 leading-relaxed border-l-2 border-strike pl-8 py-2">
             {post.excerpt}
           </p>
 
-          {post.content.map((section, index) => (
-            <div key={index} className="mb-8">
-              {section.type === 'heading' && (
-                <h2 className="text-3xl font-bold mb-4 text-gray-900">{section.text}</h2>
-              )}
-              {section.type === 'paragraph' && (
-                <p className="text-gray-700 leading-relaxed mb-4">{section.text}</p>
-              )}
-              {section.type === 'list' && (
-                <ul className="space-y-2 mb-4">
-                  {section.items?.map((item, i) => (
-                    <li key={i} className="text-gray-700 flex items-start gap-2">
-                      <span className="text-accent mt-2">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {section.type === 'quote' && (
-                <blockquote className="border-l-4 border-accent pl-6 py-4 my-6 bg-accent/10 rounded-r-lg">
-                  <p className="text-lg italic text-gray-800">{section.text}</p>
-                </blockquote>
-              )}
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Social Share */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 pt-8 border-t border-gray-200"
-        >
-          <p className="text-sm font-semibold text-gray-900 mb-4">Share this article</p>
-          <div className="flex gap-3">
-            <Button variant="outline" size="sm" asChild>
-              <a href={`https://twitter.com/intent/tweet?text=${post.title}&url=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-                <Twitter className="w-4 h-4 mr-2" />
-                Twitter
-              </a>
-            </Button>
-            <Button variant="outline" size="sm" asChild>
-              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="w-4 h-4 mr-2" />
-                LinkedIn
-              </a>
-            </Button>
-            <Button variant="outline" size="sm" asChild>
-              <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-                <Facebook className="w-4 h-4 mr-2" />
-                Facebook
-              </a>
-            </Button>
+          <div className="space-y-8">
+            {post.content.map((section, index) => (
+              <div key={index}>
+                {section.type === 'heading' && (
+                  <h2 className="text-3xl font-headline font-bold text-white mt-16 mb-6">{section.text}</h2>
+                )}
+                {section.type === 'paragraph' && (
+                  <p className="text-lg text-ink-secondary leading-[1.8]">{section.text}</p>
+                )}
+                {section.type === 'list' && (
+                  <ul className="space-y-4 my-8 p-8 rounded-2xl bg-noir-surface border border-white/5">
+                    {section.items?.map((item, i) => (
+                      <li key={i} className="text-lg text-ink-secondary flex items-start gap-4">
+                        <span className="text-strike font-bold select-none mt-1">→</span>
+                        <span className="leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {section.type === 'quote' && (
+                  <blockquote className="my-12 relative px-8 py-8 rounded-r-2xl border-l-4 border-strike bg-gradient-to-r from-strike/10 to-transparent">
+                    <p className="text-xl md:text-2xl italic text-white font-headline leading-relaxed">
+                      "{section.text}"
+                    </p>
+                  </blockquote>
+                )}
+              </div>
+            ))}
           </div>
         </motion.div>
 
-        {/* Author Bio */}
+        {/* Author Bio Box */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="mt-12"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-24 p-8 sm:p-10 rounded-2xl bg-noir-surface border border-white/5"
         >
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
-                  {post.author.split(' ').map(n => n[0]).join('')}
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">{post.author}</h3>
-                  <p className="text-accent font-semibold mb-2">{post.authorRole}</p>
-                  <p className="text-gray-600">{post.authorBio}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-8">
+            <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white font-headline font-bold text-3xl flex-shrink-0">
+              {post.author.split(' ').map(n => n[0]).join('')}
+            </div>
+            <div>
+              <p className="text-xs text-strike font-label font-bold tracking-widest uppercase mb-2">Written By</p>
+              <h3 className="text-3xl font-headline font-bold text-white mb-2">{post.author}</h3>
+              <p className="text-ink-muted text-sm uppercase tracking-widest font-label mb-4">{post.authorRole}</p>
+              <p className="text-ink-secondary leading-relaxed max-w-xl text-lg">{post.authorBio}</p>
+            </div>
+          </div>
         </motion.div>
       </article>
 
-      {/* Related Posts */}
-      {relatedPosts.length > 0 && (
-        <section className="py-16 bg-dark-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-8 text-white">Related Articles</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedPosts.map((relatedPost, index) => (
-                <motion.div
-                  key={relatedPost.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link to={`/blog/${relatedPost.slug}`}>
-                    <Card className="group overflow-hidden h-full hover:shadow-xl transition-all duration-300 bg-dark-700 border-dark-600">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src={relatedPost.image}
-                          alt={relatedPost.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 bg-accent text-white text-xs rounded-full">
-                            {relatedPost.category}
-                          </span>
-                        </div>
-                      </div>
-                      <CardContent className="pt-4">
-                        <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2 text-white">
-                          {relatedPost.title}
-                        </h3>
-                        <p className="text-sm text-neutral line-clamp-2">{relatedPost.excerpt}</p>
-                        <div className="flex items-center gap-3 text-xs text-neutral mt-3">
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
-                            {relatedPost.readTime}
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* CTA Section */}
-      <section className="py-20 bg-accent text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 px-6 bg-gradient-to-b from-noir-void to-maroon-deep/20 border-t border-white/5">
+        <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <p className="text-strike text-xs sm:text-sm uppercase tracking-[0.3em] font-label font-bold mb-6">
+              Next Steps
+            </p>
+            <h2 className="text-4xl md:text-5xl font-headline font-bold text-white mb-8 leading-tight">
               Ready to Scale with TaqHaus?
             </h2>
-            <p className="text-xl mb-8 text-white/90">
-              Get your free growth audit and start dominating search results.
+            <p className="text-xl mb-12 text-ink-secondary max-w-xl mx-auto leading-relaxed">
+              Get your free growth audit and start diagnosing the operational friction holding you back.
             </p>
-            <Button size="lg" variant="secondary" className="bg-white text-dark hover:bg-gray-100" asChild>
-              <a href={CALENDLY_URL}>Book Your Free Audit</a>
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a 
+                href={CALENDLY_URL}
+                className="btn-strike w-full sm:w-auto text-base"
+              >
+                Book Your Strategy Call
+              </a>
+              <Link
+                to="/services"
+                className="btn-ghost w-full sm:w-auto text-base"
+              >
+                View Consulting Services
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

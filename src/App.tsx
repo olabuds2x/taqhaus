@@ -15,6 +15,7 @@ import CaseStudyTopTier from '@/pages/CaseStudyTopTier'
 import CaseStudySaaS from '@/pages/CaseStudySaaS'
 import CaseStudyFashion from '@/pages/CaseStudyFashion'
 import CaseStudyPublicOfficial from '@/pages/CaseStudyPublicOfficial'
+import BlogPost from '@/pages/BlogPost'
 
 /* ── Route renderer ── */
 function AppRoutes() {
@@ -34,6 +35,7 @@ function AppRoutes() {
         <Route path="/about" element={<><About /><Footer /></>} />
         <Route path="/contact" element={<><Contact /><Footer /></>} />
         <Route path="/insights" element={<><Insights /><Footer /></>} />
+        <Route path="/insights/:slug" element={<><BlogPost /><Footer /></>} />
         <Route path="/case-studies" element={<><CaseStudiesIndex /><Footer /></>} />
         <Route path="/case-studies/the-funded-trader" element={<><CaseStudyTFT /><Footer /></>} />
         <Route path="/case-studies/toptier-trader" element={<><CaseStudyTopTier /><Footer /></>} />

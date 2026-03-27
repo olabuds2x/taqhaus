@@ -11,38 +11,50 @@ const fadeUp = {
   transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] as const },
 }
 
-const pillars = [
+interface Article {
+  title: string
+  slug?: string
+}
+
+interface Pillar {
+  title: string
+  tag?: string
+  articles: Article[]
+}
+
+const pillars: Pillar[] = [
   {
     title: 'Strategy & Consulting',
     tag: 'PRIORITY',
     articles: [
-      '5 Signs You Need a Marketing Strategist, Not Another Agency',
-      'The Marketing Audit Framework We Use to Find $50K in Wasted Spend',
-      'Fractional CMO vs. Marketing Agency: Which Does Your Business Actually Need?',
+      { title: '5 Signs You Need a Marketing Strategist, Not Another Agency', slug: '5-signs-you-need-a-marketing-strategist' },
+      { title: 'The Marketing Audit Framework We Use to Find $50K in Wasted Spend', slug: 'marketing-audit-framework' },
+      { title: 'Fractional CMO vs. Marketing Agency: Which Does Your Business Actually Need?', slug: 'fractional-cmo-vs-agency' },
     ],
   },
   {
     title: 'Website Performance',
     articles: [
-      '5 Signs Your Website Is Costing You Customers',
-      'What GEO Is and Why Your Business Needs It Before 2027',
-      'SEO vs. GEO: The Search Landscape Has Changed. Has Your Website?',
+      { title: '5 Signs Your Website Is Costing You Customers', slug: 'website-costing-customers' },
+      { title: 'What GEO Is and Why Your Business Needs It Before 2027', slug: 'what-is-geo' },
+      { title: 'SEO vs. GEO: The Search Landscape Has Changed. Has Your Website?', slug: 'seo-vs-geo' },
     ],
   },
   {
     title: 'Marketing Execution',
     articles: [
-      'The Real Reason Your Marketing Agency Isn\'t Delivering Results',
-      'Email Marketing ROI: Why It\'s Still the Highest-Leverage Channel',
-      'Social Media Management vs. Social Media Marketing: You Need Both',
+      { title: 'The Real Reason Your Marketing Agency Isn\'t Delivering Results', slug: 'agency-not-delivering-results' },
+      { title: 'Email Marketing ROI: Why It\'s Still the Highest-Leverage Channel', slug: 'email-marketing-roi' },
+      { title: 'Social Media Management vs. Social Media Marketing: You Need Both', slug: 'social-management-vs-marketing' },
     ],
   },
   {
     title: 'Politicians & Public Figures',
     tag: 'VERTICAL',
     articles: [
-      'Why 70% of Local Politicians Are Invisible Online (And How to Fix It in 30 Days)',
-      'The Digital Playbook for Elected Officials: Website, Social, and Constituent Engagement in 2026',
+      { title: 'Digital Campaigning: Why Voters Don\'t Care About Policy PDFs', slug: 'policy-pdfs-dont-matter' },
+      { title: 'The Fundraising Machine: Converting Viral Moments into Donors', slug: 'fundraising-machine' },
+      { title: 'Crisis Communications in the Era of AI Deepfakes', slug: 'ai-deepfakes-crisis' },
     ],
   },
 ]
@@ -103,9 +115,10 @@ export default function Insights() {
                 </div>
 
                 <div className="space-y-4">
-                  {pillar.articles.map((article) => (
-                    <div
-                      key={article}
+                  {pillar.articles.map((article) => article.slug ? (
+                    <Link
+                      key={article.title}
+                      to={`/insights/${article.slug}`}
                       className="flex items-center justify-between gap-4 py-4 border-b border-white/5 last:border-0 group cursor-pointer"
                     >
                       <div className="flex items-center gap-4">
@@ -113,7 +126,22 @@ export default function Insights() {
                           →
                         </span>
                         <p className="text-ink-secondary group-hover:text-white transition-colors text-sm sm:text-base">
-                          {article}
+                          {article.title}
+                        </p>
+                      </div>
+                      <span className="text-xs text-strike font-label font-bold whitespace-nowrap">Read Now</span>
+                    </Link>
+                  ) : (
+                    <div
+                      key={article.title}
+                      className="flex items-center justify-between gap-4 py-4 border-b border-white/5 last:border-0 group cursor-pointer opacity-70"
+                    >
+                      <div className="flex items-center gap-4">
+                        <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-ink-muted transition-colors flex-shrink-0">
+                          →
+                        </span>
+                        <p className="text-ink-secondary transition-colors text-sm sm:text-base">
+                          {article.title}
                         </p>
                       </div>
                       <span className="text-xs text-ink-muted font-label whitespace-nowrap">Coming Soon</span>
