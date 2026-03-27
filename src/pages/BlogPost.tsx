@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { CALENDLY_URL } from '@/lib/constants'
-import { Calendar, Clock, ArrowLeft, Linkedin, Twitter, ArrowRight } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft, Linkedin, Twitter } from 'lucide-react'
 import { blogPosts } from '@/data/blogPosts'
 import { SEO } from '@/components/SEO'
 
@@ -28,9 +28,7 @@ export default function BlogPost() {
   }
 
   // Get related posts
-  const relatedPosts = blogPosts
-    .filter(p => p.category === post.category && p.slug !== post.slug)
-    .slice(0, 3)
+
 
   return (
     <div className="min-h-screen bg-noir-void text-ink font-body">
