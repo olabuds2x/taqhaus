@@ -13,7 +13,7 @@ const fadeUp = {
 
 interface Article {
   title: string
-  slug?: string
+  slug: string
 }
 
 interface Pillar {
@@ -115,7 +115,7 @@ export default function Insights() {
                 </div>
 
                 <div className="space-y-4">
-                  {pillar.articles.map((article) => article.slug ? (
+                  {pillar.articles.map((article) => (
                     <Link
                       key={article.title}
                       to={`/insights/${article.slug}`}
@@ -131,21 +131,6 @@ export default function Insights() {
                       </div>
                       <span className="text-xs text-strike font-label font-bold whitespace-nowrap">Read Now</span>
                     </Link>
-                  ) : (
-                    <div
-                      key={article.title}
-                      className="flex items-center justify-between gap-4 py-4 border-b border-white/5 last:border-0 group cursor-pointer opacity-70"
-                    >
-                      <div className="flex items-center gap-4">
-                        <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-ink-muted transition-colors flex-shrink-0">
-                          →
-                        </span>
-                        <p className="text-ink-secondary transition-colors text-sm sm:text-base">
-                          {article.title}
-                        </p>
-                      </div>
-                      <span className="text-xs text-ink-muted font-label whitespace-nowrap">Coming Soon</span>
-                    </div>
                   ))}
                 </div>
               </motion.div>
