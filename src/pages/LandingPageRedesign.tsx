@@ -255,6 +255,7 @@ export default function LandingPageRedesign() {
           <nav className="hidden md:flex items-center gap-8 text-sm font-body font-medium">
             <Link to="/services" className="text-ink-secondary hover:text-white transition-colors">Services</Link>
             <Link to="/case-studies" className="text-ink-secondary hover:text-white transition-colors">Results</Link>
+            <Link to="/portfolio" className="text-ink-secondary hover:text-white transition-colors">Portfolio</Link>
             <Link to="/about" className="text-ink-secondary hover:text-white transition-colors">About</Link>
             <Link to="/insights" className="text-ink-secondary hover:text-white transition-colors">Insights</Link>
           </nav>
