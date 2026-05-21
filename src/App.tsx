@@ -18,27 +18,30 @@ import CaseStudyPublicOfficial from '@/pages/CaseStudyPublicOfficial'
 import Portfolio from '@/pages/Portfolio'
 import BlogPost from '@/pages/BlogPost'
 
+/* Pages using the editorial design system — they include their own nav + footer */
+const EDITORIAL_ROUTES = ['/', '/services', '/about', '/contact', '/insights', '/case-studies']
+
 /* ── Route renderer ── */
 function AppRoutes() {
   const location = useLocation()
-  const isHome = location.pathname === '/'
+  const isEditorial = EDITORIAL_ROUTES.includes(location.pathname)
 
   return (
     <>
       <ScrollToTop />
 
-      {/* Show shared nav on all pages EXCEPT homepage (homepage has its own) */}
-      {!isHome && <Navigation />}
+      {/* Shared nav only for pages that don't use the editorial design system */}
+      {!isEditorial && <Navigation />}
 
       <Routes>
         <Route path="/" element={<LandingPageRedesign />} />
-        <Route path="/services" element={<><Services /><Footer /></>} />
-        <Route path="/about" element={<><About /><Footer /></>} />
-        <Route path="/contact" element={<><Contact /><Footer /></>} />
-        <Route path="/insights" element={<><Insights /><Footer /></>} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/insights" element={<Insights />} />
+        <Route path="/case-studies" element={<CaseStudiesIndex />} />
         <Route path="/portfolio" element={<><Portfolio /><Footer /></>} />
         <Route path="/insights/:slug" element={<><BlogPost /><Footer /></>} />
-        <Route path="/case-studies" element={<><CaseStudiesIndex /><Footer /></>} />
         <Route path="/case-studies/the-funded-trader" element={<><CaseStudyTFT /><Footer /></>} />
         <Route path="/case-studies/toptier-trader" element={<><CaseStudyTopTier /><Footer /></>} />
         <Route path="/case-studies/saas-startup" element={<><CaseStudySaaS /><Footer /></>} />

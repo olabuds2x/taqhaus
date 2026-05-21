@@ -1,286 +1,401 @@
+import '../styles/taqhaus-editorial.css'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
 
-const fadeUp = {
+const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] as const },
-}
-
-const stagger = (delay: number) => ({
-  ...fadeUp,
-  transition: { ...fadeUp.transition, delay },
+  viewport: { once: true, amount: 0.12 },
+  transition: { duration: 0.9, delay, ease: [0.2, 0.7, 0.2, 1] as const },
 })
 
-const serviceCategories = [
+const disciplines = [
   {
-    id: 'strategy',
-    number: '01',
-    title: 'Strategy & Consulting',
-    headline: 'Clarity before action.',
-    description: 'Marketing audits, GTM strategy, competitive intelligence, and ongoing advisory. Think fractional CMO — senior-level thinking without the full-time salary.',
+    id: 's01',
+    num: '— Discipline 01',
+    title: <>Growth strategy &amp; fractional <em>CMO</em></>,
+    summary: 'A senior operator embedded in your leadership team. We diagnose the constraint, build the plan, and stay accountable to the number — month after month.',
+    what: [
+      { label: 'Best for', text: 'Founders without a marketing leader, or in-house teams that need senior pattern recognition.' },
+      { label: 'Engagement', text: 'Monthly retainer. 6 month minimum. Embedded 1–2 days/week.' },
+      { label: 'Team', text: 'One operator + strategy associate + access to the full TaqHaus stack.' },
+      { label: 'Reporting', text: 'Weekly standups, monthly business review, quarterly board-ready readouts.' },
+    ],
     deliverables: [
-      'Marketing Audits & Growth Diagnostics',
-      'Funnel & Conversion Strategy',
-      'Market Positioning & Messaging Architecture',
-      'Go-to-Market Strategy',
-      'Competitive Intelligence',
-      'Leadership Branding & Thought Leadership Strategy',
-      'Political & Executive Reputation Management',
+      { num: '01', text: 'Growth diagnosis & constraint identification', meta: 'Week 1–2' },
+      { num: '02', text: '12-month growth blueprint & budget', meta: 'Week 3–4' },
+      { num: '03', text: 'Quarterly OKRs & channel-level KPIs', meta: 'Ongoing' },
+      { num: '04', text: 'Team coaching, hire calibration, vendor management', meta: 'Ongoing' },
+      { num: '05', text: 'Board & investor narrative updates', meta: 'Quarterly' },
     ],
-    idealFor: [
-      'Founders & CEOs needing strategic direction',
-      'Internal teams needing board-level oversight',
-      'Executives managing public perception',
+    cta: 'Discuss an engagement →',
+  },
+  {
+    id: 's02',
+    num: '— Discipline 02',
+    title: <>Brand &amp; <em>positioning</em></>,
+    summary: 'Identity that survives contact with the real world — your sales team, your investors, your hiring page. Not a mood board. A working system.',
+    what: [
+      { label: 'Best for', text: 'Re-launches, repositioning after PMF, or category-defining bets.' },
+      { label: 'Engagement', text: 'Fixed-scope project. 6–10 weeks.' },
+      { label: 'Team', text: 'Strategy lead, designer, copywriter, founder principal.' },
+      { label: 'Output', text: 'Brand book, narrative, identity system, launch toolkit.' },
     ],
+    deliverables: [
+      { num: '01', text: 'Audience & competitive immersion', meta: 'Week 1–2' },
+      { num: '02', text: 'Positioning, narrative & messaging system', meta: 'Week 3–4' },
+      { num: '03', text: 'Visual identity & type system', meta: 'Week 5–7' },
+      { num: '04', text: 'Brand book + launch toolkit', meta: 'Week 8–10' },
+    ],
+    cta: 'Start a project →',
+  },
+  {
+    id: 's03',
+    num: '— Discipline 03',
+    title: <>Websites &amp; product <em>marketing</em></>,
+    summary: 'Sites that convert and editorial surfaces that compound. Designed, written, engineered, and shipped — not delivered as a Figma file.',
+    what: [
+      { label: 'Best for', text: 'Re-launches, funded-stage refreshes, or sites that haven\'t kept up with the company.' },
+      { label: 'Engagement', text: 'Fixed-scope project. 8–14 weeks.' },
+      { label: 'Stack', text: 'Webflow, Framer, or custom Next.js — we choose for fit, not preference.' },
+      { label: 'Includes', text: 'Copy, design, engineering, SEO baseline, CMS training.' },
+    ],
+    deliverables: [
+      { num: '01', text: 'Information architecture & messaging', meta: 'Week 1–3' },
+      { num: '02', text: 'Design system & key pages', meta: 'Week 4–7' },
+      { num: '03', text: 'Build, QA, & SEO foundation', meta: 'Week 8–12' },
+      { num: '04', text: 'Launch, analytics, ongoing care plan', meta: 'Week 13–14' },
+    ],
+    cta: 'Scope a build →',
+  },
+  {
+    id: 's04',
+    num: '— Discipline 04',
+    title: <>SEO &amp; organic <em>growth</em></>,
+    summary: 'Technical, editorial, and topical authority. Built for AI search engines and human readers in equal measure. Strategies designed to compound.',
+    what: [
+      { label: 'Best for', text: 'Sites with a real audience opportunity and the patience for a 6–12 month curve.' },
+      { label: 'Engagement', text: 'Monthly retainer. 6 month minimum.' },
+      { label: 'Output', text: 'Editorial cadence, technical sprints, performance reporting.' },
+      { label: 'Specialty', text: 'B2B SaaS, professional services, founder & personal brands.' },
+    ],
+    deliverables: [
+      { num: '01', text: 'Technical audit & site health programme', meta: 'Quarterly' },
+      { num: '02', text: 'Topical authority map & content roadmap', meta: 'Quarterly' },
+      { num: '03', text: 'Editorial production (8–16 pieces/mo)', meta: 'Monthly' },
+      { num: '04', text: 'Internal linking, schema, & AI-overview optimisation', meta: 'Monthly' },
+      { num: '05', text: 'Digital PR & link acquisition', meta: 'Monthly' },
+    ],
+    cta: 'Start a retainer →',
+  },
+  {
+    id: 's05',
+    num: '— Discipline 05',
+    title: <>Paid <em>acquisition</em></>,
+    summary: 'Performance media that respects the brand. Testing rigour, narrative-first creative, full-funnel measurement. We don\'t buy clicks — we buy customers.',
+    what: [
+      { label: 'Best for', text: 'Brands with $20k+/mo media spend and a real conversion mechanism.' },
+      { label: 'Channels', text: 'Meta, Google, LinkedIn, programmatic, YouTube, sponsorships.' },
+      { label: 'Output', text: 'Creative production, testing roadmap, weekly performance reviews.' },
+      { label: 'Measurement', text: 'MMM, incrementality tests, attribution layer setup.' },
+    ],
+    deliverables: [
+      { num: '01', text: 'Account & creative audit', meta: 'Onboarding' },
+      { num: '02', text: 'Testing & learning roadmap', meta: 'Quarterly' },
+      { num: '03', text: 'Creative concepting & production', meta: 'Monthly' },
+      { num: '04', text: 'Performance reporting & iteration', meta: 'Weekly' },
+    ],
+    cta: 'Start a retainer →',
+  },
+  {
+    id: 's06',
+    num: '— Discipline 06',
+    title: <>Lifecycle &amp; <em>email</em></>,
+    summary: 'The unglamorous channel that quietly outperforms everything else. Flows, broadcasts, a deliverability program, and a sender voice that doesn\'t embarrass you.',
+    what: [
+      { label: 'Best for', text: 'SaaS, e-commerce, professional services with an addressable list.' },
+      { label: 'Stack', text: 'Klaviyo, Customer.io, HubSpot, Iterable.' },
+      { label: 'Output', text: 'Strategy, copy, design, build, QA, optimisation.' },
+      { label: 'Includes', text: 'Deliverability monitoring & warmup if needed.' },
+    ],
+    deliverables: [
+      { num: '01', text: 'Audit & flow architecture', meta: 'Onboarding' },
+      { num: '02', text: 'Core automation builds', meta: 'Month 1–2' },
+      { num: '03', text: 'Editorial calendar & broadcast cadence', meta: 'Ongoing' },
+      { num: '04', text: 'A/B testing & revenue reporting', meta: 'Ongoing' },
+    ],
+    cta: 'Start a retainer →',
+  },
+]
+
+const models = [
+  {
+    num: '— Model 01',
+    title: 'Sprint',
+    desc: "A focused 4–6 week diagnosis. You'll come out with a strategy, a roadmap, and clarity on what to build next.",
+    items: ['Growth diagnosis', '12-month roadmap', 'Quarterly OKRs', 'Channel-by-channel plan', 'Executive readout'],
+    cta: 'Discuss a sprint',
+    featured: false,
+  },
+  {
+    num: '— Model 02 · Most common',
+    title: 'Retainer',
+    desc: 'Embedded leadership and full-stack execution. The team is on the hook for the outcome, not the deliverable.',
+    items: ['Fractional CMO + execution pod', 'Up to three disciplines included', 'Weekly standups, monthly MBR', 'Quarterly resets & replanning', 'Slack, Notion, & board-deck support'],
+    cta: 'Open a retainer conversation',
     featured: true,
   },
   {
-    id: 'execution',
-    number: '02',
-    title: 'Digital Marketing Execution',
-    headline: 'The full funnel, executed and measured.',
-    description: 'Email, SEO content, paid media (Meta, Google, LinkedIn, TikTok), and CRO. Acquisition systems that compound across every channel.',
-    deliverables: [
-      'SEO & Authority Content Systems',
-      'Paid Media (Google, Meta, LinkedIn, TikTok)',
-      'Email Marketing & Lifecycle Automation (Klaviyo, Brevo, Omnisend)',
-      'Conversion Rate Optimization',
-      'AI-Powered Campaign Intelligence',
-      'Analytics & Reporting (GA4, Looker Studio)',
-    ],
-    idealFor: [
-      'Brands without in-house specialists',
-      'Teams wanting end-to-end performance',
-      'Businesses seeking measurable ROI',
-    ],
+    num: '— Model 03',
+    title: 'Equity partner',
+    desc: 'For pre-Series-A founders we deeply believe in. Cash + equity. Aligned incentives. Full skin in the game.',
+    items: ['Reduced cash, meaningful equity', 'Full TaqHaus stack on tap', 'Co-author the narrative', 'Investor & PR introductions', 'Founder coaching included'],
+    cta: 'Apply',
+    featured: false,
+  },
+]
+
+const faqs = [
+  {
+    q: 'How is this different from hiring an in-house team?',
+    a: "You don't pay for ramp. You get a senior operator from day one, plus a working pod underneath them. For most companies under $20M ARR, this is faster and cheaper than building a comparable team in-house — and the pod gets better at your business every month.",
   },
   {
-    id: 'brand',
-    number: '03',
-    title: 'Social Media & Brand',
-    headline: 'Build the presence. Manage the conversation.',
-    description: 'Social media management, brand identity, content creation, reputation management, and audience growth.',
-    deliverables: [
-      'Social Media Strategy & Management',
-      'Brand Identity & Design Systems',
-      'Content Creation & Distribution',
-      'Reputation Management',
-      'Audience Growth & Engagement',
-      'Community Building',
-    ],
-    idealFor: [
-      'Brands building thought leadership',
-      'Companies entering new markets',
-      'Public figures and politicians',
-    ],
+    q: 'How is this different from hiring an agency?',
+    a: "Agencies sell deliverables. We sell outcomes. We take fewer clients, we sit inside your team, and we measure ourselves on pipeline and revenue — not impressions and decks. If we're not moving the number, we'll tell you before you have to ask.",
   },
   {
-    id: 'web',
-    number: '04',
-    title: 'Websites & Digital Assets',
-    headline: 'Built to rank, convert, and scale.',
-    description: "SEO-engineered websites, landing pages, and ongoing site management — not just look pretty.",
-    deliverables: [
-      'SEO-Engineered Website Design & Development',
-      'Landing Page Design & Optimization',
-      'GEO / AI Search Optimization',
-      'Website Performance & Core Web Vitals',
-      'Ongoing Site Management & Updates',
-      'E-commerce Storefronts (Shopify, WooCommerce)',
-    ],
-    idealFor: [
-      'Businesses needing a website that generates leads',
-      'E-commerce brands needing conversion-optimized storefronts',
-      'Companies preparing for AI search (GEO)',
-    ],
+    q: 'What industries do you work with?',
+    a: "B2B SaaS, professional services (legal, finance, healthcare), founder & personal brands, and a small number of consumer brands with a clear story. We pass on anything we don't believe we can make famous.",
+  },
+  {
+    q: 'What size company is the right fit?',
+    a: "Most partners are between $2M and $40M in annual revenue, with funded-stage founders and PE-backed mid-market businesses making up the bulk. We'll happily refer you elsewhere if you're outside that band.",
+  },
+  {
+    q: 'Do you work with our existing agencies?',
+    a: "Often, yes. If you have a great PR firm, performance shop, or design studio, we'll plug into them and act as the strategic glue. We'd rather elevate good partners than replace them.",
+  },
+  {
+    q: 'How quickly can we start?',
+    a: 'Sprints generally start within 10 business days of contract signature. Retainers typically have a 4–6 week lead time, depending on which pod fits. Equity partnerships are case-by-case and require deeper diligence on both sides.',
   },
 ]
 
 export default function Services() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+
   return (
-    <div className="min-h-screen bg-noir-void text-ink font-body">
+    <div className="tq-editorial">
       <SEO
-        title="Services — TaqHaus | Strategy & Execution"
-        description="From strategic consulting to full-stack marketing execution. Strategy & Consulting, Digital Marketing, Social Media & Brand, and Website Design."
-        keywords="marketing strategy, fractional CMO, SEO services, paid media, brand identity, web design"
+        title="Services — TaqHaus"
+        description="Strategy, brand, web, SEO, paid, and lifecycle — under one roof. Sprint, retainer, or equity partner engagements."
         canonical="/services"
       />
 
-      {/* Hero */}
-      <section className="pt-32 sm:pt-40 pb-20 px-6 bg-gradient-to-b from-maroon-deep/30 to-noir-void">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-6">
-              Our Services
-            </p>
-            <h1 className="font-headline font-bold text-white">
-              Strategy First.
-              <br />
-              <span className="text-ink-secondary">Execution Included.</span>
-            </h1>
-            <p className="mt-8 text-lg text-ink-secondary max-w-2xl mx-auto leading-relaxed">
-              Whether you need consulting-level strategy, full-funnel marketing execution, or both — we deliver clarity, systems, and measurable growth.
-            </p>
-          </motion.div>
+      {/* Topbar */}
+      <div className="topbar">
+        <span className="pulse" />
+        <span>Now booking Q3 engagements · 2 retainer seats open</span>
+      </div>
+
+      {/* Nav */}
+      <header className="nav">
+        <div className="nav-inner">
+          <Link to="/" aria-label="TaqHaus — Home">
+            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
+          </Link>
+          <nav className="nav-links">
+            <Link to="/services" className="active">Services</Link>
+            <Link to="/case-studies">Work</Link>
+            <Link to="/about">About</Link>
+            <Link to="/insights">Insights</Link>
+            <Link to="/contact">Contact</Link>
+          </nav>
+          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
+            Book a call <span className="arrow">→</span>
+          </a>
+        </div>
+      </header>
+
+      {/* Page head */}
+      <section className="page-head">
+        <div className="wrap">
+          <div className="grid">
+            <div>
+              <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Services</span>
+              <h1>Strategy <em>and</em> execution. Under one&nbsp;roof.</h1>
+            </div>
+            <motion.div {...rv(0.15)}>
+              <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
+                You don&rsquo;t need another agency to brief. You need a senior team that diagnoses the constraint, designs the plan, and ships the work — on the same line item, with the same incentive.
+              </p>
+              <div className="row" style={{ marginTop: 28 }}>
+                <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                  Book a discovery call <span className="arrow">↗</span>
+                </a>
+                <a href="#engagements" className="btn-link">How we engage</a>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Service Categories */}
-      {serviceCategories.map((service, index) => (
-        <section
-          key={service.id}
-          id={service.id}
-          className={`py-20 sm:py-28 px-6 ${index % 2 === 0 ? 'bg-noir-low' : 'bg-noir-void'}`}
-        >
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-              {/* Left — Info */}
-              <motion.div {...fadeUp}>
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-strike text-sm font-label font-bold tracking-wider">{service.number}</span>
-                  {service.featured && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-strike/10 text-strike text-xs font-label font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-strike" />
-                      Core Offering
-                    </span>
-                  )}
-                </div>
-                <h2 className="font-headline font-bold text-white mb-4">{service.title}</h2>
-                <p className="text-xl text-blush font-headline italic mb-6">{service.headline}</p>
-                <p className="text-ink-secondary leading-relaxed mb-8">{service.description}</p>
-                <a
-                  href={CALENDLY_URL}
-                  className="btn-strike inline-flex items-center gap-3 text-sm"
-                >
-                  Discuss {service.title.split(' ')[0]} Strategy
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </motion.div>
-
-              {/* Right — Deliverables + Ideal For */}
-              <div className="space-y-8">
-                <motion.div
-                  className="rounded-2xl bg-noir-surface p-8"
-                  {...stagger(0.1)}
-                >
-                  <p className="text-xs uppercase tracking-[0.3em] text-strike font-label font-medium mb-5">
-                    What's Included
-                  </p>
-                  <ul className="space-y-3">
-                    {service.deliverables.map(item => (
-                      <li key={item} className="flex items-start gap-3 text-sm text-ink-secondary">
-                        <CheckCircle2 className="w-4 h-4 text-strike mt-0.5 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-
-                <motion.div
-                  className="rounded-2xl bg-noir-surface p-8"
-                  {...stagger(0.2)}
-                >
-                  <p className="text-xs uppercase tracking-[0.3em] text-strike font-label font-medium mb-5">
-                    Ideal For
-                  </p>
-                  <ul className="space-y-3">
-                    {service.idealFor.map(item => (
-                      <li key={item} className="text-sm text-ink-secondary">
-                        → {item}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+      {/* Disciplines */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          {disciplines.map((d) => (
+            <motion.div key={d.id} className="service" id={d.id} {...rv()}>
+              <div className="label-col">
+                <span className="num">{d.num}</span>
+                <h2>{d.title}</h2>
+                <p className="summary">{d.summary}</p>
+                <Link to="/contact" className="btn-link">{d.cta}</Link>
               </div>
-            </div>
-          </div>
-        </section>
-      ))}
+              <div>
+                <div className="what">
+                  {d.what.map((w) => (
+                    <div key={w.label}>
+                      <h4>{w.label}</h4>
+                      <p>{w.text}</p>
+                    </div>
+                  ))}
+                </div>
+                <ul className="deliverables">
+                  {d.deliverables.map((del) => (
+                    <li key={del.num}>
+                      <span className="marker">{del.num}</span>
+                      <span>{del.text}</span>
+                      <span className="meta">{del.meta}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-      {/* Why TaqHaus */}
-      <section className="py-20 sm:py-28 px-6 bg-noir-void">
-        <div className="max-w-5xl mx-auto">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-4">
-              Why Us
-            </p>
-            <h2 className="font-headline font-bold text-white">
-              Why TaqHaus Over Another Agency?
-            </h2>
+      {/* Engagement models */}
+      <section className="section-paper-2" id="engagements">
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Engagement models</span>
+              <h2 className="display-md">Three ways to <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>work</em> with us.</h2>
+            </div>
+            <p className="lede">Choose the shape that fits the stage you&rsquo;re at. We&rsquo;ll often start with a sprint to make sure we&rsquo;re right for each other before locking into a longer engagement.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                title: 'Consultancy Brain, Agency Hands',
-                desc: 'We think like McKinsey and build like a performance agency. You get the strategy AND the execution — not a 60-page deck with no follow-through.',
-              },
-              {
-                title: 'One Partner. Zero Gaps.',
-                desc: 'SEO, email, paid media, websites, brand — under one roof. No coordinating 4 vendors. No finger-pointing when results stall.',
-              },
-              {
-                title: 'Operator Mindset',
-                desc: 'We\'ve been in-house. We\'ve owned P&Ls, managed budgets, and reported to boards. We understand the pressure you\'re under because we\'ve sat in your seat.',
-              },
-              {
-                title: 'Revenue, Not Reports',
-                desc: 'We measure success in pipeline and revenue, not impressions and vanity metrics. If it doesn\'t move the needle, we don\'t do it.',
-              },
-            ].map((item, idx) => (
-              <motion.div
-                key={item.title}
-                className="rounded-2xl bg-noir-low p-8 group hover:bg-noir-high transition-colors duration-300"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 0.61, 0.36, 1] as const }}
-              >
-                <h3 className="text-lg font-headline font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-sm text-ink-secondary leading-relaxed">{item.desc}</p>
-              </motion.div>
+          <div className="models">
+            {models.map((m) => (
+              <div key={m.title} className={`model${m.featured ? ' featured' : ''}`}>
+                <span className="lbl">{m.num}</span>
+                <h3>{m.title}</h3>
+                <p style={{ color: m.featured ? 'color-mix(in oklch, var(--paper) 75%, transparent)' : 'var(--ink-2)', margin: 0, fontSize: 14.5 }}>{m.desc}</p>
+                <ul>
+                  {m.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+                <div className="cta">
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`btn ${m.featured ? '' : 'btn-ghost'}`}
+                    style={m.featured ? { background: 'var(--terracotta)', color: 'var(--paper)', width: '100%', justifyContent: 'space-between' } : { width: '100%', justifyContent: 'space-between' }}
+                  >
+                    {m.cta} <span className="arrow">→</span>
+                  </a>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 bg-gradient-to-b from-noir-void to-maroon-deep/20">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div {...fadeUp}>
-            <h2 className="font-headline font-bold text-white">
-              Not Sure Which Path Fits?
-            </h2>
-            <p className="mt-6 text-lg text-ink-secondary max-w-xl mx-auto">
-              Start with a Strategic Audit — we'll evaluate your growth levers and map the right approach.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={CALENDLY_URL}
-                className="btn-strike inline-flex items-center justify-center gap-3 text-base"
-              >
-                Book a Strategy Call
-                <ArrowRight className="w-5 h-5" />
-              </a>
-              <Link
-                to="/contact"
-                className="btn-ghost inline-flex items-center justify-center gap-3 text-base"
-              >
-                Request a Free Audit
-              </Link>
+      {/* FAQ */}
+      <section>
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Common questions</span>
+              <h2 className="display-md">Things people ask <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>before</em> they sign.</h2>
             </div>
+            <p className="lede">If your question isn&rsquo;t here, book a call. Honest answers, no sales script.</p>
           </motion.div>
+
+          <div>
+            {faqs.map((faq, i) => (
+              <div key={i} className="faq-item">
+                <button
+                  className="faq-trigger"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                >
+                  {faq.q}
+                  <span className="faq-icon">{openFaq === i ? '−' : '+'}</span>
+                </button>
+                {openFaq === i && (
+                  <p className="faq-answer">{faq.a}</p>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* CTA terra */}
+      <section className="section-terra" style={{ padding: 'clamp(72px,8vw,120px) 0' }}>
+        <div className="wrap">
+          <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'end' }}>
+            <h2 className="display-lg" style={{ color: 'var(--paper)' }}>Tell us what you&rsquo;re trying to&nbsp;move.</h2>
+            <div className="stack">
+              <p style={{ color: 'color-mix(in oklch, var(--paper) 88%, transparent)', fontSize: 17, lineHeight: 1.55, margin: 0, maxWidth: '44ch' }}>
+                A 30-minute call. We&rsquo;ll ask about the constraint, not the brief. You&rsquo;ll leave with a point of view either way.
+              </p>
+              <div className="row">
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
+                  Book a discovery call <span className="arrow">↗</span>
+                </a>
+                <Link to="/case-studies" className="btn btn-ghost" style={{ color: 'var(--paper)', borderColor: 'color-mix(in oklch, var(--paper) 35%, transparent)' }}>
+                  See work
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="wrap">
+          <div className="footer-head">
+            <h2>Engineer growth that&nbsp;scales.<br />Influence that&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>sticks</em>.</h2>
+            <div className="cta-stack">
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
+                <span>Book a discovery call</span><span className="arrow">↗</span>
+              </a>
+              <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
+                info@taqhaus.com
+              </a>
+            </div>
+          </div>
+          <div className="footer-cols">
+            <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
+            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
+            <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
+            <div><h4>Elsewhere</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Substack</a></li><li><a href="#">X / Twitter</a></li></ul></div>
+          </div>
+          <div className="footer-bottom">
+            <span>© 2026 TaqHaus Consultancy Inc.</span>
+            <span>Made in&nbsp;Toronto · Serving everywhere</span>
+          </div>
+          <div className="footer-mark">TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span></div>
+        </div>
+      </footer>
     </div>
   )
 }

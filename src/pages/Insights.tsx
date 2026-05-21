@@ -1,172 +1,312 @@
+import '../styles/taqhaus-editorial.css'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { SEO } from '@/components/SEO'
-import { ArrowRight } from 'lucide-react'
 import { CALENDLY_URL } from '@/lib/constants'
+import { SEO } from '@/components/SEO'
 
-const fadeUp = {
+const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] as const },
-}
+  viewport: { once: true, amount: 0.12 },
+  transition: { duration: 0.9, delay, ease: [0.2, 0.7, 0.2, 1] as const },
+})
 
-interface Article {
-  title: string
-  slug: string
-}
-
-interface Pillar {
-  title: string
-  tag?: string
-  articles: Article[]
-}
-
-const pillars: Pillar[] = [
+const articles = [
   {
-    title: 'Strategy & Consulting',
-    tag: 'PRIORITY',
-    articles: [
-      { title: '5 Signs You Need a Marketing Strategist, Not Another Agency', slug: '5-signs-you-need-a-marketing-strategist' },
-      { title: 'The Marketing Audit Framework We Use to Find $50K in Wasted Spend', slug: 'marketing-audit-framework' },
-      { title: 'Fractional CMO vs. Marketing Agency: Which Does Your Business Actually Need?', slug: 'fractional-cmo-vs-agency' },
-    ],
+    type: 'Teardown',
+    time: '11 min',
+    date: 'Apr 28 · 2026',
+    title: 'What Notion got right about category creation.',
+    body: "A category isn't a positioning statement. It's a vocabulary your customers use against your competition.",
+    media: '',
+    slug: 'marketing-audit-framework',
   },
   {
-    title: 'Website Performance',
-    articles: [
-      { title: '5 Signs Your Website Is Costing You Customers', slug: 'website-costing-customers' },
-      { title: 'What GEO Is and Why Your Business Needs It Before 2027', slug: 'what-is-geo' },
-      { title: 'SEO vs. GEO: The Search Landscape Has Changed. Has Your Website?', slug: 'seo-vs-geo' },
-    ],
+    type: 'Playbook',
+    time: '14 min',
+    date: 'Apr 14 · 2026',
+    title: 'SEO after the AI overview.',
+    body: 'Topical authority, structured data, and being the source — not the summary. A practical 2026 framework.',
+    media: 'dark',
+    slug: 'what-is-geo',
   },
   {
-    title: 'Marketing Execution',
-    articles: [
-      { title: 'The Real Reason Your Marketing Agency Isn\'t Delivering Results', slug: 'agency-not-delivering-results' },
-      { title: 'Email Marketing ROI: Why It\'s Still the Highest-Leverage Channel', slug: 'email-marketing-roi' },
-      { title: 'Social Media Management vs. Social Media Marketing: You Need Both', slug: 'social-management-vs-marketing' },
-    ],
+    type: 'Essay',
+    time: '6 min',
+    date: 'Apr 02 · 2026',
+    title: "Don't hire a head of marketing yet.",
+    body: 'The most expensive mistake we see Series-A founders make. What to build before the org chart.',
+    media: '',
+    slug: 'email-marketing-roi',
   },
   {
-    title: 'Politicians & Public Figures',
-    tag: 'VERTICAL',
-    articles: [
-      { title: 'Digital Campaigning: Why Voters Don\'t Care About Policy PDFs', slug: 'policy-pdfs-dont-matter' },
-      { title: 'The Fundraising Machine: Converting Viral Moments into Donors', slug: 'fundraising-machine' },
-      { title: 'Crisis Communications in the Era of AI Deepfakes', slug: 'ai-deepfakes-crisis' },
-    ],
+    type: 'Field notes',
+    time: '5 min',
+    date: 'Mar 21 · 2026',
+    title: 'The newsletter is the channel again.',
+    body: "What we're seeing across nine email programmes in 2026 — opens, deliverability, and the quiet death of Substack envy.",
+    media: 'terra',
+    slug: 'marketing-audit-framework',
+  },
+  {
+    type: 'Interview',
+    time: '22 min',
+    date: 'Mar 09 · 2026',
+    title: 'Sara Halsey on founder brand vs. company brand.',
+    body: "What happens when the founder's LinkedIn outperforms the company's, and how to manage the seam.",
+    media: '',
+    slug: 'what-is-geo',
+  },
+  {
+    type: 'Playbook',
+    time: '17 min',
+    date: 'Feb 24 · 2026',
+    title: 'How to actually attribute paid media in 2026.',
+    body: "MMM, incrementality tests, and the boring spreadsheet that beats every attribution platform you'll be sold this year.",
+    media: 'dark',
+    slug: 'email-marketing-roi',
+  },
+  {
+    type: 'Essay',
+    time: '9 min',
+    date: 'Feb 10 · 2026',
+    title: "Positioning is a posture, not a sentence.",
+    body: "Why the 'for X, who Y, we Z' template produces marketing decks but not market position.",
+    media: '',
+    slug: 'marketing-audit-framework',
+  },
+  {
+    type: 'Teardown',
+    time: '13 min',
+    date: 'Jan 27 · 2026',
+    title: 'Five B2B homepages we redesigned in our heads.',
+    body: 'Linear, Vercel, Stripe, Ramp, and Mercury — what works, what we\'d change, and why most B2B sites look identical now.',
+    media: '',
+    slug: 'what-is-geo',
+  },
+  {
+    type: 'Field notes',
+    time: '7 min',
+    date: 'Jan 14 · 2026',
+    title: 'The KPIs we stopped reporting on this year.',
+    body: "Three vanity metrics we've walked back to our partners, and what we report on instead.",
+    media: 'terra',
+    slug: 'email-marketing-roi',
   },
 ]
 
 export default function Insights() {
+  const [subscribeSuccess, setSubscribeSuccess] = useState(false)
+
   return (
-    <div className="min-h-screen bg-noir-void text-ink font-body">
+    <div className="tq-editorial">
       <SEO
-        title="Insights — TaqHaus | Marketing Strategy & Growth Blog"
-        description="Strategic marketing insights, growth frameworks, and tactical guides from the TaqHaus team."
-        keywords="marketing blog, growth strategy, SEO insights, marketing consulting insights"
+        title="Insights — TaqHaus"
+        description="Essays, teardowns, and field notes from the people doing the work."
         canonical="/insights"
       />
 
-      {/* Hero */}
-      <section className="pt-32 sm:pt-40 pb-20 px-6 bg-gradient-to-b from-maroon-deep/30 to-noir-void">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-6">
-              Insights
-            </p>
-            <h1 className="font-headline font-bold text-white">
-              Thinking That Drives
-              <br />
-              <span className="text-ink-secondary">Growth That Compounds.</span>
-            </h1>
-            <p className="mt-8 text-lg text-ink-secondary max-w-2xl mx-auto leading-relaxed">
-              Strategic marketing insights, growth frameworks, and no-BS guides from the TaqHaus team.
-            </p>
-          </motion.div>
+      {/* Topbar */}
+      <div className="topbar">
+        <span className="pulse" />
+        <span>Now booking Q3 engagements · 2 retainer seats open</span>
+      </div>
+
+      {/* Nav */}
+      <header className="nav">
+        <div className="nav-inner">
+          <Link to="/" aria-label="TaqHaus — Home">
+            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
+          </Link>
+          <nav className="nav-links">
+            <Link to="/services">Services</Link>
+            <Link to="/case-studies">Work</Link>
+            <Link to="/about">About</Link>
+            <Link to="/insights" className="active">Insights</Link>
+            <Link to="/contact">Contact</Link>
+          </nav>
+          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
+            Book a call <span className="arrow">→</span>
+          </a>
         </div>
-      </section>
+      </header>
 
-      {/* Content Pillars */}
-      <section className="py-20 sm:py-28 px-6 bg-noir-low">
-        <div className="max-w-5xl mx-auto">
-          <div className="space-y-12">
-            {pillars.map((pillar, pIndex) => (
-              <motion.div
-                key={pillar.title}
-                className="rounded-2xl bg-noir-surface p-8 sm:p-10"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: pIndex * 0.1 }}
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <h2 className="text-xl font-headline font-bold text-white">{pillar.title}</h2>
-                  {pillar.tag && (
-                    <span className="px-2 py-0.5 text-[10px] rounded-full bg-strike/10 text-strike font-label font-bold tracking-widest uppercase">
-                      {pillar.tag}
-                    </span>
-                  )}
-                </div>
-
-                <div className="space-y-4">
-                  {pillar.articles.map((article) => (
-                    <Link
-                      key={article.title}
-                      to={`/insights/${article.slug}`}
-                      className="flex items-center justify-between gap-4 py-4 border-b border-white/5 last:border-0 group cursor-pointer"
-                    >
-                      <div className="flex items-center gap-4">
-                        <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-ink-muted group-hover:bg-strike/10 group-hover:text-strike transition-colors flex-shrink-0">
-                          →
-                        </span>
-                        <p className="text-ink-secondary group-hover:text-white transition-colors text-sm sm:text-base">
-                          {article.title}
-                        </p>
-                      </div>
-                      <span className="text-xs text-strike font-label font-bold whitespace-nowrap">Read Now</span>
-                    </Link>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+      {/* Page head */}
+      <section className="page-head">
+        <div className="wrap">
+          <div className="grid">
+            <div>
+              <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Field notes from inside the&nbsp;work</span>
+              <h1>Insights, not <em>content</em>.</h1>
+            </div>
+            <motion.div {...rv(0.15)}>
+              <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
+                Essays, teardowns, and the occasional uncomfortable opinion — written by the operators doing the work, not the marketing team.
+              </p>
+              <p style={{ marginTop: 18, color: 'var(--ink-2)', fontSize: 14.5 }}>
+                New piece roughly every two weeks. Subscribe below to get them in your inbox.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 bg-gradient-to-b from-noir-void to-maroon-deep/20">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div {...fadeUp}>
-            <h2 className="font-headline font-bold text-white">
-              Need Strategy, Not Just Content?
-            </h2>
-            <p className="mt-6 text-lg text-ink-secondary max-w-xl mx-auto">
-              We publish insights here — but the real strategy happens in our 30-minute calls.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={CALENDLY_URL}
-                className="btn-strike inline-flex items-center justify-center gap-3 text-base"
-              >
-                Book a Strategy Call
-                <ArrowRight className="w-5 h-5" />
-              </a>
-              <Link
-                to="/contact"
-                className="btn-ghost inline-flex items-center justify-center gap-3 text-base"
-              >
-                Get a Free Audit
+      {/* Featured essay */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <motion.div className="featured-essay" {...rv()}>
+            <div className="media imgholder terra" data-label="essay 01 · death of the briefing" />
+            <div className="body">
+              <div className="meta">
+                <span>Featured essay</span>
+                <span className="dot" />
+                <span>8 min read</span>
+                <span className="dot" />
+                <span>May 2026</span>
+              </div>
+              <h2>The death of the agency <em>briefing</em>.</h2>
+              <p>
+                If you&rsquo;re still writing 40-page briefs and sending them over the fence, you&rsquo;re paying for a slower version of yourself. An argument for embedded teams, shared Slack channels, and the end of the &ldquo;client-side&rdquo; / &ldquo;agency-side&rdquo; distinction.
+              </p>
+              <Link to="/insights/marketing-audit-framework" className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
+                Read the essay <span className="arrow">↗</span>
               </Link>
+              <div className="author">
+                <div className="avatar" />
+                <div className="author-text">
+                  <strong>Ola Raji</strong>
+                  <span>Founder · TaqHaus</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Library */}
+      <section>
+        <div className="wrap">
+          <div className="section-head" style={{ marginBottom: 32 }}>
+            <div className="sh-meta">
+              <span className="eyebrow">The library</span>
+              <h2 className="display-md">Recent writing.</h2>
+            </div>
+            <p className="lede">Filter by format. Essays are point-of-view. Teardowns deconstruct other people&rsquo;s work. Playbooks are practical guides we&rsquo;ve actually run.</p>
+          </div>
+
+          <div className="tabs">
+            <span className="lbl">View</span>
+            <button className="tab active">All</button>
+            <button className="tab">Essays</button>
+            <button className="tab">Teardowns</button>
+            <button className="tab">Playbooks</button>
+            <button className="tab">Interviews</button>
+            <button className="tab">Field notes</button>
+          </div>
+
+          <div className="articles">
+            {articles.map((a, i) => (
+              <Link key={i} to={`/insights/${a.slug}`} className="article" style={{ textDecoration: 'none' }}>
+                <div className={`thumb imgholder${a.media ? ` ${a.media}` : ''}`} data-label={a.title.toLowerCase().slice(0, 30)} />
+                <div className="meta">
+                  <span className="type">{a.type}</span>
+                  <span>{a.time}</span>
+                </div>
+                <h3>{a.title}</h3>
+                <p>{a.body}</p>
+                <div className="footer-row">
+                  <span>{a.date}</span>
+                  <span className="read">Read →</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 56, display: 'flex', justifyContent: 'center' }}>
+            <button className="btn btn-ghost">Load more <span className="arrow">↓</span></button>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="newsletter">
+            <div>
+              <h2>The Haus <em>Dispatch</em>.</h2>
+              <p>One essay every other Thursday. 4,200 founders and operators read it. We&rsquo;ll never sell your address, and you can unsubscribe in one&nbsp;click.</p>
+            </div>
+            <div>
+              {subscribeSuccess ? (
+                <div style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
+                  ✓ Thanks. Confirm via email.
+                </div>
+              ) : (
+                <form onSubmit={(e) => { e.preventDefault(); setSubscribeSuccess(true) }}>
+                  <input type="email" placeholder="you@company.com" required />
+                  <button type="submit">Subscribe <span className="arrow">→</span></button>
+                </form>
+              )}
+              <div className="meta-row">
+                <span>4,200 subscribers</span>
+                <span>·</span>
+                <span>Every other Thursday</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA paper-2 */}
+      <section className="section-paper-2" style={{ padding: 'clamp(72px,8vw,120px) 0' }}>
+        <div className="wrap">
+          <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'end' }}>
+            <h2 className="display-lg">
+              Need help running this <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>in</em> your business?
+            </h2>
+            <div className="stack">
+              <p style={{ color: 'var(--ink-2)', fontSize: 17, lineHeight: 1.55, margin: 0, maxWidth: '44ch' }}>
+                We don&rsquo;t just write about this stuff. If you want a Haus running your growth, let&rsquo;s talk.
+              </p>
+              <div className="row">
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Book a discovery call <span className="arrow">↗</span>
+                </a>
+                <Link to="/services" className="btn-link">See services</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="wrap">
+          <div className="footer-head">
+            <h2>Engineer growth that&nbsp;scales.<br />Influence that&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>sticks</em>.</h2>
+            <div className="cta-stack">
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
+                <span>Book a discovery call</span><span className="arrow">↗</span>
+              </a>
+              <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
+                info@taqhaus.com
+              </a>
+            </div>
+          </div>
+          <div className="footer-cols">
+            <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
+            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
+            <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
+            <div><h4>Elsewhere</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Substack</a></li><li><a href="#">X / Twitter</a></li></ul></div>
+          </div>
+          <div className="footer-bottom">
+            <span>© 2026 TaqHaus Consultancy Inc.</span>
+            <span>Made in&nbsp;Toronto · Serving everywhere</span>
+          </div>
+          <div className="footer-mark">TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span></div>
+        </div>
+      </footer>
     </div>
   )
 }
