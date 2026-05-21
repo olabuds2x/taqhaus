@@ -1,841 +1,544 @@
+import '../styles/taqhaus-editorial.css'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
-import { ArrowRight, ChevronDown, ChevronUp } from 'lucide-react'
 
-/* ═══════════════════════════════════════════════════════════════
-   DATA
-═══════════════════════════════════════════════════════════════ */
+const MotionLink = motion(Link)
 
-const painPoints = [
-  {
-    title: 'No Strategy, Just Tactics',
-    body: "You're running ads, posting content, and sending emails — but nothing connects. There's no system. No funnel. No compounding.",
-    icon: '🔀',
-  },
-  {
-    title: 'Invisible Online',
-    body: "Your competitors show up on Google and AI search results. You don't. Your website looks fine but generates zero inbound leads.",
-    icon: '👻',
-  },
-  {
-    title: 'Agency Fatigue',
-    body: "You've hired agencies before. You got reports full of impressions and vanity metrics. What you didn't get was revenue.",
-    icon: '📊',
-  },
+const rv = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.12 },
+  transition: { duration: 0.9, delay, ease: [0.2, 0.7, 0.2, 1] as const },
+})
+
+const services = [
+  { num: '01', title: 'Growth strategy & fractional CMO', desc: 'A senior operator embedded in your leadership team. We diagnose the constraint, build the plan, and stay accountable to the number.', type: 'Retainer · Sprint' },
+  { num: '02', title: 'Brand & positioning', desc: "The story, the system, and the language. Identity work that survives contact with your sales team, your investors, and your hiring page.", type: 'Project · 6–10 wk' },
+  { num: '03', title: 'Websites & product marketing', desc: "Sites that convert and editorial surfaces that compound. Designed, copywritten, and shipped — not delivered as a Figma file.", type: 'Project · 8–14 wk' },
+  { num: '04', title: 'SEO & organic growth', desc: 'Technical, editorial, and topical authority. Strategies built for AI search and human readers in equal measure.', type: 'Retainer · Ongoing' },
+  { num: '05', title: 'Paid acquisition', desc: 'Performance media that respects the brand. Meta, Google, LinkedIn, programmatic — testing rigour, narrative-first creative.', type: 'Retainer · Ongoing' },
+  { num: '06', title: 'Lifecycle & email', desc: "The unglamorous channel that quietly outperforms everything else. Flows, broadcasts, and a sender voice that doesn't embarrass you.", type: 'Retainer · Ongoing' },
 ]
 
-const servicePillars = [
-  {
-    title: 'Strategy & Consulting',
-    description: 'Marketing audits, GTM strategy, competitive intelligence, and ongoing advisory. Think fractional CMO — senior-level thinking without the full-time salary.',
-    tags: ['Growth Strategy', 'Market Positioning', 'Go-to-Market', 'Fractional CMO'],
-    featured: true,
-  },
-  {
-    title: 'Digital Marketing Execution',
-    description: 'Email, SEO content, paid media (Meta, Google, LinkedIn, TikTok), and CRO. The full funnel, executed and measured.',
-    tags: ['SEO', 'Paid Media', 'Email', 'CRO'],
-  },
-  {
-    title: 'Social Media & Brand',
-    description: 'Social media management, brand identity, content creation, reputation management, and audience growth. We build the presence and manage the conversation.',
-    tags: ['Social Media', 'Brand Identity', 'Content', 'Reputation'],
-  },
-  {
-    title: 'Websites & Digital Assets',
-    description: "SEO-engineered websites, landing pages, and ongoing site management. Built to rank, convert, and scale — not just look pretty.",
-    tags: ['Web Design', 'Landing Pages', 'SEO', 'Performance'],
-  },
+const phases = [
+  { num: 'phase 01', title: 'Diagnose', desc: "A two-week deep dive into your funnel, your numbers, your customers, and your competition. We come back with a thesis — or we tell you we're not the right fit.", period: 'Weeks 01–02' },
+  { num: 'phase 02', title: 'Design the plan', desc: 'A 12-month growth blueprint. Positioning, channels, content, measurement. Specific enough to ship from on Monday.', period: 'Weeks 03–04' },
+  { num: 'phase 03', title: 'Build & ship', desc: "Brand, site, content engine, paid programme, lifecycle. Whatever the plan calls for — we ship the work, we don't outsource it.", period: 'Weeks 05–14' },
+  { num: 'phase 04', title: 'Compound', desc: 'Monthly business reviews, quarterly resets, and a team that gets better at your category every month. Most partners stay 18+ months.', period: 'Month 04+' },
 ]
 
-const metrics = [
-  { value: '200%+', label: 'Referral Rate Increase', accent: false },
-  { value: '70%', label: 'Churn Reduction', accent: false },
-  { value: '22%', label: 'Avg. Conversion Rate Increase', accent: true },
+const engagements = [
+  { num: '— 01', title: 'Sprint', desc: 'A 4–6 week diagnosis. Strategy, plan, and a 12-month roadmap you actually own.', from: 'From $14k', duration: '4–6 wk' },
+  { num: '— 02', title: 'Retainer', desc: 'Embedded leadership and execution across the channels that matter most to you.', from: 'From $9k / mo', duration: '6 mo min' },
+  { num: '— 03', title: 'Equity partner', desc: 'For pre-Series A founders. Cash + equity. Aligned incentives, full skin in the game.', from: 'Selective', duration: 'By invite' },
 ]
 
-const processSteps = [
-  {
-    number: '01',
-    title: 'Strategy Call',
-    description: 'We learn your business, audit your current marketing, and identify the highest-leverage opportunities. No pitch. No pressure.',
-  },
-  {
-    number: '02',
-    title: 'Custom Roadmap',
-    description: 'We deliver a strategic plan with clear priorities, timelines, and expected outcomes. You approve the direction before we touch anything.',
-  },
-  {
-    number: '03',
-    title: 'Build & Execute',
-    description: "We execute the strategy — whether that's a website, a campaign, a social media system, or the entire marketing stack.",
-  },
-  {
-    number: '04',
-    title: 'Measure & Optimize',
-    description: "Monthly reporting, performance reviews, and continuous optimization. We don't set and forget.",
-  },
+const marqueeItems = [
+  'Northwind Health', 'Belford & Co.', 'Atelier Studios', 'Mercato Capital',
+  'Klera AI', 'The Halsey Group', 'Field Notes Ventures', 'Vesper Hotels',
 ]
 
-const icpCards = [
+const insightsPreview = [
   {
-    title: 'Founders & CEOs',
-    description: "You need a strategic marketing partner, not another freelancer. We think at the business level and execute at the channel level.",
+    type: 'Essay',
+    time: '8 min',
+    title: 'The Marketing Audit Framework We Use to Find $50K in Wasted Spend',
+    body: "Most businesses are leaking budget in predictable places. Here's the exact diagnostic we run before every engagement.",
+    slug: 'marketing-audit-framework',
   },
   {
-    title: 'Professional Services',
-    description: 'Law firms, financial advisors, consultants. Your expertise is your product. We make sure the right people find it, trust it, and buy it.',
+    type: 'Playbook',
+    time: '5 min',
+    title: 'What GEO Is and Why Your Business Needs It Before 2027',
+    body: 'AI search results are reshaping how buyers find vendors. Generative Engine Optimisation is the new baseline for organic visibility.',
+    slug: 'what-is-geo',
   },
   {
-    title: 'Politicians & Public Figures',
-    description: "No website. No social presence. No way for constituents to engage. We build your digital presence from scratch and manage it year-round.",
-  },
-  {
-    title: 'E-Commerce & DTC Brands',
-    description: 'We build storefronts that rank and convert, then drive traffic through email, social, and paid.',
-  },
-  {
-    title: 'In-House Teams',
-    description: "Your team handles the day-to-day. You need a specialist to own one channel — SEO, email, social, paid — really well. That's us.",
-  },
-  {
-    title: 'Growth-Stage SMBs',
-    description: "You don't need enterprise budgets to get enterprise-grade marketing. You need the right partner.",
-  },
-]
-
-const testimonials = [
-  {
-    quote: "TaqHaus transformed our digital presence completely. Our bookings increased by 340% in just 6 months. They understand our industry like no other agency we've worked with.",
-    name: 'Michelle J.',
-    title: 'CEO & Founder',
-    industry: 'Travel & Tourism',
-    location: 'United States',
-    size: '11-50 Employees',
-    timeline: 'Jan 2024 - Ongoing',
-  },
-  {
-    quote: "In a highly competitive prop firm space, TaqHaus helped us stand out. Their SEO and Paid Ads strategy brought us a lot of traffic and valuable customers. The ROI has been exceptional.",
-    name: 'David K.',
-    title: 'Founder',
-    industry: 'Proprietary Trading',
-    location: 'United Kingdom',
-    size: '51-200 Employees',
-    timeline: 'Mar 2023 - Ongoing',
-  },
-  {
-    quote: "TaqHaus completely transformed our e-commerce business. Their performance marketing and email automation drove massive growth in sales. Best investment we've made.",
-    name: 'Sarah R.',
-    title: 'Owner',
-    industry: 'E-commerce',
-    location: 'Canada',
-    size: '1-10 Employees',
-    timeline: 'Jun 2023 - Ongoing',
-  },
-  {
-    quote: "TaqHaus ran our digital campaign with precision and integrity. Our social reach grew 10x and we won by a historic margin. Professional and delivers results.",
-    name: 'James T.',
-    title: 'Campaign Manager',
-    industry: 'Political Campaign',
-    location: 'United States',
-    size: '11-50 Employees',
-    timeline: 'Sep 2024 - Dec 2024',
+    type: 'Field Notes',
+    time: '7 min',
+    title: "Email Marketing ROI: Why It's Still the Highest-Leverage Channel",
+    body: 'Every quarter someone declares email dead. Every quarter the data proves the opposite. A case for staying boring and profitable.',
+    slug: 'email-marketing-roi',
   },
 ]
 
 const faqs = [
-  {
-    q: 'What makes TaqHaus different from other marketing agencies?',
-    a: "We combine consultancy-level strategic thinking with hands-on execution — so you get clarity AND results under one roof. Most agencies skip the strategy. Most consultants skip the execution. We do both.",
-  },
-  {
-    q: 'Do you work with businesses that already have a website?',
-    a: "Absolutely. Many of our best clients already have a website — they need someone to drive growth through it via SEO, email, content, and paid media. We build the marketing engine, whether you need a new site or not.",
-  },
-  {
-    q: 'What industries do you specialize in?',
-    a: "We work with founders and CEOs, professional services firms, e-commerce brands, politicians and public figures, and growth-stage SMBs. Our approach adapts to the industry; our strategic rigor stays the same.",
-  },
-  {
-    q: 'How does pricing work?',
-    a: "Every engagement is custom-scoped based on your goals, channels, and growth stage. We start with a strategic audit to understand your needs, then design a framework that delivers maximum ROI.",
-  },
-  {
-    q: 'What does the strategy call involve?',
-    a: "It's a 30-minute conversation where we learn your business, review your current marketing, and identify the highest-leverage growth opportunities. No pitch. No pressure. Just a real conversation about your business.",
-  },
+  { q: "What makes TaqHaus different from a traditional agency?", a: "We blend strategy and execution under one roof. You get consulting-level diagnostics paired with implementation teams that execute with precision and accountability." },
+  { q: "Do you work with in-house teams or replace them?", a: "Both. Many partners keep their internal teams and lean on us for audits, strategy, and oversight. Others engage our execution team to run critical initiatives end to end." },
+  { q: "How do engagements begin?", a: "Every partnership starts with a discovery call. We evaluate growth levers, narrative, and infrastructure to build the roadmap and investment plan that fits your objectives." },
 ]
-
-const caseStudies = [
-  {
-    title: 'SaaS Startup',
-    result: '+320% Organic Traffic',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-    href: '/case-studies/saas-startup',
-  },
-  {
-    title: 'Fashion Brand',
-    result: '$57K Revenue in 90 Days',
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80',
-    href: '/case-studies/fashion-brand',
-  },
-  {
-    title: 'Public Official',
-    result: '5x Engagement Growth',
-    image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=800&q=80',
-    href: '/case-studies/public-official',
-  },
-]
-
-/* ═══════════════════════════════════════════════════════════════
-   ANIMATION HELPERS
-═══════════════════════════════════════════════════════════════ */
-
-const fadeUp = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] as const },
-}
-
-const stagger = (delay: number) => ({
-  ...fadeUp,
-  transition: { ...fadeUp.transition, delay },
-})
-
-/* ═══════════════════════════════════════════════════════════════
-   COMPONENT
-═══════════════════════════════════════════════════════════════ */
 
 export default function LandingPageRedesign() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
   return (
-    <div className="min-h-screen bg-noir-void text-ink font-body selection:bg-strike selection:text-white">
+    <div className="tq-editorial">
       <SEO
-        title="TaqHaus — The Growth & Strategy Partner Behind Brands That Scale"
-        description="TaqHaus is a marketing and business consultancy that develops the strategy and executes it end-to-end. Websites. SEO. Email. Paid campaigns. Brand. All under one roof."
-        keywords="marketing consultancy, growth strategy, fractional CMO, SEO, digital marketing"
+        title="TaqHaus — Marketing & Influence Consultancy"
+        description="A full-stack marketing partner for founders, CMOs, and public figures. Strategy and execution under one roof — brand, web, SEO, paid, email."
+        keywords="marketing consultancy, growth strategy, fractional CMO, SEO, digital marketing, brand strategy"
         canonical="/"
       />
 
-      {/* FAQ Schema JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: faqs.map(faq => ({
-              '@type': 'Question',
-              name: faq.q,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: faq.a,
-              },
-            })),
-          }),
-        }}
-      />
+      {/* ── Topbar ───────────────────────────────────────────────────────────── */}
+      <div className="topbar">
+        <span className="pulse" />
+        <span>Now booking Q3 engagements · 2 retainer seats open</span>
+      </div>
 
-      {/* ═══════════════════════════════════════════════════════════
-          HEADER — Glassmorphic, minimal
-      ═══════════════════════════════════════════════════════════ */}
-      <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" className="h-14 sm:h-20 w-auto" />
+      {/* ── Navigation ───────────────────────────────────────────────────────── */}
+      <header className="nav">
+        <div className="nav-inner">
+          <Link to="/" aria-label="TaqHaus — Home">
+            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
           </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-body font-medium">
-            <Link to="/services" className="text-ink-secondary hover:text-white transition-colors">Services</Link>
-            <Link to="/case-studies" className="text-ink-secondary hover:text-white transition-colors">Results</Link>
-            <Link to="/portfolio" className="text-ink-secondary hover:text-white transition-colors">Portfolio</Link>
-            <Link to="/about" className="text-ink-secondary hover:text-white transition-colors">About</Link>
-            <Link to="/insights" className="text-ink-secondary hover:text-white transition-colors">Insights</Link>
+          <nav className="nav-links">
+            <Link to="/services">Services</Link>
+            <Link to="/case-studies">Work</Link>
+            <Link to="/about">About</Link>
+            <Link to="/insights">Insights</Link>
+            <Link to="/contact">Contact</Link>
           </nav>
-
-          <a
-            href={CALENDLY_URL}
-            className="btn-strike text-sm px-6 py-2.5 hidden sm:inline-flex items-center gap-2"
-          >
-            Book a Strategy Call
+          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
+            Book a call <span className="arrow">→</span>
           </a>
         </div>
       </header>
 
-      <main>
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 1: HERO
-        ═══════════════════════════════════════════════════════ */}
-        <section className="relative min-h-screen flex items-center px-6 pt-32 pb-20 overflow-hidden">
-          {/* Layered depth background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-maroon-deep/40 via-noir-void to-noir-void" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(128,15,53,0.3),transparent)]" />
-
-          <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-            {/* Left — Copy */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="font-headline font-bold tracking-tight text-white text-5xl sm:text-6xl lg:text-7xl leading-[1.08]">
-                The Growth &<br />Strategy Partner.
+      {/* ── Hero ─────────────────────────────────────────────────────────────── */}
+      <section className="hero">
+        <div className="wrap">
+          <div className="hero-grid">
+            <div>
+              <span className="eyebrow" style={{ marginBottom: 'clamp(28px,5vw,56px)', display: 'inline-flex' }}>
+                Marketing &amp; Influence Consultancy
+              </span>
+              <h1>
+                We run your growth<br />
+                <em>like it&rsquo;s ours.</em>
               </h1>
+            </div>
 
-              <p className="mt-8 text-lg sm:text-xl text-ink-secondary leading-relaxed font-body font-light max-w-lg">
-                Behind brands that scale. TaqHaus is a marketing consultancy that develops the strategy and executes it end-to-end.
+            <motion.div className="hero-right" {...rv(0.15)}>
+              <p className="lede" style={{ fontSize: 'clamp(19px,1.5vw,24px)' }}>
+                A full-stack marketing partner for founders, CMOs, and public figures.
+                Strategy <em style={{ color: 'var(--terracotta)' }}>and</em> execution under one roof — brand, web, SEO, paid, email, and the messy bits in between.
               </p>
-
-              <div className="mt-12 flex flex-col sm:flex-row gap-4">
-                <a
-                  href={CALENDLY_URL}
-                  className="btn-strike inline-flex items-center gap-3 text-base"
-                >
-                  Book a Strategy Call
-                  <ArrowRight className="w-5 h-5" />
+              <div className="row">
+                <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                  Book a discovery call <span className="arrow">↗</span>
                 </a>
-                <Link
-                  to="/case-studies"
-                  className="btn-ghost inline-flex items-center gap-3 text-base"
-                >
-                  See Our Results
-                </Link>
+                <Link to="/case-studies" className="btn-link">See the work</Link>
               </div>
-            </motion.div>
-
-            {/* Right — Dashboard visual */}
-            <motion.div
-              className="hidden lg:block"
-              initial={{ opacity: 0, x: 40, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] as const }}
-            >
-              <div className="relative">
-                {/* Ambient glow behind image */}
-                <div className="absolute -inset-8 bg-gradient-to-tr from-maroon-deep/30 to-strike/10 rounded-3xl blur-3xl opacity-50" />
-                <img
-                  src="/images/hero-dashboard.png"
-                  alt="Marketing analytics dashboard"
-                  className="relative rounded-2xl w-full max-w-xl ml-auto shadow-2xl shadow-black/50"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 2: LOGO BAR — Properly labeled
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-16 bg-noir-surface overflow-hidden">
-          <p className="text-center text-ink-muted text-sm font-label mb-8">
-            Tools & Platforms We Work With
-          </p>
-          <div className="relative">
-            <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-noir-surface to-transparent z-10" />
-            <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-noir-surface to-transparent z-10" />
-
-            <div className="flex gap-16 animate-scroll-logos items-center">
-              {[...Array(2)].map((_, setIdx) => (
-                <div key={setIdx} className="flex gap-12 sm:gap-16 items-center shrink-0">
-                  <img src="/logos/gymshark.jpg" alt="Gymshark" className="h-8 sm:h-10 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/sft.png" alt="SFT" className="h-10 sm:h-12 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/gtbank.png" alt="GTBank" className="h-10 sm:h-12 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/redtag.jpg" alt="redtag.ca" className="h-8 sm:h-10 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/zerofilter.jpg" alt="Zero Filter Co." className="h-12 sm:h-14 w-auto grayscale brightness-200 opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/shopify.svg" alt="Shopify" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/stripe.svg" alt="Stripe" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/hubspot.svg" alt="HubSpot" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/mailchimp.svg" alt="Mailchimp" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/slack.svg" alt="Slack" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/notion.svg" alt="Notion" className="h-9 sm:h-11 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
-                  <img src="/logos/zapier.svg" alt="Zapier" className="h-8 sm:h-10 w-auto grayscale brightness-[3] opacity-50 hover:opacity-80 transition-opacity" />
+              <div className="hero-meta">
+                <div className="item">
+                  <span className="label">Engagements</span>
+                  <p>Fractional CMO · Retainers · Sprints</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 3: PROBLEM AGITATION
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-24 sm:py-32 px-6 bg-noir-low">
-          <div className="max-w-6xl mx-auto">
-            <motion.div className="text-center mb-16" {...fadeUp}>
-              <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-4">
-                Sound Familiar?
-              </p>
-              <h2 className="font-headline font-bold text-white">
-                You Don't Have a Marketing Problem.
-                <br />
-                <span className="text-ink-secondary">You Have a Systems Problem.</span>
-              </h2>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {painPoints.map((pain, index) => (
-                <motion.div
-                  key={pain.title}
-                  className="rounded-2xl bg-noir-surface p-8 sm:p-10 group hover:bg-noir-high transition-colors duration-300"
-                  {...stagger(index * 0.1)}
-                >
-                  <span className="text-3xl mb-6 block">{pain.icon}</span>
-                  <h3 className="text-xl font-headline font-bold text-white mb-4">{pain.title}</h3>
-                  <p className="text-ink-secondary text-sm leading-relaxed font-body">{pain.body}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 4: SERVICE PILLARS — 2×2 Bento Grid
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-24 sm:py-32 px-6 bg-noir-void">
-          <div className="max-w-6xl mx-auto">
-            <motion.div className="text-center mb-16" {...fadeUp}>
-              <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-4">
-                What We Do
-              </p>
-              <h2 className="font-headline font-bold text-white">
-                Strategy First. Execution Included.
-              </h2>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {servicePillars.map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  {...stagger(index * 0.1)}
-                >
-                  <Link
-                    to={`/services#${service.title.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-')}`}
-                    className={`block rounded-2xl p-8 sm:p-10 group transition-colors duration-300 h-full ${
-                      service.featured
-                        ? 'bg-gradient-to-br from-maroon-deep/60 to-noir-low border border-maroon/20'
-                        : 'bg-noir-low hover:bg-noir-high border-ghost'
-                    }`}
-                  >
-                    {service.featured && (
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-strike/10 text-strike text-xs font-label font-medium mb-6">
-                        <span className="w-1.5 h-1.5 rounded-full bg-strike" />
-                        Core Offering
-                      </div>
-                    )}
-                    <h3 className="text-xl sm:text-2xl font-headline font-bold text-white mb-4 group-hover:text-blush transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-ink-secondary text-sm leading-relaxed font-body mb-6">
-                      {service.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {service.tags.map(tag => (
-                        <span key={tag} className="px-3 py-1.5 text-xs bg-white/5 text-ink-secondary rounded-lg border border-white/5 font-label">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div className="mt-12 text-center" {...fadeUp}>
-              <Link
-                to="/services"
-                className="inline-flex items-center gap-2 text-blush hover:text-white text-sm font-body font-medium transition-colors"
-              >
-                Explore all services
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                <div className="item">
+                  <span className="label">Currently with</span>
+                  <p>14 active partners across SaaS, professional services &amp; founder brands</p>
+                </div>
+              </div>
             </motion.div>
           </div>
-        </section>
 
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 5: RESULTS / SOCIAL PROOF
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-24 sm:py-32 px-6 bg-noir-low">
-          <div className="max-w-6xl mx-auto">
-            <motion.div className="text-center mb-16" {...fadeUp}>
-              <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-4">
-                The Numbers Speak
-              </p>
-              <h2 className="font-headline font-bold text-white">
-                Real Systems. Real Results.
+          {/* Stats strip */}
+          <motion.div className="hero-strip" {...rv(0.25)}>
+            <div className="cell">
+              <span className="stat">11<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>+</em></span>
+              <span className="label">Years compounding growth</span>
+            </div>
+            <div className="cell">
+              <span className="stat">$48M</span>
+              <span className="label">Pipeline influenced &rsquo;23–&rsquo;25</span>
+            </div>
+            <div className="cell">
+              <span className="stat">96%</span>
+              <span className="label">Retainer renewal</span>
+            </div>
+            <div className="cell">
+              <span className="stat">1<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>.</em>Haus</span>
+              <span className="label">Strategy &amp; execution, no handoffs</span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Marquee — trust strip ─────────────────────────────────────────────── */}
+      <div className="marquee" aria-label="Featured in & partners">
+        <div className="marquee-track">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span key={i} className="marquee-item">
+              <span className="star">✦</span> {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Services preview ─────────────────────────────────────────────────── */}
+      <section>
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">What we do</span>
+              <h2 className="display-md">
+                Six disciplines, <em className="italic" style={{ color: 'var(--terracotta)' }}>one</em> team.
               </h2>
-            </motion.div>
+            </div>
+            <p className="lede">
+              You shouldn&rsquo;t need to brief six different agencies who&rsquo;ve never met each other. We sit inside your business and run the whole stack — strategy through to the shipped artefact.
+            </p>
+          </motion.div>
 
-            {/* Metrics bar */}
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-20"
-              {...fadeUp}
-            >
-              {metrics.map((metric) => (
-                <div key={metric.label} className="text-center">
-                  <p className={`text-4xl sm:text-5xl font-headline font-bold tracking-tighter ${metric.accent ? 'text-strike' : 'text-white'}`}>
-                    {metric.value}
-                  </p>
-                  <p className="mt-3 text-sm text-ink-muted uppercase tracking-wider font-label">
-                    {metric.label}
+          <ol className="numlist">
+            {services.map((svc, i) => (
+              <motion.li key={svc.num} {...rv(i * 0.06)}>
+                <span className="num">{svc.num}</span>
+                <div className="title-col">
+                  <h3>{svc.title}</h3>
+                  <p>{svc.desc}</p>
+                </div>
+                <span className="meta-col">{svc.type}</span>
+              </motion.li>
+            ))}
+          </ol>
+
+          <div style={{ marginTop: 48 }}>
+            <Link to="/services" className="btn btn-ghost">
+              Explore services in detail <span className="arrow">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Featured work ────────────────────────────────────────────────────── */}
+      <section className="section-paper-2">
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Selected work</span>
+              <h2 className="display-md">Receipts, not reels.</h2>
+            </div>
+            <p className="lede">
+              A small sample of the partners we work with. Real numbers, real timelines. Full case studies on request.
+            </p>
+          </motion.div>
+
+          <div className="work-grid">
+            <MotionLink to="/case-studies" className="case feature" {...rv()}>
+              <div className="media imgholder terra" data-label="case · belford & co." />
+              <div className="body">
+                <div className="tags">
+                  <span className="tag dot">Fractional CMO</span>
+                  <span className="tag">Brand</span>
+                  <span className="tag">SEO</span>
+                </div>
+                <h3>Belford &amp; Co. — From law firm to category brand.</h3>
+                <p className="desc">
+                  An 80-attorney commercial practice rebuilt as a recognised voice in M&amp;A. New brand, new site, six pillar content programme, and a category of one.
+                </p>
+                <div className="stats">
+                  <div><div className="stat">+312%</div><span className="lbl">Organic leads</span></div>
+                  <div><div className="stat">4.2×</div><span className="lbl">Avg. deal size</span></div>
+                  <div><div className="stat">18mo</div><span className="lbl">Engagement</span></div>
+                </div>
+              </div>
+            </MotionLink>
+
+            <div className="stack" style={{ gap: 24 }}>
+              <MotionLink to="/case-studies" className="case" {...rv(0.1)}>
+                <div className="media imgholder dark" data-label="case · klera ai" />
+                <div className="body">
+                  <div className="tags">
+                    <span className="tag dot">Launch</span>
+                    <span className="tag">Web</span>
+                  </div>
+                  <h3>Klera — A Series A launch that actually launched.</h3>
+                  <p className="desc">
+                    Positioning, narrative, site, paid, and a press programme that turned $9M of funding into 3,400 qualified signups in eight weeks.
                   </p>
                 </div>
-              ))}
-            </motion.div>
-
-            {/* Case studies grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-              {caseStudies.map((study, index) => (
-                <motion.div key={study.title} {...stagger(index * 0.1)}>
-                  <Link
-                    to={study.href}
-                    className="group block rounded-2xl overflow-hidden bg-noir-surface hover:bg-noir-high transition-colors duration-300"
-                  >
-                    <div className="aspect-[16/9] overflow-hidden">
-                      <img
-                        src={study.image}
-                        alt={study.title}
-                        className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <p className="text-xs text-ink-muted uppercase tracking-wider font-label mb-2">{study.title}</p>
-                      <p className="text-lg font-headline font-bold text-white">{study.result}</p>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
+              </MotionLink>
+              <MotionLink to="/case-studies" className="case" {...rv(0.18)}>
+                <div className="media imgholder" data-label="case · vesper hotels" />
+                <div className="body">
+                  <div className="tags">
+                    <span className="tag dot">Lifecycle</span>
+                    <span className="tag">Paid</span>
+                  </div>
+                  <h3>Vesper Hotels — Direct bookings, no OTAs.</h3>
+                  <p className="desc">
+                    A loyalty-first growth engine that pulled 38% of revenue off Booking.com and back onto the brand&rsquo;s own channels in 11 months.
+                  </p>
+                </div>
+              </MotionLink>
             </div>
+          </div>
 
-            {/* Testimonial slider */}
-            <motion.div {...fadeUp}>
-              <div className="bg-gradient-to-br from-noir-surface to-maroon-deep/20 rounded-3xl overflow-hidden border border-white/5">
-                <div className="grid md:grid-cols-[280px_1fr]">
-                  {/* Left — Stats */}
-                  <div className="p-8 border-b md:border-b-0 md:border-r border-white/5">
-                    <div className="flex items-center gap-3 mb-8">
-                      <span className="text-3xl font-headline font-bold text-white">5.0</span>
-                      <div className="flex gap-0.5">
-                        {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 text-strike" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="space-y-4 text-sm font-label">
-                      <div className="flex items-center gap-3 text-ink-secondary">
-                        <span className="text-ink-muted">Industry:</span>
-                        <span>{testimonials[currentTestimonial].industry}</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-ink-secondary">
-                        <span className="text-ink-muted">Location:</span>
-                        <span>{testimonials[currentTestimonial].location}</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-ink-secondary">
-                        <span className="text-ink-muted">Size:</span>
-                        <span>{testimonials[currentTestimonial].size}</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-ink-secondary">
-                        <span className="text-ink-muted">Timeline:</span>
-                        <span>{testimonials[currentTestimonial].timeline}</span>
-                      </div>
-                    </div>
-                  </div>
+          <div className="work-grid-secondary">
+            <MotionLink to="/case-studies" className="case" {...rv()}>
+              <div className="media imgholder" data-label="case · northwind" />
+              <div className="body">
+                <div className="tags"><span className="tag dot">Brand</span></div>
+                <h3>Northwind — A health system, repositioned.</h3>
+              </div>
+            </MotionLink>
+            <MotionLink to="/case-studies" className="case" {...rv(0.08)}>
+              <div className="media imgholder" data-label="case · mercato" />
+              <div className="body">
+                <div className="tags"><span className="tag dot">Web</span></div>
+                <h3>Mercato Capital — LP-facing storytelling.</h3>
+              </div>
+            </MotionLink>
+            <MotionLink to="/case-studies" className="case" {...rv(0.16)}>
+              <div className="media imgholder" data-label="case · halsey" />
+              <div className="body">
+                <div className="tags"><span className="tag dot">Personal brand</span></div>
+                <h3>The Halsey Group — Founder voice at scale.</h3>
+              </div>
+            </MotionLink>
+          </div>
 
-                  {/* Right — Quote */}
-                  <div className="p-8 md:p-12 flex flex-col justify-between">
-                    <AnimatePresence mode="wait">
-                      <motion.p
-                        key={currentTestimonial}
-                        className="text-ink/80 text-lg leading-relaxed font-body mb-8"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        "{testimonials[currentTestimonial].quote}"
-                      </motion.p>
-                    </AnimatePresence>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="font-headline font-bold text-white text-lg">{testimonials[currentTestimonial].name}</p>
-                        <p className="text-sm text-ink-muted font-label">{testimonials[currentTestimonial].title}</p>
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => setCurrentTestimonial(prev => prev === 0 ? testimonials.length - 1 : prev - 1)}
-                          className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-ink-muted hover:text-white hover:border-white/30 transition-colors"
-                          aria-label="Previous testimonial"
-                        >
-                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                        </button>
-                        <button
-                          onClick={() => setCurrentTestimonial(prev => prev === testimonials.length - 1 ? 0 : prev + 1)}
-                          className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-ink-muted hover:text-white hover:border-white/30 transition-colors"
-                          aria-label="Next testimonial"
-                        >
-                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+          <div style={{ marginTop: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+            <p className="cap" style={{ margin: 0 }}>14 partners · 6 industries · 3 continents</p>
+            <Link to="/case-studies" className="btn btn-ghost">All case studies <span className="arrow">→</span></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── About / philosophy teaser ────────────────────────────────────────── */}
+      <section>
+        <div className="wrap">
+          <div className="about-teaser">
+            <div className="media imgholder" data-label="portrait · founder" />
+            <motion.div className="copy" {...rv(0.1)}>
+              <span className="eyebrow" style={{ marginBottom: 28, display: 'inline-flex' }}>Why TaqHaus</span>
+              <p className="quote">
+                The job isn&rsquo;t to <em>deliver decks</em>. The job is to&nbsp;move the number. We treat every client&rsquo;s P&amp;L like our own — and we don&rsquo;t take on clients we can&rsquo;t make&nbsp;famous.
+              </p>
+              <div className="quote-attr">
+                <div className="swatch" />
+                <div>
+                  <div className="name">Ola Raji</div>
+                  <div>Founder · TaqHaus</div>
                 </div>
               </div>
 
-              {/* Dots */}
-              <div className="flex justify-center gap-2 mt-6">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentTestimonial(idx)}
-                    className={`h-2.5 rounded-full transition-all duration-300 ${
-                      idx === currentTestimonial ? 'bg-strike w-8' : 'bg-white/15 hover:bg-white/30 w-2.5'
-                    }`}
-                    aria-label={`Show testimonial ${idx + 1}`}
-                  />
+              <div className="engagements">
+                {engagements.map(eng => (
+                  <div key={eng.num} className="engagement">
+                    <span className="num">{eng.num}</span>
+                    <h4>{eng.title}</h4>
+                    <p>{eng.desc}</p>
+                    <div className="footer-row">
+                      <span>{eng.from}</span>
+                      <span>{eng.duration}</span>
+                    </div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
-          </div>
-        </section>
 
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 6: HOW WE WORK — 4-step process
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-24 sm:py-32 px-6 bg-noir-void">
-          <div className="max-w-6xl mx-auto">
-            <motion.div className="text-center mb-16" {...fadeUp}>
-              <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-4">
-                How We Work
-              </p>
-              <h2 className="font-headline font-bold text-white">
-                Simple Process. Serious Outcomes.
-              </h2>
-            </motion.div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={step.number}
-                  className="rounded-2xl bg-noir-low p-8 group hover:bg-noir-high transition-colors duration-300"
-                  {...stagger(index * 0.1)}
-                >
-                  <span className="text-strike text-sm font-label font-bold tracking-wider">{step.number}</span>
-                  <h3 className="text-lg font-headline font-bold text-white mt-4 mb-3">{step.title}</h3>
-                  <p className="text-ink-secondary text-sm leading-relaxed font-body">{step.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 7: WHO WE WORK WITH — 6 ICP Cards
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-24 sm:py-32 px-6 bg-noir-low">
-          <div className="max-w-6xl mx-auto">
-            <motion.div className="text-center mb-16" {...fadeUp}>
-              <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-4">
-                Who We Work With
-              </p>
-              <h2 className="font-headline font-bold text-white">
-                Built for Leaders Who Take Growth Seriously.
-              </h2>
-            </motion.div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {icpCards.map((icp, index) => (
-                <motion.div
-                  key={icp.title}
-                  className="rounded-2xl bg-noir-surface p-8 group hover:bg-noir-high transition-colors duration-300"
-                  {...stagger(index * 0.08)}
-                >
-                  <h3 className="text-lg font-headline font-bold text-white mb-3">{icp.title}</h3>
-                  <p className="text-ink-secondary text-sm leading-relaxed font-body">{icp.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 7B: ENGAGEMENT — Custom scoping
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-24 sm:py-32 px-6 bg-noir-void">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div {...fadeUp}>
-              <p className="text-strike text-sm uppercase tracking-[0.3em] font-label font-medium mb-4">
-                Partnership Frameworks
-              </p>
-              <h2 className="font-headline font-bold text-white mb-6">
-                Every Engagement Is Scoped to Your Goals.
-              </h2>
-              <p className="text-ink-secondary text-lg max-w-2xl mx-auto mb-12 font-body">
-                We don't do cookie-cutter packages. Every partnership starts with a strategy call where we diagnose your biggest opportunities and build a custom plan. You'll know exactly what you're getting and what it costs before committing to anything.
-              </p>
-
-              <div className="mt-10">
-                <a
-                  href={CALENDLY_URL}
-                  className="btn-strike inline-flex items-center gap-3 text-base"
-                >
-                  Book a Strategy Call
-                  <ArrowRight className="w-5 h-5" />
-                </a>
+              <div style={{ marginTop: 36 }}>
+                <Link to="/about" className="btn-link">Read our story</Link>
               </div>
             </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 8: FAQ
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-24 sm:py-32 px-6 bg-noir-low">
-          <div className="max-w-2xl mx-auto">
-            <motion.h2 className="text-2xl sm:text-3xl font-headline font-bold text-center text-white mb-12" {...fadeUp}>
-              Questions?
-            </motion.h2>
-
-            <div className="space-y-3">
-              {faqs.map((faq, index) => (
-                <motion.div
-                  key={faq.q}
-                  className="rounded-xl bg-noir-surface overflow-hidden"
-                  {...stagger(index * 0.05)}
-                >
-                  <button
-                    className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-white/5 transition-colors font-body"
-                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  >
-                    <span className="font-medium text-white">{faq.q}</span>
-                    {openFaq === index ? (
-                      <ChevronUp className="w-5 h-5 text-strike flex-shrink-0" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-ink-muted flex-shrink-0" />
-                    )}
-                  </button>
-                  <AnimatePresence>
-                    {openFaq === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 pb-5 text-ink-secondary leading-relaxed border-t border-white/5 pt-4 text-sm font-body">
-                          {faq.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 9: FINAL CTA
-        ═══════════════════════════════════════════════════════ */}
-        <section className="py-24 sm:py-32 px-6 bg-gradient-to-b from-noir-void to-maroon-deep/30">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.div {...fadeUp}>
-              <h2 className="font-headline font-bold text-white leading-tight">
-                Ready to Stop Guessing
-                <br />
-                and Start Growing?
+      {/* ── How we work — dark editorial ─────────────────────────────────────── */}
+      <section className="section-dark">
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">How we work</span>
+              <h2 className="display-md" style={{ color: 'var(--paper)' }}>
+                No handoffs. No middlemen. <em className="italic" style={{ color: 'var(--terracotta)' }}>One</em> room.
               </h2>
-              <p className="mt-6 text-lg text-ink-secondary max-w-xl mx-auto font-body">
-                Let's build the system that drives your next stage of growth.
-              </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href={CALENDLY_URL}
-                  className="btn-strike inline-flex items-center justify-center gap-3 text-base"
-                >
-                  Book a Strategy Call
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-                <Link
-                  to="/contact"
-                  className="btn-ghost inline-flex items-center justify-center gap-3 text-base"
-                >
-                  Get a Free Audit
-                </Link>
-              </div>
-              <p className="mt-8 text-sm text-ink-muted flex items-center justify-center gap-2 font-label">
-                <span>🔒</span> Free audit. No obligation.
-                <a href="mailto:info@taqhaus.com" className="text-blush hover:underline ml-2">
-                  Prefer email?
-                </a>
-              </p>
-            </motion.div>
-          </div>
-        </section>
-      </main>
-
-      {/* ═══════════════════════════════════════════════════════════
-          FOOTER
-      ═══════════════════════════════════════════════════════════ */}
-      <footer className="bg-noir-lowest pt-20 pb-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
-            {/* Brand */}
-            <div className="col-span-2 lg:col-span-2 space-y-4">
-              <img src="/taqhaus-logo.png" alt="TaqHaus" className="h-16 w-auto" />
-              <p className="text-ink-secondary text-sm max-w-xs font-body">
-                A marketing and business consultancy — strategy first, execution included.
-              </p>
             </div>
+            <p className="lede">
+              A senior team that owns the work end-to-end. We&rsquo;re in your Slack, your standups, your quarterly board reviews — and on the hook for the outcomes.
+            </p>
+          </motion.div>
 
-            {/* Services */}
-            <div>
-              <h5 className="text-white text-sm font-headline font-bold mb-5">Services</h5>
-              <ul className="space-y-3 text-sm text-ink-secondary font-body">
-                <li><Link to="/services" className="hover:text-white transition-colors">Strategy & Consulting</Link></li>
-                <li><Link to="/services" className="hover:text-white transition-colors">Digital Marketing</Link></li>
-                <li><Link to="/services" className="hover:text-white transition-colors">Social & Brand</Link></li>
-                <li><Link to="/services" className="hover:text-white transition-colors">Web Design</Link></li>
-              </ul>
-            </div>
+          <ol className="numlist">
+            {phases.map((ph, i) => (
+              <motion.li key={ph.num} {...rv(i * 0.07)}>
+                <span className="num">{ph.num}</span>
+                <div className="title-col">
+                  <h3>{ph.title}</h3>
+                  <p>{ph.desc}</p>
+                </div>
+                <span className="meta-col">{ph.period}</span>
+              </motion.li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-            {/* Company */}
-            <div>
-              <h5 className="text-white text-sm font-headline font-bold mb-5">Company</h5>
-              <ul className="space-y-3 text-sm text-ink-secondary font-body">
-                <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
-                <li><Link to="/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
-                <li><Link to="/insights" className="hover:text-white transition-colors">Insights</Link></li>
-                <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-              </ul>
+      {/* ── Insights preview ─────────────────────────────────────────────────── */}
+      <section>
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Insights</span>
+              <h2 className="display-md">Field notes from inside the work.</h2>
             </div>
+            <p className="lede">
+              Essays, teardowns and the occasional uncomfortable opinion. Written by the people doing the work — not the marketing team.
+            </p>
+          </motion.div>
 
-            {/* Connect */}
-            <div className="hidden lg:block">
-              <h5 className="text-white text-sm font-headline font-bold mb-5">Connect</h5>
-              <ul className="space-y-3 text-sm text-ink-secondary font-body">
-                <li><a href="https://linkedin.com/company/taqhaus" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://twitter.com/taqhaus" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-                <li><a href="mailto:info@taqhaus.com" className="hover:text-white transition-colors">info@taqhaus.com</a></li>
-              </ul>
-            </div>
+          <div className="insights-grid">
+            {insightsPreview.map((ins, i) => (
+              <MotionLink key={ins.slug} to={`/insights/${ins.slug}`} className="insight" {...rv(i * 0.08)}>
+                <div className="meta">
+                  <span>{ins.type}</span>
+                  <span>{ins.time}</span>
+                </div>
+                <h3>{ins.title}</h3>
+                <p>{ins.body}</p>
+                <span className="read">Read →</span>
+              </MotionLink>
+            ))}
           </div>
 
-          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-ink-muted tracking-wider uppercase font-label">
-            <p>© 2026 TaqHaus. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          <div style={{ marginTop: 40 }}>
+            <Link to="/insights" className="btn-link">All insights →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
+      <section className="section-paper-2">
+        <div className="wrap">
+          <motion.div {...rv()} style={{ maxWidth: 800 }}>
+            <span className="eyebrow">Questions</span>
+            <h2 className="display-md" style={{ marginTop: 20 }}>Answered honestly.</h2>
+          </motion.div>
+          <div style={{ marginTop: 48, maxWidth: 800 }}>
+            {faqs.map((faq, i) => (
+              <motion.div key={faq.q} {...rv(i * 0.06)} className="faq-item">
+                <button
+                  className="faq-trigger"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                >
+                  <span>{faq.q}</span>
+                  <span className="faq-icon">{openFaq === i ? '−' : '+'}</span>
+                </button>
+                <AnimatePresence>
+                  {openFaq === i && (
+                    <motion.p
+                      className="faq-answer"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      {faq.a}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA band ─────────────────────────────────────────────────────────── */}
+      <motion.div className="cta-band" {...rv()}>
+        <h2>Let&rsquo;s see if we&rsquo;re a <em>fit</em>.</h2>
+        <div className="stack">
+          <p style={{ color: 'color-mix(in oklch, var(--paper) 75%, transparent)', fontSize: 16, lineHeight: 1.55, maxWidth: '42ch', margin: 0 }}>
+            30 minutes. No deck. We&rsquo;ll ask about the constraint, not the brief. You&rsquo;ll leave with a point of view — whether or not we work together.
+          </p>
+          <div className="row">
+            <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              Book a discovery call <span className="arrow">↗</span>
+            </a>
+            <Link to="/services" className="btn btn-ghost">See services</Link>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ── Footer ───────────────────────────────────────────────────────────── */}
+      <footer className="footer">
+        <div className="wrap">
+          <div className="footer-head">
+            <h2>
+              Engineer growth that&nbsp;scales.<br />
+              Influence that&nbsp;<em className="italic" style={{ color: 'var(--terracotta)' }}>sticks</em>.
+            </h2>
+            <div className="cta-stack">
+              <a
+                href={CALENDLY_URL}
+                className="btn"
+                style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Book a discovery call</span>
+                <span className="arrow">↗</span>
+              </a>
+              <a
+                href="mailto:info@taqhaus.com"
+                className="btn-link"
+                style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}
+              >
+                info@taqhaus.com
+              </a>
             </div>
+          </div>
+
+          <div className="footer-cols">
+            <div>
+              <img
+                src="/taqhaus-logo.png"
+                alt="TaqHaus"
+                style={{ height: 40, width: 'auto', marginBottom: 16, filter: 'brightness(0) invert(1)' }}
+              />
+              <p style={{ color: 'color-mix(in oklch, var(--paper) 65%, transparent)', fontSize: 14, lineHeight: 1.55, maxWidth: '30ch', margin: 0 }}>
+                A marketing &amp; influence consultancy — strategy first, execution included.
+              </p>
+            </div>
+            <div>
+              <h4>Practice</h4>
+              <ul>
+                <li><Link to="/services">Services</Link></li>
+                <li><Link to="/case-studies">Work</Link></li>
+                <li><Link to="/about">About</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Read</h4>
+              <ul>
+                <li><Link to="/insights">Insights</Link></li>
+                <li><Link to="/insights">Field notes</Link></li>
+                <li><Link to="/contact">Newsletter</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Elsewhere</h4>
+              <ul>
+                <li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li>
+                <li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <span>© 2026 TaqHaus Consultancy Inc.</span>
+            <span>Made in Toronto · Serving everywhere</span>
+          </div>
+
+          <div className="footer-mark">
+            TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span>
           </div>
         </div>
       </footer>
