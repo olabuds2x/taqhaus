@@ -312,6 +312,20 @@
   color: var(--terracotta);
   font-size: 18px;
 }
+.tq-editorial .marquee-logo {
+  height: 34px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: opacity .3s, filter .3s;
+  display: block;
+}
+.tq-editorial .marquee-item:hover .marquee-logo {
+  opacity: 0.8;
+  filter: grayscale(30%);
+}
 
 @keyframes tq-marquee {
   from { transform: translateX(0); }

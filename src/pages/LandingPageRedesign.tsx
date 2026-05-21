@@ -36,9 +36,17 @@ const engagements = [
   { num: '— 03', title: 'Equity partner', desc: 'For pre-Series A founders. Cash + equity. Aligned incentives, full skin in the game.', from: 'Selective', duration: 'By invite' },
 ]
 
-const marqueeItems = [
-  'Northwind Health', 'Belford & Co.', 'Atelier Studios', 'Mercato Capital',
-  'Klera AI', 'The Halsey Group', 'Field Notes Ventures', 'Vesper Hotels',
+const marqueeLogos = [
+  { src: '/logos/logo-1.png', alt: 'Client logo' },
+  { src: '/logos/logo-2.jpg', alt: 'Spirit Airlines' },
+  { src: '/logos/logo-3.png', alt: 'Texas Tech Athletics' },
+  { src: '/logos/logo-4.jpeg', alt: 'Client logo' },
+  { src: '/logos/logo-5.png', alt: 'Client logo' },
+  { src: '/logos/logo-6.jpg', alt: 'Client logo' },
+  { src: '/logos/logo-7.webp', alt: 'Client logo' },
+  { src: '/logos/logo-8.png', alt: 'MOTF' },
+  { src: '/logos/logo-9.png', alt: 'YR' },
+  { src: '/logos/logo-10.jpg', alt: 'Client logo' },
 ]
 
 const insightsPreview = [
@@ -168,12 +176,12 @@ export default function LandingPageRedesign() {
         </div>
       </section>
 
-      {/* ── Marquee — trust strip ─────────────────────────────────────────────── */}
-      <div className="marquee" aria-label="Featured in & partners">
+      {/* ── Marquee — logo trust strip ───────────────────────────────────────── */}
+      <div className="marquee" aria-label="Clients & partners">
         <div className="marquee-track">
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+          {[...marqueeLogos, ...marqueeLogos].map((logo, i) => (
             <span key={i} className="marquee-item">
-              <span className="star">✦</span> {item}
+              <img src={logo.src} alt={logo.alt} className="marquee-logo" />
             </span>
           ))}
         </div>
