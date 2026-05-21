@@ -44,7 +44,21 @@
 .tq-editorial h1,
 .tq-editorial h2,
 .tq-editorial h3,
-.tq-editorial h4 { margin: 0; font-weight: 400; }
+.tq-editorial h4 { margin: 0; font-weight: 400; color: var(--ink); }
+
+/* Override dark-context headings — global text-white rule doesn't apply here */
+.tq-editorial .section-dark h1,
+.tq-editorial .section-dark h2,
+.tq-editorial .section-dark h3,
+.tq-editorial .section-dark h4,
+.tq-editorial .footer h1,
+.tq-editorial .footer h2,
+.tq-editorial .footer h3,
+.tq-editorial .footer h4,
+.tq-editorial .cta-band h1,
+.tq-editorial .cta-band h2,
+.tq-editorial .topbar h1,
+.tq-editorial .topbar h2 { color: var(--paper); }
 
 .tq-editorial .eyebrow {
   font-family: var(--mono);
