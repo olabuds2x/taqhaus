@@ -334,10 +334,6 @@ export default function LandingPageRedesign() {
                     <span className="num">{eng.num}</span>
                     <h4>{eng.title}</h4>
                     <p>{eng.desc}</p>
-                    <div className="footer-row">
-                      <span>{eng.from}</span>
-                      <span>{eng.duration}</span>
-                    </div>
                   </div>
                 ))}
               </div>
@@ -373,7 +369,6 @@ export default function LandingPageRedesign() {
                   <h3>{ph.title}</h3>
                   <p>{ph.desc}</p>
                 </div>
-                <span className="meta-col">{ph.period}</span>
               </motion.li>
             ))}
           </ol>
