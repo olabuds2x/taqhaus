@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-2 space-y-4">
-            <img src="/taqhaus-logo.svg" alt="TaqHaus" className="h-16 w-auto" />
+            <img src="/taqhaus-logo.svg" alt="TaqHaus" className="h-[440px] w-auto" />
             <p className="text-ink-secondary text-sm max-w-xs font-body">
               A marketing and business consultancy — strategy first, execution included.
             </p>

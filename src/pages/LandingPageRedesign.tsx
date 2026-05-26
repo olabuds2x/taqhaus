@@ -101,7 +101,7 @@ export default function LandingPageRedesign() {
       <header className="nav">
         <div className="nav-inner">
           <Link to="/" aria-label="TaqHaus — Home">
-            <img src="/taqhaus-logo.svg" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
+            <img src="/taqhaus-logo.svg" alt="TaqHaus" style={{ height: 440, width: 'auto' }} />
           </Link>
           <nav className="nav-links">
             <Link to="/services">Services</Link>
