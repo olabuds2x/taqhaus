@@ -376,17 +376,25 @@ export default function LandingPageRedesign() {
       <section>
         <div className="wrap">
           <div className="about-teaser">
-            <div className="media imgholder" data-label="portrait · founder" />
+            <div className="media" style={{ position: 'relative' }}>
+              <div className="case-art case-art--ink" style={{ height: '100%', minHeight: 480 }}>
+                <div className="ca-meta"><span>— Manifesto</span><span>2026</span></div>
+                <div className="ca-mark" style={{ fontSize: 'clamp(56px, 9vw, 156px)' }}>Move<br />the<br /><em>number.</em></div>
+                <div className="ca-foot">
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' as const, opacity: 0.7 }}>A note from the&nbsp;Haus</div>
+                  <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 32, color: 'var(--terracotta)', lineHeight: 1 }}>Ola.</div>
+                </div>
+              </div>
+            </div>
             <motion.div className="copy" {...rv(0.1)}>
               <span className="eyebrow" style={{ marginBottom: 28, display: 'inline-flex' }}>Why TaqHaus</span>
               <p className="quote">
                 The job isn&rsquo;t to <em>deliver decks</em>. The job is to&nbsp;move the number. We treat every client&rsquo;s P&amp;L like our own — and we don&rsquo;t take on clients we can&rsquo;t make&nbsp;famous.
               </p>
               <div className="quote-attr">
-                <div className="swatch" />
                 <div>
-                  <div className="name">Ola Raji</div>
-                  <div>Founder · TaqHaus</div>
+                  <div style={{ color: 'var(--ink)', fontFamily: 'var(--sans)', fontSize: 14, letterSpacing: '-0.005em', marginBottom: 2, fontWeight: 500 }}>Ola Raji</div>
+                  <div>Founder &amp; Managing Partner · TaqHaus</div>
                 </div>
               </div>
 
