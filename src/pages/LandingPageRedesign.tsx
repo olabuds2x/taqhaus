@@ -238,7 +238,16 @@ export default function LandingPageRedesign() {
 
           <div className="work-grid">
             <MotionLink to="/case-studies" className="case feature" {...rv()}>
-              <div className="media imgholder terra" data-label="case · belford & co." />
+              <div className="media" style={{ display: 'block' }}>
+                <div className="case-art case-art--terra" style={{ height: '100%', minHeight: '100%' }}>
+                  <div className="ca-meta"><span>Case 01</span><span>Professional services</span></div>
+                  <div className="ca-mark">Belford<br /><em>&amp; Co.</em></div>
+                  <div className="ca-foot">
+                    <div className="ca-stat-big"><em>+</em>312<em>%</em></div>
+                    <div className="ca-stat-label">Organic leads YoY</div>
+                  </div>
+                </div>
+              </div>
               <div className="body">
                 <div className="tags">
                   <span className="tag dot">Fractional CMO</span>
@@ -259,7 +268,16 @@ export default function LandingPageRedesign() {
 
             <div className="stack" style={{ gap: 24 }}>
               <MotionLink to="/case-studies" className="case" {...rv(0.1)}>
-                <div className="media imgholder dark" data-label="case · klera ai" />
+                <div className="media" style={{ display: 'block' }}>
+                  <div className="case-art case-art--ink compact" style={{ height: '100%' }}>
+                    <div className="ca-meta"><span>Case 02</span><span>SaaS · Series A</span></div>
+                    <div className="ca-mark">Kler<em>a.</em></div>
+                    <div className="ca-foot">
+                      <div className="ca-stat-big">3,400</div>
+                      <div className="ca-stat-label">Signups in 8 wks</div>
+                    </div>
+                  </div>
+                </div>
                 <div className="body">
                   <div className="tags">
                     <span className="tag dot">Launch</span>
@@ -272,7 +290,16 @@ export default function LandingPageRedesign() {
                 </div>
               </MotionLink>
               <MotionLink to="/case-studies" className="case" {...rv(0.18)}>
-                <div className="media imgholder" data-label="case · vesper hotels" />
+                <div className="media" style={{ display: 'block' }}>
+                  <div className="case-art case-art--paper compact" style={{ height: '100%' }}>
+                    <div className="ca-meta"><span>Case 03</span><span>Hospitality</span></div>
+                    <div className="ca-mark"><em>Vesper</em></div>
+                    <div className="ca-foot">
+                      <div className="ca-stat-big">38<em>%</em></div>
+                      <div className="ca-stat-label">Revenue off OTAs</div>
+                    </div>
+                  </div>
+                </div>
                 <div className="body">
                   <div className="tags">
                     <span className="tag dot">Lifecycle</span>
@@ -289,21 +316,48 @@ export default function LandingPageRedesign() {
 
           <div className="work-grid-secondary">
             <MotionLink to="/case-studies" className="case" {...rv()}>
-              <div className="media imgholder" data-label="case · northwind" />
+              <div className="media" style={{ display: 'block' }}>
+                <div className="case-art case-art--paper thumb" style={{ height: '100%' }}>
+                  <div className="ca-meta"><span>Case 04</span><span>Healthcare</span></div>
+                  <div className="ca-mark">Northwind</div>
+                  <div className="ca-foot">
+                    <div className="ca-stat-big"><em>+</em>61</div>
+                    <div className="ca-stat-label">Patient NPS lift</div>
+                  </div>
+                </div>
+              </div>
               <div className="body">
                 <div className="tags"><span className="tag dot">Brand</span></div>
                 <h3>Northwind — A health system, repositioned.</h3>
               </div>
             </MotionLink>
             <MotionLink to="/case-studies" className="case" {...rv(0.08)}>
-              <div className="media imgholder" data-label="case · mercato" />
+              <div className="media" style={{ display: 'block' }}>
+                <div className="case-art case-art--ink thumb" style={{ height: '100%' }}>
+                  <div className="ca-meta"><span>Case 05</span><span>Capital</span></div>
+                  <div className="ca-mark">Mercato</div>
+                  <div className="ca-foot">
+                    <div className="ca-stat-big"><em>$</em>280<em>M</em></div>
+                    <div className="ca-stat-label">Fund III closed</div>
+                  </div>
+                </div>
+              </div>
               <div className="body">
                 <div className="tags"><span className="tag dot">Web</span></div>
                 <h3>Mercato Capital — LP-facing storytelling.</h3>
               </div>
             </MotionLink>
             <MotionLink to="/case-studies" className="case" {...rv(0.16)}>
-              <div className="media imgholder" data-label="case · halsey" />
+              <div className="media" style={{ display: 'block' }}>
+                <div className="case-art case-art--terra thumb" style={{ height: '100%' }}>
+                  <div className="ca-meta"><span>Case 06</span><span>Founder brand</span></div>
+                  <div className="ca-mark">Halsey</div>
+                  <div className="ca-foot">
+                    <div className="ca-stat-big">76<em>k</em></div>
+                    <div className="ca-stat-label">LinkedIn followers</div>
+                  </div>
+                </div>
+              </div>
               <div className="body">
                 <div className="tags"><span className="tag dot">Personal brand</span></div>
                 <h3>The Halsey Group — Founder voice at scale.</h3>

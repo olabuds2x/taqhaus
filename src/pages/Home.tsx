@@ -42,9 +42,9 @@ const consultingPillars = [
 ]
 
 const consultingIdealFor = [
-  '💼 Internal teams',
-  '🎯 Executives managing public perception',
-  '📈 High-growth brands needing clarity'
+  '💼 Small businesses and in-house teams',
+  '🎯 Executives managing their public image',
+  '📈 Growing brands that need a clear direction'
 ]
 
 const executionPillars = [
@@ -128,45 +128,46 @@ const testimonials = [
 
 const audiences = [
   {
+    title: 'Small & Growing Businesses',
+    description: 'Founders and small teams who need senior marketing thinking without the cost of a full-time hire.'
+  },
+  {
     title: 'Growth-Stage Brands',
-    description: 'Scaling organisations ready to convert demand into disciplined, repeatable revenue.'
+    description: 'Businesses with traction that are ready to grow in a more structured, repeatable way.'
   },
   {
     title: 'In-House Teams',
-    description: 'Marketing and communications teams who need board-level direction and oversight.'
+    description: 'Internal teams who need senior direction and a clear plan to work from.'
   },
   {
     title: 'Leaders & Public Figures',
-    description: 'Executives and officials who must control narrative, perception, and influence at scale.'
+    description: "Executives and public figures who need to manage how they're seen — and stay ahead of the story."
   }
 ]
 
 const pricingTiers = [
   {
-    name: 'Starter (Foundation Plan)',
-    price: '$2,500–$4,500/month',
+    name: 'Foundation',
     benefits: [
-      'Strategic audit + 90-day command plan',
-      'Organic foundation deployed inside 30 days',
-      'Executive reporting cadence installed'
+      'Strategic audit + 90-day action plan',
+      'Organic growth foundation built from scratch',
+      'Regular reporting and clear next steps'
     ]
   },
   {
-    name: 'Growth Accelerator Plan',
-    price: '$5,000–$8,500/month',
+    name: 'Growth',
     benefits: [
-      'Advanced SEO & automation across core funnels',
-      'Paid, email, and social programs synced under one dashboard',
-      'Bi-weekly executive briefings + optimisation sprints'
+      'Advanced SEO & automation across your core funnels',
+      'Paid, email, and social programmes running under one plan',
+      'Regular strategy reviews and optimisation sprints'
     ]
   },
   {
-    name: 'Dominance Partnership',
-    price: '$10,000+/month',
+    name: 'Full Partnership',
     benefits: [
-      'Full consulting + execution command center',
-      'Cross-channel growth and influence stewardship',
-      'Dedicated strategist pod + automation suite'
+      'Full consulting and execution team embedded in your business',
+      'Cross-channel growth across every relevant channel',
+      'Dedicated strategist team and the full TaqHaus stack'
     ]
   }
 ]
@@ -185,7 +186,12 @@ const faqs = [
   {
     question: 'How do engagements begin?',
     answer:
-      'Every partnership starts with a Strategic Audit. We evaluate growth levers, narrative, and infrastructure to build the roadmap and investment plan that fits your objectives.'
+      'Every engagement starts with a Strategic Audit. We look at your growth opportunities, messaging, and existing marketing to build a roadmap that fits where you are right now.'
+  },
+  {
+    question: 'Do you work with small businesses or early-stage founders?',
+    answer:
+      'Yes. Our Clarity Audit is built for exactly that — a one-time, fixed-price engagement where a senior strategist reviews your marketing and gives you a concrete 90-day action plan. No retainer required. Keep the plan and run it yourself, or bring us in to execute it.'
   }
 ]
 
@@ -298,7 +304,7 @@ export default function Home() {
               We Engineer Growth That Scales and Influence That Sticks.
             </h1>
             <p className="mt-6 text-lg md:text-xl text-neutral-light/80">
-              A marketing and influence consultancy that helps ambitious brands, leaders, and institutions turn strategy into measurable revenue and reputation.
+              A marketing consultancy that helps brands and founders turn good strategy into real revenue — and build a reputation that lasts.
             </p>
           </motion.div>
 
@@ -370,7 +376,7 @@ export default function Home() {
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Most agencies chase clicks. Most consultants stop at slides.</span>
             <h2 className="mt-6 text-4xl font-semibold">We bridge both — clarity of consulting, power of execution.</h2>
             <p className="mt-6 text-neutral-light/80">
-              TaqHaus operates as your Chief Growth & Influence Office. We interrogate the data, design the mandate, and command the execution so nothing gets lost between strategy and action.
+              TaqHaus works like a senior marketing partner inside your business. We look at the data, build the plan, and run the work — so nothing falls through the gap between strategy and delivery.
             </p>
             <Button className="mt-8 px-8 py-4 rounded-full font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
               <a href="#services">
@@ -384,9 +390,9 @@ export default function Home() {
               <CardHeader className="space-y-2">
                 <CardTitle className="flex items-center gap-3 text-white text-xl">
                   <Layers className="h-6 w-6 text-accent" />
-                  Integrated Command
+                  One Team, One Plan
                 </CardTitle>
-                <p className="text-neutral-light/70">Unified growth, media, and revenue operations under one accountable roadmap.</p>
+                <p className="text-neutral-light/70">Your strategy, channels, and campaigns all run by the same team — no handoffs, no gaps.</p>
               </CardHeader>
             </Card>
             <Card className="bg-dark-900/80 border-white/10 text-neutral-light">
@@ -395,7 +401,7 @@ export default function Home() {
                   <ShieldCheck className="h-6 w-6 text-accent" />
                   Reputation Safeguard
                 </CardTitle>
-                <p className="text-neutral-light/70">Proactive narrative steering to protect valuation, credibility, and stakeholder trust.</p>
+                <p className="text-neutral-light/70">We help you manage how your business is perceived — before a problem forces you to react.</p>
               </CardHeader>
             </Card>
             <Card className="bg-dark-900/80 border-white/10 text-neutral-light">
@@ -404,7 +410,7 @@ export default function Home() {
                   <LineChart className="h-6 w-6 text-accent" />
                   Systems &gt; Campaigns
                 </CardTitle>
-                <p className="text-neutral-light/70">Repeatable, data-backed infrastructure replaces isolated sprints and vanity metrics.</p>
+                <p className="text-neutral-light/70">We build systems that keep working, instead of one-off campaigns that go quiet the moment they stop running.</p>
               </CardHeader>
             </Card>
           </div>
@@ -626,7 +632,7 @@ export default function Home() {
       <section className="py-24 bg-dark-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2 className="text-4xl font-semibold" {...inViewProps()}>
-            Mandates We Steward
+            What Our Clients Say
           </motion.h2>
           <AnimatePresence mode="wait">
             <motion.div
@@ -674,7 +680,7 @@ export default function Home() {
               Whether you’re scaling revenue or reputation, we help you command both.
             </p>
           </div>
-          <div className="mt-16 grid gap-8 md:grid-cols-3">
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {audiences.map((audience) => (
               <Card key={audience.title} className="bg-dark-900/80 border-white/10 text-neutral-light">
                 <CardHeader className="space-y-4">
@@ -691,20 +697,30 @@ export default function Home() {
       <section id="pricing" className="py-24 bg-dark-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Partnership Frameworks</span>
-            <h2 className="mt-6 text-2xl sm:text-4xl font-semibold">Clarity on Investment. Zero Ambiguity on Accountability.</h2>
+            <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">How We Engage</span>
+            <h2 className="mt-6 text-2xl sm:text-4xl font-semibold">The Right Level of Support for Where You Are.</h2>
             <p className="mt-6 text-neutral-light/80">
-              Every engagement begins with a strategic audit defining growth levers, perception risks, and operational gaps. From there we activate the framework aligned to your mandate.
+              Every engagement starts with an audit — we figure out what's holding you back before we start anything. From there, we scope the right level of support together. Pricing is built around your needs, not a fixed menu.
             </p>
           </div>
-          <div className="mt-16 grid gap-8 md:grid-cols-3">
+          <div className="mt-10 rounded-2xl border border-accent/30 bg-accent/5 px-6 py-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+            <div>
+              <p className="text-xs uppercase tracking-[0.4em] text-accent font-semibold">New to TaqHaus? Start here.</p>
+              <p className="mt-2 text-xl font-semibold text-white">Clarity Audit — a one-time project</p>
+              <p className="mt-2 text-sm text-neutral-light/70 max-w-xl">A senior strategist reviews your marketing, finds your biggest growth blocker, and gives you a concrete 90-day plan. No retainer required — run it yourself or bring us in to execute it.</p>
+            </div>
+            <Button className="rounded-full px-6 py-3 font-semibold shrink-0 whitespace-nowrap shadow-[0_10px_30px_rgba(233,122,31,0.32)]" asChild>
+              <a href={CALENDLY_URL}>Book the Audit →</a>
+            </Button>
+          </div>
+
+          <div className="mt-8 grid gap-8 md:grid-cols-3">
             {pricingTiers.map((tier) => (
               <Card key={tier.name} className="bg-black border-white/10 text-neutral-light">
                 <CardHeader className="space-y-3">
                   <CardTitle className="text-lg uppercase tracking-[0.3em] text-accent/80">
                     {tier.name}
                   </CardTitle>
-                  <p className="text-2xl font-semibold text-white">{tier.price}</p>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {tier.benefits.map((benefit) => (
@@ -728,16 +744,16 @@ export default function Home() {
       {/* Ethos */}
       <section className="py-24 bg-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The TaqHaus Ethos — Built for the Bold</span>
+          <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The TaqHaus Ethos</span>
           <h2 className="mt-6 text-4xl font-semibold">We don’t chase trends. We build systems that outlast them.</h2>
           <p className="mt-6 text-neutral-light/80">
-            TaqHaus was built for leaders who would rather define the market than follow it. Growth isn’t luck—it’s engineered through clarity, conviction, and disciplined execution.
+            TaqHaus was built for founders and businesses that want to grow with a plan, not just react to what’s in front of them. Good marketing isn’t luck — it’s built, deliberately.
           </p>
           <p className="mt-4 text-neutral-light/80">
-            Every partnership is governed like a capital investment: transparent dashboards, accountable reporting, and measurable progress.
+            We treat every engagement like our own money is on the line: open reporting, clear numbers, and no surprises.
           </p>
           <p className="mt-4 text-neutral-light/80">
-            If you’re bold enough to stop guessing and start scaling with intent—we’re ready.
+            If you’re ready to stop guessing and start growing with intention — we’re ready.
           </p>
         </div>
       </section>
@@ -751,13 +767,13 @@ export default function Home() {
                 Your Growth &amp; Influence, Engineered
               </span>
               <h2 id="final-cta-title" className="mt-6 text-3xl sm:text-4xl md:text-5xl font-semibold max-w-3xl mx-auto">
-                Let's Build the System That Drives Your Next Stage of Growth.
+                Let's Build the Marketing Engine That Moves Your Business Forward.
               </h2>
               <p className="mt-6 text-lg text-neutral-light/80 max-w-2xl mx-auto">
-                You've seen what reactive marketing gets you. Now it's time for something deliberate — a partnership designed for performance, influence, and long-term success.
+                You've seen what guesswork gets you. This is the alternative — a clear plan, a team that executes it, and results you can actually measure.
               </p>
               <p className="mt-4 text-lg text-neutral-light/80 max-w-2xl mx-auto">
-                Whether you're leading a brand, a team, or a movement, we'll give you the system that makes it unstoppable.
+                Whether you're a solo founder or building a growing team, we'll set up the marketing engine that keeps running long after we've built it.
               </p>
 
               <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
@@ -778,7 +794,7 @@ export default function Home() {
                   asChild
                 >
                   <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                    Apply for Partnership
+                    Book a Free 30-Minute Call
                   </a>
                 </Button>
               </div>

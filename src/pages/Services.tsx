@@ -20,16 +20,15 @@ const disciplines = [
     summary: 'A senior operator embedded in your leadership team. We diagnose the constraint, build the plan, and stay accountable to the number — month after month.',
     what: [
       { label: 'Best for', text: 'Founders without a marketing leader, or in-house teams that need senior pattern recognition.' },
-      { label: 'Engagement', text: 'Monthly retainer. 6 month minimum. Embedded 1–2 days/week.' },
       { label: 'Team', text: 'One operator + strategy associate + access to the full TaqHaus stack.' },
-      { label: 'Reporting', text: 'Weekly standups, monthly business review, quarterly board-ready readouts.' },
+      { label: 'Reporting', text: 'Regular standups, business reviews, and performance readouts — cadence agreed with you.' },
     ],
     deliverables: [
-      { num: '01', text: 'Growth diagnosis & constraint identification', meta: 'Week 1–2' },
-      { num: '02', text: '12-month growth blueprint & budget', meta: 'Week 3–4' },
-      { num: '03', text: 'Quarterly OKRs & channel-level KPIs', meta: 'Ongoing' },
-      { num: '04', text: 'Team coaching, hire calibration, vendor management', meta: 'Ongoing' },
-      { num: '05', text: 'Board & investor narrative updates', meta: 'Quarterly' },
+      { num: '01', text: 'Growth diagnosis & constraint identification' },
+      { num: '02', text: '12-month growth blueprint & budget' },
+      { num: '03', text: 'OKRs & channel-level KPIs' },
+      { num: '04', text: 'Team coaching, hire calibration, vendor management' },
+      { num: '05', text: 'Business & investor narrative updates' },
     ],
     cta: 'Discuss an engagement →',
   },
@@ -40,15 +39,14 @@ const disciplines = [
     summary: 'Identity that survives contact with the real world — your sales team, your investors, your hiring page. Not a mood board. A working system.',
     what: [
       { label: 'Best for', text: 'Re-launches, repositioning after PMF, or category-defining bets.' },
-      { label: 'Engagement', text: 'Fixed-scope project. 6–10 weeks.' },
       { label: 'Team', text: 'Strategy lead, designer, copywriter, founder principal.' },
       { label: 'Output', text: 'Brand book, narrative, identity system, launch toolkit.' },
     ],
     deliverables: [
-      { num: '01', text: 'Audience & competitive immersion', meta: 'Week 1–2' },
-      { num: '02', text: 'Positioning, narrative & messaging system', meta: 'Week 3–4' },
-      { num: '03', text: 'Visual identity & type system', meta: 'Week 5–7' },
-      { num: '04', text: 'Brand book + launch toolkit', meta: 'Week 8–10' },
+      { num: '01', text: 'Audience & competitive immersion' },
+      { num: '02', text: 'Positioning, narrative & messaging system' },
+      { num: '03', text: 'Visual identity & type system' },
+      { num: '04', text: 'Brand book + launch toolkit' },
     ],
     cta: 'Start a project →',
   },
@@ -58,16 +56,15 @@ const disciplines = [
     title: <>Websites &amp; product <em>marketing</em></>,
     summary: 'Sites that convert and editorial surfaces that compound. Designed, written, engineered, and shipped — not delivered as a Figma file.',
     what: [
-      { label: 'Best for', text: 'Re-launches, funded-stage refreshes, or sites that haven\'t kept up with the company.' },
-      { label: 'Engagement', text: 'Fixed-scope project. 8–14 weeks.' },
+      { label: 'Best for', text: "Re-launches, funded-stage refreshes, or sites that haven't kept up with the company." },
       { label: 'Stack', text: 'Webflow, Framer, or custom Next.js — we choose for fit, not preference.' },
       { label: 'Includes', text: 'Copy, design, engineering, SEO baseline, CMS training.' },
     ],
     deliverables: [
-      { num: '01', text: 'Information architecture & messaging', meta: 'Week 1–3' },
-      { num: '02', text: 'Design system & key pages', meta: 'Week 4–7' },
-      { num: '03', text: 'Build, QA, & SEO foundation', meta: 'Week 8–12' },
-      { num: '04', text: 'Launch, analytics, ongoing care plan', meta: 'Week 13–14' },
+      { num: '01', text: 'Information architecture & messaging' },
+      { num: '02', text: 'Design system & key pages' },
+      { num: '03', text: 'Build, QA, & SEO foundation' },
+      { num: '04', text: 'Launch, analytics, ongoing care plan' },
     ],
     cta: 'Scope a build →',
   },
@@ -77,17 +74,16 @@ const disciplines = [
     title: <>SEO &amp; organic <em>growth</em></>,
     summary: 'Technical, editorial, and topical authority. Built for AI search engines and human readers in equal measure. Strategies designed to compound.',
     what: [
-      { label: 'Best for', text: 'Sites with a real audience opportunity and the patience for a 6–12 month curve.' },
-      { label: 'Engagement', text: 'Monthly retainer. 6 month minimum.' },
+      { label: 'Best for', text: 'Sites with a real audience opportunity and the patience to play the long game.' },
       { label: 'Output', text: 'Editorial cadence, technical sprints, performance reporting.' },
       { label: 'Specialty', text: 'B2B SaaS, professional services, founder & personal brands.' },
     ],
     deliverables: [
-      { num: '01', text: 'Technical audit & site health programme', meta: 'Quarterly' },
-      { num: '02', text: 'Topical authority map & content roadmap', meta: 'Quarterly' },
-      { num: '03', text: 'Editorial production (8–16 pieces/mo)', meta: 'Monthly' },
-      { num: '04', text: 'Internal linking, schema, & AI-overview optimisation', meta: 'Monthly' },
-      { num: '05', text: 'Digital PR & link acquisition', meta: 'Monthly' },
+      { num: '01', text: 'Technical audit & site health programme' },
+      { num: '02', text: 'Topical authority map & content roadmap' },
+      { num: '03', text: 'Editorial production & publishing' },
+      { num: '04', text: 'Internal linking, schema, & AI-overview optimisation' },
+      { num: '05', text: 'Digital PR & link acquisition' },
     ],
     cta: 'Start a retainer →',
   },
@@ -95,18 +91,18 @@ const disciplines = [
     id: 's05',
     num: '— Discipline 05',
     title: <>Paid <em>acquisition</em></>,
-    summary: 'Performance media that respects the brand. Testing rigour, narrative-first creative, full-funnel measurement. We don\'t buy clicks — we buy customers.',
+    summary: "Performance media that respects the brand. Testing rigour, narrative-first creative, full-funnel measurement. We don't buy clicks — we buy customers.",
     what: [
-      { label: 'Best for', text: 'Brands with $20k+/mo media spend and a real conversion mechanism.' },
+      { label: 'Best for', text: 'Brands ready to invest in paid channels. We manage budgets from $3k/month upward — the full testing programme kicks in around $20k+/month.' },
       { label: 'Channels', text: 'Meta, Google, LinkedIn, programmatic, YouTube, sponsorships.' },
-      { label: 'Output', text: 'Creative production, testing roadmap, weekly performance reviews.' },
+      { label: 'Output', text: 'Creative production, testing roadmap, regular performance reviews.' },
       { label: 'Measurement', text: 'MMM, incrementality tests, attribution layer setup.' },
     ],
     deliverables: [
-      { num: '01', text: 'Account & creative audit', meta: 'Onboarding' },
-      { num: '02', text: 'Testing & learning roadmap', meta: 'Quarterly' },
-      { num: '03', text: 'Creative concepting & production', meta: 'Monthly' },
-      { num: '04', text: 'Performance reporting & iteration', meta: 'Weekly' },
+      { num: '01', text: 'Account & creative audit' },
+      { num: '02', text: 'Testing & learning roadmap' },
+      { num: '03', text: 'Creative concepting & production' },
+      { num: '04', text: 'Performance reporting & iteration' },
     ],
     cta: 'Start a retainer →',
   },
@@ -114,7 +110,7 @@ const disciplines = [
     id: 's06',
     num: '— Discipline 06',
     title: <>Lifecycle &amp; <em>email</em></>,
-    summary: 'The unglamorous channel that quietly outperforms everything else. Flows, broadcasts, a deliverability program, and a sender voice that doesn\'t embarrass you.',
+    summary: "The unglamorous channel that quietly outperforms everything else. Flows, broadcasts, a deliverability program, and a sender voice that doesn't embarrass you.",
     what: [
       { label: 'Best for', text: 'SaaS, e-commerce, professional services with an addressable list.' },
       { label: 'Stack', text: 'Klaviyo, Customer.io, HubSpot, Iterable.' },
@@ -122,10 +118,30 @@ const disciplines = [
       { label: 'Includes', text: 'Deliverability monitoring & warmup if needed.' },
     ],
     deliverables: [
-      { num: '01', text: 'Audit & flow architecture', meta: 'Onboarding' },
-      { num: '02', text: 'Core automation builds', meta: 'Month 1–2' },
-      { num: '03', text: 'Editorial calendar & broadcast cadence', meta: 'Ongoing' },
-      { num: '04', text: 'A/B testing & revenue reporting', meta: 'Ongoing' },
+      { num: '01', text: 'Audit & flow architecture' },
+      { num: '02', text: 'Core automation builds' },
+      { num: '03', text: 'Editorial calendar & broadcast cadence' },
+      { num: '04', text: 'A/B testing & revenue reporting' },
+    ],
+    cta: 'Start a retainer →',
+  },
+  {
+    id: 's07',
+    num: '— Discipline 07',
+    title: <>Social media &amp; <em>community</em></>,
+    summary: "Strategy, content, and management across the channels your audience actually uses. Built to grow an audience, convert attention, and keep your brand voice consistent at scale.",
+    what: [
+      { label: 'Best for', text: "Brands that need a consistent, active social presence but don't have the in-house bandwidth to do it well — from small businesses to growing teams." },
+      { label: 'Channels', text: 'Instagram, LinkedIn, TikTok, X, Facebook — we prioritise based on where your audience actually is.' },
+      { label: 'Output', text: 'Content calendar, copy, creative direction, scheduling, and performance reporting.' },
+      { label: 'Includes', text: 'Community management, influencer identification, and paid-social coordination.' },
+    ],
+    deliverables: [
+      { num: '01', text: 'Channel audit & positioning strategy' },
+      { num: '02', text: 'Content calendar & creative direction' },
+      { num: '03', text: 'Copy, creative briefing & scheduling' },
+      { num: '04', text: 'Community management & engagement' },
+      { num: '05', text: 'Performance reporting & content optimisation' },
     ],
     cta: 'Start a retainer →',
   },
@@ -135,7 +151,7 @@ const models = [
   {
     num: '— Model 01',
     title: 'Sprint',
-    desc: "A focused 4–6 week diagnosis. You'll come out with a strategy, a roadmap, and clarity on what to build next.",
+    desc: "A focused diagnostic engagement. You'll come out with a strategy, a roadmap, and clarity on what to build next.",
     items: ['Growth diagnosis', '12-month roadmap', 'Quarterly OKRs', 'Channel-by-channel plan', 'Executive readout'],
     cta: 'Discuss a sprint',
     featured: false,
@@ -173,7 +189,7 @@ const faqs = [
   },
   {
     q: 'What size company is the right fit?',
-    a: "Most partners are between $2M and $40M in annual revenue, with funded-stage founders and PE-backed mid-market businesses making up the bulk. We'll happily refer you elsewhere if you're outside that band.",
+    a: "We work with businesses at all stages. Our Sprint and Clarity Audit are built for early-stage founders and smaller businesses — fixed scope, clear output, no ongoing commitment. Retainers suit companies with more traction that want an embedded team for the long run. Not sure where you fit? Book a call and we'll give you an honest answer.",
   },
   {
     q: 'Do you work with our existing agencies?',
@@ -181,7 +197,7 @@ const faqs = [
   },
   {
     q: 'How quickly can we start?',
-    a: 'Sprints generally start within 10 business days of contract signature. Retainers typically have a 4–6 week lead time, depending on which pod fits. Equity partnerships are case-by-case and require deeper diligence on both sides.',
+    a: "Sprints are the fastest to kick off. Retainers take a little longer to ramp up properly, and equity partnerships require more due diligence on both sides. Book a call and we'll give you a realistic timeline based on what you need.",
   },
 ]
 
@@ -192,7 +208,7 @@ export default function Services() {
     <div className="tq-editorial">
       <SEO
         title="Services — TaqHaus"
-        description="Strategy, brand, web, SEO, paid, and lifecycle — under one roof. Sprint, retainer, or equity partner engagements."
+        description="Strategy, brand, web, SEO, paid, lifecycle, and social media — all under one roof. Sprint, retainer, or equity partner engagements."
         canonical="/services"
       />
 
@@ -269,7 +285,6 @@ export default function Services() {
                     <li key={del.num}>
                       <span className="marker">{del.num}</span>
                       <span>{del.text}</span>
-                      <span className="meta">{del.meta}</span>
                     </li>
                   ))}
                 </ul>

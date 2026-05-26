@@ -48,7 +48,7 @@ const team = [
   {
     name: 'Ola Raji',
     role: 'Founder · Managing Partner',
-    bio: 'Two-time CMO and one-time co-founder. Leads strategy and the toughest engagements.',
+    bio: 'Two-time CMO and one-time co-founder. Leads strategy and the toughest engagements. Will give you a straight answer in the first conversation.',
     prior: 'Prior · Northwind, Atelier, McKinsey Digital',
     label: 'ola raji',
   },
@@ -158,7 +158,16 @@ export default function About() {
           </div>
 
           <div className="origin">
-            <div className="media-col imgholder" data-label="portrait · ola raji" />
+            <div className="media-col">
+              <div className="case-art case-art--terra" style={{ height: '100%', minHeight: 560 }}>
+                <div className="ca-meta"><span>— Origin</span><span>Est. 2015</span></div>
+                <div className="ca-mark" style={{ fontSize: 'clamp(64px, 9vw, 144px)' }}>A<br />small<br /><em>Haus.</em></div>
+                <div className="ca-foot">
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' as const, opacity: 0.7 }}>Capped at 14&nbsp;partners</div>
+                  <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 32, color: 'var(--ink)', lineHeight: 1 }}>Ola.</div>
+                </div>
+              </div>
+            </div>
             <div className="copy">
               <p>
                 I&rsquo;d been an in-house CMO twice and a consultant once before I started TaqHaus. Each time, I watched the same thing happen: a brand would hire a strategy firm, get a beautiful deck, and then hand it to three different execution agencies who&rsquo;d never met each other. By month four, the plan would be dead and the founder would be back to writing their own LinkedIn posts at midnight.
@@ -238,7 +247,20 @@ export default function About() {
           <div className="team">
             {team.map((m) => (
               <motion.div key={m.name} className="member" {...rv()}>
-                <div className="portrait imgholder" data-label={m.label} />
+                <div className="portrait">
+                  {m.name === 'Ola Raji' ? (
+                    <div className="case-art case-art--terra" style={{ height: '100%', padding: 20 }}>
+                      <div className="ca-meta"><span>Founder</span><span>— 01</span></div>
+                      <div className="ca-mark" style={{ fontSize: 'clamp(36px, 4.5vw, 64px)', lineHeight: 0.92 }}>Ola<br /><em>Raji.</em></div>
+                      <div className="ca-foot" style={{ marginTop: 12, paddingTop: 12 }}>
+                        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase' as const, opacity: 0.75 }}>Toronto · Lagos</div>
+                        <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 20, color: 'var(--ink)' }}>est. &lsquo;15</div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="imgholder" data-label={m.label} style={{ height: '100%' }} />
+                  )}
+                </div>
                 <h4>{m.name}</h4>
                 <div className="role">{m.role}</div>
                 <p className="bio">{m.bio}</p>

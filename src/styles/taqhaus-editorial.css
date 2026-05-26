@@ -392,6 +392,131 @@
   color: var(--paper);
 }
 
+/* ── Case art — editorial typographic case-study covers ─────── */
+
+.tq-editorial .case-art {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: clamp(24px, 3vw, 44px);
+  overflow: hidden;
+  border-radius: 4px;
+  isolation: isolate;
+  color: var(--ink);
+  background: var(--paper-2);
+}
+.tq-editorial .case-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, color-mix(in oklch, currentColor 5%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in oklch, currentColor 5%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}
+.tq-editorial .case-art > * { position: relative; z-index: 1; }
+
+.tq-editorial .case-art .ca-mark {
+  font-family: var(--serif);
+  font-size: clamp(46px, 7.2vw, 132px);
+  line-height: 0.88;
+  letter-spacing: -0.034em;
+  font-weight: 400;
+  align-self: end;
+  text-wrap: balance;
+}
+.tq-editorial .case-art .ca-mark sup {
+  font-family: var(--mono);
+  font-size: 0.18em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: top;
+  margin-left: 0.25em;
+  font-style: normal;
+  opacity: 0.7;
+  font-weight: 400;
+  top: 0.25em;
+  position: relative;
+}
+.tq-editorial .case-art .ca-mark em { font-style: italic; }
+
+.tq-editorial .case-art .ca-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in oklch, currentColor 22%, transparent);
+}
+.tq-editorial .case-art .ca-stat-big {
+  font-family: var(--serif);
+  font-size: clamp(56px, 8vw, 132px);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  font-style: italic;
+  font-weight: 400;
+}
+.tq-editorial .case-art .ca-stat-big em { font-style: italic; }
+.tq-editorial .case-art .ca-stat-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  text-align: right;
+  max-width: 16ch;
+  line-height: 1.4;
+  align-self: flex-end;
+}
+.tq-editorial .case-art .ca-meta {
+  position: absolute;
+  top: clamp(20px, 3vw, 36px);
+  left: clamp(24px, 3vw, 44px);
+  right: clamp(24px, 3vw, 44px);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  z-index: 1;
+  gap: 14px;
+}
+
+.tq-editorial .case-art--ink { background: var(--ink); color: var(--paper); }
+.tq-editorial .case-art--ink .ca-mark em,
+.tq-editorial .case-art--ink .ca-stat-big em { color: var(--terracotta); }
+
+.tq-editorial .case-art--terra { background: var(--terracotta); color: var(--paper); }
+.tq-editorial .case-art--terra::before {
+  background-image:
+    linear-gradient(90deg, color-mix(in oklch, var(--paper) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in oklch, var(--paper) 14%, transparent) 1px, transparent 1px);
+}
+.tq-editorial .case-art--terra .ca-mark em,
+.tq-editorial .case-art--terra .ca-stat-big em { color: var(--ink); font-style: italic; }
+
+.tq-editorial .case-art--paper { background: var(--paper-2); color: var(--ink); }
+.tq-editorial .case-art--paper .ca-mark em,
+.tq-editorial .case-art--paper .ca-stat-big em { color: var(--terracotta); }
+
+.tq-editorial .case-art.compact { padding: clamp(20px, 2.5vw, 32px); }
+.tq-editorial .case-art.compact .ca-mark { font-size: clamp(34px, 4.4vw, 72px); }
+.tq-editorial .case-art.compact .ca-stat-big { font-size: clamp(40px, 5vw, 80px); }
+.tq-editorial .case-art.compact .ca-meta { top: clamp(16px, 2vw, 24px); left: clamp(20px, 2.5vw, 32px); right: clamp(20px, 2.5vw, 32px); }
+
+.tq-editorial .case-art.thumb { padding: 18px; }
+.tq-editorial .case-art.thumb .ca-mark { font-size: clamp(28px, 3.4vw, 48px); }
+.tq-editorial .case-art.thumb .ca-stat-big { font-size: clamp(26px, 3vw, 44px); }
+.tq-editorial .case-art.thumb .ca-meta { top: 14px; left: 18px; right: 18px; font-size: 9.5px; }
+.tq-editorial .case-art.thumb .ca-foot { margin-top: 12px; padding-top: 12px; }
+
 /* ── Reveal on scroll ───────────────────────────────────────── */
 
 .tq-editorial .reveal {
@@ -1131,7 +1256,7 @@
 }
 .tq-editorial .service .deliverables li {
   display: grid;
-  grid-template-columns: 24px 1fr auto;
+  grid-template-columns: 24px 1fr;
   gap: 14px;
   padding: 14px 0;
   border-top: 1px dashed var(--hairline);
