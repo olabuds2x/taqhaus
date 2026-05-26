@@ -44,7 +44,7 @@ export default function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center" aria-label="TaqHaus — Home">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" className="h-14 sm:h-20 w-auto" />
+            <img src="/taqhaus-logo.svg" alt="TaqHaus" className="h-14 sm:h-20 w-auto" />
           </Link>
 
           {/* Desktop nav */}
