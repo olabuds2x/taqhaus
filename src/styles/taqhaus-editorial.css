@@ -136,7 +136,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 130px;
+  height: 68px;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 var(--gutter);
