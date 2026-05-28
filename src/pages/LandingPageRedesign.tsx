@@ -157,17 +157,17 @@ export default function LandingPageRedesign() {
                 Marketing &amp; Business Consultancy
               </span>
               <h1>
-                Marketing that runs itself.<br />
-                <em>Reputation that holds.</em>
+                Grow faster.<br />
+                <em>We handle everything it takes.</em>
               </h1>
             </div>
 
             <motion.div className="hero-right" {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(19px,1.5vw,24px)' }}>
-                TaqHaus is a marketing and business consultancy. We handle the strategy <em style={{ color: 'var(--terracotta)' }}>and</em> do the work — so you don&rsquo;t have to manage five different agencies or figure it out yourself.
+                TaqHaus is a marketing consultancy that handles everything — strategy, content, ads, SEO, social media, email — so you can stop juggling agencies and start seeing results.
               </p>
               <p style={{ marginTop: 16, color: 'var(--ink-2)', fontSize: 'clamp(15px,1.1vw,17px)', lineHeight: 1.6 }}>
-                For businesses that want more customers. For leaders and public figures who need to own their story online.
+                For businesses that want more customers without the agency headache. For leaders and public figures who need to control their story online.
               </p>
               <div className="row" style={{ marginTop: 28 }}>
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
@@ -263,9 +263,9 @@ export default function LandingPageRedesign() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Who we work with</span>
-              <h2 className="display-md">Built for <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>you</em>, whoever you are.</h2>
+              <h2 className="display-md">The right fit for <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>where you are</em>.</h2>
             </div>
-            <p className="lede">Whether you&rsquo;re scaling revenue or managing reputation, we have the services and the experience to help.</p>
+            <p className="lede">Whether you&rsquo;re a business owner who needs their marketing handled, or a public figure who needs to own their presence online — we have the right service and the experience to deliver it.</p>
           </motion.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24, marginTop: 48 }}>
@@ -574,10 +574,10 @@ export default function LandingPageRedesign() {
 
       {/* ── CTA band ─────────────────────────────────────────────────────────── */}
       <motion.div className="cta-band" {...rv()}>
-        <h2>Let&rsquo;s see if we&rsquo;re a <em>fit</em>.</h2>
+        <h2>Ready to get more <em>from</em> your marketing?</h2>
         <div className="stack">
           <p style={{ color: 'color-mix(in oklch, var(--paper) 75%, transparent)', fontSize: 16, lineHeight: 1.55, maxWidth: '42ch', margin: 0 }}>
-            30 minutes. No deck. We&rsquo;ll ask about the constraint, not the brief. You&rsquo;ll leave with a point of view — whether or not we work together.
+            30 minutes. No deck. We&rsquo;ll look at what you have, tell you what&rsquo;s holding you back, and give you a clear point of view — whether or not we work together.
           </p>
           <div className="row">
             <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">

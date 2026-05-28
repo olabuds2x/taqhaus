@@ -1307,6 +1307,8 @@
 .tq-editorial .model ul li::before { content: "✦"; position: absolute; left: 0; top: 1px; color: var(--terracotta); font-size: 12px; }
 .tq-editorial .model .cta { margin-top: auto; padding-top: 18px; }
 .tq-editorial .model.featured ul li { color: color-mix(in oklch, var(--paper) 85%, transparent); }
+.tq-editorial .model:not(.featured) h3 { color: var(--ink); }
+.tq-editorial .model:not(.featured) ul li { color: var(--ink-2); }
 
 @media (max-width: 900px) {
   .tq-editorial .service { grid-template-columns: 1fr; }
