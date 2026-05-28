@@ -274,9 +274,21 @@ export default function LandingPageRedesign() {
             <p className="lede">Whether you&rsquo;re a business owner who needs their marketing handled, or a public figure who needs to own their presence online — we have the right service and the experience to deliver it.</p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24, marginTop: 48 }}>
-            {audiences.map((aud, i) => (
+          {/* Row 1 — 3 cards */}
+          <div className="audiences-row-3">
+            {audiences.slice(0, 3).map((aud, i) => (
               <motion.div key={aud.title} {...rv(i * 0.08)} style={{ background: 'var(--paper)', border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,36px)', display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
+                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px,1.6vw,24px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.015em', color: 'var(--ink)' }}>{aud.title}</h3>
+                <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.65, margin: 0, flex: 1 }}>{aud.desc}</p>
+                <Link to={aud.href} className="btn-link" style={{ marginTop: 8, fontSize: 13.5 }}>{aud.cta} →</Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Row 2 — 2 cards, centred */}
+          <div className="audiences-row-2">
+            {audiences.slice(3).map((aud, i) => (
+              <motion.div key={aud.title} {...rv((i + 3) * 0.08)} style={{ background: 'var(--paper)', border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,36px)', display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px,1.6vw,24px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.015em', color: 'var(--ink)' }}>{aud.title}</h3>
                 <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.65, margin: 0, flex: 1 }}>{aud.desc}</p>
                 <Link to={aud.href} className="btn-link" style={{ marginTop: 8, fontSize: 13.5 }}>{aud.cta} →</Link>
