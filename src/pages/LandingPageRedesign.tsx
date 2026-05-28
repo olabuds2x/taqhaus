@@ -344,23 +344,24 @@ export default function LandingPageRedesign() {
             <div className="stack" style={{ gap: 24 }}>
               <MotionLink to="/case-studies" className="case" {...rv(0.1)}>
                 <div className="media" style={{ display: 'block' }}>
-                  <div className="case-art case-art--ink compact" style={{ height: '100%' }}>
-                    <div className="ca-meta"><span>Case 02</span><span>SaaS · Series A</span></div>
-                    <div className="ca-mark">Kler<em>a.</em></div>
+                  <div className="case-art case-art--terra compact" style={{ height: '100%' }}>
+                    <div className="ca-meta"><span>Case 02</span><span>Small Business · Retail</span></div>
+                    <div className="ca-mark"><em>Maison.</em></div>
                     <div className="ca-foot">
-                      <div className="ca-stat-big">3,400</div>
-                      <div className="ca-stat-label">Signups in 8 wks</div>
+                      <div className="ca-stat-big">3<em>×</em></div>
+                      <div className="ca-stat-label">More enquiries in 90 days</div>
                     </div>
                   </div>
                 </div>
                 <div className="body">
                   <div className="tags">
-                    <span className="tag dot">Launch</span>
-                    <span className="tag">Web</span>
+                    <span className="tag dot">Social</span>
+                    <span className="tag">Email</span>
+                    <span className="tag">SEO</span>
                   </div>
-                  <h3>Klera — A Series A launch that actually launched.</h3>
+                  <h3>Maison — A local retailer that finally got found online.</h3>
                   <p className="desc">
-                    Positioning, narrative, site, paid, and a press programme that turned $9M of funding into 3,400 qualified signups in eight weeks.
+                    An independent retailer with no digital presence and no time to build one. We handled their social media, email, and search end to end. Three times more enquiries in 90 days.
                   </p>
                 </div>
               </MotionLink>
@@ -406,20 +407,20 @@ export default function LandingPageRedesign() {
                 <h3>Northwind — A health system, repositioned.</h3>
               </div>
             </MotionLink>
-            <MotionLink to="/case-studies" className="case" {...rv(0.08)}>
+            <MotionLink to="/case-studies/public-official" className="case" {...rv(0.08)}>
               <div className="media" style={{ display: 'block' }}>
                 <div className="case-art case-art--ink thumb" style={{ height: '100%' }}>
-                  <div className="ca-meta"><span>Case 05</span><span>Capital</span></div>
-                  <div className="ca-mark">Mercato</div>
+                  <div className="ca-meta"><span>Case 05</span><span>Public Figure · Politics</span></div>
+                  <div className="ca-mark" style={{ fontSize: 'clamp(22px,3vw,36px)', lineHeight: 1.1 }}>Elected<br /><em>Official.</em></div>
                   <div className="ca-foot">
-                    <div className="ca-stat-big"><em>$</em>280<em>M</em></div>
-                    <div className="ca-stat-label">Fund III closed</div>
+                    <div className="ca-stat-big">92<em>%</em></div>
+                    <div className="ca-stat-label">Narrative control on page 1</div>
                   </div>
                 </div>
               </div>
               <div className="body">
-                <div className="tags"><span className="tag dot">Web</span></div>
-                <h3>Mercato Capital — LP-facing storytelling.</h3>
+                <div className="tags"><span className="tag dot">Reputation</span><span className="tag">Social</span><span className="tag">Web</span></div>
+                <h3>Anonymous official — Narrative controlled before campaign season.</h3>
               </div>
             </MotionLink>
             <MotionLink to="/case-studies" className="case" {...rv(0.16)}>
