@@ -101,6 +101,12 @@ const audiences = [
     cta: 'Talk to a strategist',
     href: '/contact',
   },
+  {
+    title: 'Outsourcing One Channel',
+    desc: "You don't need a full agency relationship — just someone to take one thing off your plate and run it properly. Social media, email, paid ads, SEO, graphic design. No full retainer required. We treat every channel we manage as if it were our own.",
+    cta: 'Browse standalone services',
+    href: '/services',
+  },
 ]
 
 const faqs = [
