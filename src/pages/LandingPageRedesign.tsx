@@ -15,12 +15,15 @@ const rv = (delay = 0) => ({
 })
 
 const services = [
-  { num: '01', title: 'Growth strategy & fractional CMO', desc: 'A senior operator embedded in your leadership team. We diagnose the constraint, build the plan, and stay accountable to the number.', type: 'Retainer · Sprint' },
-  { num: '02', title: 'Brand & positioning', desc: "The story, the system, and the language. Identity work that survives contact with your sales team, your investors, and your hiring page.", type: 'Project · 6–10 wk' },
-  { num: '03', title: 'Websites & product marketing', desc: "Sites that convert and editorial surfaces that compound. Designed, copywritten, and shipped — not delivered as a Figma file.", type: 'Project · 8–14 wk' },
-  { num: '04', title: 'SEO & organic growth', desc: 'Technical, editorial, and topical authority. Strategies built for AI search and human readers in equal measure.', type: 'Retainer · Ongoing' },
-  { num: '05', title: 'Paid acquisition', desc: 'Performance media that respects the brand. Meta, Google, LinkedIn, programmatic — testing rigour, narrative-first creative.', type: 'Retainer · Ongoing' },
-  { num: '06', title: 'Lifecycle & email', desc: "The unglamorous channel that quietly outperforms everything else. Flows, broadcasts, and a sender voice that doesn't embarrass you.", type: 'Retainer · Ongoing' },
+  { num: '01', title: 'Marketing strategy & consulting', desc: 'We look at your business, find what\'s holding you back, and build a plan to fix it. Senior thinking, practical output.', type: 'Sprint · Retainer' },
+  { num: '02', title: 'Brand & positioning', desc: 'We define what your brand stands for and how to talk about it. Identity that works in the real world — not just a mood board.', type: 'Project · 6–10 wk' },
+  { num: '03', title: 'Website design & development', desc: 'We design and build websites that look the part and turn visitors into enquiries. Copy included. Analytics set up. Shipped.', type: 'Project · 8–14 wk' },
+  { num: '04', title: 'SEO — get found on Google', desc: 'We fix the technical problems, write the content, and build the authority that keeps you ranking. Unlike ads, the results keep working.', type: 'Retainer · Ongoing' },
+  { num: '05', title: 'Paid advertising', desc: 'We run your ads on Meta, Google, and LinkedIn and make sure they bring in customers — not just clicks. Strategy, creative, and reporting.', type: 'Retainer · Ongoing' },
+  { num: '06', title: 'Email marketing', desc: 'We set up and run your email — from welcome sequences to weekly newsletters to promotional campaigns. Your list, finally working.', type: 'Retainer · Ongoing' },
+  { num: '07', title: 'Social media management', desc: 'We run your social media — strategy, content, posting, and replies. Your channels stay active and on-brand without you thinking about it.', type: 'Retainer · Ongoing' },
+  { num: '08', title: 'Graphic design & creative', desc: 'Branded graphics, social visuals, ad creatives, pitch decks. Everything your brand needs to look the part, built to your identity.', type: 'Project · Ongoing' },
+  { num: '09', title: 'Motion graphics & video', desc: 'Reels, explainer videos, animated graphics, ad videos. Scroll-stopping content for every platform — produced end to end.', type: 'Project · Ongoing' },
 ]
 
 const phases = [
@@ -73,10 +76,39 @@ const insightsPreview = [
   },
 ]
 
+const audiences = [
+  {
+    title: 'Small & Growing Businesses',
+    desc: "You don't have a marketing team. You're running the business yourself, or with a small crew. We step in as your marketing department — handling your social media, Google presence, email, ads, and website so you can focus on what you actually do.",
+    cta: 'Start with a free 20-minute audit',
+    href: '/for-small-businesses',
+  },
+  {
+    title: 'Politicians & Public Figures',
+    desc: "Your Google results are your reputation. Your social presence is how people decide if they trust you. We build your digital profile, manage your social channels, and make sure your name shows up the right way online — before, during, and after campaign season.",
+    cta: 'See how we\'ve done it',
+    href: '/public-figures',
+  },
+  {
+    title: 'Growth-Stage Brands',
+    desc: "Businesses with traction that are ready to grow in a more structured, repeatable way. We embed as your senior marketing partner and run the channels that matter most.",
+    cta: 'Book a discovery call',
+    href: '/contact',
+  },
+  {
+    title: 'In-House Teams',
+    desc: "Internal teams who need senior direction, a clear plan, or specialist execution on channels they don't have covered. We work alongside your team — not instead of it.",
+    cta: 'Talk to a strategist',
+    href: '/contact',
+  },
+]
+
 const faqs = [
-  { q: "What makes TaqHaus different from a traditional agency?", a: "We blend strategy and execution under one roof. You get consulting-level diagnostics paired with implementation teams that execute with precision and accountability." },
-  { q: "Do you work with in-house teams or replace them?", a: "Both. Many partners keep their internal teams and lean on us for audits, strategy, and oversight. Others engage our execution team to run critical initiatives end to end." },
-  { q: "How do engagements begin?", a: "Every partnership starts with a discovery call. We evaluate growth levers, narrative, and infrastructure to build the roadmap and investment plan that fits your objectives." },
+  { q: "What makes TaqHaus different from a traditional agency?", a: "We blend strategy and execution under one roof. You get consulting-level thinking paired with a team that does the actual work — so nothing falls through the gap between the plan and the result." },
+  { q: "Do you work with small businesses?", a: "Yes. Many of our clients are business owners who don't have a marketing team and need someone to step in and handle it. We start with a free 20-minute audit to understand where you are and what would move the needle first." },
+  { q: "Can I outsource just one part of my marketing — like social media or email?", a: "Absolutely. You don't need to hand us everything. Many clients come to us for one service — social media management, email marketing, paid ads, or SEO — and we run it as if it were our own channel. No minimum retainer required for single-service engagements." },
+  { q: "Do you work with politicians and public figures?", a: "Yes, and we treat those engagements with full discretion. We've worked with elected officials, candidates, and executives on reputation management, social media, website design, and campaign communications. All enquiries are kept confidential." },
+  { q: "How do engagements begin?", a: "Every partnership starts with a discovery call — or a free 20-minute audit for smaller businesses. We look at what you've got, identify the biggest constraint, and give you an honest read before we talk about scope or budget." },
 ]
 
 export default function LandingPageRedesign() {
@@ -85,16 +117,16 @@ export default function LandingPageRedesign() {
   return (
     <div className="tq-editorial">
       <SEO
-        title="TaqHaus — Marketing & Influence Consultancy"
-        description="A full-stack marketing partner for founders, CMOs, and public figures. Strategy and execution under one roof — brand, web, SEO, paid, email."
-        keywords="marketing consultancy, growth strategy, fractional CMO, SEO, digital marketing, brand strategy"
+        title="TaqHaus — Marketing & Business Consultancy"
+        description="We handle the strategy and do the work — so you don't have to manage five different agencies. For businesses that want more customers and leaders who need to own their story online."
+        keywords="marketing consultancy, marketing agency, social media management, email marketing, SEO, paid advertising, website design, graphic design, reputation management, fractional CMO"
         canonical="/"
       />
 
       {/* ── Topbar ───────────────────────────────────────────────────────────── */}
       <div className="topbar">
         <span className="pulse" />
-        <span>Now booking Q3 engagements · 2 retainer seats open</span>
+        <span>Now booking Q3 engagements · 2 retainer seats open · Serving clients globally</span>
       </div>
 
       {/* ── Navigation ───────────────────────────────────────────────────────── */}
@@ -122,20 +154,22 @@ export default function LandingPageRedesign() {
           <div className="hero-grid">
             <div>
               <span className="eyebrow" style={{ marginBottom: 'clamp(28px,5vw,56px)', display: 'inline-flex' }}>
-                Marketing &amp; Influence Consultancy
+                Marketing &amp; Business Consultancy
               </span>
               <h1>
-                We run your growth<br />
-                <em>like it&rsquo;s ours.</em>
+                Marketing that runs itself.<br />
+                <em>Reputation that holds.</em>
               </h1>
             </div>
 
             <motion.div className="hero-right" {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(19px,1.5vw,24px)' }}>
-                A full-stack marketing partner for founders, CMOs, and public figures.
-                Strategy <em style={{ color: 'var(--terracotta)' }}>and</em> execution under one roof — brand, web, SEO, paid, email, and the messy bits in between.
+                TaqHaus is a marketing and business consultancy. We handle the strategy <em style={{ color: 'var(--terracotta)' }}>and</em> do the work — so you don&rsquo;t have to manage five different agencies or figure it out yourself.
               </p>
-              <div className="row">
+              <p style={{ marginTop: 16, color: 'var(--ink-2)', fontSize: 'clamp(15px,1.1vw,17px)', lineHeight: 1.6 }}>
+                For businesses that want more customers. For leaders and public figures who need to own their story online.
+              </p>
+              <div className="row" style={{ marginTop: 28 }}>
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
                   Book a discovery call <span className="arrow">↗</span>
                 </a>
@@ -143,34 +177,34 @@ export default function LandingPageRedesign() {
               </div>
               <div className="hero-meta">
                 <div className="item">
-                  <span className="label">Engagements</span>
-                  <p>Fractional CMO · Retainers · Sprints</p>
+                  <span className="label">How we work</span>
+                  <p>Single service · Retainer · Fractional CMO · Sprint</p>
                 </div>
                 <div className="item">
-                  <span className="label">Currently with</span>
-                  <p>14 active partners across SaaS, professional services &amp; founder brands</p>
+                  <span className="label">Who we work with</span>
+                  <p>Small businesses · Growing brands · Politicians &amp; public figures — globally</p>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Stats strip */}
+          {/* Stats strip — PLACEHOLDER: replace figures with verified data before launch */}
           <motion.div className="hero-strip" {...rv(0.25)}>
             <div className="cell">
               <span className="stat">11<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>+</em></span>
-              <span className="label">Years compounding growth</span>
+              <span className="label">Years in business</span>
             </div>
             <div className="cell">
-              <span className="stat">$48M</span>
-              <span className="label">Pipeline influenced &rsquo;23–&rsquo;25</span>
+              <span className="stat">avg. 3<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>×</em></span>
+              <span className="label">More qualified leads within 90 days</span>
             </div>
             <div className="cell">
               <span className="stat">96%</span>
-              <span className="label">Retainer renewal</span>
+              <span className="label">Of clients renew year after year</span>
             </div>
             <div className="cell">
-              <span className="stat">1<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>.</em>Haus</span>
-              <span className="label">Strategy &amp; execution, no handoffs</span>
+              <span className="stat">8 <em style={{ color: 'var(--terracotta)', fontStyle: 'italic', fontSize: '0.65em' }}>wks</em></span>
+              <span className="label">Typical time to first results</span>
             </div>
           </motion.div>
         </div>
@@ -194,11 +228,11 @@ export default function LandingPageRedesign() {
             <div className="sh-meta">
               <span className="eyebrow">What we do</span>
               <h2 className="display-md">
-                Six disciplines, <em className="italic" style={{ color: 'var(--terracotta)' }}>one</em> team.
+                Strategy and execution. <em className="italic" style={{ color: 'var(--terracotta)' }}>Under one roof.</em>
               </h2>
             </div>
             <p className="lede">
-              You shouldn&rsquo;t need to brief six different agencies who&rsquo;ve never met each other. We sit inside your business and run the whole stack — strategy through to the shipped artefact.
+              Most businesses work with five different agencies who&rsquo;ve never met each other. We handle everything — from figuring out the plan to doing the actual work. One team. One bill. No gaps.
             </p>
           </motion.div>
 
@@ -217,8 +251,31 @@ export default function LandingPageRedesign() {
 
           <div style={{ marginTop: 48 }}>
             <Link to="/services" className="btn btn-ghost">
-              Explore services in detail <span className="arrow">→</span>
+              See all services in detail <span className="arrow">→</span>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Who we work with ─────────────────────────────────────────────────── */}
+      <section className="section-paper-2">
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Who we work with</span>
+              <h2 className="display-md">Built for <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>you</em>, whoever you are.</h2>
+            </div>
+            <p className="lede">Whether you&rsquo;re scaling revenue or managing reputation, we have the services and the experience to help.</p>
+          </motion.div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24, marginTop: 48 }}>
+            {audiences.map((aud, i) => (
+              <motion.div key={aud.title} {...rv(i * 0.08)} style={{ background: 'var(--paper)', border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,36px)', display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
+                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px,1.6vw,24px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.015em', color: 'var(--ink)' }}>{aud.title}</h3>
+                <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.65, margin: 0, flex: 1 }}>{aud.desc}</p>
+                <Link to={aud.href} className="btn-link" style={{ marginTop: 8, fontSize: 13.5 }}>{aud.cta} →</Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -366,7 +423,7 @@ export default function LandingPageRedesign() {
           </div>
 
           <div style={{ marginTop: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-            <p className="cap" style={{ margin: 0 }}>14 partners · 6 industries · 3 continents</p>
+            <p className="cap" style={{ margin: 0 }}>14 partners · 6 industries · serving globally</p>
             <Link to="/case-studies" className="btn btn-ghost">All case studies <span className="arrow">→</span></Link>
           </div>
         </div>
@@ -524,7 +581,7 @@ export default function LandingPageRedesign() {
           </p>
           <div className="row">
             <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-              Book a discovery call <span className="arrow">↗</span>
+              Book a free 20-minute audit <span className="arrow">↗</span>
             </a>
             <Link to="/services" className="btn btn-ghost">See services</Link>
           </div>

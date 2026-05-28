@@ -20,7 +20,7 @@ const principles = [
   {
     num: '— 02',
     title: <>We won&rsquo;t hide behind <em>vanity</em> metrics.</>,
-    body: 'Reach, impressions, GA sessions — these are inputs, not results. We report on pipeline, revenue, and the metrics your board actually cares about.',
+    body: 'Reach, impressions, page views — these are inputs, not results. We report on enquiries, revenue, and the numbers that actually matter to your business.',
   },
   {
     num: '— 03',
@@ -76,14 +76,14 @@ const team = [
   {
     name: 'Claire Dubois',
     role: 'Director · Lifecycle',
-    bio: "Built lifecycle programmes for the kinds of brands you've probably emailed today.",
+    bio: "Built email programmes for the kinds of brands you've probably bought from today.",
     prior: 'Prior · Glossier, Klaviyo, Smile Direct',
     label: 'claire dubois',
   },
   {
     name: 'Omar Farooq',
     role: 'Director · Web & Engineering',
-    bio: 'Designer who codes. Has shipped more conversion-optimised hero sections than is socially acceptable.',
+    bio: 'Designer who codes. Has shipped more websites that actually convert than is socially acceptable.',
     prior: 'Prior · Vercel, Linear, Webflow',
     label: 'omar farooq',
   },
@@ -221,14 +221,14 @@ export default function About() {
               <span className="eyebrow">By the numbers</span>
               <h2 className="display-md">A small Haus that&rsquo;s done <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>a lot</em>.</h2>
             </div>
-            <p className="lede">Capped at fourteen partners. Eleven years compounding. Numbers as of Q2 2026.</p>
+            <p className="lede">Capped at fourteen partners. Eleven years in business. Numbers as of Q2 2026.</p>
           </div>
 
           <div className="facts">
-            <div className="fact"><span className="num">14</span><span className="lbl">Active partners</span></div>
-            <div className="fact"><span className="num">$48<em>M</em></span><span className="lbl">Pipeline influenced '23–'25</span></div>
-            <div className="fact"><span className="num">96<em>%</em></span><span className="lbl">Retainer renewal</span></div>
-            <div className="fact"><span className="num">11<em>y</em></span><span className="lbl">Years compounding</span></div>
+            <div className="fact"><span className="num">14</span><span className="lbl">Partners max — capped by design</span></div>
+            <div className="fact"><span className="num">11<em>+</em></span><span className="lbl">Years in business</span></div>
+            <div className="fact"><span className="num">96<em>%</em></span><span className="lbl">Client renewal rate</span></div>
+            <div className="fact"><span className="num">avg. 3<em>×</em></span><span className="lbl">More qualified leads within 90 days</span></div>
           </div>
         </div>
       </section>

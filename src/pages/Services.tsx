@@ -12,138 +12,158 @@ const rv = (delay = 0) => ({
   transition: { duration: 0.9, delay, ease: [0.2, 0.7, 0.2, 1] as const },
 })
 
-const disciplines = [
+const strategyServices = [
   {
-    id: 's01',
-    num: '— Discipline 01',
-    title: <>Growth strategy &amp; fractional <em>CMO</em></>,
-    summary: 'A senior operator embedded in your leadership team. We diagnose the constraint, build the plan, and stay accountable to the number — month after month.',
-    what: [
-      { label: 'Best for', text: 'Founders without a marketing leader, or in-house teams that need senior pattern recognition.' },
-      { label: 'Team', text: 'One operator + strategy associate + access to the full TaqHaus stack.' },
-      { label: 'Reporting', text: 'Regular standups, business reviews, and performance readouts — cadence agreed with you.' },
-    ],
+    id: 'marketing-strategy',
+    title: 'Marketing Strategy & Consulting',
+    summary: 'We look at your business, find what\'s holding you back, and build a plan to fix it.',
     deliverables: [
-      { num: '01', text: 'Growth diagnosis & constraint identification' },
-      { num: '02', text: '12-month growth blueprint & budget' },
-      { num: '03', text: 'OKRs & channel-level KPIs' },
-      { num: '04', text: 'Team coaching, hire calibration, vendor management' },
-      { num: '05', text: 'Business & investor narrative updates' },
+      'Marketing audit — what\'s working, what\'s not',
+      '90-day and 12-month action plan',
+      'Channel-by-channel recommendations',
+      'Ongoing advisory and senior oversight',
     ],
-    cta: 'Discuss an engagement →',
+    note: 'Available as a one-off sprint or ongoing advisory.',
   },
   {
-    id: 's02',
-    num: '— Discipline 02',
-    title: <>Brand &amp; <em>positioning</em></>,
-    summary: 'Identity that survives contact with the real world — your sales team, your investors, your hiring page. Not a mood board. A working system.',
-    what: [
-      { label: 'Best for', text: 'Re-launches, repositioning after PMF, or category-defining bets.' },
-      { label: 'Team', text: 'Strategy lead, designer, copywriter, founder principal.' },
-      { label: 'Output', text: 'Brand book, narrative, identity system, launch toolkit.' },
-    ],
+    id: 'fractional-cmo',
+    title: 'Fractional CMO',
+    summary: 'A senior marketing leader on your team — without the full-time salary.',
     deliverables: [
-      { num: '01', text: 'Audience & competitive immersion' },
-      { num: '02', text: 'Positioning, narrative & messaging system' },
-      { num: '03', text: 'Visual identity & type system' },
-      { num: '04', text: 'Brand book + launch toolkit' },
+      'Embedded strategy lead (part-time)',
+      'OKRs and performance tracking',
+      'Team coaching and vendor management',
+      'Board and investor reporting',
     ],
-    cta: 'Start a project →',
+    note: 'Best for businesses that need senior marketing leadership but aren\'t ready to hire full-time.',
   },
   {
-    id: 's03',
-    num: '— Discipline 03',
-    title: <>Websites &amp; product <em>marketing</em></>,
-    summary: 'Sites that convert and editorial surfaces that compound. Designed, written, engineered, and shipped — not delivered as a Figma file.',
-    what: [
-      { label: 'Best for', text: "Re-launches, funded-stage refreshes, or sites that haven't kept up with the company." },
-      { label: 'Stack', text: 'Webflow, Framer, or custom Next.js — we choose for fit, not preference.' },
-      { label: 'Includes', text: 'Copy, design, engineering, SEO baseline, CMS training.' },
-    ],
+    id: 'brand-positioning',
+    title: 'Brand & Positioning',
+    summary: 'We define what your brand stands for and how to talk about it — so your message lands the same way every time.',
     deliverables: [
-      { num: '01', text: 'Information architecture & messaging' },
-      { num: '02', text: 'Design system & key pages' },
-      { num: '03', text: 'Build, QA, & SEO foundation' },
-      { num: '04', text: 'Launch, analytics, ongoing care plan' },
+      'Competitive analysis and positioning',
+      'Messaging framework',
+      'Visual identity system',
+      'Brand guidelines and launch kit',
     ],
-    cta: 'Scope a build →',
+    note: 'Right for re-launches, repositioning, or businesses that have outgrown their current identity.',
+  },
+]
+
+const executionServices = [
+  {
+    id: 'social-media',
+    title: 'Social Media Management',
+    summary: 'We run your social media — strategy, content, posting, and community. Your channels stay active and on-brand without you thinking about it.',
+    deliverables: [
+      'Instagram, LinkedIn, TikTok, Facebook, X',
+      'Content calendar and creative direction',
+      'Post creation, scheduling, and publishing',
+      'Community management and engagement',
+      'Monthly performance reporting',
+    ],
+    href: '/services/social-media',
+    hasPage: true,
   },
   {
-    id: 's04',
-    num: '— Discipline 04',
-    title: <>SEO &amp; organic <em>growth</em></>,
-    summary: 'Technical, editorial, and topical authority. Built for AI search engines and human readers in equal measure. Strategies designed to compound.',
-    what: [
-      { label: 'Best for', text: 'Sites with a real audience opportunity and the patience to play the long game.' },
-      { label: 'Output', text: 'Editorial cadence, technical sprints, performance reporting.' },
-      { label: 'Specialty', text: 'B2B SaaS, professional services, founder & personal brands.' },
-    ],
+    id: 'content-writing',
+    title: 'Content Writing & Copywriting',
+    summary: 'Blog posts, website copy, ad copy, email copy. Written by humans, built to convert.',
     deliverables: [
-      { num: '01', text: 'Technical audit & site health programme' },
-      { num: '02', text: 'Topical authority map & content roadmap' },
-      { num: '03', text: 'Editorial production & publishing' },
-      { num: '04', text: 'Internal linking, schema, & AI-overview optimisation' },
-      { num: '05', text: 'Digital PR & link acquisition' },
+      'Blog posts and articles (SEO-optimised)',
+      'Website and landing page copy',
+      'Ad copy (Meta, Google, LinkedIn)',
+      'Email sequences and campaign copy',
+      'Case studies and sales materials',
     ],
-    cta: 'Start a retainer →',
+    href: '/services/content-writing',
+    hasPage: true,
   },
   {
-    id: 's05',
-    num: '— Discipline 05',
-    title: <>Paid <em>acquisition</em></>,
-    summary: "Performance media that respects the brand. Testing rigour, narrative-first creative, full-funnel measurement. We don't buy clicks — we buy customers.",
-    what: [
-      { label: 'Best for', text: 'Brands ready to invest in paid channels. We manage budgets from $3k/month upward — the full testing programme kicks in around $20k+/month.' },
-      { label: 'Channels', text: 'Meta, Google, LinkedIn, programmatic, YouTube, sponsorships.' },
-      { label: 'Output', text: 'Creative production, testing roadmap, regular performance reviews.' },
-      { label: 'Measurement', text: 'MMM, incrementality tests, attribution layer setup.' },
-    ],
+    id: 'email-marketing',
+    title: 'Email Marketing',
+    summary: 'We set up and run your email — from welcome sequences to weekly newsletters to promotional campaigns. Your list, finally working.',
     deliverables: [
-      { num: '01', text: 'Account & creative audit' },
-      { num: '02', text: 'Testing & learning roadmap' },
-      { num: '03', text: 'Creative concepting & production' },
-      { num: '04', text: 'Performance reporting & iteration' },
+      'Email strategy and platform setup',
+      'Welcome, nurture, and win-back sequences',
+      'Weekly or monthly broadcast campaigns',
+      'List segmentation and deliverability',
+      'Open rate, click rate, and revenue reporting',
     ],
-    cta: 'Start a retainer →',
+    href: '/services/email-marketing',
+    hasPage: true,
   },
   {
-    id: 's06',
-    num: '— Discipline 06',
-    title: <>Lifecycle &amp; <em>email</em></>,
-    summary: "The unglamorous channel that quietly outperforms everything else. Flows, broadcasts, a deliverability program, and a sender voice that doesn't embarrass you.",
-    what: [
-      { label: 'Best for', text: 'SaaS, e-commerce, professional services with an addressable list.' },
-      { label: 'Stack', text: 'Klaviyo, Customer.io, HubSpot, Iterable.' },
-      { label: 'Output', text: 'Strategy, copy, design, build, QA, optimisation.' },
-      { label: 'Includes', text: 'Deliverability monitoring & warmup if needed.' },
-    ],
+    id: 'seo',
+    title: 'SEO — Get Found on Google',
+    summary: 'We get your website ranking so customers find you without paying for every click. Technical fixes, content, and the authority that makes it stick.',
     deliverables: [
-      { num: '01', text: 'Audit & flow architecture' },
-      { num: '02', text: 'Core automation builds' },
-      { num: '03', text: 'Editorial calendar & broadcast cadence' },
-      { num: '04', text: 'A/B testing & revenue reporting' },
+      'Technical SEO audit and fixes',
+      'Keyword research and content planning',
+      'On-page optimisation',
+      'Link building and digital PR',
+      'Monthly rankings and traffic reporting',
     ],
-    cta: 'Start a retainer →',
+    href: '/services/seo',
+    hasPage: true,
   },
   {
-    id: 's07',
-    num: '— Discipline 07',
-    title: <>Social media &amp; <em>community</em></>,
-    summary: "Strategy, content, and management across the channels your audience actually uses. Built to grow an audience, convert attention, and keep your brand voice consistent at scale.",
-    what: [
-      { label: 'Best for', text: "Brands that need a consistent, active social presence but don't have the in-house bandwidth to do it well — from small businesses to growing teams." },
-      { label: 'Channels', text: 'Instagram, LinkedIn, TikTok, X, Facebook — we prioritise based on where your audience actually is.' },
-      { label: 'Output', text: 'Content calendar, copy, creative direction, scheduling, and performance reporting.' },
-      { label: 'Includes', text: 'Community management, influencer identification, and paid-social coordination.' },
-    ],
+    id: 'paid-ads',
+    title: 'Paid Advertising',
+    summary: 'We run your ads on Meta, Google, and LinkedIn and make sure they bring in customers — not just clicks.',
     deliverables: [
-      { num: '01', text: 'Channel audit & positioning strategy' },
-      { num: '02', text: 'Content calendar & creative direction' },
-      { num: '03', text: 'Copy, creative briefing & scheduling' },
-      { num: '04', text: 'Community management & engagement' },
-      { num: '05', text: 'Performance reporting & content optimisation' },
+      'Campaign strategy and audience targeting',
+      'Ad creative (copy and design)',
+      'Meta (Facebook/Instagram) ads',
+      'Google Search and Display ads',
+      'LinkedIn ads',
+      'Weekly performance reporting and optimisation',
     ],
-    cta: 'Start a retainer →',
+    href: '/services/paid-ads',
+    hasPage: true,
+  },
+  {
+    id: 'websites',
+    title: 'Website Design & Development',
+    summary: 'We design and build websites that look the part and actually convert visitors into enquiries. Copy included. Analytics set up. Shipped.',
+    deliverables: [
+      'Custom design (Webflow, Framer, or Next.js)',
+      'Mobile-first and fast-loading',
+      'SEO foundation built in',
+      'Copywriting included',
+      'Analytics setup and 90-day post-launch support',
+    ],
+    href: '/services/websites',
+    hasPage: true,
+  },
+  {
+    id: 'graphic-design',
+    title: 'Graphic Design & Creative',
+    summary: 'Branded graphics, social visuals, ad creatives, pitch decks. Everything your brand needs to look the part.',
+    deliverables: [
+      'Social media graphics and templates',
+      'Ad creative (static and animated)',
+      'Presentation and pitch deck design',
+      'Brand asset creation',
+      'Print and digital collateral',
+    ],
+    href: '/services/graphic-design',
+    hasPage: true,
+  },
+  {
+    id: 'motion-graphics',
+    title: 'Motion Graphics & Video Editing',
+    summary: 'Reels, explainer videos, ad videos, animated graphics. Scroll-stopping content for every platform.',
+    deliverables: [
+      'Social media Reels and short-form video',
+      'Explainer and product videos',
+      'Video ad production',
+      'Motion graphics and animated logos',
+      'Video editing from existing footage',
+    ],
+    href: '/services/motion-graphics',
+    hasPage: true,
   },
 ]
 
@@ -151,7 +171,7 @@ const models = [
   {
     num: '— Model 01',
     title: 'Sprint',
-    desc: "A focused diagnostic engagement. You'll come out with a strategy, a roadmap, and clarity on what to build next.",
+    desc: 'A focused diagnostic engagement. You\'ll come out with a strategy, a roadmap, and clarity on what to build next.',
     items: ['Growth diagnosis', '12-month roadmap', 'Quarterly OKRs', 'Channel-by-channel plan', 'Executive readout'],
     cta: 'Discuss a sprint',
     featured: false,
@@ -166,7 +186,7 @@ const models = [
   },
   {
     num: '— Model 03',
-    title: 'Equity partner',
+    title: 'Equity Partner',
     desc: 'For pre-Series-A founders we deeply believe in. Cash + equity. Aligned incentives. Full skin in the game.',
     items: ['Reduced cash, meaningful equity', 'Full TaqHaus stack on tap', 'Co-author the narrative', 'Investor & PR introductions', 'Founder coaching included'],
     cta: 'Apply',
@@ -177,27 +197,31 @@ const models = [
 const faqs = [
   {
     q: 'How is this different from hiring an in-house team?',
-    a: "You don't pay for ramp. You get a senior operator from day one, plus a working pod underneath them. For most companies under $20M ARR, this is faster and cheaper than building a comparable team in-house — and the pod gets better at your business every month.",
+    a: "You don't pay for ramp time. You get a senior operator from day one, plus a working team underneath them. For most businesses, this is faster and cheaper than building a comparable team in-house.",
   },
   {
     q: 'How is this different from hiring an agency?',
     a: "Agencies sell deliverables. We sell outcomes. We take fewer clients, we sit inside your team, and we measure ourselves on pipeline and revenue — not impressions and decks. If we're not moving the number, we'll tell you before you have to ask.",
   },
   {
-    q: 'What industries do you work with?',
-    a: "B2B SaaS, professional services (legal, finance, healthcare), founder & personal brands, and a small number of consumer brands with a clear story. We pass on anything we don't believe we can make famous.",
+    q: 'Can I hire TaqHaus for just one service?',
+    a: "Yes. Many clients come to us to outsource a single channel — social media management, email marketing, SEO, or paid ads. You don't need to hand us everything. We run the service as if it were our own and report on results, not just activity.",
+  },
+  {
+    q: 'Do you work with small businesses?',
+    a: "Yes. Our free 20-minute audit is built for exactly this — a quick diagnostic where a senior strategist looks at your situation and tells you what to do first. No retainer required to start.",
+  },
+  {
+    q: 'Do you work with politicians and public figures?',
+    a: "Yes. We have a dedicated practice for this. Website design, social media management, reputation management, and campaign communications — all handled with full discretion. Enquiries are kept confidential.",
   },
   {
     q: 'What size company is the right fit?',
-    a: "We work with businesses at all stages. Our Sprint and Clarity Audit are built for early-stage founders and smaller businesses — fixed scope, clear output, no ongoing commitment. Retainers suit companies with more traction that want an embedded team for the long run. Not sure where you fit? Book a call and we'll give you an honest answer.",
-  },
-  {
-    q: 'Do you work with our existing agencies?',
-    a: "Often, yes. If you have a great PR firm, performance shop, or design studio, we'll plug into them and act as the strategic glue. We'd rather elevate good partners than replace them.",
+    a: "We work with businesses at all stages — from solo founders and small businesses to growth-stage brands and large organisations. If you have a real problem and want someone who will actually do the work, we'd like to hear from you.",
   },
   {
     q: 'How quickly can we start?',
-    a: "Sprints are the fastest to kick off. Retainers take a little longer to ramp up properly, and equity partnerships require more due diligence on both sides. Book a call and we'll give you a realistic timeline based on what you need.",
+    a: "Sprints are the fastest to kick off. Single-service retainers can usually start within two weeks. Full retainers take a little longer to ramp up properly. Book a call and we'll give you a realistic timeline.",
   },
 ]
 
@@ -208,14 +232,14 @@ export default function Services() {
     <div className="tq-editorial">
       <SEO
         title="Services — TaqHaus"
-        description="Strategy, brand, web, SEO, paid, lifecycle, and social media — all under one roof. Sprint, retainer, or equity partner engagements."
+        description="Strategy and execution under one roof. Social media management, email marketing, SEO, paid advertising, website design, graphic design, and more — handled by one team."
         canonical="/services"
       />
 
       {/* Topbar */}
       <div className="topbar">
         <span className="pulse" />
-        <span>Now booking Q3 engagements · 2 retainer seats open</span>
+        <span>Now booking Q3 engagements · 2 retainer seats open · Serving clients globally</span>
       </div>
 
       {/* Nav */}
@@ -247,11 +271,11 @@ export default function Services() {
             </div>
             <motion.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
-                You don&rsquo;t need another agency to brief. You need a senior team that diagnoses the constraint, designs the plan, and ships the work — on the same line item, with the same incentive.
+                Most businesses work with five different agencies who&rsquo;ve never met each other. We handle everything — from figuring out the plan to doing the actual work. One team. One bill. No gaps.
               </p>
               <div className="row" style={{ marginTop: 28 }}>
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                  Book a discovery call <span className="arrow">↗</span>
+                  Book a free 20-minute audit <span className="arrow">↗</span>
                 </a>
                 <a href="#engagements" className="btn-link">How we engage</a>
               </div>
@@ -260,49 +284,98 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Disciplines */}
-      <section style={{ paddingTop: 0 }}>
+      {/* Layer 1 — Strategy */}
+      <section>
         <div className="wrap">
-          {disciplines.map((d) => (
-            <motion.div key={d.id} className="service" id={d.id} {...rv()}>
-              <div className="label-col">
-                <span className="num">{d.num}</span>
-                <h2>{d.title}</h2>
-                <p className="summary">{d.summary}</p>
-                <Link to="/contact" className="btn-link">{d.cta}</Link>
-              </div>
-              <div>
-                <div className="what">
-                  {d.what.map((w) => (
-                    <div key={w.label}>
-                      <h4>{w.label}</h4>
-                      <p>{w.text}</p>
-                    </div>
-                  ))}
-                </div>
-                <ul className="deliverables">
-                  {d.deliverables.map((del) => (
-                    <li key={del.num}>
-                      <span className="marker">{del.num}</span>
-                      <span>{del.text}</span>
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Layer 1 — Strategy</span>
+              <h2 className="display-md">We figure out <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>the plan</em>.</h2>
+            </div>
+            <p className="lede">
+              These services are for clients who need direction, a clear roadmap, or senior marketing thinking. We diagnose the constraint and tell you exactly what to do next.
+            </p>
+          </motion.div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginTop: 48 }}>
+            {strategyServices.map((svc, i) => (
+              <motion.div key={svc.id} {...rv(i * 0.08)} style={{ background: 'var(--paper)', border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,36px)', display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
+                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px,1.6vw,24px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.015em', color: 'var(--ink)' }}>{svc.title}</h3>
+                <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.65, margin: 0 }}>{svc.summary}</p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 8 }}>
+                  {svc.deliverables.map((d) => (
+                    <li key={d} style={{ fontSize: 13.5, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                      <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
+                      {d}
                     </li>
                   ))}
                 </ul>
-              </div>
-            </motion.div>
-          ))}
+                {svc.note && (
+                  <p style={{ fontSize: 12.5, color: 'var(--ink-3)', fontFamily: 'var(--mono)', letterSpacing: '0.02em', marginTop: 4, paddingTop: 12, borderTop: '1px solid var(--hairline)' }}>{svc.note}</p>
+                )}
+                <Link to="/contact" className="btn-link" style={{ marginTop: 'auto', fontSize: 13.5 }}>Discuss an engagement →</Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Layer 2 — Execution */}
+      <section className="section-paper-2">
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Layer 2 — Execution</span>
+              <h2 className="display-md">We do <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>the work</em>.</h2>
+            </div>
+            <p className="lede">
+              These are the hands-on services. Each one named plainly. You can take one service, several, or the full stack. Each execution service can be run standalone — no full retainer required.
+            </p>
+          </motion.div>
+
+          <div style={{ marginTop: 48 }}>
+            {executionServices.map((svc) => (
+              <motion.div key={svc.id} {...rv()} style={{ borderTop: '1px solid var(--hairline)', padding: 'clamp(28px,4vw,48px) 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(24px,4vw,64px)', alignItems: 'start' }}>
+                <div>
+                  <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px,1.8vw,28px)', fontWeight: 400, lineHeight: 1.1, letterSpacing: '-0.016em', color: 'var(--ink)', marginBottom: 12 }}>{svc.title}</h3>
+                  <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.65, margin: 0 }}>{svc.summary}</p>
+                  {svc.hasPage && (
+                    <Link to={svc.href} className="btn-link" style={{ marginTop: 20, fontSize: 13.5, display: 'inline-flex' }}>
+                      Full service details →
+                    </Link>
+                  )}
+                </div>
+                <div>
+                  <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--ink-3)', marginBottom: 14 }}>What&rsquo;s included</p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 9 }}>
+                    {svc.deliverables.map((d) => (
+                      <li key={d} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                        <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{ marginTop: 20 }}>
+                    <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ fontSize: 13 }}>
+                      Start a conversation <span className="arrow">→</span>
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Engagement models */}
-      <section className="section-paper-2" id="engagements">
+      <section className="section-dark" id="engagements">
         <div className="wrap">
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Engagement models</span>
-              <h2 className="display-md">Three ways to <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>work</em> with us.</h2>
+              <h2 className="display-md" style={{ color: 'var(--paper)' }}>Three ways to <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>work</em> with us.</h2>
             </div>
-            <p className="lede">Choose the shape that fits the stage you&rsquo;re at. We&rsquo;ll often start with a sprint to make sure we&rsquo;re right for each other before locking into a longer engagement.</p>
+            <p className="lede">Choose the shape that fits where you are. We&rsquo;ll often start with a sprint or a free audit to make sure we&rsquo;re right for each other.</p>
           </motion.div>
 
           <div className="models">
@@ -331,8 +404,41 @@ export default function Services() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* Audience entry points */}
       <section>
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Not sure where to start?</span>
+              <h2 className="display-md">Find your <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>entry point</em>.</h2>
+            </div>
+            <p className="lede">Different clients need different starting points. Here&rsquo;s where most people begin.</p>
+          </motion.div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20, marginTop: 40 }}>
+            <motion.div {...rv(0)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--terracotta)', marginBottom: 12 }}>For small businesses</p>
+              <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Start with a free 20-minute audit.</h4>
+              <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>We review your current marketing, identify the biggest gap, and tell you exactly what to do first. No retainer required.</p>
+              <Link to="/for-small-businesses" className="btn-link" style={{ fontSize: 13.5 }}>Learn more →</Link>
+            </motion.div>
+            <motion.div {...rv(0.08)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--terracotta)', marginBottom: 12 }}>For politicians &amp; public figures</p>
+              <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Book a private conversation.</h4>
+              <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>Reputation management, social media, website design, and campaign communications — handled with full discretion.</p>
+              <Link to="/public-figures" className="btn-link" style={{ fontSize: 13.5 }}>See how we work →</Link>
+            </motion.div>
+            <motion.div {...rv(0.16)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--terracotta)', marginBottom: 12 }}>For growing businesses</p>
+              <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Book a discovery call.</h4>
+              <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>30 minutes. No deck. We&rsquo;ll ask about the constraint, sketch out a plan, and decide together if there&rsquo;s a fit.</p>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-link" style={{ fontSize: 13.5 }}>Book a call →</a>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-paper-2">
         <div className="wrap">
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
@@ -402,7 +508,7 @@ export default function Services() {
             <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
             <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
             <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
-            <div><h4>Elsewhere</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Substack</a></li><li><a href="#">X / Twitter</a></li></ul></div>
+            <div><h4>Elsewhere</h4><ul><li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li><li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li></ul></div>
           </div>
           <div className="footer-bottom">
             <span>© 2026 TaqHaus Consultancy Inc.</span>

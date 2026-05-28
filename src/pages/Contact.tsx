@@ -183,6 +183,7 @@ export default function Contact() {
                           <option>Sprint engagement</option>
                           <option>Monthly retainer</option>
                           <option>Fractional CMO</option>
+                          <option>Political / Election campaign</option>
                           <option>Just exploring</option>
                           <option>Speaking / partnership / press</option>
                         </select>

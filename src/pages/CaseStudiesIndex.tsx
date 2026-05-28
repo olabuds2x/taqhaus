@@ -108,6 +108,57 @@ const cases = [
     mediaLabel: 'case 06 · the halsey group',
     reverse: true,
   },
+  {
+    num: 'Case 07',
+    period: '2024',
+    industry: 'Government & public office',
+    title: <>Public Official — Reputation repositioned <em>before campaign season</em>.</>,
+    tags: ['Reputation management', 'SEO', 'Social media', 'Web'],
+    desc: "A public official facing a significant reputation challenge ahead of an important campaign. Negative search results dominating page one. Outdated social media failing to connect with constituents. We rebuilt the digital presence, cleared the search results, and delivered a campaign outcome the client attributed in part to the work. Client identity kept confidential by request.",
+    stats: [
+      { val: <>Page 1</>, lbl: 'Cleared of negatives' },
+      { val: <><em>5</em>×</>, lbl: 'Social engagement growth' },
+      { val: <>72%</>, lbl: 'Digital following growth' },
+    ],
+    media: 'dark',
+    mediaLabel: 'case 07 · public official',
+    reverse: false,
+    href: '/case-studies/public-official',
+  },
+  {
+    num: 'Case 08',
+    period: '2023 – 2024',
+    industry: 'Education & trading',
+    title: <>TopTier Trader — Reputation crisis <em>resolved</em>.</>,
+    tags: ['Reputation management', 'SEO', 'Content', 'Community'],
+    desc: "A prop trading educator facing a reputation crisis — a viral negative review thread was dominating branded search results and causing qualified leads to drop off. We launched a defensive SEO programme, built an authority content strategy, and implemented a structured review system. Negative content cleared from page one within four months.",
+    stats: [
+      { val: <><em>+</em>142%</>, lbl: 'Branded search volume' },
+      { val: <><em>+</em>96%</>, lbl: 'Non-brand organic traffic' },
+      { val: <>38%</>, lbl: 'Conversion rate lift' },
+    ],
+    media: '',
+    mediaLabel: 'case 08 · toptier trader',
+    reverse: true,
+    href: '/case-studies/toptier-trader',
+  },
+  {
+    num: 'Case 09',
+    period: '2024 – 2025',
+    industry: 'Fintech & prop trading',
+    title: <>The Funded Trader — Organic growth &amp; <em>CAC reduction</em>.</>,
+    tags: ['SEO', 'Paid advertising', 'CRO', 'Email'],
+    desc: "A prop trading firm with a strong product but rising customer acquisition costs and a content strategy that wasn't converting. We rebuilt the SEO around purchase-intent keywords, created comparison content targeting searchers evaluating prop firms, rebuilt the email nurture sequence, and deployed content-led paid media.",
+    stats: [
+      { val: <><em>+</em>188%</>, lbl: 'Organic signups YoY' },
+      { val: <>−34%</>, lbl: 'CAC reduction' },
+      { val: <>41%</>, lbl: 'Trial-to-paid conversion lift' },
+    ],
+    media: 'terra',
+    mediaLabel: 'case 09 · the funded trader',
+    reverse: false,
+    href: '/case-studies/the-funded-trader',
+  },
 ]
 
 export default function CaseStudiesIndex() {
@@ -166,9 +217,9 @@ export default function CaseStudiesIndex() {
       <div className="index-bar">
         <div className="wrap">
           <div className="row">
-            <span>Index 01–06</span>
+            <span>Index 01–09</span>
             <span>14 active partners</span>
-            <span>$48M pipeline influenced</span>
+            <span>Measured results on every engagement</span>
             <span style={{ color: 'var(--terracotta)' }}>2026</span>
           </div>
         </div>
@@ -186,6 +237,8 @@ export default function CaseStudiesIndex() {
             <button className="filter-chip">Healthcare</button>
             <button className="filter-chip">Hospitality</button>
             <button className="filter-chip">Capital</button>
+            <button className="filter-chip">Public figures</button>
+            <button className="filter-chip">Reputation</button>
           </div>
 
           {cases.map((c) => (
@@ -212,9 +265,16 @@ export default function CaseStudiesIndex() {
                     </div>
                   ))}
                 </div>
-                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-link">
-                  Discuss a similar engagement →
-                </a>
+                <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' as const, alignItems: 'center' }}>
+                  {(c as any).href && (
+                    <Link to={(c as any).href} className="btn-link">
+                      Read the case study →
+                    </Link>
+                  )}
+                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-link">
+                    Discuss a similar engagement →
+                  </a>
+                </div>
               </div>
             </motion.article>
           ))}
