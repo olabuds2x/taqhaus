@@ -2682,6 +2682,107 @@
 /* Proof strip band — cream section right under the gold block */
 .tq-editorial .strip-band { padding: clamp(44px, 5vw, 76px) 0; }
 
+/* ============================================================
+   Quiet luxury hero — centred, airy, one accent
+   ============================================================ */
+
+.tq-editorial .hero--quiet { background: var(--paper); }
+.tq-editorial .hero--quiet::before {
+  background: radial-gradient(900px 600px at 50% -10%, color-mix(in oklch, var(--marigold) 9%, transparent), transparent 70%);
+}
+.tq-editorial .hero--quiet::after { display: none; }
+
+.tq-editorial .hero-quiet-inner {
+  position: relative;
+  min-height: calc(100svh - 165px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 5vw, 72px) 0 clamp(96px, 10vw, 130px);
+}
+.tq-editorial .hero-quiet-inner .eyebrow { justify-content: center; }
+.tq-editorial .hero-quiet-inner .eyebrow::after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--terracotta);
+  flex-shrink: 0;
+}
+.tq-editorial .hero-quiet-inner h1 {
+  margin-top: clamp(28px, 3.4vw, 48px);
+  font-family: var(--serif);
+  font-weight: 360;
+  font-size: clamp(44px, 6.6vw, 122px);
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  max-width: 14ch;
+}
+.tq-editorial .hero-quiet-inner h1 em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+.tq-editorial .quiet-lede {
+  margin: clamp(28px, 3.2vw, 44px) 0 0;
+  max-width: 52ch;
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: 1.65;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.tq-editorial .quiet-ctas {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: clamp(32px, 3.6vw, 52px);
+}
+.tq-editorial .quiet-note {
+  margin-top: 24px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--ink-2) 75%, transparent);
+}
+.tq-editorial .hero-quiet-inner .scroll-cue {
+  position: absolute;
+  bottom: clamp(20px, 3vw, 40px);
+  left: 50%;
+  margin-left: -29px;
+}
+
+/* Vertical edge details — the premium whisper */
+.tq-editorial .edge-note {
+  position: absolute;
+  top: 50%;
+  writing-mode: vertical-rl;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--ink-2) 65%, transparent);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.tq-editorial .edge-note--left {
+  left: clamp(10px, 1.6vw, 28px);
+  transform: translateY(-50%) rotate(180deg);
+}
+.tq-editorial .edge-note--right {
+  right: clamp(10px, 1.6vw, 28px);
+  transform: translateY(-50%);
+}
+@media (max-width: 1100px) {
+  .tq-editorial .edge-note { display: none; }
+}
+@media (max-width: 900px) {
+  .tq-editorial .hero-quiet-inner { min-height: 0; padding-bottom: clamp(80px, 12vw, 110px); }
+}
+
 /* CTA band — the loud marigold moment */
 .tq-editorial .cta-band--gold {
   background: var(--marigold);

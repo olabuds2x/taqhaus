@@ -99,7 +99,7 @@ export default function LandingPageRedesign() {
       </div>
 
       {/* ── Navigation ───────────────────────────────────────────────────────── */}
-      <header className="nav nav--gold">
+      <header className="nav">
         <div className="nav-inner">
           <Link to="/" aria-label="TaqHaus — Home">
             <img src="/taqhaus-logo.png" alt="TaqHaus" width={120} height={44} style={{ height: 44, width: 'auto' }} />
@@ -118,66 +118,62 @@ export default function LandingPageRedesign() {
       </header>
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="hero hero--gold">
+      <section className="hero hero--quiet">
+        <span className="edge-note edge-note--left">info@taqhaus.com</span>
+        <span className="edge-note edge-note--right">Toronto · Serving everywhere</span>
         <div className="wrap">
-          <div className="hero-full">
-            <span className="ghost-word" aria-hidden="true">handled.</span>
-            <a
-              className="sticker"
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ top: 'clamp(120px, 16vw, 230px)', right: 'clamp(4px, 5vw, 90px)', pointerEvents: 'auto' }}
-              aria-label="Book a free 20-minute call"
+          <div className="hero-quiet-inner">
+            <motion.span
+              className="eyebrow"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.1 }}
             >
-              <strong>Free</strong>
-              <span>20-min call<br />no pressure</span>
-            </a>
-
-            <div className="hero-stack">
-              <span className="eyebrow" style={{ marginBottom: 'clamp(20px,3vw,36px)', display: 'inline-flex' }}>
-                Marketing, done for you
-              </span>
-              <motion.h1
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
-              >
-                You run the{' '}
-                <span className="scribble">
-                  business
-                  <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M2,7 Q18,2 34,6 T64,5 T98,4" />
-                  </svg>
-                </span>
-                .<br />
-                <em>We handle the <span className="hl" style={{ color: 'var(--paper)' }}>marketing</span>.</em>
-              </motion.h1>
-            </div>
-
-            <motion.div className="hero-bottom" {...rv(0.2)}>
-              <button
-                className="scroll-cue"
-                aria-label="Scroll to see how it works"
-                onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                ↓
-              </button>
-              <div className="hero-lede-block">
-                <p className="lede">
-                  Social media, Google, email, ads, and your website. All of it, handled by one team, so you don't have to learn marketing or hire anyone.
-                </p>
-                <div className="row">
-                  <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
-                    Book a free 20-minute call <span className="arrow">↗</span>
-                  </a>
-                  <a href="#pricing" className="btn-link">See what it costs</a>
-                </div>
-                <span className="hero-note">Free · 20 minutes · One channel at a time · No long contracts</span>
-              </div>
+              Marketing, done for you
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.2, 0.7, 0.2, 1] }}
+            >
+              You run the business.<br />
+              <em>We handle the marketing.</em>
+            </motion.h1>
+            <motion.p
+              className="quiet-lede"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
+            >
+              Social media, Google, email, ads, and your website. All of it, handled by one team, so you don't have to learn marketing or hire anyone.
+            </motion.p>
+            <motion.div
+              className="quiet-ctas"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
+            >
+              <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
+                Book a free 20-minute call <span className="arrow">↗</span>
+              </a>
+              <a href="#pricing" className="btn-link">See what it costs</a>
             </motion.div>
+            <motion.span
+              className="quiet-note"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.55 }}
+            >
+              Free · 20 minutes · One channel at a time · No long contracts
+            </motion.span>
+            <button
+              className="scroll-cue"
+              aria-label="Scroll to see how it works"
+              onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              ↓
+            </button>
           </div>
-
         </div>
       </section>
 
