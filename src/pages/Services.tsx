@@ -234,6 +234,7 @@ export default function Services() {
         title="Services — TaqHaus"
         description="Strategy and execution under one roof. Social media management, email marketing, SEO, paid advertising, website design, graphic design, and more — handled by one team."
         canonical="/services"
+        ogImage="/images/og/services.png"
       />
 
       {/* Topbar */}

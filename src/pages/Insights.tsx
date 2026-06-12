@@ -105,6 +105,7 @@ export default function Insights() {
         title="Insights — TaqHaus"
         description="Essays, teardowns, and field notes from the people doing the work."
         canonical="/insights"
+        ogImage="/images/og/insights.png"
       />
 
       {/* Topbar */}

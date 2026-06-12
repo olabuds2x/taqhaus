@@ -139,6 +139,7 @@ export default function CaseStudyTopTier() {
         description="How TaqHaus stabilized TopTier Trader's reputation, increased branded search by 142%, and built a sustainable growth engine through strategic content and reputation management."
         keywords="reputation management case study, brand perception, review management, trading platform marketing, fintech case study"
         canonical="/case-studies/toptier-trader"
+        ogImage="/images/og/case-toptier-trader.png"
       />
 
       {/* Hero Section */}

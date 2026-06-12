@@ -124,6 +124,7 @@ export default function CaseStudySaaS() {
         description="How we helped a B2B SaaS startup achieve 320% organic traffic growth and reduce CAC by 60% in 6 months through strategic SEO and conversion optimization."
         keywords="SaaS SEO case study, B2B SaaS marketing, reduce customer acquisition cost, organic traffic growth, conversion optimization"
         canonical="/case-studies/saas-startup"
+        ogImage="/images/og/case-saas-startup.png"
       />
 
       {/* Hero Section */}

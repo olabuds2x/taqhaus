@@ -126,6 +126,7 @@ export default function CaseStudyFashion() {
         description="How we helped a fashion e-commerce brand generate $57K in 90 days through strategic email marketing automation and lifecycle campaigns."
         keywords="email marketing case study, Klaviyo automation, e-commerce email strategy, cart abandonment recovery, customer retention"
         canonical="/case-studies/fashion-brand"
+        ogImage="/images/og/case-fashion-brand.png"
       />
 
       {/* Hero Section */}

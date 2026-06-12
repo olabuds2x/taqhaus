@@ -81,23 +81,54 @@ function serveDist() {
   return new Promise(resolve => server.listen(PORT, () => resolve(server)))
 }
 
-async function launchBrowser() {
-  const { chromium } = await import('playwright')
-  try {
-    return await chromium.launch()
-  } catch (err) {
-    if (String(err).includes("Executable doesn't exist")) {
-      console.log('[prerender] Playwright browser missing — installing chromium…')
-      execSync('npx playwright install chromium', { stdio: 'inherit' })
-      return await chromium.launch()
+const sleep = ms => new Promise(r => setTimeout(r, ms))
+
+/**
+ * Launch a browser and return a page with a 1440x900 viewport.
+ * - Local: Playwright's chromium (installing it on first run if needed).
+ * - CI / Vercel: @sparticuz/chromium via puppeteer-core — a chromium build
+ *   with statically linked deps that runs on Amazon Linux build containers,
+ *   where Playwright's stock binaries fail host validation.
+ */
+async function launchPage() {
+  if (!process.env.VERCEL && !process.env.CI) {
+    try {
+      const { chromium } = await import('playwright')
+      let browser
+      try {
+        browser = await chromium.launch()
+      } catch (err) {
+        if (String(err).includes("Executable doesn't exist")) {
+          console.log('[prerender] Playwright browser missing — installing chromium…')
+          execSync('npx playwright install chromium', { stdio: 'inherit' })
+          browser = await chromium.launch()
+        } else {
+          throw err
+        }
+      }
+      const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+      console.log('[prerender] engine: playwright')
+      return { browser, page }
+    } catch (err) {
+      console.warn(`[prerender] Playwright unavailable (${String(err).split('\n')[0]}) — trying serverless chromium…`)
     }
-    throw err
   }
+  const sparticuz = (await import('@sparticuz/chromium')).default
+  const puppeteer = await import('puppeteer-core')
+  const browser = await puppeteer.launch({
+    args: sparticuz.args,
+    executablePath: await sparticuz.executablePath(),
+    headless: true,
+  })
+  const page = await browser.newPage()
+  await page.setViewport({ width: 1440, height: 900 })
+  console.log('[prerender] engine: puppeteer-core + @sparticuz/chromium')
+  return { browser, page }
 }
 
 async function prerenderRoute(page, route) {
   await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'load', timeout: 30000 })
-  await page.waitForTimeout(900)
+  await sleep(900)
   // Scroll through the page so whileInView reveals fire, then return to top.
   await page.evaluate(async () => {
     const height = document.body.scrollHeight
@@ -107,7 +138,7 @@ async function prerenderRoute(page, route) {
     }
     window.scrollTo(0, 0)
   })
-  await page.waitForTimeout(400)
+  await sleep(400)
   const html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML)
 
   const outDir = route === '/' ? DIST : path.join(DIST, route)
@@ -124,17 +155,15 @@ async function main() {
   const routes = [...STATIC_ROUTES, ...(await blogSlugs())]
   const server = await serveDist()
 
-  let browser
+  let browser, page
   try {
-    browser = await launchBrowser()
+    ;({ browser, page } = await launchPage())
   } catch (err) {
-    console.warn('[prerender] Could not launch a browser — skipping prerender. The SPA will still deploy.')
+    console.warn('[prerender] Could not launch any browser — skipping prerender. The SPA will still deploy.')
     console.warn(`[prerender] ${err}`)
     server.close()
     process.exit(0)
   }
-
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
   let ok = 0
   const failed = []
   for (const route of routes) {

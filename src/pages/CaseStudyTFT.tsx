@@ -140,6 +140,7 @@ export default function CaseStudyTFT() {
         description="How TaqHaus helped The Funded Trader achieve 188% organic signup growth and reduce customer acquisition costs by 34% through strategic SEO, conversion optimization, and lifecycle marketing."
         keywords="prop trading marketing, funded trader case study, CAC reduction, conversion optimization, trading platform growth, fintech marketing"
         canonical="/case-studies/the-funded-trader"
+        ogImage="/images/og/case-the-funded-trader.png"
       />
 
       {/* Hero Section */}

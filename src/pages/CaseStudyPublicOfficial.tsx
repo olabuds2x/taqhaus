@@ -124,6 +124,7 @@ export default function CaseStudyPublicOfficial() {
         description="How we helped a public official rebuild their digital reputation, control search narratives, and engage constituents before campaign season."
         keywords="political reputation management, public official marketing, narrative control, political SEO, constituent engagement"
         canonical="/case-studies/public-official"
+        ogImage="/images/og/case-public-official.png"
       />
       {/* Hero Section */}
       <section className="py-16 bg-black border-b border-white/10">
