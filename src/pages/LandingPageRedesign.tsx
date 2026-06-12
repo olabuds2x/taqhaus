@@ -15,34 +15,33 @@ const rv = (delay = 0) => ({
 })
 
 const services = [
-  { num: '01', title: 'Marketing strategy & consulting', desc: 'We look at your business, find what\'s holding you back, and build a plan to fix it. Senior thinking, practical output.', type: 'Sprint · Retainer' },
-  { num: '02', title: 'Brand & positioning', desc: 'We define what your brand stands for and how to talk about it. Identity that works in the real world — not just a mood board.', type: 'Project · 6–10 wk' },
-  { num: '03', title: 'Website design & development', desc: 'We design and build websites that look the part and turn visitors into enquiries. Copy included. Analytics set up. Shipped.', type: 'Project · 8–14 wk' },
-  { num: '04', title: 'SEO — get found on Google', desc: 'We fix the technical problems, write the content, and build the authority that keeps you ranking. Unlike ads, the results keep working.', type: 'Retainer · Ongoing' },
-  { num: '05', title: 'Paid advertising', desc: 'We run your ads on Meta, Google, and LinkedIn and make sure they bring in customers — not just clicks. Strategy, creative, and reporting.', type: 'Retainer · Ongoing' },
-  { num: '06', title: 'Email marketing', desc: 'We set up and run your email — from welcome sequences to weekly newsletters to promotional campaigns. Your list, finally working.', type: 'Retainer · Ongoing' },
-  { num: '07', title: 'Social media management', desc: 'We run your social media — strategy, content, posting, and replies. Your channels stay active and on-brand without you thinking about it.', type: 'Retainer · Ongoing' },
-  { num: '08', title: 'Graphic design & creative', desc: 'Branded graphics, social visuals, ad creatives, pitch decks. Everything your brand needs to look the part, built to your identity.', type: 'Project · Ongoing' },
-  { num: '09', title: 'Motion graphics & video', desc: 'Reels, explainer videos, animated graphics, ad videos. Scroll-stopping content for every platform — produced end to end.', type: 'Project · Ongoing' },
+  { num: '01', title: 'Marketing strategy & consulting', desc: 'We find what is holding you back and build the plan to fix it.', type: 'Sprint · Retainer' },
+  { num: '02', title: 'Brand & positioning', desc: 'What your brand stands for, and how to say it everywhere.', type: 'Project · 6–10 wk' },
+  { num: '03', title: 'Website design & development', desc: 'Designed, written, built, shipped. Visitors become enquiries.', type: 'Project · 8–14 wk' },
+  { num: '04', title: 'SEO — get found on Google', desc: 'Rank for the searches that matter. Results that compound.', type: 'Retainer · Ongoing' },
+  { num: '05', title: 'Paid advertising', desc: 'Meta, Google, LinkedIn. Customers, not clicks.', type: 'Retainer · Ongoing' },
+  { num: '06', title: 'Email marketing', desc: 'Welcome flows to weekly sends. Your list, finally working.', type: 'Retainer · Ongoing' },
+  { num: '07', title: 'Social media management', desc: 'Strategy, content, posting, replies. Always on, always on-brand.', type: 'Retainer · Ongoing' },
+  { num: '08', title: 'Graphic design & creative', desc: 'Social visuals, ad creative, decks. Built to your identity.', type: 'Project · Ongoing' },
+  { num: '09', title: 'Motion graphics & video', desc: 'Reels, explainers, ad video. Produced end to end.', type: 'Project · Ongoing' },
 ]
 
 const phases = [
-  { num: 'phase 01', title: 'Diagnose', desc: "A two-week deep dive into your funnel, your numbers, your customers, and your competition. We come back with a thesis — or we tell you we're not the right fit.", period: 'Weeks 01–02' },
-  { num: 'phase 02', title: 'Design the plan', desc: 'A 12-month growth blueprint. Positioning, channels, content, measurement. Specific enough to ship from on Monday.', period: 'Weeks 03–04' },
-  { num: 'phase 03', title: 'Build & ship', desc: "Brand, site, content engine, paid programme, lifecycle. Whatever the plan calls for — we ship the work, we don't outsource it.", period: 'Weeks 05–14' },
-  { num: 'phase 04', title: 'Compound', desc: 'Monthly business reviews, quarterly resets, and a team that gets better at your category every month. Most partners stay 18+ months.', period: 'Month 04+' },
+  { num: 'phase 01', title: 'Diagnose', desc: 'Two weeks inside your funnel, numbers, and competition. We come back with a thesis, or tell you we are not the fit.' },
+  { num: 'phase 02', title: 'Design the plan', desc: 'A 12-month growth blueprint. Specific enough to ship from on Monday.' },
+  { num: 'phase 03', title: 'Build & ship', desc: 'Brand, site, content, paid, lifecycle. We ship the work ourselves.' },
+  { num: 'phase 04', title: 'Compound', desc: 'Monthly reviews, quarterly resets. Most partners stay 18+ months.' },
 ]
 
 const engagements = [
-  { num: '— 01', title: 'Sprint', desc: 'A 4–6 week diagnosis. Strategy, plan, and a 12-month roadmap you actually own.', from: 'From $14k', duration: '4–6 wk' },
-  { num: '— 02', title: 'Retainer', desc: 'Embedded leadership and execution across the channels that matter most to you.', from: 'From $9k / mo', duration: '6 mo min' },
-  { num: '— 03', title: 'Equity partner', desc: 'For pre-Series A founders. Cash + equity. Aligned incentives, full skin in the game.', from: 'Selective', duration: 'By invite' },
+  { num: '— 01', title: 'Sprint', desc: 'A focused diagnosis. Strategy, plan, and a 12-month roadmap you own.', from: 'From $14k', duration: '4–6 wk' },
+  { num: '— 02', title: 'Retainer', desc: 'Embedded leadership and execution across the channels that matter most.', from: 'From $9k / mo', duration: '6 mo min' },
+  { num: '— 03', title: 'Equity partner', desc: 'For pre-Series A founders. Cash + equity. Full skin in the game.', from: 'Selective', duration: 'By invite' },
 ]
 
 const marqueeLogos = [
   { src: '/logos/logo-1.png', alt: 'Client logo' },
   { src: '/logos/logo-2.jpg', alt: 'Spirit Airlines' },
-  { src: '/logos/logo-3.png', alt: 'Texas Tech Athletics' },
   { src: '/logos/logo-4.jpeg', alt: 'Client logo' },
   { src: '/logos/logo-5.png', alt: 'Client logo' },
   { src: '/logos/logo-6.jpg', alt: 'Client logo' },
@@ -57,64 +56,55 @@ const insightsPreview = [
     type: 'Essay',
     time: '8 min',
     title: 'The Marketing Audit Framework We Use to Find $50K in Wasted Spend',
-    body: "Most businesses are leaking budget in predictable places. Here's the exact diagnostic we run before every engagement.",
+    body: 'The exact diagnostic we run before every engagement.',
     slug: 'marketing-audit-framework',
   },
   {
     type: 'Playbook',
     time: '5 min',
     title: 'What GEO Is and Why Your Business Needs It Before 2027',
-    body: 'AI search results are reshaping how buyers find vendors. Generative Engine Optimisation is the new baseline for organic visibility.',
+    body: 'AI search is reshaping how buyers find vendors. The new baseline for visibility.',
     slug: 'what-is-geo',
   },
   {
     type: 'Field Notes',
     time: '7 min',
     title: "Email Marketing ROI: Why It's Still the Highest-Leverage Channel",
-    body: 'Every quarter someone declares email dead. Every quarter the data proves the opposite. A case for staying boring and profitable.',
+    body: 'Every quarter someone declares email dead. The data keeps disagreeing.',
     slug: 'email-marketing-roi',
   },
 ]
 
 const audiences = [
   {
-    title: 'Small & Growing Businesses',
-    desc: "You don't have a marketing team. You're running the business yourself, or with a small crew. We step in as your marketing department — handling your social media, Google presence, email, ads, and website so you can focus on what you actually do.",
+    kicker: 'For owners',
+    title: 'Small & growing businesses',
+    desc: 'No marketing team? We become it. Social, search, email, ads, and your website, handled.',
     cta: 'Start with a free 20-minute audit',
     href: '/for-small-businesses',
   },
   {
-    title: 'Politicians & Public Figures',
-    desc: "Your Google results are your reputation. Your social presence is how people decide if they trust you. We build your digital profile, manage your social channels, and make sure your name shows up the right way online — before, during, and after campaign season.",
-    cta: 'See how we\'ve done it',
-    href: '/public-figures',
-  },
-  {
-    title: 'Growth-Stage Brands',
-    desc: "Businesses with traction that are ready to grow in a more structured, repeatable way. We embed as your senior marketing partner and run the channels that matter most.",
-    cta: 'Book a discovery call',
-    href: '/contact',
-  },
-  {
-    title: 'In-House Teams',
-    desc: "Internal teams who need senior direction, a clear plan, or specialist execution on channels they don't have covered. We work alongside your team — not instead of it.",
-    cta: 'Talk to a strategist',
-    href: '/contact',
-  },
-  {
-    title: 'Outsourcing One Channel',
-    desc: "You don't need a full agency relationship — just someone to take one thing off your plate and run it properly. Social media, email, paid ads, SEO, graphic design. No full retainer required. We treat every channel we manage as if it were our own.",
-    cta: 'Browse standalone services',
+    kicker: 'For founders & CMOs',
+    title: 'Growth-stage brands',
+    desc: 'Traction, but no system. We embed as your senior marketing partner and make growth repeatable.',
+    cta: 'See how an engagement works',
     href: '/services',
+  },
+  {
+    kicker: 'Private & discreet',
+    title: 'Politicians & public figures',
+    desc: 'Your name is the asset. We shape how it reads online, before campaign season decides for you.',
+    cta: 'See how we have done it',
+    href: '/public-figures',
   },
 ]
 
 const faqs = [
-  { q: "What makes TaqHaus different from a traditional agency?", a: "We blend strategy and execution under one roof. You get consulting-level thinking paired with a team that does the actual work — so nothing falls through the gap between the plan and the result." },
-  { q: "Do you work with small businesses?", a: "Yes. Many of our clients are business owners who don't have a marketing team and need someone to step in and handle it. We start with a free 20-minute audit to understand where you are and what would move the needle first." },
-  { q: "Can I outsource just one part of my marketing — like social media or email?", a: "Absolutely. You don't need to hand us everything. Many clients come to us for one service — social media management, email marketing, paid ads, or SEO — and we run it as if it were our own channel. No minimum retainer required for single-service engagements." },
-  { q: "Do you work with politicians and public figures?", a: "Yes, and we treat those engagements with full discretion. We've worked with elected officials, candidates, and executives on reputation management, social media, website design, and campaign communications. All enquiries are kept confidential." },
-  { q: "How do engagements begin?", a: "Every partnership starts with a discovery call — or a free 20-minute audit for smaller businesses. We look at what you've got, identify the biggest constraint, and give you an honest read before we talk about scope or budget." },
+  { q: 'What makes TaqHaus different from a traditional agency?', a: 'Strategy and execution under one roof. The people who build your plan are the people who do the work, so nothing falls through the gap between the two.' },
+  { q: 'Do you work with small businesses?', a: 'Yes. Many clients have no marketing team at all. We start with a free 20-minute audit to find what would move the needle first.' },
+  { q: 'Can I outsource just one channel, like social media or email?', a: 'Yes. Social, email, paid ads, SEO, or design as a standalone service. No minimum retainer for single-channel engagements.' },
+  { q: 'Do you work with politicians and public figures?', a: 'Yes, with full discretion. Reputation management, social media, websites, and campaign communications. All enquiries are confidential.' },
+  { q: 'How do engagements begin?', a: 'With a free 20-minute audit. We look at what you have, identify the biggest constraint, and give you an honest read before we talk scope or budget.' },
 ]
 
 export default function LandingPageRedesign() {
@@ -132,14 +122,14 @@ export default function LandingPageRedesign() {
       {/* ── Topbar ───────────────────────────────────────────────────────────── */}
       <div className="topbar">
         <span className="pulse" />
-        <span>Now booking Q3 engagements · 2 retainer seats open · Serving clients globally</span>
+        <span>Now booking Q3 engagements · Serving clients globally</span>
       </div>
 
       {/* ── Navigation ───────────────────────────────────────────────────────── */}
       <header className="nav">
         <div className="nav-inner">
           <Link to="/" aria-label="TaqHaus — Home">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
+            <img src="/taqhaus-logo.png" alt="TaqHaus" width={120} height={44} style={{ height: 44, width: 'auto' }} />
           </Link>
           <nav className="nav-links">
             <Link to="/services">Services</Link>
@@ -149,7 +139,7 @@ export default function LandingPageRedesign() {
             <Link to="/contact">Contact</Link>
           </nav>
           <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
-            Book a call <span className="arrow">→</span>
+            Get a free audit <span className="arrow">→</span>
           </a>
         </div>
       </header>
@@ -169,48 +159,51 @@ export default function LandingPageRedesign() {
             </div>
 
             <motion.div className="hero-right" {...rv(0.15)}>
-              <p className="lede" style={{ fontSize: 'clamp(19px,1.5vw,24px)' }}>
-                TaqHaus is a marketing consultancy that handles everything — strategy, content, ads, SEO, social media, email — so you can stop juggling agencies and start seeing results.
+              <p className="lede">
+                Strategy, content, ads, SEO, social, email. One senior team, one plan, one bill.
               </p>
-              <p style={{ marginTop: 16, color: 'var(--ink-2)', fontSize: 'clamp(15px,1.1vw,17px)', lineHeight: 1.6 }}>
-                For businesses that want more customers without the agency headache. For leaders and public figures who need to control their story online.
-              </p>
-              <div className="row" style={{ marginTop: 28 }}>
-                <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                  Book a discovery call <span className="arrow">↗</span>
+              <div className="row" style={{ marginTop: 8 }}>
+                <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
+                  Book a free 20-minute audit <span className="arrow">↗</span>
                 </a>
                 <Link to="/case-studies" className="btn-link">See the work</Link>
               </div>
               <div className="hero-meta">
                 <div className="item">
                   <span className="label">How we work</span>
-                  <p>Single service · Retainer · Fractional CMO · Sprint</p>
+                  <p>Single service · Retainer · Sprint · Fractional CMO</p>
                 </div>
                 <div className="item">
                   <span className="label">Who we work with</span>
-                  <p>Small businesses · Growing brands · Politicians &amp; public figures — globally</p>
+                  <p>Small businesses · Growth brands · Public figures</p>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Stats strip — PLACEHOLDER: replace figures with verified data before launch */}
-          <motion.div className="hero-strip" {...rv(0.25)}>
-            <div className="cell">
-              <span className="stat">11<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>+</em></span>
-              <span className="label">Years in business</span>
+          {/* Proof strip — figures from published case studies */}
+          <motion.div {...rv(0.25)}>
+            <div className="hero-strip" style={{ marginTop: 'clamp(56px,7vw,96px)' }}>
+              <div className="cell">
+                <span className="stat"><em>+</em>188<em>%</em></span>
+                <span className="label">Organic signups · The Funded Trader</span>
+              </div>
+              <div className="cell">
+                <span className="stat"><em>+</em>142<em>%</em></span>
+                <span className="label">Branded search · TopTier Trader</span>
+              </div>
+              <div className="cell">
+                <span className="stat"><em>+</em>320<em>%</em></span>
+                <span className="label">Organic traffic · SaaS startup</span>
+              </div>
+              <div className="cell">
+                <span className="stat">$57<em>K</em></span>
+                <span className="label">Email revenue in 90 days · Fashion brand</span>
+              </div>
             </div>
-            <div className="cell">
-              <span className="stat">avg. 3<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>×</em></span>
-              <span className="label">More qualified leads within 90 days</span>
-            </div>
-            <div className="cell">
-              <span className="stat">96%</span>
-              <span className="label">Of clients renew year after year</span>
-            </div>
-            <div className="cell">
-              <span className="stat">8 <em style={{ color: 'var(--terracotta)', fontStyle: 'italic', fontSize: '0.65em' }}>wks</em></span>
-              <span className="label">Typical time to first results</span>
+            <div className="strip-note">
+              <span>Results from individual engagements, not averages</span>
+              <Link to="/case-studies">Read the case studies →</Link>
             </div>
           </motion.div>
         </div>
@@ -221,11 +214,160 @@ export default function LandingPageRedesign() {
         <div className="marquee-track">
           {[...marqueeLogos, ...marqueeLogos].map((logo, i) => (
             <span key={i} className="marquee-item">
-              <img src={logo.src} alt={logo.alt} className="marquee-logo" />
+              <img src={logo.src} alt={logo.alt} className="marquee-logo" loading="lazy" />
             </span>
           ))}
         </div>
       </div>
+
+      {/* ── Featured work — proof before pitch ───────────────────────────────── */}
+      <section className="section-paper-2">
+        <div className="wrap">
+          <motion.div className="section-head" {...rv()}>
+            <div className="sh-meta">
+              <span className="eyebrow">Selected work</span>
+              <h2 className="display-md">Receipts, <em className="italic" style={{ color: 'var(--terracotta)' }}>not reels</em>.</h2>
+            </div>
+            <p className="lede">
+              Real engagements, real timelines. Every card links to the full story.
+            </p>
+          </motion.div>
+
+          <div className="work-grid">
+            <MotionLink to="/case-studies/the-funded-trader" className="case feature" {...rv()}>
+              <div className="media">
+                <div className="case-art case-art--terra">
+                  <div className="ca-meta"><span>Case 01</span><span>Prop trading · Fintech</span></div>
+                  <div className="ca-mark">The Funded<br /><em>Trader.</em></div>
+                  <div className="ca-foot">
+                    <div className="ca-stat-big"><em>+</em>188<em>%</em></div>
+                    <div className="ca-stat-label">Organic signups</div>
+                  </div>
+                </div>
+              </div>
+              <div className="body">
+                <div className="tags">
+                  <span className="tag dot">SEO</span>
+                  <span className="tag">Content</span>
+                  <span className="tag">Lifecycle</span>
+                </div>
+                <h3>Scaled qualified trader signups while cutting CAC.</h3>
+                <p className="desc">
+                  Organic built into the primary acquisition channel, so growth stopped depending on ad spend.
+                </p>
+                <div className="stats">
+                  <div><div className="stat">+188%</div><span className="lbl">Organic signups</span></div>
+                  <div><div className="stat">−34%</div><span className="lbl">CAC</span></div>
+                  <div><div className="stat">90d</div><span className="lbl">First results</span></div>
+                </div>
+              </div>
+            </MotionLink>
+
+            <div className="stack" style={{ gap: 24 }}>
+              <MotionLink to="/case-studies/toptier-trader" className="case" {...rv(0.1)}>
+                <div className="media">
+                  <div className="case-art case-art--ink compact">
+                    <div className="ca-meta"><span>Case 02</span><span>Prop trading · Reputation</span></div>
+                    <div className="ca-mark">TopTier<br /><em>Trader.</em></div>
+                    <div className="ca-foot">
+                      <div className="ca-stat-big"><em>+</em>142<em>%</em></div>
+                      <div className="ca-stat-label">Branded search</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="body">
+                  <div className="tags">
+                    <span className="tag dot">Reputation</span>
+                    <span className="tag">SEO</span>
+                  </div>
+                  <h3>Stabilised reputation, then grew search demand.</h3>
+                  <p className="desc">
+                    +142% branded search and +96% non-brand traffic after the narrative was rebuilt.
+                  </p>
+                </div>
+              </MotionLink>
+              <MotionLink to="/case-studies/saas-startup" className="case" {...rv(0.18)}>
+                <div className="media">
+                  <div className="case-art case-art--paper compact">
+                    <div className="ca-meta"><span>Case 03</span><span>SaaS · B2B</span></div>
+                    <div className="ca-mark">Page 5 <em>→ 1.</em></div>
+                    <div className="ca-foot">
+                      <div className="ca-stat-big"><em>+</em>320<em>%</em></div>
+                      <div className="ca-stat-label">Organic traffic</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="body">
+                  <div className="tags">
+                    <span className="tag dot">SEO</span>
+                    <span className="tag">Content</span>
+                  </div>
+                  <h3>From page 5 to page 1 in six months.</h3>
+                  <p className="desc">
+                    +320% organic traffic and a 60% lower CAC for a SaaS up against funded incumbents.
+                  </p>
+                </div>
+              </MotionLink>
+            </div>
+          </div>
+
+          <div className="work-grid-secondary">
+            <MotionLink to="/case-studies/fashion-brand" className="case" {...rv()}>
+              <div className="media">
+                <div className="case-art case-art--terra thumb">
+                  <div className="ca-meta"><span>Case 04</span><span>Fashion · Ecommerce</span></div>
+                  <div className="ca-mark"><em>$57K.</em></div>
+                  <div className="ca-foot">
+                    <div className="ca-stat-big">90<em>d</em></div>
+                    <div className="ca-stat-label">From email automation</div>
+                  </div>
+                </div>
+              </div>
+              <div className="body">
+                <div className="tags"><span className="tag dot">Email</span><span className="tag">Lifecycle</span></div>
+                <h3>$57K in 90 days from email automation.</h3>
+              </div>
+            </MotionLink>
+            <MotionLink to="/case-studies/public-official" className="case" {...rv(0.08)}>
+              <div className="media">
+                <div className="case-art case-art--ink thumb">
+                  <div className="ca-meta"><span>Case 05</span><span>Public figure · Politics</span></div>
+                  <div className="ca-mark">Elected<br /><em>Official.</em></div>
+                  <div className="ca-foot">
+                    <div className="ca-stat-big">5<em>×</em></div>
+                    <div className="ca-stat-label">Engagement growth</div>
+                  </div>
+                </div>
+              </div>
+              <div className="body">
+                <div className="tags"><span className="tag dot">Reputation</span><span className="tag">Social</span></div>
+                <h3>Digital image repositioned before campaign season.</h3>
+              </div>
+            </MotionLink>
+            <motion.a href={CALENDLY_URL} className="case cta-tile" target="_blank" rel="noopener noreferrer" {...rv(0.16)}>
+              <div className="media">
+                <div className="case-art thumb">
+                  <div className="ca-meta"><span>Case 06</span><span>Unwritten</span></div>
+                  <div className="ca-mark">Your name<br /><em>here.</em></div>
+                  <div className="ca-foot">
+                    <div className="ca-stat-big"><em>?</em></div>
+                    <div className="ca-stat-label">Let's find your number</div>
+                  </div>
+                </div>
+              </div>
+              <div className="body">
+                <div className="tags"><span className="tag dot">Free audit</span></div>
+                <h3>The next case study starts with a 20-minute call.</h3>
+              </div>
+            </motion.a>
+          </div>
+
+          <div style={{ marginTop: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+            <p className="cap" style={{ margin: 0 }}>Full engagement details in every case study</p>
+            <Link to="/case-studies" className="btn btn-ghost">All case studies <span className="arrow">→</span></Link>
+          </div>
+        </div>
+      </section>
 
       {/* ── Services preview ─────────────────────────────────────────────────── */}
       <section>
@@ -238,7 +380,7 @@ export default function LandingPageRedesign() {
               </h2>
             </div>
             <p className="lede">
-              Most businesses work with five different agencies who&rsquo;ve never met each other. We handle everything — from figuring out the plan to doing the actual work. One team. One bill. No gaps.
+              One team that builds the plan and does the work. One bill. No gaps.
             </p>
           </motion.div>
 
@@ -271,224 +413,26 @@ export default function LandingPageRedesign() {
               <span className="eyebrow">Who we work with</span>
               <h2 className="display-md">The right fit for <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>where you are</em>.</h2>
             </div>
-            <p className="lede">Whether you&rsquo;re a business owner who needs their marketing handled, or a public figure who needs to own their presence online — we have the right service and the experience to deliver it.</p>
           </motion.div>
 
-          {/* Row 1 — 3 cards */}
           <div className="audiences-row-3">
-            {audiences.slice(0, 3).map((aud, i) => (
-              <motion.div key={aud.title} {...rv(i * 0.08)} style={{ background: 'var(--paper)', border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,36px)', display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
-                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px,1.6vw,24px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.015em', color: 'var(--ink)' }}>{aud.title}</h3>
-                <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.65, margin: 0, flex: 1 }}>{aud.desc}</p>
-                <Link to={aud.href} className="btn-link" style={{ marginTop: 8, fontSize: 13.5 }}>{aud.cta} →</Link>
+            {audiences.map((aud, i) => (
+              <motion.div key={aud.title} className="aud-card" {...rv(i * 0.08)}>
+                <span className="kicker">{aud.kicker}</span>
+                <h3>{aud.title}</h3>
+                <p>{aud.desc}</p>
+                <Link to={aud.href} className="btn-link">{aud.cta} →</Link>
               </motion.div>
             ))}
           </div>
 
-          {/* Row 2 — 2 cards, centred */}
-          <div className="audiences-row-2">
-            {audiences.slice(3).map((aud, i) => (
-              <motion.div key={aud.title} {...rv((i + 3) * 0.08)} style={{ background: 'var(--paper)', border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,36px)', display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
-                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px,1.6vw,24px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.015em', color: 'var(--ink)' }}>{aud.title}</h3>
-                <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.65, margin: 0, flex: 1 }}>{aud.desc}</p>
-                <Link to={aud.href} className="btn-link" style={{ marginTop: 8, fontSize: 13.5 }}>{aud.cta} →</Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Featured work ────────────────────────────────────────────────────── */}
-      <section className="section-paper-2">
-        <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
-            <div className="sh-meta">
-              <span className="eyebrow">Selected work</span>
-              <h2 className="display-md">Receipts, not reels.</h2>
+          <motion.div className="aud-band" {...rv(0.2)}>
+            <div>
+              <h3>Just need <em>one channel</em> run properly?</h3>
+              <p>Social, email, paid ads, SEO, or design as a standalone service. No retainer required.</p>
             </div>
-            <p className="lede">
-              A small sample of the partners we work with. Real numbers, real timelines. Full case studies on request.
-            </p>
+            <Link to="/services" className="btn btn-accent">Browse standalone services <span className="arrow">→</span></Link>
           </motion.div>
-
-          <div className="work-grid">
-            <MotionLink to="/case-studies" className="case feature" {...rv()}>
-              <div className="media" style={{ display: 'block' }}>
-                <div className="case-art case-art--terra" style={{ height: '100%', minHeight: '100%' }}>
-                  <div className="ca-meta"><span>Case 01</span><span>Professional services</span></div>
-                  <div className="ca-mark">Belford<br /><em>&amp; Co.</em></div>
-                  <div className="ca-foot">
-                    <div className="ca-stat-big"><em>+</em>312<em>%</em></div>
-                    <div className="ca-stat-label">Organic leads YoY</div>
-                  </div>
-                </div>
-              </div>
-              <div className="body">
-                <div className="tags">
-                  <span className="tag dot">Fractional CMO</span>
-                  <span className="tag">Brand</span>
-                  <span className="tag">SEO</span>
-                </div>
-                <h3>Belford &amp; Co. — From law firm to category brand.</h3>
-                <p className="desc">
-                  An 80-attorney commercial practice rebuilt as a recognised voice in M&amp;A. New brand, new site, six pillar content programme, and a category of one.
-                </p>
-                <div className="stats">
-                  <div><div className="stat">+312%</div><span className="lbl">Organic leads</span></div>
-                  <div><div className="stat">4.2×</div><span className="lbl">Avg. deal size</span></div>
-                  <div><div className="stat">18mo</div><span className="lbl">Engagement</span></div>
-                </div>
-              </div>
-            </MotionLink>
-
-            <div className="stack" style={{ gap: 24 }}>
-              <MotionLink to="/case-studies" className="case" {...rv(0.1)}>
-                <div className="media" style={{ display: 'block' }}>
-                  <div className="case-art case-art--terra compact" style={{ height: '100%' }}>
-                    <div className="ca-meta"><span>Case 02</span><span>Small Business · Retail</span></div>
-                    <div className="ca-mark"><em>Maison.</em></div>
-                    <div className="ca-foot">
-                      <div className="ca-stat-big">3<em>×</em></div>
-                      <div className="ca-stat-label">More enquiries in 90 days</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="body">
-                  <div className="tags">
-                    <span className="tag dot">Social</span>
-                    <span className="tag">Email</span>
-                    <span className="tag">SEO</span>
-                  </div>
-                  <h3>Maison — A local retailer that finally got found online.</h3>
-                  <p className="desc">
-                    An independent retailer with no digital presence and no time to build one. We handled their social media, email, and search end to end. Three times more enquiries in 90 days.
-                  </p>
-                </div>
-              </MotionLink>
-              <MotionLink to="/case-studies" className="case" {...rv(0.18)}>
-                <div className="media" style={{ display: 'block' }}>
-                  <div className="case-art case-art--paper compact" style={{ height: '100%' }}>
-                    <div className="ca-meta"><span>Case 03</span><span>Hospitality</span></div>
-                    <div className="ca-mark"><em>Vesper</em></div>
-                    <div className="ca-foot">
-                      <div className="ca-stat-big">38<em>%</em></div>
-                      <div className="ca-stat-label">Revenue off OTAs</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="body">
-                  <div className="tags">
-                    <span className="tag dot">Lifecycle</span>
-                    <span className="tag">Paid</span>
-                  </div>
-                  <h3>Vesper Hotels — Direct bookings, no OTAs.</h3>
-                  <p className="desc">
-                    A loyalty-first growth engine that pulled 38% of revenue off Booking.com and back onto the brand&rsquo;s own channels in 11 months.
-                  </p>
-                </div>
-              </MotionLink>
-            </div>
-          </div>
-
-          <div className="work-grid-secondary">
-            <MotionLink to="/case-studies" className="case" {...rv()}>
-              <div className="media" style={{ display: 'block' }}>
-                <div className="case-art case-art--paper thumb" style={{ height: '100%' }}>
-                  <div className="ca-meta"><span>Case 04</span><span>Healthcare</span></div>
-                  <div className="ca-mark">Northwind</div>
-                  <div className="ca-foot">
-                    <div className="ca-stat-big"><em>+</em>61</div>
-                    <div className="ca-stat-label">Patient NPS lift</div>
-                  </div>
-                </div>
-              </div>
-              <div className="body">
-                <div className="tags"><span className="tag dot">Brand</span></div>
-                <h3>Northwind — A health system, repositioned.</h3>
-              </div>
-            </MotionLink>
-            <MotionLink to="/case-studies/public-official" className="case" {...rv(0.08)}>
-              <div className="media" style={{ display: 'block' }}>
-                <div className="case-art case-art--ink thumb" style={{ height: '100%' }}>
-                  <div className="ca-meta"><span>Case 05</span><span>Public Figure · Politics</span></div>
-                  <div className="ca-mark" style={{ fontSize: 'clamp(22px,3vw,36px)', lineHeight: 1.1 }}>Elected<br /><em>Official.</em></div>
-                  <div className="ca-foot">
-                    <div className="ca-stat-big">92<em>%</em></div>
-                    <div className="ca-stat-label">Narrative control on page 1</div>
-                  </div>
-                </div>
-              </div>
-              <div className="body">
-                <div className="tags"><span className="tag dot">Reputation</span><span className="tag">Social</span><span className="tag">Web</span></div>
-                <h3>Anonymous official — Narrative controlled before campaign season.</h3>
-              </div>
-            </MotionLink>
-            <MotionLink to="/case-studies" className="case" {...rv(0.16)}>
-              <div className="media" style={{ display: 'block' }}>
-                <div className="case-art case-art--terra thumb" style={{ height: '100%' }}>
-                  <div className="ca-meta"><span>Case 06</span><span>Founder brand</span></div>
-                  <div className="ca-mark">Halsey</div>
-                  <div className="ca-foot">
-                    <div className="ca-stat-big">76<em>k</em></div>
-                    <div className="ca-stat-label">LinkedIn followers</div>
-                  </div>
-                </div>
-              </div>
-              <div className="body">
-                <div className="tags"><span className="tag dot">Personal brand</span></div>
-                <h3>The Halsey Group — Founder voice at scale.</h3>
-              </div>
-            </MotionLink>
-          </div>
-
-          <div style={{ marginTop: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-            <p className="cap" style={{ margin: 0 }}>14 partners · 6 industries · serving globally</p>
-            <Link to="/case-studies" className="btn btn-ghost">All case studies <span className="arrow">→</span></Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── About / philosophy teaser ────────────────────────────────────────── */}
-      <section>
-        <div className="wrap">
-          <div className="about-teaser">
-            <div className="media" style={{ position: 'relative' }}>
-              <div className="case-art case-art--ink" style={{ height: '100%', minHeight: 480 }}>
-                <div className="ca-meta"><span>— Manifesto</span><span>2026</span></div>
-                <div className="ca-mark" style={{ fontSize: 'clamp(56px, 9vw, 156px)' }}>Move<br />the<br /><em>number.</em></div>
-                <div className="ca-foot">
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' as const, opacity: 0.7 }}>A note from the&nbsp;Haus</div>
-                  <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 32, color: 'var(--terracotta)', lineHeight: 1 }}>Ola.</div>
-                </div>
-              </div>
-            </div>
-            <motion.div className="copy" {...rv(0.1)}>
-              <span className="eyebrow" style={{ marginBottom: 28, display: 'inline-flex' }}>Why TaqHaus</span>
-              <p className="quote">
-                The job isn&rsquo;t to <em>deliver decks</em>. The job is to&nbsp;move the number. We treat every client&rsquo;s P&amp;L like our own — and we don&rsquo;t take on clients we can&rsquo;t make&nbsp;famous.
-              </p>
-              <div className="quote-attr">
-                <div>
-                  <div style={{ color: 'var(--ink)', fontFamily: 'var(--sans)', fontSize: 14, letterSpacing: '-0.005em', marginBottom: 2, fontWeight: 500 }}>Ola Raji</div>
-                  <div>Founder &amp; Managing Partner · TaqHaus</div>
-                </div>
-              </div>
-
-              <div className="engagements">
-                {engagements.map(eng => (
-                  <div key={eng.num} className="engagement">
-                    <span className="num">{eng.num}</span>
-                    <h4>{eng.title}</h4>
-                    <p>{eng.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ marginTop: 36 }}>
-                <Link to="/about" className="btn-link">Read our story</Link>
-              </div>
-            </motion.div>
-          </div>
         </div>
       </section>
 
@@ -503,7 +447,7 @@ export default function LandingPageRedesign() {
               </h2>
             </div>
             <p className="lede">
-              A senior team that owns the work end-to-end. We&rsquo;re in your Slack, your standups, your quarterly board reviews — and on the hook for the outcomes.
+              A senior team in your Slack and your standups, on the hook for the outcomes.
             </p>
           </motion.div>
 
@@ -521,17 +465,62 @@ export default function LandingPageRedesign() {
         </div>
       </section>
 
-      {/* ── Insights preview ─────────────────────────────────────────────────── */}
+      {/* ── Founder note + engagement models ─────────────────────────────────── */}
       <section>
+        <div className="wrap">
+          <div className="about-teaser">
+            <div className="media" style={{ position: 'relative' }}>
+              <div className="case-art case-art--ink" style={{ height: '100%', minHeight: 480 }}>
+                <div className="ca-meta"><span>— Manifesto</span><span>2026</span></div>
+                <div className="ca-mark" style={{ fontSize: 'clamp(56px, 9vw, 156px)' }}>Move<br />the<br /><em>number.</em></div>
+                <div className="ca-foot">
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' as const, opacity: 0.7 }}>A note from the&nbsp;Haus</div>
+                  <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 32, color: 'var(--terracotta)', lineHeight: 1 }}>Ola.</div>
+                </div>
+              </div>
+            </div>
+            <motion.div className="copy" {...rv(0.1)}>
+              <span className="eyebrow" style={{ marginBottom: 28, display: 'inline-flex' }}>Why TaqHaus</span>
+              <p className="quote">
+                The job isn&rsquo;t to <em>deliver decks</em>. The job is to&nbsp;move the number. We treat every client&rsquo;s P&amp;L like our own.
+              </p>
+              <div className="quote-attr">
+                <div>
+                  <div className="name">Ola Raji</div>
+                  <div>Founder &amp; Managing Partner · TaqHaus</div>
+                </div>
+              </div>
+
+              <div className="engagements">
+                {engagements.map(eng => (
+                  <div key={eng.num} className="engagement">
+                    <span className="num">{eng.num}</span>
+                    <h4>{eng.title}</h4>
+                    <p>{eng.desc}</p>
+                    <div className="footer-row">
+                      <span className="price">{eng.from}</span>
+                      <span>{eng.duration}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: 36 }}>
+                <Link to="/about" className="btn-link">Read our story</Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Insights preview ─────────────────────────────────────────────────── */}
+      <section className="section-paper-2">
         <div className="wrap">
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Insights</span>
               <h2 className="display-md">Field notes from inside the work.</h2>
             </div>
-            <p className="lede">
-              Essays, teardowns and the occasional uncomfortable opinion. Written by the people doing the work — not the marketing team.
-            </p>
           </motion.div>
 
           <div className="insights-grid">
@@ -555,7 +544,7 @@ export default function LandingPageRedesign() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
-      <section className="section-paper-2">
+      <section>
         <div className="wrap">
           <motion.div {...rv()} style={{ maxWidth: 800 }}>
             <span className="eyebrow">Questions</span>
@@ -566,6 +555,7 @@ export default function LandingPageRedesign() {
               <motion.div key={faq.q} {...rv(i * 0.06)} className="faq-item">
                 <button
                   className="faq-trigger"
+                  aria-expanded={openFaq === i}
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 >
                   <span>{faq.q}</span>
@@ -596,7 +586,7 @@ export default function LandingPageRedesign() {
         <h2>Ready to get more <em>from</em> your marketing?</h2>
         <div className="stack">
           <p style={{ color: 'color-mix(in oklch, var(--paper) 75%, transparent)', fontSize: 16, lineHeight: 1.55, maxWidth: '42ch', margin: 0 }}>
-            30 minutes. No deck. We&rsquo;ll look at what you have, tell you what&rsquo;s holding you back, and give you a clear point of view — whether or not we work together.
+            20 minutes. No deck. We&rsquo;ll tell you what&rsquo;s holding you back, whether or not we end up working together.
           </p>
           <div className="row">
             <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
@@ -623,7 +613,7 @@ export default function LandingPageRedesign() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>Book a discovery call</span>
+                <span>Book a free 20-minute audit</span>
                 <span className="arrow">↗</span>
               </a>
               <a
@@ -659,15 +649,13 @@ export default function LandingPageRedesign() {
               <h4>Read</h4>
               <ul>
                 <li><Link to="/insights">Insights</Link></li>
-                <li><Link to="/insights">Field notes</Link></li>
-                <li><Link to="/contact">Newsletter</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>
             <div>
               <h4>Elsewhere</h4>
               <ul>
                 <li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li>
                 <li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li>
               </ul>
             </div>

@@ -2114,3 +2114,122 @@
   .tq-editorial .audiences-row-2 { flex-direction: column; }
   .tq-editorial .audiences-row-2 > * { flex: none; }
 }
+
+/* ============================================================
+   Homepage v3 — elevated editorial
+   ============================================================ */
+
+/* Hero strip — terracotta accents + provenance note */
+.tq-editorial .hero-strip .stat em {
+  color: var(--terracotta);
+  font-style: italic;
+}
+.tq-editorial .strip-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.tq-editorial .strip-note a { color: var(--terracotta); transition: color .2s; }
+.tq-editorial .strip-note a:hover { color: var(--terracotta-dark); }
+
+/* Case media fills its frame without inline styles */
+.tq-editorial .case .media { display: block; }
+.tq-editorial .case .media .case-art { height: 100%; min-height: 100%; }
+
+/* Audience cards */
+.tq-editorial .aud-card {
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: clamp(24px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
+}
+.tq-editorial .aud-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklch, var(--terracotta) 45%, transparent);
+  box-shadow: 0 30px 60px -44px color-mix(in oklch, var(--ink) 55%, transparent);
+}
+.tq-editorial .aud-card .kicker {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+.tq-editorial .aud-card h3 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 1.9vw, 28px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.tq-editorial .aud-card p {
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+.tq-editorial .aud-card .btn-link { font-size: 13.5px; align-self: flex-start; }
+
+/* Single-channel band beneath the audience cards */
+.tq-editorial .aud-band {
+  margin-top: 24px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 16px;
+  padding: clamp(24px, 3vw, 36px) clamp(24px, 3.5vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(20px, 3vw, 48px);
+  flex-wrap: wrap;
+}
+.tq-editorial .aud-band h3 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--paper);
+  margin: 0 0 6px;
+}
+.tq-editorial .aud-band h3 em { font-style: italic; color: var(--terracotta); }
+.tq-editorial .aud-band p {
+  margin: 0;
+  color: color-mix(in oklch, var(--paper) 72%, transparent);
+  font-size: 14.5px;
+  line-height: 1.55;
+  max-width: 56ch;
+}
+.tq-editorial .aud-band .btn-accent { flex-shrink: 0; }
+
+/* "Your name here" conversion tile in the work grid */
+.tq-editorial .case.cta-tile {
+  border-style: dashed;
+  border-color: color-mix(in oklch, var(--terracotta) 50%, transparent);
+  background: color-mix(in oklch, var(--paper) 100%, var(--terracotta) 3%);
+}
+.tq-editorial .case.cta-tile:hover {
+  border-color: var(--terracotta);
+}
+.tq-editorial .case.cta-tile .case-art {
+  background: transparent;
+  color: var(--ink);
+}
+.tq-editorial .case.cta-tile .case-art::before { opacity: 0.35; }
+.tq-editorial .case.cta-tile .ca-mark em { color: var(--terracotta); }
+
+/* Founder note — engagement price row */
+.tq-editorial .engagement .footer-row .price { color: var(--ink); font-weight: 500; }
