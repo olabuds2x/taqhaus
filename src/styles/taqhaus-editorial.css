@@ -2233,3 +2233,69 @@
 
 /* Founder note — engagement price row */
 .tq-editorial .engagement .footer-row .price { color: var(--ink); font-weight: 500; }
+
+/* ============================================================
+   Homepage v4 — plain-spoken, owner-first
+   ============================================================ */
+
+/* "Sound familiar?" pain cards */
+.tq-editorial .pains-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.tq-editorial .pain-card {
+  background: var(--paper-2);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: clamp(24px, 2.6vw, 34px) clamp(24px, 2.8vw, 38px);
+}
+.tq-editorial .pain-card .q {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 1.9vw, 27px);
+  line-height: 1.22;
+  color: var(--ink);
+  margin: 0;
+}
+.tq-editorial .pain-card .q::before { content: "\201C"; color: var(--terracotta); }
+.tq-editorial .pain-card .q::after { content: "\201D"; color: var(--terracotta); }
+.tq-editorial .bridge {
+  margin-top: clamp(36px, 4vw, 56px);
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  max-width: 26ch;
+  color: var(--ink);
+}
+.tq-editorial .bridge em { font-style: italic; color: var(--terracotta); }
+
+/* Slim routing band for non-SMB audiences */
+.tq-editorial .route-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: 26px 0;
+}
+.tq-editorial .route-band p {
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--ink-2);
+}
+.tq-editorial .route-band .links { display: flex; gap: 28px; flex-wrap: wrap; }
+
+/* Dark-section support for caption + cards row */
+.tq-editorial .section-dark .cap { color: color-mix(in oklch, var(--paper) 60%, transparent); }
+.tq-editorial .section-dark .case { border-color: color-mix(in oklch, var(--paper) 14%, transparent); }
+/* Case cards keep paper bodies inside dark sections — restore ink type */
+.tq-editorial .section-dark .case .body h3 { color: var(--ink); }
+.tq-editorial .section-dark .case .stats .stat { color: var(--ink); }
+
+@media (max-width: 700px) {
+  .tq-editorial .pains-grid { grid-template-columns: 1fr; }
+}

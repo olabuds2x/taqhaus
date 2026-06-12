@@ -40,10 +40,10 @@ const CARDS = [
   {
     file: 'og-default.png',
     variant: 'ink',
-    eyebrow: 'Marketing & Business Consultancy',
-    meta: 'Est. proof · 2026',
-    headline: 'Grow faster. <em>We handle everything it&nbsp;takes.</em>',
-    size: 116,
+    eyebrow: 'Marketing, done for you',
+    meta: 'Free 20-minute call',
+    headline: 'You run the business. <em>We bring the&nbsp;customers.</em>',
+    size: 110,
     foot: 'taqhaus.com',
   },
   {
