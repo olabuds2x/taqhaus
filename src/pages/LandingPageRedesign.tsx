@@ -120,35 +120,39 @@ export default function LandingPageRedesign() {
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="hero">
         <div className="wrap">
-          <div className="hero-grid">
-            <div>
-              <span className="eyebrow" style={{ marginBottom: 'clamp(28px,5vw,56px)', display: 'inline-flex' }}>
-                Marketing, done for you
+          <div className="hero-stack">
+            <span className="eyebrow" style={{ marginBottom: 'clamp(24px,4vw,44px)', display: 'inline-flex' }}>
+              Marketing, done for you
+            </span>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
+            >
+              You run the{' '}
+              <span className="scribble">
+                business
+                <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M2,7 Q18,2 34,6 T64,5 T98,4" />
+                </svg>
               </span>
-              <h1>
-                You run the{' '}
-                <span className="scribble">
-                  business
-                  <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M2,7 Q18,2 34,6 T64,5 T98,4" />
-                  </svg>
-                </span>
-                .<br />
-                <em>We handle the <span className="hl" style={{ color: 'var(--ink)' }}>marketing</span>.</em>
-              </h1>
-            </div>
+              .<br />
+              <em>We handle the <span className="hl" style={{ color: 'var(--ink)' }}>marketing</span>.</em>
+            </motion.h1>
+          </div>
 
-            <motion.div className="hero-right" {...rv(0.15)}>
-              <p className="lede">
-                We handle your social media, Google, email, ads, and website. All of it, so you don't have to learn marketing or hire anyone.
-              </p>
-              <div className="row" style={{ marginTop: 8 }}>
+          <motion.div className="hero-row" {...rv(0.15)}>
+            <p className="lede">
+              Social media, Google, email, ads, and your website. All of it, handled by one team, so you don't have to learn marketing or hire anyone.
+            </p>
+            <div>
+              <div className="row">
                 <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
                   Book a free 20-minute call <span className="arrow">↗</span>
                 </a>
                 <a href="#pricing" className="btn-link">See what it costs</a>
               </div>
-              <div className="hero-meta">
+              <div className="hero-meta" style={{ marginTop: 28 }}>
                 <div className="item">
                   <span className="label">The first call</span>
                   <p>Free · 20 minutes · No pressure</p>
@@ -158,8 +162,8 @@ export default function LandingPageRedesign() {
                   <p>One channel at a time · No long contracts</p>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
 
           {/* Proof strip — figures from published case studies */}
           <motion.div {...rv(0.25)} style={{ position: 'relative' }}>
