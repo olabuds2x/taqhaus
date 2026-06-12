@@ -117,7 +117,7 @@ function cardHtml({ variant, eyebrow, meta, headline, size, foot }) {
 <html><head><meta charset="UTF-8" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   * { margin: 0; box-sizing: border-box; }
   body { width: 1200px; height: 630px; overflow: hidden; }
@@ -156,7 +156,7 @@ function cardHtml({ variant, eyebrow, meta, headline, size, foot }) {
   }
   h1 {
     margin: auto 0;
-    font-family: "Instrument Serif", Georgia, serif;
+    font-family: "Fraunces", Georgia, serif;
     font-weight: 400;
     font-size: ${size}px;
     line-height: 0.98;
@@ -171,7 +171,7 @@ function cardHtml({ variant, eyebrow, meta, headline, size, foot }) {
     border-top: 1px solid ${v.hairline};
   }
   .wordmark {
-    font-family: "Instrument Serif", Georgia, serif;
+    font-family: "Fraunces", Georgia, serif;
     font-size: 42px; letter-spacing: -0.03em;
   }
   .wordmark span { color: ${v.accent}; }

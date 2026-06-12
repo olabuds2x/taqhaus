@@ -205,7 +205,7 @@ export default function LandingPageRedesign() {
       </section>
 
       {/* ── Marquee — logo trust strip ───────────────────────────────────────── */}
-      <div className="marquee" aria-label="Clients & partners">
+      <div className="marquee marquee--ink" aria-label="Clients & partners">
         <div className="marquee-track">
           {[...marqueeLogos, ...marqueeLogos].map((logo, i) => (
             <span key={i} className="marquee-item">
@@ -274,7 +274,7 @@ export default function LandingPageRedesign() {
       </section>
 
       {/* ── How it works ─────────────────────────────────────────────────────── */}
-      <section>
+      <section className="section-gold-tint">
         <div className="wrap">
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">

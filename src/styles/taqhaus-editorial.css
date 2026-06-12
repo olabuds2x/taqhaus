@@ -19,8 +19,8 @@
   --teal: oklch(0.58 0.1 175);
   --teal-deep: oklch(0.45 0.09 178);
   --cobalt: oklch(0.52 0.17 262);
-  --serif: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
-  --sans: "Geist", "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: "Fraunces", "Instrument Serif", Georgia, serif;
+  --sans: "Hanken Grotesk", "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --gutter: clamp(20px, 4vw, 56px);
   --maxw: 1440px;
@@ -2482,6 +2482,37 @@
 .tq-editorial .marquee-item .star.s2 { color: var(--teal-deep); }
 .tq-editorial .marquee-item .star.s3 { color: var(--cobalt); }
 .tq-editorial .marquee-item .star.s4 { color: var(--marigold-deep); }
+
+/* Typography v2 — Fraunces character settings */
+.tq-editorial :is(h1, h2, h3, h4, .quote, .ca-mark, .ca-stat-big, .display-md, .display-lg, .display-xl, .bridge, .wordmark, .footer-mark, .hero-strip .stat) {
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+  font-optical-sizing: auto;
+}
+
+/* Marquee — ink band with paper logo chips */
+.tq-editorial .marquee--ink {
+  background: var(--ink);
+  border-top-color: color-mix(in oklch, var(--paper) 14%, transparent);
+  border-bottom-color: color-mix(in oklch, var(--paper) 14%, transparent);
+  padding: 16px 0;
+}
+.tq-editorial .marquee--ink .marquee-logo {
+  background: var(--paper);
+  padding: 7px 12px;
+  border-radius: 8px;
+  height: 42px;
+  opacity: 0.92;
+  filter: grayscale(100%);
+}
+.tq-editorial .marquee--ink .marquee-item:hover .marquee-logo {
+  opacity: 1;
+  filter: grayscale(20%);
+}
+
+/* Tinted section — the colour beat between cream and ink */
+.tq-editorial .section-gold-tint {
+  background: color-mix(in oklch, var(--marigold) 16%, var(--paper));
+}
 
 /* Hero v6 — single column, full-width type, ambient background */
 .tq-editorial .hero::before {
