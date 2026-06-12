@@ -326,8 +326,8 @@ export default function LandingPageRedesign() {
                   <div className="ca-meta"><span>Case 01</span><span>The Funded Trader</span></div>
                   <div className="ca-mark">188% more<br /><em>signups.</em></div>
                   <div className="ca-foot">
-                    <div className="ca-stat-big"><em>+</em>188<em>%</em></div>
-                    <div className="ca-stat-label">Signups from Google</div>
+                    <div className="ca-stat-big">−34<em>%</em></div>
+                    <div className="ca-stat-label">Cost per customer</div>
                   </div>
                 </div>
               </div>

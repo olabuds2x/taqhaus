@@ -2147,6 +2147,9 @@
 /* Case media fills its frame without inline styles */
 .tq-editorial .case .media { display: block; }
 .tq-editorial .case .media .case-art { height: 100%; min-height: 100%; }
+/* Feature card: media absorbs the leftover height instead of the body */
+.tq-editorial .case.feature .media { aspect-ratio: auto; flex: 1; min-height: 320px; }
+.tq-editorial .case.feature .body { flex: 0 0 auto; }
 
 /* Audience cards */
 .tq-editorial .aud-card {
