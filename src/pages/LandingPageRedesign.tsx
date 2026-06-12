@@ -99,7 +99,7 @@ export default function LandingPageRedesign() {
       </div>
 
       {/* ── Navigation ───────────────────────────────────────────────────────── */}
-      <header className="nav">
+      <header className="nav nav--gold">
         <div className="nav-inner">
           <Link to="/" aria-label="TaqHaus — Home">
             <img src="/taqhaus-logo.png" alt="TaqHaus" width={120} height={44} style={{ height: 44, width: 'auto' }} />
@@ -118,7 +118,7 @@ export default function LandingPageRedesign() {
       </header>
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="hero">
+      <section className="hero hero--gold">
         <div className="wrap">
           <div className="hero-full">
             <span className="ghost-word" aria-hidden="true">handled.</span>
@@ -151,7 +151,7 @@ export default function LandingPageRedesign() {
                   </svg>
                 </span>
                 .<br />
-                <em>We handle the <span className="hl" style={{ color: 'var(--ink)' }}>marketing</span>.</em>
+                <em>We handle the <span className="hl" style={{ color: 'var(--paper)' }}>marketing</span>.</em>
               </motion.h1>
             </div>
 
@@ -178,9 +178,14 @@ export default function LandingPageRedesign() {
             </motion.div>
           </div>
 
-          {/* Proof strip — figures from published case studies */}
-          <motion.div {...rv(0.25)}>
-            <div className="hero-strip" style={{ marginTop: 'clamp(24px,3vw,48px)' }}>
+        </div>
+      </section>
+
+      {/* ── Proof strip — figures from published case studies ───────────────── */}
+      <section className="strip-band">
+        <div className="wrap">
+          <motion.div {...rv(0.1)}>
+            <div className="hero-strip" style={{ marginTop: 0 }}>
               <div className="cell">
                 <span className="stat"><em>+</em>188<em>%</em></span>
                 <span className="label">More signups from Google</span>

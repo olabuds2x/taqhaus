@@ -2632,6 +2632,56 @@
   .tq-editorial .hero-full .sticker { display: none; }
 }
 
+/* ============================================================
+   Gold block concept — marigold nav + hero, ink type
+   ============================================================ */
+
+.tq-editorial .nav--gold {
+  background: color-mix(in oklch, var(--marigold) 90%, transparent);
+  border-bottom: 1px solid color-mix(in oklch, var(--ink) 12%, transparent);
+}
+.tq-editorial .nav--gold .nav-links { color: color-mix(in oklch, var(--ink) 72%, transparent); }
+.tq-editorial .nav--gold .nav-links a:hover,
+.tq-editorial .nav--gold .nav-links a.active { color: var(--ink); }
+
+.tq-editorial .hero--gold { background: var(--marigold); }
+.tq-editorial .hero--gold::before {
+  background:
+    radial-gradient(700px 480px at 88% 0%, color-mix(in oklch, var(--terracotta) 32%, transparent), transparent 72%),
+    radial-gradient(620px 460px at 0% 100%, color-mix(in oklch, var(--paper) 50%, transparent), transparent 72%);
+}
+.tq-editorial .hero--gold::after {
+  background-image:
+    linear-gradient(90deg, color-mix(in oklch, var(--ink) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in oklch, var(--ink) 8%, transparent) 1px, transparent 1px);
+}
+.tq-editorial .hero--gold .ghost-word { color: color-mix(in oklch, var(--ink) 9%, transparent); }
+.tq-editorial .hero--gold .scribble svg path { stroke: var(--terracotta-dark); }
+.tq-editorial .hero--gold .hero-stack h1 { color: var(--ink); }
+.tq-editorial .hero--gold .hero-stack h1 em { color: var(--terracotta-dark); }
+.tq-editorial .hero--gold .hl::before { background: var(--ink); transform: rotate(-1deg) skewX(-3deg); }
+.tq-editorial .hero--gold .eyebrow { color: color-mix(in oklch, var(--ink) 75%, transparent); }
+.tq-editorial .hero--gold .eyebrow::before { background: var(--ink); }
+.tq-editorial .hero--gold .lede { color: color-mix(in oklch, var(--ink) 82%, transparent); }
+.tq-editorial .hero--gold .hero-note { color: color-mix(in oklch, var(--ink) 62%, transparent); }
+.tq-editorial .hero--gold .btn-accent { background: var(--ink); color: var(--paper); }
+.tq-editorial .hero--gold .btn-accent:hover { background: var(--terracotta-dark); }
+.tq-editorial .hero--gold .btn-link { color: var(--ink); border-color: color-mix(in oklch, var(--ink) 38%, transparent); }
+.tq-editorial .hero--gold .btn-link:hover { color: var(--terracotta-dark); border-color: var(--terracotta-dark); }
+.tq-editorial .hero--gold .scroll-cue {
+  border-color: color-mix(in oklch, var(--ink) 38%, transparent);
+  color: var(--ink);
+}
+.tq-editorial .hero--gold .scroll-cue:hover { background: var(--ink); color: var(--marigold); }
+.tq-editorial .hero--gold .sticker {
+  background: var(--terracotta);
+  color: var(--paper);
+  box-shadow: 0 16px 34px -16px color-mix(in oklch, var(--ink) 50%, transparent);
+}
+
+/* Proof strip band — cream section right under the gold block */
+.tq-editorial .strip-band { padding: clamp(44px, 5vw, 76px) 0; }
+
 /* CTA band — the loud marigold moment */
 .tq-editorial .cta-band--gold {
   background: var(--marigold);
