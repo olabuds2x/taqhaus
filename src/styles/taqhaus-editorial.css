@@ -2689,7 +2689,10 @@
    Quiet luxury hero — centred, airy, one accent
    ============================================================ */
 
-.tq-editorial .hero--quiet { background: var(--paper); }
+.tq-editorial .hero--quiet {
+  background: var(--paper);
+  padding-top: clamp(16px, 2vw, 32px);
+}
 .tq-editorial .hero--quiet::before {
   background: radial-gradient(900px 600px at 50% -10%, color-mix(in oklch, var(--marigold) 9%, transparent), transparent 70%);
 }
@@ -2697,13 +2700,11 @@
 
 .tq-editorial .hero-quiet-inner {
   position: relative;
-  min-height: calc(100svh - 165px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: clamp(40px, 5vw, 72px) 0 clamp(96px, 10vw, 130px);
+  padding: clamp(20px, 2.5vw, 40px) 0 0;
 }
 .tq-editorial .hero-quiet-inner .eyebrow { justify-content: center; }
 .tq-editorial .hero-quiet-inner .eyebrow::after {
