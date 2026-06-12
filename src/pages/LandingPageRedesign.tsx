@@ -122,64 +122,65 @@ export default function LandingPageRedesign() {
         <span className="edge-note edge-note--left">info@taqhaus.com</span>
         <span className="edge-note edge-note--right">Toronto · Serving everywhere</span>
         <div className="wrap">
-          <div className="hero-quiet-inner">
-            <motion.span
-              className="eyebrow"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.1 }}
-            >
-              Marketing, done for you
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.2, 0.7, 0.2, 1] }}
-            >
-              You run the business.<br />
-              <em>We handle the marketing.</em>
-            </motion.h1>
-            <motion.p
-              className="quiet-lede"
-              initial={{ opacity: 0, y: 18 }}
+          <div className="hero-split">
+            <div className="hero-copy">
+              <motion.span
+                className="eyebrow"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                Marketing, done for you
+              </motion.span>
+              <motion.h1
+                initial={{ opacity: 0, y: 26 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
+              >
+                You run the business. We handle the <em>marketing</em>.
+              </motion.h1>
+              <motion.p
+                className="sub"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.2, ease: [0.2, 0.7, 0.2, 1] }}
+              >
+                Social media, Google, email, ads, and your website. All of it, handled by one team, so you don't have to learn marketing or hire anyone.
+              </motion.p>
+              <motion.div
+                className="cta-row"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+              >
+                <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
+                  Book a free 20-minute call <span className="arrow">↗</span>
+                </a>
+                <a href="#pricing" className="btn btn-ghost">See pricing</a>
+              </motion.div>
+              <motion.span
+                className="quiet-note"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.9, delay: 0.5 }}
+              >
+                Free · 20 minutes · No long contracts
+              </motion.span>
+            </div>
+
+            <motion.div
+              className="hero-visual"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
             >
-              Social media, Google, email, ads, and your website. All of it, handled by one team, so you don't have to learn marketing or hire anyone.
-            </motion.p>
-            <motion.div
-              className="quiet-ctas"
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
-            >
-              <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
-                Book a free 20-minute call <span className="arrow">↗</span>
-              </a>
-              <a href="#pricing" className="btn-link">See what it costs</a>
-            </motion.div>
-            <motion.span
-              className="quiet-note"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.55 }}
-            >
-              Free · 20 minutes · One channel at a time · No long contracts
-            </motion.span>
-            <motion.div
-              className="quiet-media"
-              initial={{ opacity: 0, y: 36 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.1, delay: 0.6, ease: [0.2, 0.7, 0.2, 1] }}
-            >
-              <img src="/images/hero-quiet.jpg" alt="A sunlit small business storefront" fetchPriority="high" />
-              <button
-                className="scroll-cue"
-                aria-label="Scroll to see how it works"
-                onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                ↓
-              </button>
+              <div className="frame">
+                <img src="/images/hero-quiet.jpg" alt="A sunlit small business storefront" fetchPriority="high" />
+              </div>
+              <div className="stat-chip">
+                <span className="num">+188%</span>
+                <span className="lbl">Signups from Google · real client</span>
+              </div>
             </motion.div>
           </div>
         </div>
