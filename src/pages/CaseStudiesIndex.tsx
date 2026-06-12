@@ -285,7 +285,7 @@ export default function CaseStudiesIndex() {
       <section className="pullquote">
         <div className="wrap">
           <div className="grid">
-            <p className="quote">&ldquo;They run the work as if their <em>own</em> equity is on the line. Frankly, with us it&nbsp;is.&rdquo;</p>
+            <p className="quote">&ldquo;They treat the work like their <em>own</em> money is on the line. With us, it actually&nbsp;is.&rdquo;</p>
             <div>
               <span className="attr">
                 <strong>Marcus Belford</strong>

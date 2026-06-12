@@ -284,8 +284,7 @@ export default function CaseStudyTopTier() {
               <CardContent className="p-8 text-center">
                 <Quote className="h-10 w-10 text-accent mx-auto mb-4" />
                 <blockquote className="text-xl md:text-2xl font-medium italic text-neutral-light/90">
-                  "We were winning the awareness game but losing at the finish line. People knew who we were,
-                  but they didn't trust us enough to commit. We needed to own our narrative."
+                  "People knew who we were, but they didn't trust us enough to sign up. We needed to take back the story being told about us."
                 </blockquote>
                 <p className="mt-4 text-sm uppercase tracking-wider text-accent/80">
                   — Head of Marketing, TopTier Trader

@@ -285,7 +285,7 @@ export default function CaseStudyTFT() {
               <CardContent className="p-8 text-center">
                 <Quote className="h-10 w-10 text-accent mx-auto mb-4" />
                 <blockquote className="text-xl md:text-2xl font-medium italic text-neutral-light/90">
-                  "We'd maxed out our existing channels and every new rule change sent our conversion rate on a rollercoaster. We needed a system that could grow sustainably regardless of market noise."
+                  "We'd squeezed all we could from the channels we had, and every rule change threw our numbers around. We needed growth that didn't depend on any of that."
                 </blockquote>
                 <p className="mt-4 text-sm uppercase tracking-wider text-accent/80">
                   — VP of Growth, The Funded Trader

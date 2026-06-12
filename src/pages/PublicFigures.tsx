@@ -143,7 +143,7 @@ export default function PublicFigures() {
                 We reviewed everything: search results, social profiles, news mentions, and online sentiment. We built a six-month plan, wrote a clear story connecting the official&rsquo;s background to their work in public service, and started publishing.
               </p>
               <blockquote style={{ borderLeft: '2px solid var(--terracotta)', paddingLeft: 20, margin: '28px 0 0', fontFamily: 'var(--serif)', fontSize: 18, fontStyle: 'italic', color: 'var(--ink)', lineHeight: 1.5 }}>
-                &ldquo;They understand both perception and performance, critical for public office.&rdquo;
+                &ldquo;They understand how you're seen and how you perform. In public office, you need both.&rdquo;
                 <cite style={{ display: 'block', fontFamily: 'var(--mono)', fontSize: 11.5, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--ink-3)', fontStyle: 'normal', marginTop: 10 }}>
                   Anonymous · Elected Official
                 </cite>

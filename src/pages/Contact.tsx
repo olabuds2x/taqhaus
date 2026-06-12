@@ -91,7 +91,7 @@ export default function Contact() {
               </div>
 
               <div className="testimonial">
-                <q>The first 30 minutes were worth more than the last six months with our previous agency.</q>
+                <q>Our first call was worth more than the last six months with our previous agency.</q>
                 <div className="attr">
                   <strong>Sara Halsey</strong>
                   CEO · The Halsey Group

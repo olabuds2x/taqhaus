@@ -218,7 +218,7 @@ export default function CaseStudySaaS() {
           >
             <Quote className="h-10 w-10 text-accent/60 mb-4" />
             <p className="text-xl italic text-neutral-light/90">
-              "We were burning cash on ads with no clear path to profitability. TaqHaus helped us build a growth engine that actually compounds over time."
+              "We were burning cash on ads with no sign it would ever pay for itself. TaqHaus built us growth that keeps building on itself."
             </p>
             <p className="mt-4 text-sm uppercase tracking-[0.3em] text-accent/80">
               — Head of Growth, SaaS Startup
