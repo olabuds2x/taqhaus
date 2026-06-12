@@ -19,116 +19,116 @@ import {
 import { Link } from 'react-router-dom'
 
 const keyMetrics = [
-  { value: '+188%', label: 'Organic Signups YoY', icon: TrendingUp },
-  { value: '−34%', label: 'Blended CAC', icon: DollarSign },
-  { value: '+38%', label: 'Checkout Completion', icon: Target },
-  { value: '−19%', label: 'Refund Rate', icon: Award }
+  { value: '+188%', label: 'Signups from unpaid search, year on year', icon: TrendingUp },
+  { value: '−34%', label: 'Average cost to win each customer', icon: DollarSign },
+  { value: '+38%', label: 'People finishing checkout', icon: Target },
+  { value: '−19%', label: 'Refund rate', icon: Award }
 ]
 
 const timeline = [
   {
-    phase: 'Discovery & Research',
+    phase: 'Research',
     duration: '2 Weeks',
     activities: [
-      'Intent mapping across trader journey stages',
-      'Competitor positioning analysis',
-      'Review platform sentiment audit',
-      'Funnel drop-off identification'
+      'Mapped what traders search for at each stage of deciding',
+      'Studied how competitors present themselves',
+      'Read through reviews to see what people praised and complained about',
+      'Found where people drop off before buying'
     ]
   },
   {
-    phase: 'Content Authority Build',
+    phase: 'Writing and Publishing',
     duration: 'Weeks 3-8',
     activities: [
-      'Policy explainer content creation',
-      'Transparent comparison pages',
-      'Payout proof asset library',
-      'Educational challenge guides'
+      'Plain explanations of the rules and policies',
+      'Honest comparison pages',
+      'A library of payout proof',
+      'Guides that teach traders how the challenges work'
     ]
   },
   {
-    phase: 'Conversion Optimization',
+    phase: 'Improving the Buying Flow',
     duration: 'Weeks 9-12',
     activities: [
-      'Plan differentiation A/B testing',
-      'Profit-split calculator implementation',
-      'KYC friction reduction',
-      'Dynamic tooltip deployment'
+      'Tested different versions of the plan pages to see which sold better',
+      'Built the profit-split calculator',
+      'Made the identity check easier',
+      'Added the pop-up help notes'
     ]
   },
   {
-    phase: 'Lifecycle & Scale',
+    phase: 'Follow-up and Growth',
     duration: 'Ongoing',
     activities: [
-      'Stage-based email/SMS campaigns',
-      'Objection handling automation',
-      'Review moat expansion',
-      'Continuous cohort analysis'
+      'Emails and texts matched to each customer stage',
+      'Automatic answers to common doubts',
+      'Kept growing the base of reviews',
+      'Kept checking how each group of customers behaved'
     ]
   }
 ]
 
 const challenges = [
   {
-    title: 'Plateaued Organic Growth',
-    description: 'Traffic growth had stalled despite strong brand awareness, limiting new trader acquisition'
+    title: 'Traffic Had Stopped Growing',
+    description: 'Plenty of people knew the brand, but visits to the site had flattened, so fewer new traders were coming in'
   },
   {
-    title: 'Rising Acquisition Costs',
-    description: 'Cost-per-acquisition trending upward by 27% QoQ, threatening profitability'
+    title: 'Each Customer Cost More to Win',
+    description: 'The cost of winning each new customer was rising 27% quarter on quarter, which threatened profit'
   },
   {
-    title: 'Reputation Volatility',
-    description: 'Challenge rule changes and mixed reviews creating trust barriers in conversion funnel'
+    title: 'A Shaky Reputation',
+    description: 'Changes to challenge rules and mixed reviews made people hesitate before paying'
   },
   {
-    title: 'Compliance Constraints',
-    description: 'Highly regulated space requiring careful messaging and transparent communication'
+    title: 'Strict Rules on What They Could Say',
+    description: 'The industry is heavily regulated, so every message had to be careful and honest'
   }
 ]
 
 const solutions = [
   {
-    category: 'Search & Content Strategy',
+    category: 'Getting Found on Google',
     tactics: [
-      'Entity cleanup and brand SERP optimization',
-      'Review coverage across 15+ platforms with response strategy',
-      'Created comprehensive trader education guides and resources',
-      'Built payout transparency hub with verified proof documentation'
+      'Cleaned up what shows on Google when you search the brand name',
+      'Made sure the brand showed up on 15+ review sites, with a plan for responding to reviews',
+      'Wrote detailed guides that teach traders how things work',
+      'Built a page showing verified proof of payouts'
     ]
   },
   {
-    category: 'Conversion Rate Optimization',
+    category: 'Helping More Visitors Become Customers',
     tactics: [
-      'Plan differentiation testing to highlight value propositions',
-      'Interactive profit-split calculator for transparency',
-      'Streamlined KYC process reducing friction by 42%',
-      'Dynamic policy tooltips addressing objections in real-time'
+      'Tested different ways of presenting the plans so the differences were clear',
+      'Added a calculator that shows traders exactly how the profit split works',
+      'Simplified the identity check step (called KYC), reducing friction by 42%',
+      'Added small pop-up notes that answer common doubts right on the page'
     ]
   },
   {
-    category: 'Lifecycle Marketing',
+    category: 'Following Up at the Right Time',
     tactics: [
-      'Stage-based messaging (pre-challenge, in-challenge, post-challenge)',
-      'Data-backed FAQ system addressing common objections',
-      'Reactivation campaigns for incomplete signups',
-      'Verified trader review collection and syndication'
+      'Different emails for traders before, during, and after their challenge',
+      'An FAQ built from the questions customers actually ask',
+      'Emails that bring back people who started signing up but stopped',
+      'Collected reviews from verified traders and shared them widely'
     ]
   }
 ]
 
 const results = {
   early: [
-    { metric: 'Non-Brand Clicks', change: '+74%', period: 'First 60 days' },
-    { metric: 'Checkout Completion', change: '+38%', period: 'First 90 days' },
-    { metric: 'Refund Rate', change: '−19%', period: 'Post-launch' },
-    { metric: 'Rule Clarity Score', change: '+56%', period: 'User feedback' }
+    { metric: 'Clicks from searches not using the brand name', change: '+74%', period: 'First 60 days' },
+    { metric: 'People finishing checkout', change: '+38%', period: 'First 90 days' },
+    { metric: 'Refund rate', change: '−19%', period: 'Post-launch' },
+    { metric: 'How clear users said the rules were', change: '+56%', period: 'From user feedback' }
   ],
   longTerm: [
-    { metric: 'Organic Signups', value: '+188% YoY', context: 'Diversified non-brand traffic sources' },
-    { metric: 'Blended CAC', value: '−34%', context: 'Through conversion lifts + lifecycle revenue' },
-    { metric: 'SERP Coverage', value: '92%', context: 'Page 1 rankings for target review/comparison queries' },
-    { metric: 'Policy Volatility Impact', value: '−68%', context: 'Reduced sensitivity to rule changes' }
+    { metric: 'Signups from unpaid search', value: '+188% YoY', context: 'Traffic now comes from many searches, not just the brand name' },
+    { metric: 'Average cost per new customer', value: '−34%', context: 'From more visitors buying, plus revenue from follow-up emails' },
+    { metric: 'Google page 1 coverage', value: '92%', context: 'Ranked on page 1 for the review and comparison searches we targeted' },
+    { metric: 'Impact of rule changes', value: '−68%', context: 'The business was far less affected when challenge rules changed' }
   ]
 }
 
@@ -136,8 +136,8 @@ export default function CaseStudyTFT() {
   return (
     <div className="min-h-screen bg-dark text-white">
       <SEO
-        title="The Funded Trader Case Study - Scaling Growth & Reducing CAC"
-        description="How TaqHaus helped The Funded Trader achieve 188% organic signup growth and reduce customer acquisition costs by 34% through strategic SEO, conversion optimization, and lifecycle marketing."
+        title="The Funded Trader: 188% More Signups, Costs Down 34%"
+        description="How TaqHaus helped The Funded Trader get 188% more signups from unpaid search and cut the average cost of winning each customer by 34%."
         keywords="prop trading marketing, funded trader case study, CAC reduction, conversion optimization, trading platform growth, fintech marketing"
         canonical="/case-studies/the-funded-trader"
         ogImage="/images/og/case-the-funded-trader.png"
@@ -161,16 +161,16 @@ export default function CaseStudyTFT() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-semibold uppercase tracking-wider">
-              Growth Marketing & Conversion Optimization
+              Growth and Conversion
             </span>
 
             <h1 className="mt-6 text-5xl md:text-6xl font-bold leading-tight">
-              How The Funded Trader Scaled to 188% Organic Growth While Slashing CAC by 34%
+              How The Funded Trader Grew Signups from Unpaid Search by 188% and Cut Customer Costs by 34%
             </h1>
 
             <p className="mt-6 text-xl text-neutral-light/80 max-w-3xl">
-              From plateaued growth to explosive expansion: Building a sustainable acquisition engine through
-              strategic content, conversion optimization, and lifecycle marketing in a reputation-sensitive market.
+              Their growth had stalled. We helped them get found in search, turn more visitors into buyers,
+              and follow up with customers at the right moments, all in a market where reputation is fragile and the rules are strict.
             </p>
 
             {/* Key Metrics Grid */}
@@ -222,7 +222,7 @@ export default function CaseStudyTFT() {
             </Card>
             <Card className="bg-dark-900/80 border-white/10">
               <CardHeader>
-                <CardTitle className="text-lg text-accent">Partnership Duration</CardTitle>
+                <CardTitle className="text-lg text-accent">Time Working Together</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-neutral-light/80">18+ Months (Ongoing)</p>
@@ -243,12 +243,12 @@ export default function CaseStudyTFT() {
           >
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The Challenge</span>
             <h2 className="mt-4 text-4xl font-bold">
-              Strong Brand. Stalled Growth. Rising Costs. Reputation Volatility.
+              A Known Brand, Stalled Growth, Rising Costs, a Shaky Reputation
             </h2>
             <p className="mt-6 text-lg text-neutral-light/80 max-w-3xl">
-              The Funded Trader had built significant brand awareness but hit a growth ceiling. Organic traffic
-              plateaued, acquisition costs climbed, and changing challenge rules created conversion uncertainty.
-              In a reputation-sensitive, highly regulated space, they needed sustainable growth without sacrificing compliance or trust.
+              The Funded Trader was well known, but growth had hit a ceiling. Visits from search had flattened,
+              the cost of winning each customer kept climbing, and changes to challenge rules made buyers hesitate.
+              In a heavily regulated market where reputation matters, they needed growth without cutting corners on compliance or trust.
             </p>
           </motion.div>
 
@@ -307,12 +307,12 @@ export default function CaseStudyTFT() {
           >
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Our Approach</span>
             <h2 className="mt-4 text-4xl font-bold">
-              Multi-Channel Growth Engine + Conversion Infrastructure
+              Get Found, Convert More Visitors, Follow Up Well
             </h2>
             <p className="mt-6 text-lg text-neutral-light/80 max-w-3xl">
-              We built a three-pillar system: dominate organic search for trader intent, optimize every conversion
-              touchpoint, and create lifecycle campaigns that maximize LTV. Every tactic was designed for
-              measurability and compliance.
+              We worked on three things: showing up in search when traders are looking, improving every step
+              between landing on the site and paying, and sending follow-up emails that increase what each
+              customer spends over time. Everything was measurable and kept within the rules.
             </p>
           </motion.div>
 
@@ -358,9 +358,9 @@ export default function CaseStudyTFT() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Execution Timeline</span>
+            <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">What We Did, and When</span>
             <h2 className="mt-4 text-4xl font-bold">
-              12-Week Foundation, Continuous Optimization
+              12 Weeks to Build, Then Ongoing Improvement
             </h2>
           </motion.div>
 
@@ -423,7 +423,7 @@ export default function CaseStudyTFT() {
           >
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The Results</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold">
-              Explosive Growth. Lower Costs. Predictable Performance.
+              More Signups, Lower Costs, Steadier Results
             </h2>
           </motion.div>
 
@@ -456,7 +456,7 @@ export default function CaseStudyTFT() {
 
           {/* Long-Term Results */}
           <div className="mt-16">
-            <h3 className="text-2xl font-semibold text-center mb-8">Long-Term Impact (12-18 Months)</h3>
+            <h3 className="text-2xl font-semibold text-center mb-8">Longer Term, Over 12 to 18 Months</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {results.longTerm.map((result, index) => (
                 <motion.div
@@ -498,23 +498,23 @@ export default function CaseStudyTFT() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="text-center">
                     <Target className="h-10 w-10 text-accent mx-auto mb-3" />
-                    <h4 className="font-semibold mb-2">Intent-First Strategy</h4>
+                    <h4 className="font-semibold mb-2">Start with What People Search</h4>
                     <p className="text-sm text-neutral-light/70">
-                      Mapped every stage of the trader journey and owned those search moments
+                      We mapped what traders search for at each stage of deciding and made sure the brand showed up there
                     </p>
                   </div>
                   <div className="text-center">
                     <Users className="h-10 w-10 text-accent mx-auto mb-3" />
-                    <h4 className="font-semibold mb-2">Conversion Science</h4>
+                    <h4 className="font-semibold mb-2">Test Everything</h4>
                     <p className="text-sm text-neutral-light/70">
-                      Data-driven optimization at every touchpoint from awareness to activation
+                      We measured and tested each step, from first visit to first purchase
                     </p>
                   </div>
                   <div className="text-center">
                     <Award className="h-10 w-10 text-accent mx-auto mb-3" />
-                    <h4 className="font-semibold mb-2">Lifecycle Value</h4>
+                    <h4 className="font-semibold mb-2">Follow Up at the Right Time</h4>
                     <p className="text-sm text-neutral-light/70">
-                      Stage-based campaigns that maximize LTV and reduce churn
+                      Emails matched to each customer stage, so customers spend more and fewer leave
                     </p>
                   </div>
                 </div>
@@ -537,10 +537,10 @@ export default function CaseStudyTFT() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold">
-              Ready to Break Through Your Growth Plateau and Slash Acquisition Costs?
+              Has Your Growth Stalled Too?
             </h2>
             <p className="mt-6 text-xl text-neutral-light/80">
-              Let's build a multi-channel growth engine that scales profitably and performs predictably.
+              Tell us what is going on. We will look at it and tell you plainly what we would do.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -550,7 +550,7 @@ export default function CaseStudyTFT() {
                 asChild
               >
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                  Request Your Growth Audit
+                  Book a free 20-minute call
                   <ArrowRight className="ml-3 h-5 w-5" />
                 </a>
               </Button>
@@ -567,7 +567,7 @@ export default function CaseStudyTFT() {
             </div>
 
             <p className="mt-6 text-sm text-neutral-light/60">
-              Free consultation. No commitment required.
+              The call is free and there is no obligation.
             </p>
           </motion.div>
         </div>

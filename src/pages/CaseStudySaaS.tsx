@@ -7,112 +7,112 @@ import { SEO } from '@/components/SEO'
 import RelatedCaseStudies from '@/components/RelatedCaseStudies'
 
 const keyMetrics = [
-  { value: '+320%', label: 'Organic Traffic Growth', icon: TrendingUp },
-  { value: '−60%', label: 'Customer Acquisition Cost', icon: DollarSign },
-  { value: '+89%', label: 'Trial-to-Paid Conversion', icon: Target },
-  { value: '247%', label: 'ROAS from Paid Campaigns', icon: Users }
+  { value: '+320%', label: 'Growth in visits from unpaid search', icon: TrendingUp },
+  { value: '−60%', label: 'Average cost to win each customer', icon: DollarSign },
+  { value: '+89%', label: 'Trial users who became paying customers', icon: Target },
+  { value: '247%', label: 'Return on what they spent on ads', icon: Users }
 ]
 
 const timeline = [
   {
-    phase: 'Foundation Audit',
+    phase: 'Checking the Site',
     duration: 'Weeks 1-2',
     activities: [
-      'Technical SEO audit identifying 47 critical issues',
-      'Competitor gap analysis revealing 12 untapped keyword clusters',
-      'Conversion funnel analysis showing 63% drop-off at trial signup'
+      'Checked the site for problems that hold it back on Google and found 47 serious ones',
+      'Compared them to competitors and found 12 groups of search terms nobody was covering',
+      'Traced where buyers gave up and found 63% quit at the trial signup'
     ]
   },
   {
-    phase: 'Quick Wins',
+    phase: 'Quick Fixes',
     duration: 'Weeks 3-6',
     activities: [
-      'Fixed technical SEO issues (site speed, schema markup, mobile UX)',
-      'Launched 8 high-intent comparison pages',
-      'Simplified trial signup flow from 5 steps to 2'
+      'Fixed the technical problems (slow pages, missing code Google reads, poor mobile experience)',
+      'Launched 8 pages comparing the product to competitors, aimed at people ready to buy',
+      'Cut the trial signup from 5 steps to 2'
     ]
   },
   {
-    phase: 'Content Engine',
+    phase: 'Publishing Steadily',
     duration: 'Weeks 7-16',
     activities: [
-      'Published 24 product-led content pieces mapped to user intent',
-      'Built topical authority clusters around 4 core use cases',
-      'Implemented internal linking architecture'
+      'Published 24 articles that show the product solving the problems people search for',
+      'Built groups of related articles around 4 main uses of the product, so Google sees them as the expert',
+      'Linked the articles together so readers and Google can find everything'
     ]
   },
   {
-    phase: 'Scale & Optimize',
+    phase: 'Growing and Improving',
     duration: 'Months 5-6',
     activities: [
-      'Launched paid search campaigns targeting bottom-funnel keywords',
-      'A/B tested pricing page elements (17% lift in conversions)',
-      'Expanded content to 6 additional keyword clusters'
+      'Started paid search ads aimed at people ready to buy',
+      'Tested different versions of the pricing page (17% more people converted)',
+      'Expanded the writing to 6 more groups of search terms'
     ]
   }
 ]
 
 const challenges = [
   {
-    title: 'Invisible to High-Intent Buyers',
-    description: 'Ranking on page 5 for money keywords while competitors dominated page 1. Zero branded search volume outside existing customers.'
+    title: 'Buyers Could Not Find Them',
+    description: 'For the searches that bring in paying customers, they sat on page 5 of Google while competitors filled page 1. Nobody searched for them by name except existing customers.'
   },
   {
-    title: 'Expensive, Unsustainable Growth',
-    description: 'Over-reliance on paid ads inflated CAC to $340. Every new customer felt like a battle, not a system.'
+    title: 'Growth That Cost Too Much',
+    description: 'They depended on paid ads, which pushed the cost of winning each customer to $340. Every new customer felt like a battle, not a system.'
   },
   {
-    title: 'Leaky Conversion Funnel',
-    description: 'Complex trial signup process and unclear value proposition caused 63% of interested visitors to abandon before converting.'
+    title: 'People Quit Before Signing Up',
+    description: 'The trial signup was complicated and the product was not explained clearly, so 63% of interested visitors left before converting.'
   },
   {
-    title: 'No Content-to-Revenue Pipeline',
-    description: "Blog existed but wasn't mapped to buyer intent or product positioning. Traffic didn't convert."
+    title: 'A Blog That Did Not Sell',
+    description: "They had a blog, but it was not written around what buyers search for or what the product does. The traffic it brought did not turn into customers."
   }
 ]
 
 const solutions = [
   {
-    category: 'Technical Foundation',
+    category: 'Fixing the Site Itself',
     tactics: [
-      'Site speed optimization (1.8s → 0.6s load time)',
-      'Schema markup for SaaS products and reviews',
-      'Mobile UX improvements and Core Web Vitals fixes',
-      'URL structure and canonicalization cleanup'
+      'Made pages load faster (from 1.8s down to 0.6s)',
+      'Added the code that helps Google understand and display the product and its reviews',
+      'Improved the mobile experience and fixed the speed measures Google ranks by',
+      'Cleaned up page addresses so Google does not see duplicate pages'
     ]
   },
   {
-    category: 'Content & Authority',
+    category: 'Writing Content That Sells',
     tactics: [
-      'Comparison pages for all major competitors',
-      'Use case content mapped to Jobs-to-be-Done framework',
-      'Product-led tutorials and integration guides',
-      'Topical clusters linking to product pages'
+      'Pages comparing the product to every major competitor',
+      'Articles written around the specific jobs customers use the product for',
+      'Step-by-step tutorials and guides for connecting the product to other tools',
+      'Groups of related articles, all linking to the product pages'
     ]
   },
   {
-    category: 'Conversion Optimization',
+    category: 'Turning Visitors into Customers',
     tactics: [
-      'Streamlined trial signup (5 steps → 2 steps)',
-      'Pricing page A/B tests with social proof elements',
-      'Exit-intent offers for hesitant visitors',
-      'Email nurture sequence for trial users'
+      'Cut the trial signup from 5 steps to 2',
+      'Tested pricing page versions with customer reviews and logos added',
+      'Showed an offer to visitors about to leave the page',
+      'A series of emails for trial users to help them get value and upgrade'
     ]
   }
 ]
 
 const results = {
   early: [
-    { metric: '+87%', description: 'Organic sessions in first 75 days' },
-    { metric: '14', description: 'Keywords moved to page 1' },
-    { metric: '−18%', description: 'Trial signup drop-off rate' },
-    { metric: '+34%', description: 'Trial-to-paid conversion rate' }
+    { metric: '+87%', description: 'More visits from unpaid search in the first 75 days' },
+    { metric: '14', description: 'Search terms moved to page 1 of Google' },
+    { metric: '−18%', description: 'Fewer people quitting the trial signup' },
+    { metric: '+34%', description: 'More trial users becoming paying customers' }
   ],
   longTerm: [
-    { metric: '+320%', description: 'Total organic traffic growth' },
-    { metric: '−60%', description: 'Blended customer acquisition cost' },
-    { metric: '32', description: 'Page 1 rankings for high-intent keywords' },
-    { metric: '$1.2M+', description: 'Revenue influenced by organic channel' }
+    { metric: '+320%', description: 'Total growth in visits from unpaid search' },
+    { metric: '−60%', description: 'Lower average cost to win each customer' },
+    { metric: '32', description: 'Page 1 rankings for searches people make when ready to buy' },
+    { metric: '$1.2M+', description: 'Revenue that unpaid search played a part in' }
   ]
 }
 
@@ -120,8 +120,8 @@ export default function CaseStudySaaS() {
   return (
     <div className="min-h-screen bg-dark pt-16 text-white">
       <SEO
-        title="SaaS Startup Case Study - From Page 5 to Page 1"
-        description="How we helped a B2B SaaS startup achieve 320% organic traffic growth and reduce CAC by 60% in 6 months through strategic SEO and conversion optimization."
+        title="SaaS Case Study: From Page 5 of Google to Page 1"
+        description="How we helped a B2B software company grow visits from unpaid search by 320% and cut the cost of winning each customer by 60% in 6 months."
         keywords="SaaS SEO case study, B2B SaaS marketing, reduce customer acquisition cost, organic traffic growth, conversion optimization"
         canonical="/case-studies/saas-startup"
         ogImage="/images/og/case-saas-startup.png"
@@ -141,10 +141,10 @@ export default function CaseStudySaaS() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
             <span className="text-sm uppercase tracking-[0.35em] text-accent/80">Case Study</span>
             <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight">
-              From Page 5 to Page 1 in 6 Months
+              From Page 5 of Google to Page 1 in 6 Months
             </h1>
             <p className="mt-4 text-lg text-neutral-light/80 max-w-3xl">
-              How a B2B SaaS startup escaped paid-ad dependency and built a sustainable organic growth engine.
+              How a B2B software company stopped depending on paid ads and started winning customers from search instead.
             </p>
           </motion.div>
 
@@ -230,9 +230,9 @@ export default function CaseStudySaaS() {
       {/* Solution */}
       <section className="py-16 bg-dark-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-center">The Solution</h2>
+          <h2 className="text-3xl font-semibold text-center">What We Did</h2>
           <p className="mt-4 text-center text-neutral-light/80 max-w-2xl mx-auto">
-            A three-pillar approach combining technical excellence, content strategy, and conversion optimization.
+            Three things: fix the site itself, write content that buyers actually search for, and make signing up easier.
           </p>
 
           <div className="mt-12 grid md:grid-cols-3 gap-6">
@@ -263,7 +263,7 @@ export default function CaseStudySaaS() {
       {/* Timeline */}
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-center">Execution Timeline</h2>
+          <h2 className="text-3xl font-semibold text-center">What We Did, and When</h2>
           <div className="mt-12 space-y-8">
             {timeline.map((phase, idx) => (
               <motion.div
@@ -350,27 +350,27 @@ export default function CaseStudySaaS() {
           <h2 className="text-3xl font-semibold text-center">What Made This Work</h2>
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Data-Driven Prioritization</h3>
+              <h3 className="text-xl font-semibold">We Picked Battles Worth Winning</h3>
               <p className="mt-3 text-neutral-light/80">
-                We focused on high-intent keywords where competitors were vulnerable, not vanity metrics. Every content piece was mapped to revenue potential.
+                We went after the searches buyers make when ready to spend, in spots where competitors were weak. Every article was chosen for its chance of bringing in revenue.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Technical Excellence First</h3>
+              <h3 className="text-xl font-semibold">We Fixed the Site Before Writing</h3>
               <p className="mt-3 text-neutral-light/80">
-                Fixed foundational SEO issues before scaling content. A fast, well-structured site converted 2x better than the broken baseline.
+                We repaired the underlying problems first. A fast, well-built site converted 2x better than the broken one it replaced.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Conversion-Aware Content</h3>
+              <h3 className="text-xl font-semibold">Every Page Had a Job</h3>
               <p className="mt-3 text-neutral-light/80">
-                Every page had a clear CTA and path to trial. Content wasn't just for traffic—it was designed to convert readers into customers.
+                Every page had a clear next step and a path to the trial. The writing was not just there to bring visitors. It was built to turn readers into customers.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Continuous Optimization</h3>
+              <h3 className="text-xl font-semibold">We Kept Testing</h3>
               <p className="mt-3 text-neutral-light/80">
-                Monthly A/B tests on pricing pages, trial flows, and email sequences. Small wins compounded into major conversion improvements.
+                Monthly tests on the pricing pages, trial signup, and emails. Small wins added up to big improvements in how many visitors became customers.
               </p>
             </div>
           </div>
@@ -383,14 +383,14 @@ export default function CaseStudySaaS() {
       {/* CTA */}
       <section className="py-16 bg-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold">Ready to Build Your Growth Engine?</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold">Spending Too Much on Ads?</h2>
           <p className="mt-4 text-lg text-neutral-light/80">
-            Let's design a strategy that turns traffic into revenue—sustainably.
+            Tell us where your customers come from now. We will tell you plainly what we would change.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Strategy Call
+                Book a free 20-minute call
               </a>
             </Button>
             <Button variant="outline" className="rounded-full border-white/15 text-white hover:text-dark hover:bg-neutral-lighter" asChild>

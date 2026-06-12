@@ -7,114 +7,114 @@ import { SEO } from '@/components/SEO'
 import RelatedCaseStudies from '@/components/RelatedCaseStudies'
 
 const keyMetrics = [
-  { value: '$57K', label: 'Revenue from Email in 90 Days', icon: Mail },
-  { value: '+42%', label: 'Email Open Rate', icon: TrendingUp },
-  { value: '+18%', label: 'Click-Through Rate', icon: Users },
-  { value: '34%', label: 'Repeat Purchase Rate', icon: ShoppingCart }
+  { value: '$57K', label: 'Revenue from email in 90 days', icon: Mail },
+  { value: '+42%', label: 'More people opening the emails', icon: TrendingUp },
+  { value: '+18%', label: 'More people clicking through to the shop', icon: Users },
+  { value: '34%', label: 'Customers who came back to buy again', icon: ShoppingCart }
 ]
 
 const timeline = [
   {
-    phase: 'Email Audit & Strategy',
+    phase: 'Looking at the List',
     duration: 'Week 1',
     activities: [
-      'Analyzed existing email database (12K subscribers, <15% engagement)',
-      'Identified segmentation opportunities by purchase history and browse behavior',
-      'Mapped customer journey from awareness to repeat purchase'
+      'Went through the existing email list (12K subscribers, fewer than 15% opening or clicking)',
+      'Found ways to group subscribers by what they had bought and browsed',
+      'Mapped the path a customer takes from first hearing of the brand to buying again'
     ]
   },
   {
-    phase: 'List Hygiene & Foundation',
+    phase: 'Cleaning Up',
     duration: 'Weeks 2-3',
     activities: [
-      'Cleaned list and sunset unengaged subscribers',
-      'Set up behavioral segmentation and dynamic tags',
-      'Created high-converting email templates aligned with brand'
+      'Cleaned the list and stopped emailing people who never opened anything',
+      'Set up groups based on what each subscriber actually does',
+      'Designed email templates that match the brand and sell well'
     ]
   },
   {
-    phase: 'Automation Build',
+    phase: 'Setting Up Automatic Emails',
     duration: 'Weeks 4-6',
     activities: [
-      'Welcome series (3 emails) with 51% open rate',
-      'Browse abandonment flow recovering 12% of lost carts',
-      'Post-purchase nurture driving repeat orders',
-      'Win-back campaign re-engaging dormant customers'
+      'A welcome series (3 emails) that 51% of people opened',
+      'Emails to people who browsed but left, recovering 12% of lost carts',
+      'Follow-up emails after a purchase that bring people back to buy again',
+      'A campaign that wins back customers who had gone quiet'
     ]
   },
   {
-    phase: 'Campaign Expansion',
+    phase: 'Sending More',
     duration: 'Weeks 7-12',
     activities: [
-      'Weekly broadcast campaigns with seasonal promotions',
-      'VIP segment creation and exclusive early-access offers',
-      'SMS integration for high-intent moments',
-      'A/B testing subject lines, CTAs, and send times'
+      'Weekly emails with seasonal offers',
+      'A VIP group with early access to new collections',
+      'Text messages at the moments people are most likely to buy',
+      'Tested subject lines, buttons, and send times against each other'
     ]
   }
 ]
 
 const challenges = [
   {
-    title: 'Stagnant Email Revenue',
-    description: 'Email was an afterthought—generic broadcasts with low engagement. No automation, no segmentation, just batch-and-blast.'
+    title: 'Email Made Almost No Money',
+    description: 'Email was an afterthought: the same generic message to everyone, and few people opened it. Nothing automatic, no grouping of subscribers.'
   },
   {
-    title: 'High Cart Abandonment',
-    description: '68% of visitors added items to cart but never checked out. No follow-up system to recover those lost sales.'
+    title: 'People Left Full Carts Behind',
+    description: '68% of visitors added items to cart but never checked out, and there was no follow-up to recover those lost sales.'
   },
   {
-    title: 'One-Time Buyers',
-    description: 'Strong acquisition from paid ads, but weak retention. Customers bought once and disappeared.'
+    title: 'Customers Bought Once and Vanished',
+    description: 'Paid ads brought in plenty of new customers, but they bought once and disappeared.'
   },
   {
-    title: 'No Lifecycle Strategy',
-    description: "Treating all subscribers the same—new customers got the same emails as VIPs. Didn't optimize for where people were in their journey."
+    title: 'Everyone Got the Same Emails',
+    description: "A brand new customer got the same emails as a loyal big spender. Nothing changed based on where someone was in their relationship with the brand."
   }
 ]
 
 const solutions = [
   {
-    category: 'Email Infrastructure',
+    category: 'Setting Up the System',
     tactics: [
-      'Klaviyo migration and integration with Shopify',
-      'Advanced segmentation by purchase frequency, AOV, and product category',
-      'Dynamic content blocks for personalized product recommendations',
-      'Deliverability optimization (SPF, DKIM, domain warming)'
+      'Moved them to Klaviyo, an email platform, and connected it to their Shopify shop',
+      'Grouped subscribers by how often they buy, how much they spend per order, and what they buy',
+      'Emails that show each person products picked for them',
+      'Technical settings that keep the emails out of spam folders'
     ]
   },
   {
-    category: 'Lifecycle Automation',
+    category: 'Emails That Send Themselves',
     tactics: [
-      'Welcome series introducing brand story and bestsellers',
-      'Cart and browse abandonment flows with dynamic product inserts',
-      'Post-purchase thank you and cross-sell sequences',
-      'Win-back campaigns targeting 60-90 day inactive customers'
+      'A welcome series introducing the brand and its bestsellers',
+      'Emails to people who left a cart or browsed without buying, showing the exact items they looked at',
+      'Thank-you emails after a purchase that also suggest matching items',
+      'Emails to win back customers who had not bought in 60 to 90 days'
     ]
   },
   {
-    category: 'Campaign Strategy',
+    category: 'Regular Campaigns',
     tactics: [
-      'Seasonal promotional campaigns with urgency and scarcity',
-      'VIP-only early access to new collections',
-      'Educational content on styling and fabric care',
-      'User-generated content and social proof in emails'
+      'Seasonal offers with clear end dates and limited stock',
+      'Early access to new collections for VIP customers only',
+      'Helpful emails on styling and fabric care',
+      'Customer photos and reviews inside the emails'
     ]
   }
 ]
 
 const results = {
   early: [
-    { metric: '$18K', description: 'Email revenue in first 30 days' },
-    { metric: '51%', description: 'Welcome series open rate' },
-    { metric: '12%', description: 'Cart recovery rate' },
-    { metric: '+28%', description: 'Subscriber list growth' }
+    { metric: '$18K', description: 'Revenue from email in the first 30 days' },
+    { metric: '51%', description: 'Of people opened the welcome emails' },
+    { metric: '12%', description: 'Of abandoned carts were recovered' },
+    { metric: '+28%', description: 'Growth in the subscriber list' }
   ],
   longTerm: [
-    { metric: '$57K', description: 'Total email revenue in 90 days' },
-    { metric: '+42%', description: 'Average email open rate' },
-    { metric: '34%', description: 'Repeat purchase rate' },
-    { metric: '27%', description: 'Email contribution to total revenue' }
+    { metric: '$57K', description: 'Total revenue from email in 90 days' },
+    { metric: '+42%', description: 'More people opening the emails on average' },
+    { metric: '34%', description: 'Of customers came back to buy again' },
+    { metric: '27%', description: 'Of all revenue now comes from email' }
   ]
 }
 
@@ -122,8 +122,8 @@ export default function CaseStudyFashion() {
   return (
     <div className="min-h-screen bg-dark pt-16 text-white">
       <SEO
-        title="Fashion Brand Case Study - $57K from Email Automation"
-        description="How we helped a fashion e-commerce brand generate $57K in 90 days through strategic email marketing automation and lifecycle campaigns."
+        title="Fashion Brand Case Study: $57K in 90 Days from Email"
+        description="How we helped a fashion brand make $57K in 90 days from email, using automatic emails sent at the right moments and a properly organised list."
         keywords="email marketing case study, Klaviyo automation, e-commerce email strategy, cart abandonment recovery, customer retention"
         canonical="/case-studies/fashion-brand"
         ogImage="/images/og/case-fashion-brand.png"
@@ -143,10 +143,10 @@ export default function CaseStudyFashion() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
             <span className="text-sm uppercase tracking-[0.35em] text-accent/80">Case Study</span>
             <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight">
-              $57K in 90 Days from Email Automation
+              $57K in 90 Days from Email
             </h1>
             <p className="mt-4 text-lg text-neutral-light/80 max-w-3xl">
-              How a fashion e-commerce brand transformed their email channel from an afterthought into their highest-ROI revenue driver.
+              How a fashion brand turned email from an afterthought into the channel that earns them the most for what they spend on it.
             </p>
           </motion.div>
 
@@ -232,9 +232,9 @@ export default function CaseStudyFashion() {
       {/* Solution */}
       <section className="py-16 bg-dark-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-center">The Solution</h2>
+          <h2 className="text-3xl font-semibold text-center">What We Did</h2>
           <p className="mt-4 text-center text-neutral-light/80 max-w-2xl mx-auto">
-            A comprehensive email marketing overhaul focused on automation, segmentation, and lifecycle optimization.
+            We rebuilt their email from scratch: automatic emails sent at the right moments, to the right groups of subscribers.
           </p>
 
           <div className="mt-12 grid md:grid-cols-3 gap-6">
@@ -265,7 +265,7 @@ export default function CaseStudyFashion() {
       {/* Timeline */}
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-center">Execution Timeline</h2>
+          <h2 className="text-3xl font-semibold text-center">What We Did, and When</h2>
           <div className="mt-12 space-y-8">
             {timeline.map((phase, idx) => (
               <motion.div
@@ -352,27 +352,27 @@ export default function CaseStudyFashion() {
           <h2 className="text-3xl font-semibold text-center">What Made This Work</h2>
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Behavioral Segmentation</h3>
+              <h3 className="text-xl font-semibold">Different Emails for Different People</h3>
               <p className="mt-3 text-neutral-light/80">
-                We stopped treating all subscribers the same. VIPs got exclusive access, new subscribers got education, dormant customers got win-back offers.
+                We stopped treating all subscribers the same. Loyal customers got early access, new subscribers learnt about the brand, quiet customers got offers to come back.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Automation-First Approach</h3>
+              <h3 className="text-xl font-semibold">Emails That Run Themselves</h3>
               <p className="mt-3 text-neutral-light/80">
-                Built evergreen flows that worked 24/7. Welcome, abandonment, and post-purchase sequences ran on autopilot while we scaled campaigns.
+                The welcome, abandoned cart, and after-purchase emails ran automatically around the clock while we worked on the bigger campaigns.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Brand-Aligned Creative</h3>
+              <h3 className="text-xl font-semibold">Emails That Looked Like the Brand</h3>
               <p className="mt-3 text-neutral-light/80">
-                Every email felt on-brand—clean design, compelling copy, and lifestyle imagery that matched the premium positioning.
+                Every email matched the brand: clean design, clear writing, and photography that fit the premium feel.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Revenue-Focused Testing</h3>
+              <h3 className="text-xl font-semibold">Testing for Revenue, Not Vanity</h3>
               <p className="mt-3 text-neutral-light/80">
-                Continuous A/B testing on subject lines, send times, and CTAs. Every test was designed to increase revenue per email, not just open rates.
+                We kept testing subject lines, send times, and buttons. Every test aimed to increase revenue per email, not just how many people opened them.
               </p>
             </div>
           </div>
@@ -385,14 +385,14 @@ export default function CaseStudyFashion() {
       {/* CTA */}
       <section className="py-16 bg-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold">Ready to Turn Your Email List Into Revenue?</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold">Is Your Email List Just Sitting There?</h2>
           <p className="mt-4 text-lg text-neutral-light/80">
-            Let's build an email system that works while you sleep.
+            Tell us about your list and your shop. We will tell you plainly what it could be earning.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Strategy Call
+                Book a free 20-minute call
               </a>
             </Button>
             <Button variant="outline" className="rounded-full border-white/15 text-white hover:text-dark hover:bg-neutral-lighter" asChild>

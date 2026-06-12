@@ -15,19 +15,19 @@ export default function ServiceWebsites() {
   return (
     <div className="tq-editorial">
       <SEO
-        title="Website Design & Development — TaqHaus"
-        description="A website that works as hard as you do. We design and build websites that turn visitors into enquiries — copy included, SEO foundation built in, analytics set up."
+        title="Website Design and Build | TaqHaus"
+        description="We design and build a website that turns visitors into enquiries. We write the words, set it up for Google, and show you how to update it."
         canonical="/services/websites"
       />
 
-      <div className="topbar"><span className="pulse" /><span>Now booking Q3 engagements · Serving clients globally</span></div>
+      <div className="topbar"><span className="pulse" /><span>Taking new clients for Q3 · Working with clients worldwide</span></div>
 
       <header className="nav">
         <div className="nav-inner">
           <Link to="/" aria-label="TaqHaus — Home"><img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} /></Link>
           <nav className="nav-links">
             <Link to="/services" className="active">Services</Link>
-            <Link to="/case-studies">Work</Link>
+            <Link to="/case-studies">Results</Link>
             <Link to="/about">About</Link>
             <Link to="/insights">Insights</Link>
             <Link to="/contact">Contact</Link>
@@ -48,10 +48,10 @@ export default function ServiceWebsites() {
                 A lot of websites look fine and do nothing. People visit, don&rsquo;t understand what you offer, don&rsquo;t know what to do next, and leave. We build sites that are clear, fast, and built to turn visitors into enquiries.
               </p>
               <p style={{ marginTop: 16, color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.65 }}>
-                Copy included. SEO foundation built in. Analytics set up. Shipped — not handed over as a Figma file.
+                We write every word. We set it up to show on Google. We set up the tools that show who visits. Then we launch it, not hand you a design file.
               </p>
               <div className="row" style={{ marginTop: 28 }}>
-                <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a free 20-minute audit <span className="arrow">↗</span></a>
+                <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a free 20-minute call <span className="arrow">↗</span></a>
                 <Link to="/services" className="btn-link">All services</Link>
               </div>
             </motion.div>
@@ -65,7 +65,7 @@ export default function ServiceWebsites() {
             <motion.div {...rv()}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>What&rsquo;s included</span>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
-                {['Custom design (Webflow, Framer, or Next.js)', 'Mobile-first and fast-loading', 'Copywriting included — we write every word', 'SEO foundation built in from day one', 'Analytics setup and goal tracking', 'CMS training so you can update it yourself', '90-day post-launch support included'].map(item => (
+                {['A design made just for you (built on Webflow, Framer, or Next.js)', 'Loads fast and works well on phones', 'Every word written for you', 'Set up to show on Google from day one', 'Tools that show who visits and what they do', 'We show you how to update it yourself', '90 days of help after launch, included'].map(item => (
                   <li key={item} style={{ fontSize: 15, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                     <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>{item}
                   </li>
@@ -76,9 +76,9 @@ export default function ServiceWebsites() {
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Who it&rsquo;s for</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 {[
-                  { who: 'Businesses on a DIY site', desc: 'You built something on Wix or Squarespace to get started. It served its purpose. Now you need something that converts and doesn\'t embarrass you.' },
-                  { who: 'Politicians & public figures', desc: 'You need a professional online presence built from scratch — one that represents you accurately and ranks when people search your name.' },
-                  { who: 'Businesses that haven\'t updated in years', desc: 'Your site is costing you credibility. Visitors can tell it\'s old, slow, or confusing — and they leave.' },
+                  { who: 'Businesses on a DIY site', desc: 'You built something on Wix or Squarespace to get started. It served its purpose. Now you need something that brings in enquiries and doesn\'t embarrass you.' },
+                  { who: 'Politicians & public figures', desc: 'You need a proper site built from scratch, one that shows who you are and comes up when people search your name.' },
+                  { who: 'Businesses that haven\'t updated in years', desc: 'Your site is costing you trust. Visitors can tell it\'s old, slow, or confusing, and they leave.' },
                   { who: 'New businesses', desc: 'You\'re launching and you want to start with a proper site that\'s ready to grow with you.' },
                 ].map(item => (
                   <div key={item.who} style={{ borderLeft: '2px solid var(--hairline)', paddingLeft: 16 }}>
@@ -97,9 +97,9 @@ export default function ServiceWebsites() {
           <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'end' }}>
             <h2 className="display-lg" style={{ color: 'var(--paper)' }}>Time to build a site that works.</h2>
             <div className="stack">
-              <p style={{ color: 'color-mix(in oklch, var(--paper) 88%, transparent)', fontSize: 17, lineHeight: 1.55, margin: 0 }}>Tell us what you need and we&rsquo;ll scope the right approach. Most projects are delivered in 6–10 weeks.</p>
+              <p style={{ color: 'color-mix(in oklch, var(--paper) 88%, transparent)', fontSize: 17, lineHeight: 1.55, margin: 0 }}>Tell us what you need and we&rsquo;ll map out the right plan. Most sites are finished in 6 to 10 weeks.</p>
               <div className="row">
-                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>Book a discovery call <span className="arrow">↗</span></a>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>Book a free 20-minute call <span className="arrow">↗</span></a>
                 <Link to="/services" className="btn btn-ghost" style={{ color: 'var(--paper)', borderColor: 'color-mix(in oklch, var(--paper) 35%, transparent)' }}>All services</Link>
               </div>
             </div>
@@ -110,15 +110,15 @@ export default function ServiceWebsites() {
       <footer className="footer">
         <div className="wrap">
           <div className="footer-head">
-            <h2>Engineer growth that&nbsp;scales.<br />Influence that&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>sticks</em>.</h2>
+            <h2>We handle the&nbsp;marketing.<br />You run the&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>business</em>.</h2>
             <div className="cta-stack">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}><span>Book a discovery call</span><span className="arrow">↗</span></a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}><span>Book a free 20-minute call</span><span className="arrow">↗</span></a>
               <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>info@taqhaus.com</a>
             </div>
           </div>
           <div className="footer-cols">
             <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
+            <div><h4>Company</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
             <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
             <div><h4>Elsewhere</h4><ul><li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li><li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li></ul></div>
           </div>

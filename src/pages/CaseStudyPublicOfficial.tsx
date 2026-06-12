@@ -7,112 +7,112 @@ import { SEO } from '@/components/SEO'
 import RelatedCaseStudies from '@/components/RelatedCaseStudies'
 
 const keyMetrics = [
-  { value: '+127%', label: 'Positive Sentiment Coverage', icon: TrendingUp },
-  { value: '5x', label: 'Social Media Engagement Growth', icon: Users },
-  { value: '92%', label: 'Narrative Control on Page 1', icon: Shield },
-  { value: '+210%', label: 'Owned Channel Reach', icon: Eye }
+  { value: '+127%', label: 'More positive coverage in search results', icon: TrendingUp },
+  { value: '5x', label: 'Growth in likes, comments, and shares on social media', icon: Users },
+  { value: '92%', label: 'Of page 1 search results now tell their story', icon: Shield },
+  { value: '+210%', label: 'Reach on their own site, email, and social accounts', icon: Eye }
 ]
 
 const timeline = [
   {
-    phase: 'Perception Audit',
+    phase: 'Seeing What Voters See',
     duration: 'Week 1',
     activities: [
-      'SERP analysis identifying negative narratives ranking on page 1',
-      'Social listening to map sentiment and emerging themes',
-      'Stakeholder interviews to understand policy priorities'
+      'Searched their name and listed every negative story sitting on page 1 of Google',
+      'Watched social media to see what people were saying and what topics were building',
+      'Talked with their team to understand which policies mattered most to them'
     ]
   },
   {
-    phase: 'Narrative Foundation',
+    phase: 'Building the Story',
     duration: 'Weeks 2-4',
     activities: [
-      'Developed message pillars aligned with platform',
-      'Created authoritative content hub with policy positions',
-      'Optimized knowledge panel and biographical information'
+      'Agreed the handful of core messages everything would be built around',
+      'Built a single official site laying out their positions on each issue',
+      'Fixed the information box Google shows about them, and their biography details across the web'
     ]
   },
   {
-    phase: 'Reputation Build',
+    phase: 'Earning Back Trust',
     duration: 'Weeks 5-8',
     activities: [
-      'Published issue-focused content targeting constituent concerns',
-      'Coordinated press releases with organic content',
-      'Built endorsement and testimonial architecture'
+      'Published pages on the issues voters in their area actually care about',
+      'Timed press releases and website content to back each other up',
+      'Set up a place for endorsements and supporter statements'
     ]
   },
   {
-    phase: 'Campaign Readiness',
+    phase: 'Getting Ready for the Race',
     duration: 'Weeks 9-12',
     activities: [
-      'Launched constituent engagement campaigns',
-      'Established rapid response protocols',
-      'Scaled social presence across platforms'
+      'Launched campaigns to talk directly with voters',
+      'Set up a system for responding fast when stories break',
+      'Grew their presence across social media platforms'
     ]
   }
 ]
 
 const challenges = [
   {
-    title: 'Fragmented Online Presence',
-    description: 'Multiple outdated websites, inconsistent messaging, and no centralized source of truth for policy positions.'
+    title: 'A Scattered Online Presence',
+    description: 'Several outdated websites saying different things, and no single official place stating where they stood on the issues.'
   },
   {
-    title: 'Negative Search Results',
-    description: 'Opposition research and critical coverage dominated page 1 search results for branded queries.'
+    title: 'Bad News at the Top of Google',
+    description: 'When people searched their name, page 1 was filled with opposition material and critical coverage.'
   },
   {
-    title: 'Low Digital Engagement',
-    description: 'Minimal social media presence and limited direct communication with constituents online.'
+    title: 'Little Contact with Voters Online',
+    description: 'Barely any social media presence and almost no direct line to the people they represent.'
   },
   {
-    title: 'No Rapid Response Capability',
-    description: 'No system in place to address emerging narratives or respond to criticism in real-time.'
+    title: 'No Way to Respond Fast',
+    description: 'When a damaging story started spreading, there was no system for answering it quickly.'
   }
 ]
 
 const solutions = [
   {
-    category: 'Digital Infrastructure',
+    category: 'One Official Home Online',
     tactics: [
-      'Consolidated web presence with authoritative policy hub',
-      'Knowledge panel optimization and biographical accuracy',
-      'Technical SEO foundation for all owned properties',
-      'Social media account verification and optimization'
+      'Replaced the scattered sites with one official site stating their positions',
+      'Corrected the information box Google shows about them and their biography details',
+      'Fixed the technical problems holding their sites back on Google',
+      'Got their social media accounts verified and properly set up'
     ]
   },
   {
-    category: 'Narrative Control',
+    category: 'Telling Their Own Story',
     tactics: [
-      'Issue pages targeting constituent search behavior',
-      'Press release syndication strategy',
-      'Endorsement and testimonial content',
-      'Counter-narrative content addressing criticism'
+      'Pages on each issue, written around what local voters actually search for',
+      'A plan for getting press releases picked up and republished',
+      'Endorsements and statements from supporters',
+      'Content that answers the criticism directly, with their side of the story'
     ]
   },
   {
-    category: 'Engagement Systems',
+    category: 'Talking with Voters',
     tactics: [
-      'Multi-platform social media strategy',
-      'Email list building and constituency communications',
-      'Town hall and event promotion',
-      'Rapid response monitoring and protocols'
+      'A plan for each social media platform',
+      'Building an email list and writing regularly to constituents',
+      'Promoting town halls and local events',
+      'Watching for new stories and a set process for responding fast'
     ]
   }
 ]
 
 const results = {
   early: [
-    { metric: '8', description: 'Page 1 positions for key queries in 60 days' },
-    { metric: '+85%', description: 'Positive sentiment in search results' },
+    { metric: '8', description: 'Page 1 spots on Google for the searches that mattered, within 60 days' },
+    { metric: '+85%', description: 'More positive results when people searched their name' },
     { metric: '3.2K', description: 'New email subscribers' },
-    { metric: '+140%', description: 'Average social engagement rate' }
+    { metric: '+140%', description: 'More likes, comments, and shares on average' }
   ],
   longTerm: [
-    { metric: '+127%', description: 'Positive sentiment coverage' },
-    { metric: '5x', description: 'Social media engagement growth' },
-    { metric: '92%', description: 'Owned narrative control on page 1' },
-    { metric: '18K+', description: 'Constituent email list size' }
+    { metric: '+127%', description: 'More positive coverage in search results' },
+    { metric: '5x', description: 'Growth in social media likes, comments, and shares' },
+    { metric: '92%', description: 'Of page 1 search results now tell their story' },
+    { metric: '18K+', description: 'Voters on the email list' }
   ]
 }
 
@@ -120,8 +120,8 @@ export default function CaseStudyPublicOfficial() {
   return (
     <div className="min-h-screen bg-dark pt-16 text-white">
       <SEO
-        title="Public Official Case Study - Reputation Management & Digital Strategy"
-        description="How we helped a public official rebuild their digital reputation, control search narratives, and engage constituents before campaign season."
+        title="Public Official: Reputation Rebuilt Before a Campaign"
+        description="How we helped a public official fix what voters found when searching their name, tell their own story, and reach voters directly before campaign season."
         keywords="political reputation management, public official marketing, narrative control, political SEO, constituent engagement"
         canonical="/case-studies/public-official"
         ogImage="/images/og/case-public-official.png"
@@ -140,10 +140,10 @@ export default function CaseStudyPublicOfficial() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
             <span className="text-sm uppercase tracking-[0.35em] text-accent/80">Case Study</span>
             <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight">
-              Repositioned Digital Image Before Campaign Season
+              A Reputation Rebuilt Before Campaign Season
             </h1>
             <p className="mt-4 text-lg text-neutral-light/80 max-w-3xl">
-              How a public official rebuilt their online reputation, controlled the narrative, and engaged constituents ahead of a competitive election.
+              How a public official fixed what voters found when searching their name, got their own story heard, and built direct lines to voters ahead of a close election.
             </p>
           </motion.div>
 
@@ -217,7 +217,7 @@ export default function CaseStudyPublicOfficial() {
           >
             <Quote className="h-10 w-10 text-accent/60 mb-4" />
             <p className="text-xl italic text-neutral-light/90">
-              "They helped us take back control of our narrative. When voters searched for me, they finally saw the real story—not the opposition's spin."
+              "They helped us take back control of our narrative. When voters searched for me, they finally saw the real story, not the opposition's spin."
             </p>
             <p className="mt-4 text-sm uppercase tracking-[0.3em] text-accent/80">
               — Anonymous, Elected Official
@@ -229,9 +229,9 @@ export default function CaseStudyPublicOfficial() {
       {/* Solution */}
       <section className="py-16 bg-dark-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-center">The Solution</h2>
+          <h2 className="text-3xl font-semibold text-center">What We Did</h2>
           <p className="mt-4 text-center text-neutral-light/80 max-w-2xl mx-auto">
-            A comprehensive reputation management strategy combining search optimization, narrative control, and constituent engagement.
+            Three things: fix what shows up when people search their name, tell their story in their own words, and open direct lines to voters.
           </p>
 
           <div className="mt-12 grid md:grid-cols-3 gap-6">
@@ -262,7 +262,7 @@ export default function CaseStudyPublicOfficial() {
       {/* Timeline */}
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-center">Execution Timeline</h2>
+          <h2 className="text-3xl font-semibold text-center">What We Did, and When</h2>
           <div className="mt-12 space-y-8">
             {timeline.map((phase, idx) => (
               <motion.div
@@ -349,27 +349,27 @@ export default function CaseStudyPublicOfficial() {
           <h2 className="text-3xl font-semibold text-center">What Made This Work</h2>
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Rapid SERP Control</h3>
+              <h3 className="text-xl font-semibold">We Pushed the Bad News Down</h3>
               <p className="mt-3 text-neutral-light/80">
-                We displaced negative content by publishing authoritative, optimized pages that ranked for branded and issue-based queries.
+                We published well-built official pages that ranked for searches of their name and the local issues, pushing the negative results down the page.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Coordinated Messaging</h3>
+              <h3 className="text-xl font-semibold">One Story, Everywhere</h3>
               <p className="mt-3 text-neutral-light/80">
-                Synchronized press releases, social media, and website content to ensure consistent narrative across all touchpoints.
+                Press releases, social media, and the website all said the same thing at the same time, so the story stayed consistent wherever voters found it.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Constituent Engagement</h3>
+              <h3 className="text-xl font-semibold">A Direct Line to Voters</h3>
               <p className="mt-3 text-neutral-light/80">
-                Built direct channels to communicate with voters, reducing reliance on traditional media gatekeepers.
+                We built channels that reach voters directly, so the message no longer depended on whether the press chose to carry it.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-dark-900/80 p-6">
-              <h3 className="text-xl font-semibold">Proactive Reputation Defense</h3>
+              <h3 className="text-xl font-semibold">Answering Before Stories Spread</h3>
               <p className="mt-3 text-neutral-light/80">
-                Established monitoring and rapid response systems to address emerging narratives before they gained traction.
+                We set up monitoring and a fast response process, so new stories were answered before they took hold.
               </p>
             </div>
           </div>
@@ -382,14 +382,14 @@ export default function CaseStudyPublicOfficial() {
       {/* CTA */}
       <section className="py-16 bg-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold">Ready to Take Control of Your Narrative?</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold">Worried About What People Find When They Search Your Name?</h2>
           <p className="mt-4 text-lg text-neutral-light/80">
-            Let's build a reputation strategy that protects and amplifies your message.
+            Tell us what is out there. We will tell you plainly what can be done about it. Everything stays confidential.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="rounded-full px-8 py-4 font-semibold shadow-[0_12px_32px_rgba(233,122,31,0.33)]" asChild>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Confidential Consultation
+                Book a free 20-minute call
               </a>
             </Button>
             <Button variant="outline" className="rounded-full border-white/15 text-white hover:text-dark hover:bg-neutral-lighter" asChild>

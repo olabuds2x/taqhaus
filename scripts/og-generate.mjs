@@ -42,7 +42,7 @@ const CARDS = [
     variant: 'ink',
     eyebrow: 'Marketing, done for you',
     meta: 'Free 20-minute call',
-    headline: 'You run the business. <em>We bring the&nbsp;customers.</em>',
+    headline: 'You run the business. <em>We handle the&nbsp;marketing.</em>',
     size: 110,
     foot: 'taqhaus.com',
   },

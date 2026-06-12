@@ -14,33 +14,33 @@ const rv = (delay = 0) => ({
 const principles = [
   {
     num: '— 01',
-    title: <>We won&rsquo;t sell you a <em>deliverable</em>.</>,
-    body: "We sell outcomes. The deck, the campaign, the site — those are byproducts. If the number doesn't move, we haven't worked.",
+    title: <>We won&rsquo;t sell you a <em>document</em>.</>,
+    body: "We sell results. The plan, the campaign, the website: those are just tools. If your numbers don't move, we haven't done our job.",
   },
   {
     num: '— 02',
-    title: <>We won&rsquo;t hide behind <em>vanity</em> metrics.</>,
-    body: 'Reach, impressions, page views — these are inputs, not results. We report on enquiries, revenue, and the numbers that actually matter to your business.',
+    title: <>We won&rsquo;t show you numbers that don&rsquo;t <em>matter</em>.</>,
+    body: 'Reach, impressions, page views: none of those pay your bills. We report on enquiries, revenue, and the numbers your business actually runs on.',
   },
   {
     num: '— 03',
     title: <>We won&rsquo;t pretend to <em>know</em> everything.</>,
-    body: "Marketing is a wide field and changing faster than ever. When we don't know, we'll say so — and either learn it on our dime or bring in the right specialist.",
+    body: "Marketing is a big field and it changes fast. When we don't know something, we'll say so. Then we'll learn it at our own cost, or bring in someone who already knows it.",
   },
   {
     num: '— 04',
     title: <>We won&rsquo;t outsource the <em>work</em>.</>,
-    body: "Our partners get senior operators. We don't flip you to juniors in month three. If your senior contact leaves, we eat the cost of transition.",
+    body: "You get senior people, and you keep them. We don't switch you to juniors in month three. If your main contact leaves, we cover the cost of the handover.",
   },
   {
     num: '— 05',
     title: <>We won&rsquo;t take on clients we can&rsquo;t make <em>famous</em>.</>,
-    body: "We turn down more work than we accept. If we can't see how to move your business, we'll tell you in the first conversation.",
+    body: "We turn down more work than we take on. If we can't see a way to help your business, we'll tell you in the first call.",
   },
   {
     num: '— 06',
     title: <>We won&rsquo;t lock you in with a bad <em>contract</em>.</>,
-    body: "30 days out at any time. The only reason to stay is because we're moving the number. The day we're not, you should leave.",
+    body: "You can leave with 30 days' notice, any time. The only reason to stay is that we're moving your numbers. The day we're not, you should go.",
   },
 ]
 
@@ -48,34 +48,34 @@ const team = [
   {
     name: 'Ola Raji',
     role: 'Founder · Managing Partner',
-    bio: 'Two-time CMO and one-time co-founder. Leads strategy and the toughest engagements. Will give you a straight answer in the first conversation.',
+    bio: 'Has led marketing as a CMO twice and co-founded a company once. Handles the plans and the hardest jobs. Will give you a straight answer on the first call.',
     prior: 'Prior · Northwind, Atelier, McKinsey Digital',
     label: 'ola raji',
   },
   {
     name: 'Amara Okafor',
-    role: 'Partner · Brand & Narrative',
-    bio: 'Designer and writer. Twelve years building category-defining identities. Probably read more books than you.',
+    role: 'Partner · Brand & Story',
+    bio: 'Designer and writer. Twelve years building brands people remember. Probably read more books than you.',
     prior: 'Prior · Pentagram, Wieden+Kennedy, MetaLab',
     label: 'amara okafor',
   },
   {
     name: 'Diego Marín',
-    role: 'Partner · Growth & Paid',
-    bio: "Built and exited a $40M D2C brand. Now spends our partners' budgets like he spent his own — carefully.",
+    role: 'Partner · Growth & Ads',
+    bio: "Built a $40M online brand and sold it. Now spends our clients' money the way he spent his own: carefully.",
     prior: 'Prior · Allbirds, Lululemon, Carro',
     label: 'diego marin',
   },
   {
     name: 'Rohan Iyer',
-    role: 'Partner · SEO & Editorial',
-    bio: 'Ten years of organic growth, two of them obsessed with AI overviews. Has opinions on schema.',
+    role: 'Partner · SEO & Content',
+    bio: 'Ten years helping businesses get found on Google, the last two focused on AI search. Has strong opinions about the technical details.',
     prior: 'Prior · HubSpot, Ahrefs, Mind the Product',
     label: 'rohan iyer',
   },
   {
     name: 'Claire Dubois',
-    role: 'Director · Lifecycle',
+    role: 'Director · Email',
     bio: "Built email programmes for the kinds of brands you've probably bought from today.",
     prior: 'Prior · Glossier, Klaviyo, Smile Direct',
     label: 'claire dubois',
@@ -83,7 +83,7 @@ const team = [
   {
     name: 'Omar Farooq',
     role: 'Director · Web & Engineering',
-    bio: 'Designer who codes. Has shipped more websites that actually convert than is socially acceptable.',
+    bio: 'Designer who codes. Has built more websites that turn visitors into customers than is socially acceptable.',
     prior: 'Prior · Vercel, Linear, Webflow',
     label: 'omar farooq',
   },
@@ -93,15 +93,15 @@ export default function About() {
   return (
     <div className="tq-editorial">
       <SEO
-        title="About — TaqHaus"
-        description="A marketing consultancy built on operator instincts, not agency habits. Meet the team and the philosophy."
+        title="About TaqHaus | The Team Behind Your Marketing"
+        description="Meet the small senior team that runs your marketing. Capped at 14 partners, no hand-offs, and a straight answer on the first call."
         canonical="/about"
       />
 
       {/* Topbar */}
       <div className="topbar">
         <span className="pulse" />
-        <span>Now booking Q3 engagements · 2 retainer seats open</span>
+        <span>Now booking for Q3 · 2 retainer spots open</span>
       </div>
 
       {/* Nav */}
@@ -112,7 +112,7 @@ export default function About() {
           </Link>
           <nav className="nav-links">
             <Link to="/services">Services</Link>
-            <Link to="/case-studies">Work</Link>
+            <Link to="/case-studies">Results</Link>
             <Link to="/about" className="active">About</Link>
             <Link to="/insights">Insights</Link>
             <Link to="/contact">Contact</Link>
@@ -133,11 +133,11 @@ export default function About() {
             </div>
             <motion.div className="right-rail" {...rv(0.15)}>
               <p className="lede">
-                TaqHaus is a marketing &amp; influence consultancy run by operators, not account managers. We sit inside the businesses we work with, treat the P&amp;L like our own, and stay on the hook for the&nbsp;outcome.
+                TaqHaus is a marketing team run by people who have built and run businesses themselves. We work inside your business, treat your money like our own, and stay on the hook for the&nbsp;results.
               </p>
               <div className="row">
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                  Book a discovery call <span className="arrow">↗</span>
+                  Book a free 20-minute call <span className="arrow">↗</span>
                 </a>
                 <a href="#team" className="btn-link">Meet the team</a>
               </div>
@@ -154,7 +154,7 @@ export default function About() {
               <span className="eyebrow">Origin</span>
               <h2 className="display-md">How TaqHaus started.</h2>
             </div>
-            <p className="lede">The short version: too many great clients were being failed by good agencies. The long version is below.</p>
+            <p className="lede">The short version: too many good businesses were being let down by good agencies. The long version is below.</p>
           </div>
 
           <div className="origin">
@@ -170,16 +170,16 @@ export default function About() {
             </div>
             <div className="copy">
               <p>
-                I&rsquo;d been an in-house CMO twice and a consultant once before I started TaqHaus. Each time, I watched the same thing happen: a brand would hire a strategy firm, get a beautiful deck, and then hand it to three different execution agencies who&rsquo;d never met each other. By month four, the plan would be dead and the founder would be back to writing their own LinkedIn posts at midnight.
+                Before I started TaqHaus, I&rsquo;d run marketing as a CMO twice and worked as a consultant once. Each time I watched the same thing happen. A business would pay one firm for a beautiful plan. Then the plan went to three other agencies who had never met each other. By month four the plan was dead, and the owner was back to writing their own LinkedIn posts at midnight.
               </p>
               <p>
-                The problem wasn&rsquo;t a lack of talent. The talent was everywhere. The problem was the seam — the moment strategy got thrown over the fence to execution, and execution got thrown back to strategy when it didn&rsquo;t work. Every agency I&rsquo;d worked with had built their business model around that seam. We built ours to eliminate it.
+                The problem wasn&rsquo;t a lack of talent. The talent was everywhere. The problem was the gap between the people who made the plan and the people who did the work. The plan got thrown over the fence, then thrown back when it didn&rsquo;t work. Every agency I&rsquo;d worked with was built around that gap. We built TaqHaus to remove it.
               </p>
               <p>
-                TaqHaus is what happens when a senior team owns the diagnosis, the plan, and the build — and stays accountable to the number for as long as you&rsquo;ll have us. No handoffs, no middlemen, no &ldquo;that&rsquo;s a different team&rsquo;s scope.&rdquo; If we can&rsquo;t move it, we&rsquo;ll tell you. And if we believe we can, we&rsquo;ll treat your business like our&nbsp;own.
+                At TaqHaus, one senior team works out what&rsquo;s wrong, makes the plan, and does the work. The same team stays answerable for your numbers for as long as you&rsquo;ll have us. No hand-offs, no middlemen, no &ldquo;that&rsquo;s a different team&rsquo;s job.&rdquo; If we can&rsquo;t help, we&rsquo;ll tell you. And if we believe we can, we&rsquo;ll treat your business like our&nbsp;own.
               </p>
               <p>
-                We&rsquo;re a small Haus by design. Fourteen partners at any one time, capped. We&rsquo;d rather do a few engagements well than scale into the mediocrity we left behind.
+                We&rsquo;re a small Haus on purpose. Fourteen partners at any one time, never more. We&rsquo;d rather do a few jobs well than grow into the kind of agency we left behind.
               </p>
               <div className="signature">
                 — Ola<br />
@@ -198,7 +198,7 @@ export default function About() {
               <span className="eyebrow">Principles</span>
               <h2 className="display-md">What we&rsquo;ll <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>never</em> ask you to do.</h2>
             </div>
-            <p className="lede">Most agencies tell you what they stand for. Easier to tell you what we won&rsquo;t do. Six commitments we&rsquo;ve never broken.</p>
+            <p className="lede">Most agencies tell you what they stand for. It&rsquo;s easier to tell you what we won&rsquo;t do. Six promises we&rsquo;ve never broken.</p>
           </div>
 
           <div className="principles">
@@ -225,7 +225,7 @@ export default function About() {
           </div>
 
           <div className="facts">
-            <div className="fact"><span className="num">14</span><span className="lbl">Partners max — capped by design</span></div>
+            <div className="fact"><span className="num">14</span><span className="lbl">Partners max, capped on purpose</span></div>
             <div className="fact"><span className="num">11<em>+</em></span><span className="lbl">Years in business</span></div>
             <div className="fact"><span className="num">96<em>%</em></span><span className="lbl">Client renewal rate</span></div>
             <div className="fact"><span className="num">avg. 3<em>×</em></span><span className="lbl">More qualified leads within 90 days</span></div>
@@ -241,7 +241,7 @@ export default function About() {
               <span className="eyebrow">The team</span>
               <h2 className="display-md">The Haus.</h2>
             </div>
-            <p className="lede">Senior operators, in-house veterans, and a handful of category-specialist freelancers we&rsquo;ve known for years. The same people you meet on day one are the ones doing the work in month twelve.</p>
+            <p className="lede">Senior people who have done this work inside real businesses, plus a few specialist freelancers we&rsquo;ve known for years. The people you meet on day one are the same people doing the work in month twelve.</p>
           </div>
 
           <div className="team">
@@ -270,7 +270,7 @@ export default function About() {
           </div>
 
           <div style={{ marginTop: 56, paddingTop: 32, borderTop: '1px solid var(--hairline)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap' as const }}>
-            <p className="cap" style={{ margin: 0 }}>Plus a network of 30+ specialists we trust with our partners&rsquo; names.</p>
+            <p className="cap" style={{ margin: 0 }}>Plus a network of 30+ specialists we trust enough to bring in on your work.</p>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-link">We&rsquo;re hiring →</a>
           </div>
         </div>
@@ -285,11 +285,11 @@ export default function About() {
             </h2>
             <div className="stack">
               <p style={{ color: 'color-mix(in oklch, var(--paper) 75%, transparent)', fontSize: 17, lineHeight: 1.55, margin: 0, maxWidth: '44ch' }}>
-                Whether you&rsquo;re a founder looking for a partner, or an operator looking for a Haus — we&rsquo;d love to&nbsp;hear from you.
+                Whether you run a business and want help with your marketing, or you do this work and want to join us, we&rsquo;d love to&nbsp;hear from you.
               </p>
               <div className="row">
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)' }}>
-                  Book a discovery call <span className="arrow">↗</span>
+                  Book a free 20-minute call <span className="arrow">↗</span>
                 </a>
                 <Link to="/contact" className="btn btn-ghost" style={{ color: 'var(--paper)', borderColor: 'color-mix(in oklch, var(--paper) 30%, transparent)' }}>
                   See open roles
@@ -304,10 +304,10 @@ export default function About() {
       <footer className="footer">
         <div className="wrap">
           <div className="footer-head">
-            <h2>Engineer growth that&nbsp;scales.<br />Influence that&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>sticks</em>.</h2>
+            <h2>You run the&nbsp;business.<br />We handle the&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>marketing</em>.</h2>
             <div className="cta-stack">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
-                <span>Book a discovery call</span><span className="arrow">↗</span>
+                <span>Book a free 20-minute call</span><span className="arrow">↗</span>
               </a>
               <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
                 info@taqhaus.com
@@ -316,7 +316,7 @@ export default function About() {
           </div>
           <div className="footer-cols">
             <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
+            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
             <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
             <div><h4>Elsewhere</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Substack</a></li><li><a href="#">X / Twitter</a></li></ul></div>
           </div>

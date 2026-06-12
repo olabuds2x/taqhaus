@@ -18,116 +18,116 @@ import {
 import { Link } from 'react-router-dom'
 
 const keyMetrics = [
-  { value: '+142%', label: 'Branded Search Volume', icon: TrendingUp },
-  { value: '+96%', label: 'Non-Brand Organic Traffic', icon: Users },
-  { value: '−27%', label: 'Support Tickets Per Signup', icon: Shield },
-  { value: '4.8★', label: 'Average Review Rating', icon: Star }
+  { value: '+142%', label: 'People searching the brand by name', icon: TrendingUp },
+  { value: '+96%', label: 'Visits from searches not using the brand name', icon: Users },
+  { value: '−27%', label: 'Support requests per new signup', icon: Shield },
+  { value: '4.8★', label: 'Average review rating', icon: Star }
 ]
 
 const timeline = [
   {
-    phase: 'Discovery & Audit',
+    phase: 'Research',
     duration: '2 Weeks',
     activities: [
-      'Reputation audit across 12 review platforms and forums',
-      'Competitor narrative mapping',
-      'Support ticket sentiment analysis',
-      'Search demand gap analysis'
+      'Read what people were saying across 12 review sites and forums',
+      'Studied the story competitors were telling about themselves and the brand',
+      'Went through support tickets to find the most common complaints',
+      'Found searches the brand should show up for but did not'
     ]
   },
   {
-    phase: 'Foundation Build',
+    phase: 'Groundwork',
     duration: 'Weeks 3-6',
     activities: [
-      'Launched transparent policy hub',
-      'Implemented payout proof system',
-      'Built FAQ and expectation-setting content',
-      'Deployed schema markup for reviews'
+      'Launched a page that explains the policies in plain terms',
+      'Set up a system for publishing proof of payouts',
+      'Wrote FAQs and content that set honest expectations',
+      'Added the code that lets Google show star ratings in search results'
     ]
   },
   {
-    phase: 'Demand Creation',
+    phase: 'Getting the Word Out',
     duration: 'Weeks 7-12',
     activities: [
-      'Founder thought leadership content',
-      'Educational video series launch',
-      'Trader success story campaigns',
-      'Strategic review syndication'
+      'Articles and posts from the founder, in their own voice',
+      'Launched a series of educational videos',
+      'Told the stories of traders who had done well',
+      'Got good reviews seen in more places'
     ]
   },
   {
-    phase: 'Optimization & Scale',
+    phase: 'Improving and Growing',
     duration: 'Ongoing',
     activities: [
-      'Lifecycle messaging alignment',
-      'Payout tracking microsite',
-      'Advanced conversion optimization',
-      'Continuous reputation monitoring'
+      'Made every email and message tell the same story',
+      'Built a small site for tracking payouts',
+      'Kept testing ways to turn more visitors into customers',
+      'Kept watching reviews and forums for problems'
     ]
   }
 ]
 
 const challenges = [
   {
-    title: 'Fragmented Brand Perception',
-    description: 'Negative sentiment across forums and review sites creating trust barriers at bottom of funnel'
+    title: 'People Saw the Brand Differently Everywhere',
+    description: 'Negative comments on forums and review sites made people doubt the company right when they were about to buy'
   },
   {
-    title: 'High Support Load',
-    description: 'Unclear expectations leading to 40% of signups requiring support within first 7 days'
+    title: 'Too Many Support Requests',
+    description: 'Expectations were unclear, so 40% of new signups needed support within their first 7 days'
   },
   {
-    title: 'Conversion Drop-Off',
-    description: 'Strong top-of-funnel awareness but 62% cart abandonment due to credibility concerns'
+    title: 'People Quit Before Paying',
+    description: 'Plenty of people knew the brand, but 62% abandoned their cart because they were not sure they could trust it'
   },
   {
-    title: 'Narrative Control',
-    description: 'Competitors and critics defining the brand story instead of the company'
+    title: 'Others Were Telling Their Story',
+    description: 'Competitors and critics were defining what the brand stood for instead of the company itself'
   }
 ]
 
 const solutions = [
   {
-    category: 'Search & SERP Domination',
+    category: 'Fixing What Shows Up on Google',
     tactics: [
-      'Implemented review schema markup increasing rich snippet visibility',
-      'Created brand vs competitor comparison pages ranking for high-intent queries',
-      'Built crisis FAQ playbook for reputation management',
-      'Optimized for "is TopTier Trader legit" and trust-related queries'
+      'Added the code that lets Google show star ratings next to the brand in search results',
+      'Built pages comparing the brand to competitors, which ranked for searches people make right before buying',
+      'Wrote a ready-to-use FAQ playbook for when bad news hits',
+      'Made sure searches like "is TopTier Trader legit" led to honest, clear answers'
     ]
   },
   {
-    category: 'Content & Social Authority',
+    category: 'Content People Could Trust',
     tactics: [
-      'Launched founder POV video series on trading psychology',
-      'Created transparent payout walkthrough documentation',
-      'Developed co-created trader success stories with verification',
-      'Published monthly transparency reports on platform performance'
+      'Launched a video series where the founder talks about trading psychology',
+      'Wrote a step-by-step walkthrough showing exactly how payouts work',
+      'Told the stories of real traders, with proof they were genuine',
+      'Published monthly reports on how the platform was performing'
     ]
   },
   {
-    category: 'Conversion Optimization',
+    category: 'Helping More Visitors Become Customers',
     tactics: [
-      'Added risk-reversal messaging blocks at checkout',
-      'Implemented real-time platform status displays',
-      'Created expectation-setting content in onboarding flow',
-      'Built trust badges with verifiable proof points'
+      'Added notes at checkout explaining what happens if things go wrong',
+      'Showed the live status of the platform on the site',
+      'Set honest expectations during signup so there were no surprises',
+      'Added trust badges backed by proof anyone could check'
     ]
   }
 ]
 
 const results = {
   early: [
-    { metric: 'Organic Traffic', change: '+96%', period: 'First 45 days' },
-    { metric: 'Branded Search', change: '+142%', period: 'First 60 days' },
-    { metric: 'Support Tickets', change: '−27%', period: 'Per new signup' },
-    { metric: 'Cart Completion', change: '+34%', period: 'First 75 days' }
+    { metric: 'Visits from unpaid search', change: '+96%', period: 'First 45 days' },
+    { metric: 'Searches for the brand by name', change: '+142%', period: 'First 60 days' },
+    { metric: 'Support requests', change: '−27%', period: 'Per new signup' },
+    { metric: 'People finishing checkout', change: '+34%', period: 'First 75 days' }
   ],
   longTerm: [
-    { metric: 'Review Rating', value: '4.8/5.0', context: 'Across 8 major platforms' },
-    { metric: 'Brand SERPs', value: '100%', context: 'Page 1 ownership for brand terms' },
-    { metric: 'LTV Increase', value: '+28%', context: 'Through education-led lifecycle' },
-    { metric: 'Churn Reduction', value: '−19%', context: 'First 90 days retention' }
+    { metric: 'Review rating', value: '4.8/5.0', context: 'Across 8 major review sites' },
+    { metric: 'Search results for the brand name', value: '100%', context: 'Every page 1 result for the brand name is now one they control' },
+    { metric: 'What each customer spends over time', value: '+28%', context: 'From teaching customers well and following up at the right times' },
+    { metric: 'Customers leaving', value: '−19%', context: 'More customers stayed past their first 90 days' }
   ]
 }
 
@@ -135,8 +135,8 @@ export default function CaseStudyTopTier() {
   return (
     <div className="min-h-screen bg-dark text-white">
       <SEO
-        title="TopTier Trader Case Study - Reputation Management & Growth"
-        description="How TaqHaus stabilized TopTier Trader's reputation, increased branded search by 142%, and built a sustainable growth engine through strategic content and reputation management."
+        title="TopTier Trader: Reputation Repaired, Growth Built"
+        description="How TaqHaus helped TopTier Trader repair its reputation, grow searches for the brand by name by 142%, and turn that trust into steady growth."
         keywords="reputation management case study, brand perception, review management, trading platform marketing, fintech case study"
         canonical="/case-studies/toptier-trader"
         ogImage="/images/og/case-toptier-trader.png"
@@ -160,16 +160,16 @@ export default function CaseStudyTopTier() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-semibold uppercase tracking-wider">
-              Reputation Management & Growth
+              Reputation and Growth
             </span>
 
             <h1 className="mt-6 text-5xl md:text-6xl font-bold leading-tight">
-              How TopTier Trader Stabilized Reputation and Built a Defensible Growth Engine
+              How TopTier Trader Repaired Its Reputation and Built Steady Growth
             </h1>
 
             <p className="mt-6 text-xl text-neutral-light/80 max-w-3xl">
-              From fragmented brand perception to market leadership: Building trust, owning the narrative,
-              and creating sustainable demand through strategic reputation management and content authority.
+              People did not trust the brand enough to buy. We helped them tell their own story,
+              back it up with proof, and turn that trust into customers.
             </p>
 
             {/* Key Metrics Grid */}
@@ -221,7 +221,7 @@ export default function CaseStudyTopTier() {
             </Card>
             <Card className="bg-dark-900/80 border-white/10">
               <CardHeader>
-                <CardTitle className="text-lg text-accent">Partnership Duration</CardTitle>
+                <CardTitle className="text-lg text-accent">Time Working Together</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-neutral-light/80">12+ Months (Ongoing)</p>
@@ -242,12 +242,12 @@ export default function CaseStudyTopTier() {
           >
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The Challenge</span>
             <h2 className="mt-4 text-4xl font-bold">
-              Perception Was Fractured. Trust Was Eroding. Growth Was Stalling.
+              People Knew the Brand. They Just Did Not Trust It.
             </h2>
             <p className="mt-6 text-lg text-neutral-light/80 max-w-3xl">
-              TopTier Trader came to us with strong brand awareness but a critical problem: their reputation
-              was being defined by others. Forum discussions, review sites, and social media painted an inconsistent
-              picture that was killing conversions and overwhelming their support team.
+              TopTier Trader came to us well known but with a serious problem: other people were telling
+              their story for them. Forums, review sites, and social media painted a confusing picture
+              that put buyers off and buried their support team in questions.
             </p>
           </motion.div>
 
@@ -307,12 +307,12 @@ export default function CaseStudyTopTier() {
           >
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Our Approach</span>
             <h2 className="mt-4 text-4xl font-bold">
-              Strategic Reputation Ownership + Demand Creation
+              Take Back the Story, Then Turn Trust into Customers
             </h2>
             <p className="mt-6 text-lg text-neutral-light/80 max-w-3xl">
-              We designed a three-pillar strategy: dominate search narratives, build content authority,
-              and optimize every touchpoint for trust. No vanity metrics—only measurable trust signals
-              that drive conversion.
+              We worked on three things: making sure searches about the brand led to honest answers,
+              publishing content that proves the company does what it says, and building trust into
+              every step of buying. We only tracked things that lead to actual sales.
             </p>
           </motion.div>
 
@@ -358,9 +358,9 @@ export default function CaseStudyTopTier() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">Execution Timeline</span>
+            <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">What We Did, and When</span>
             <h2 className="mt-4 text-4xl font-bold">
-              90-Day Foundation, Long-Term Momentum
+              90 Days to Build, Then Keep It Going
             </h2>
           </motion.div>
 
@@ -423,7 +423,7 @@ export default function CaseStudyTopTier() {
           >
             <span className="text-sm uppercase tracking-[0.4em] text-accent font-semibold">The Results</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold">
-              Trust Restored. Demand Unlocked. Growth Sustained.
+              Trust Came Back, and Growth Followed
             </h2>
           </motion.div>
 
@@ -456,7 +456,7 @@ export default function CaseStudyTopTier() {
 
           {/* Long-Term Results */}
           <div className="mt-16">
-            <h3 className="text-2xl font-semibold text-center mb-8">Long-Term Impact (6-12 Months)</h3>
+            <h3 className="text-2xl font-semibold text-center mb-8">Longer Term, Over 6 to 12 Months</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {results.longTerm.map((result, index) => (
                 <motion.div
@@ -498,23 +498,23 @@ export default function CaseStudyTopTier() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="text-center">
                     <Shield className="h-10 w-10 text-accent mx-auto mb-3" />
-                    <h4 className="font-semibold mb-2">Narrative Ownership</h4>
+                    <h4 className="font-semibold mb-2">Tell Your Own Story</h4>
                     <p className="text-sm text-neutral-light/70">
-                      Took control of brand story with transparent, verifiable proof points
+                      The company took back its own story, backed by proof anyone could check
                     </p>
                   </div>
                   <div className="text-center">
                     <TrendingUp className="h-10 w-10 text-accent mx-auto mb-3" />
-                    <h4 className="font-semibold mb-2">Strategic Content</h4>
+                    <h4 className="font-semibold mb-2">Teach, Do Not Pitch</h4>
                     <p className="text-sm text-neutral-light/70">
-                      Education-led approach that built authority and reduced friction
+                      Content that explains how things work earned trust and answered doubts before they became objections
                     </p>
                   </div>
                   <div className="text-center">
                     <Users className="h-10 w-10 text-accent mx-auto mb-3" />
-                    <h4 className="font-semibold mb-2">Trust Infrastructure</h4>
+                    <h4 className="font-semibold mb-2">Proof at Every Step</h4>
                     <p className="text-sm text-neutral-light/70">
-                      Embedded credibility signals throughout the entire customer journey
+                      Reasons to trust the company were built into every step, from first search to checkout
                     </p>
                   </div>
                 </div>
@@ -537,10 +537,10 @@ export default function CaseStudyTopTier() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold">
-              Ready to Own Your Brand Narrative and Build Sustainable Growth?
+              Is Someone Else Telling Your Story?
             </h2>
             <p className="mt-6 text-xl text-neutral-light/80">
-              Let's audit your reputation landscape and design a strategy that turns perception into performance.
+              We will look at what people find when they search your name and tell you plainly what we would fix.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -550,7 +550,7 @@ export default function CaseStudyTopTier() {
                 asChild
               >
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                  Request Your Strategic Audit
+                  Book a free 20-minute call
                   <ArrowRight className="ml-3 h-5 w-5" />
                 </a>
               </Button>
@@ -567,7 +567,7 @@ export default function CaseStudyTopTier() {
             </div>
 
             <p className="mt-6 text-sm text-neutral-light/60">
-              Free consultation. No commitment required.
+              The call is free and there is no obligation.
             </p>
           </motion.div>
         </div>

@@ -16,27 +16,27 @@ const PRIVATE_CALL_URL = CALENDLY_URL
 const services = [
   {
     title: 'Website Design & Management',
-    desc: 'A professional website that represents who you are and what you stand for. Built, maintained, and updated by us. First impressions are made online — yours should be controlled by you.',
+    desc: 'A professional website that shows who you are and what you stand for. We build it, keep it current, and keep it running. First impressions happen online. Yours should be set by you.',
   },
   {
     title: 'Social Media Management',
-    desc: 'Consistent, professional presence on the platforms your audience uses. We handle the posting, the engagement, and the tone — so your channels are always active, always on-message.',
+    desc: 'A steady, professional presence on the platforms your audience uses. We handle the posting, the replies, and the tone, so your channels stay active and on message.',
   },
   {
     title: 'Google Reputation Management',
-    desc: 'We make sure the right content shows up when people search your name. Negative results pushed down. Your story, told your way.',
+    desc: 'We make sure the right content comes up when people search your name. Negative results pushed down. Your story, told your way.',
   },
   {
     title: 'Online Reputation Monitoring',
-    desc: 'We watch what\'s being said about you online and flag anything you need to know about before it becomes a problem. Proactive, not reactive.',
+    desc: 'We watch what is said about you online and flag anything you need to know before it becomes a problem, not after.',
   },
   {
     title: 'Campaign Communications',
-    desc: 'Email updates, constituent newsletters, and digital communications for election or campaign periods. Clear, consistent, and on-brand — whether you\'re 18 months out or 3 weeks from polling day.',
+    desc: 'Email updates, constituent newsletters, and digital communications for election and campaign periods. Clear and consistent, whether you are 18 months out or 3 weeks from polling day.',
   },
   {
-    title: 'Content & Thought Leadership',
-    desc: 'Articles, statements, and social content that build your public profile and establish your position on the issues that matter. Written to your voice, approved by you.',
+    title: 'Content & Public Profile',
+    desc: 'Articles, statements, and social posts that build your public profile and set out where you stand on the issues that matter. Written in your voice, approved by you.',
   },
 ]
 
@@ -44,8 +44,8 @@ export default function PublicFigures() {
   return (
     <div className="tq-editorial">
       <SEO
-        title="Politicians & Public Figures — TaqHaus"
-        description="We build and manage the digital presence that protects your reputation. Website design, social media, Google reputation management, and campaign communications — handled with full discretion."
+        title="For Politicians & Public Figures | TaqHaus"
+        description="Your name is the asset. We manage how it reads online: your website, social media, search results, and campaign communications. Book a private call."
         canonical="/public-figures"
       />
 
@@ -58,12 +58,12 @@ export default function PublicFigures() {
       {/* Nav */}
       <header className="nav">
         <div className="nav-inner">
-          <Link to="/" aria-label="TaqHaus — Home">
+          <Link to="/" aria-label="TaqHaus, Home">
             <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
           </Link>
           <nav className="nav-links">
             <Link to="/services">Services</Link>
-            <Link to="/case-studies">Work</Link>
+            <Link to="/case-studies">Results</Link>
             <Link to="/about">About</Link>
             <Link to="/insights">Insights</Link>
             <Link to="/contact">Contact</Link>
@@ -80,22 +80,22 @@ export default function PublicFigures() {
           <div className="grid">
             <div>
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Politicians &amp; Public Figures</span>
-              <h1>Your name is your most important <em>asset</em>.</h1>
+              <h1>Your name is the <em>asset</em>.</h1>
             </div>
             <motion.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
-                When people search your name, what do they find? When voters or stakeholders look you up before deciding whether to trust you — what&rsquo;s the first thing they see?
+                When people search your name, what do they find? Voters and stakeholders look you up before they decide whether to trust you. The first page of results does a lot of that deciding for them.
               </p>
               <p style={{ marginTop: 16, color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.65 }}>
-                TaqHaus works with politicians, elected officials, executives, and public figures to build a digital presence that&rsquo;s accurate, professional, and controlled by you — not by whoever posted something first.
+                TaqHaus works with politicians, elected officials, executives, and public figures. We shape how your name reads online: accurate, professional, and set by you, not by whoever posted first.
               </p>
               <div className="row" style={{ marginTop: 28 }}>
                 <a href={PRIVATE_CALL_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                  Book a private 30-minute conversation <span className="arrow">↗</span>
+                  Book a private 30-minute call <span className="arrow">↗</span>
                 </a>
               </div>
               <p style={{ marginTop: 16, fontFamily: 'var(--mono)', fontSize: 11.5, letterSpacing: '0.08em', color: 'var(--ink-3)', textTransform: 'uppercase' as const }}>
-                All enquiries are confidential · We&rsquo;ve worked with clients who prefer to keep our engagement private
+                Private call · 30 minutes · No obligation
               </p>
             </motion.div>
           </div>
@@ -108,9 +108,9 @@ export default function PublicFigures() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">What we do</span>
-              <h2 className="display-md">Everything your digital presence <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>requires</em>.</h2>
+              <h2 className="display-md">Everything your online presence <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>needs</em>.</h2>
             </div>
-            <p className="lede">We handle the full picture — from the website people land on to the search results they see and the social channels they follow.</p>
+            <p className="lede">We handle the whole picture: the website people land on, the search results they see, and the social channels they follow.</p>
           </motion.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginTop: 48 }}>
@@ -130,20 +130,20 @@ export default function PublicFigures() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Case study · Government &amp; public office</span>
-              <h2 className="display-md">Reputation repositioned <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>before campaign season</em>.</h2>
+              <h2 className="display-md">A reputation repaired <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>before campaign season</em>.</h2>
             </div>
           </motion.div>
 
           <motion.div {...rv(0.1)} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start', marginTop: 48 }}>
             <div>
               <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.7 }}>
-                A public official facing a significant reputation challenge ahead of an important campaign. Negative search results were dominating page one. Social media was outdated and failing to connect with constituents. There was no cohesive digital narrative.
+                A public official was heading into an important campaign with a serious reputation problem. Negative results filled page one of the search results. Social media was out of date and not reaching constituents. There was no clear story online.
               </p>
               <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.7, marginTop: 16 }}>
-                We conducted a full digital audit across search results, social profiles, news mentions, and online sentiment. We developed a six-month reputation repositioning roadmap, created a digital narrative connecting the official&rsquo;s personal background to their public service mission, and launched a proactive content programme.
+                We reviewed everything: search results, social profiles, news mentions, and online sentiment. We built a six-month plan, wrote a clear story connecting the official&rsquo;s background to their work in public service, and started publishing.
               </p>
               <blockquote style={{ borderLeft: '2px solid var(--terracotta)', paddingLeft: 20, margin: '28px 0 0', fontFamily: 'var(--serif)', fontSize: 18, fontStyle: 'italic', color: 'var(--ink)', lineHeight: 1.5 }}>
-                &ldquo;They understand both perception and performance — critical for public office.&rdquo;
+                &ldquo;They understand both perception and performance, critical for public office.&rdquo;
                 <cite style={{ display: 'block', fontFamily: 'var(--mono)', fontSize: 11.5, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--ink-3)', fontStyle: 'normal', marginTop: 10 }}>
                   Anonymous · Elected Official
                 </cite>
@@ -153,12 +153,12 @@ export default function PublicFigures() {
               <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--ink-3)', marginBottom: 20 }}>What we did</p>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 {[
-                  'Full digital audit — search results, social profiles, news mentions, online sentiment',
-                  '6-month reputation repositioning roadmap',
-                  'New digital narrative connecting personal background to public service mission',
-                  'Proactive content programme — thought leadership and community updates',
-                  'Optimised official website, LinkedIn, and social profiles',
-                  'Community engagement initiative',
+                  'A full review of search results, social profiles, news mentions, and online sentiment',
+                  'A 6-month plan to repair the reputation',
+                  'A new story connecting personal background to public service',
+                  'A steady programme of articles and community updates',
+                  'Updated official website, LinkedIn, and social profiles',
+                  'Community outreach initiative',
                 ].map((item) => (
                   <li key={item} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                     <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
@@ -196,15 +196,15 @@ export default function PublicFigures() {
               <span className="eyebrow">Why TaqHaus</span>
               <h2 className="display-md" style={{ color: 'var(--paper)' }}>We understand <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>the stakes</em>.</h2>
             </div>
-            <p className="lede">For most businesses, a bad week online is a setback. For public figures, it can define a career. We treat this work accordingly.</p>
+            <p className="lede">For most businesses, a bad week online is a setback. For a public figure, it can define a career. We treat the work accordingly.</p>
           </motion.div>
 
           <ol className="numlist">
             {[
-              { num: '01', title: 'Discretion as standard', desc: 'We never name clients without explicit permission. Engagements in this vertical are anonymised by default. We\'ve worked with elected officials and executives who prefer to keep our engagement entirely private — and we fully respect that.' },
-              { num: '02', title: 'Long-term thinking', desc: 'Your digital presence is an asset that compounds. We don\'t build for a single campaign cycle — we build the foundation that protects and strengthens your reputation over years, not months.' },
-              { num: '03', title: 'Control and clarity', desc: 'You always know what\'s being posted, what\'s being said about you, and what we\'re doing about it. Open reporting. No surprises. Nothing goes out without your approval.' },
-              { num: '04', title: 'Timing matters', desc: 'Whether you\'re 18 months from an election or three weeks out, we adjust pace and priority accordingly. Proactive work is always better than reactive — but we can move fast when we need to.' },
+              { num: '01', title: 'Discretion as standard', desc: 'We never name clients without permission. Work in this area is anonymous by default. Some clients prefer that no one knows we work together, and we respect that.' },
+              { num: '02', title: 'Long-term thinking', desc: 'Your online presence builds over years, not months. We do not build for one campaign cycle. We build something that still holds up after it.' },
+              { num: '03', title: 'Control and clarity', desc: 'You always know what is being posted, what is being said about you, and what we are doing about it. Plain reporting, no surprises. Nothing goes out without your approval.' },
+              { num: '04', title: 'Timing matters', desc: 'Whether you are 18 months from an election or three weeks out, we set the pace to match. Early work beats a scramble, but we can move fast when we need to.' },
             ].map((item) => (
               <motion.li key={item.num} {...rv()}>
                 <span className="num">{item.num}</span>
@@ -222,14 +222,14 @@ export default function PublicFigures() {
       <section className="section-terra" style={{ padding: 'clamp(72px,8vw,120px) 0' }}>
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'end' }}>
-            <h2 className="display-lg" style={{ color: 'var(--paper)' }}>Speak to us about your digital&nbsp;presence.</h2>
+            <h2 className="display-lg" style={{ color: 'var(--paper)' }}>Talk to us about how your name reads&nbsp;online.</h2>
             <div className="stack">
               <p style={{ color: 'color-mix(in oklch, var(--paper) 88%, transparent)', fontSize: 17, lineHeight: 1.55, margin: 0, maxWidth: '44ch' }}>
-                All enquiries are confidential. We&rsquo;ve worked with elected officials, candidates, and executives who prefer to keep our engagement private — and we fully respect that.
+                One call. You tell us where things stand. We tell you what we would do first. You decide from there.
               </p>
               <div className="row">
                 <a href={PRIVATE_CALL_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
-                  Book a private 30-minute conversation <span className="arrow">↗</span>
+                  Book a private 30-minute call <span className="arrow">↗</span>
                 </a>
               </div>
               <p style={{ color: 'color-mix(in oklch, var(--paper) 60%, transparent)', fontSize: 12.5, fontFamily: 'var(--mono)', letterSpacing: '0.06em', textTransform: 'uppercase' as const, marginTop: 8 }}>
@@ -244,7 +244,7 @@ export default function PublicFigures() {
       <footer className="footer">
         <div className="wrap">
           <div className="footer-head">
-            <h2>Engineer growth that&nbsp;scales.<br />Influence that&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>sticks</em>.</h2>
+            <h2>Your name is the asset.<br />Treat it like&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>one</em>.</h2>
             <div className="cta-stack">
               <a href={PRIVATE_CALL_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
                 <span>Book a private call</span><span className="arrow">↗</span>
@@ -256,7 +256,7 @@ export default function PublicFigures() {
           </div>
           <div className="footer-cols">
             <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
+            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
             <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
             <div><h4>Elsewhere</h4><ul><li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li><li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li></ul></div>
           </div>

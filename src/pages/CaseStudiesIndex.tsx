@@ -112,9 +112,9 @@ const cases = [
     num: 'Case 07',
     period: '2024',
     industry: 'Government & public office',
-    title: <>Public Official — Reputation repositioned <em>before campaign season</em>.</>,
+    title: <>Public Official: a reputation rebuilt <em>before campaign season</em>.</>,
     tags: ['Reputation management', 'SEO', 'Social media', 'Web'],
-    desc: "A public official facing a significant reputation challenge ahead of an important campaign. Negative search results dominating page one. Outdated social media failing to connect with constituents. We rebuilt the digital presence, cleared the search results, and delivered a campaign outcome the client attributed in part to the work. Client identity kept confidential by request.",
+    desc: "A public official heading into an important campaign. Negative search results filled page one. Outdated social media wasn't reaching constituents. We rebuilt the digital presence and cleared the negative results from page one. The client said the work played a part in the campaign result. Identity kept confidential at the client's request.",
     stats: [
       { val: <>Page 1</>, lbl: 'Cleared of negatives' },
       { val: <><em>5</em>×</>, lbl: 'Social engagement growth' },
@@ -129,9 +129,9 @@ const cases = [
     num: 'Case 08',
     period: '2023 – 2024',
     industry: 'Education & trading',
-    title: <>TopTier Trader — Reputation crisis <em>resolved</em>.</>,
+    title: <>TopTier Trader: a reputation crisis, <em>fixed</em>.</>,
     tags: ['Reputation management', 'SEO', 'Content', 'Community'],
-    desc: "A prop trading educator facing a reputation crisis — a viral negative review thread was dominating branded search results and causing qualified leads to drop off. We launched a defensive SEO programme, built an authority content strategy, and implemented a structured review system. Negative content cleared from page one within four months.",
+    desc: "A prop trading educator in a reputation crisis. A viral negative review thread sat at the top of their branded search results, and qualified leads were dropping off. We ran a defensive SEO programme, built an authority content plan, and set up a structured review system. The negative content was off page one within four months.",
     stats: [
       { val: <><em>+</em>142%</>, lbl: 'Branded search volume' },
       { val: <><em>+</em>96%</>, lbl: 'Non-brand organic traffic' },
@@ -146,9 +146,9 @@ const cases = [
     num: 'Case 09',
     period: '2024 – 2025',
     industry: 'Fintech & prop trading',
-    title: <>The Funded Trader — Organic growth &amp; <em>CAC reduction</em>.</>,
+    title: <>The Funded Trader: more organic signups, <em>lower acquisition costs</em>.</>,
     tags: ['SEO', 'Paid advertising', 'CRO', 'Email'],
-    desc: "A prop trading firm with a strong product but rising customer acquisition costs and a content strategy that wasn't converting. We rebuilt the SEO around purchase-intent keywords, created comparison content targeting searchers evaluating prop firms, rebuilt the email nurture sequence, and deployed content-led paid media.",
+    desc: "A prop trading firm with a strong product, rising customer acquisition costs, and content that wasn't converting. We rebuilt their SEO around purchase-intent keywords, wrote comparison pages for people choosing between prop firms, rebuilt the email nurture sequence, and ran content-led paid media.",
     stats: [
       { val: <><em>+</em>188%</>, lbl: 'Organic signups YoY' },
       { val: <>−34%</>, lbl: 'CAC reduction' },
@@ -165,15 +165,15 @@ export default function CaseStudiesIndex() {
   return (
     <div className="tq-editorial">
       <SEO
-        title="Work — TaqHaus"
-        description="Selected case studies. Real numbers, real timelines, real teams."
+        title="Results and Case Studies | TaqHaus"
+        description="Case studies with real numbers, real timelines, and real teams. See the work and decide for yourself."
         canonical="/case-studies"
       />
 
       {/* Topbar */}
       <div className="topbar">
         <span className="pulse" />
-        <span>Now booking Q3 engagements · 2 retainer seats open</span>
+        <span>Now booking for Q3 · 2 retainer spots open</span>
       </div>
 
       {/* Nav */}
@@ -184,13 +184,13 @@ export default function CaseStudiesIndex() {
           </Link>
           <nav className="nav-links">
             <Link to="/services">Services</Link>
-            <Link to="/case-studies" className="active">Work</Link>
+            <Link to="/case-studies" className="active">Results</Link>
             <Link to="/about">About</Link>
             <Link to="/insights">Insights</Link>
             <Link to="/contact">Contact</Link>
           </nav>
           <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
-            Book a call <span className="arrow">→</span>
+            Book a free 20-minute call <span className="arrow">→</span>
           </a>
         </div>
       </header>
@@ -200,14 +200,14 @@ export default function CaseStudiesIndex() {
         <div className="wrap">
           <div className="grid">
             <div>
-              <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Selected work · 2022 – 2026</span>
-              <h1>Receipts. <em>Not</em> reels.</h1>
+              <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Case studies · 2022 to 2026</span>
+              <h1>The work. The <em>numbers</em>.</h1>
             </div>
             <motion.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
-                A small selection of the partners we&rsquo;ve worked with. Every engagement is measured against revenue, pipeline, or category-specific outcomes — not vanity metrics.
+                A selection of the clients we&rsquo;ve worked with. Every project is measured against revenue, pipeline, or the outcome the client hired us for, not vanity metrics.
               </p>
-              <p style={{ marginTop: 18, color: 'var(--ink-2)', fontSize: 14.5 }}>Some clients prefer to stay quiet — full case studies on request under NDA.</p>
+              <p style={{ marginTop: 18, color: 'var(--ink-2)', fontSize: 14.5 }}>Some clients prefer to stay anonymous. Full case studies are available on request, under NDA.</p>
             </motion.div>
           </div>
         </div>
@@ -217,9 +217,9 @@ export default function CaseStudiesIndex() {
       <div className="index-bar">
         <div className="wrap">
           <div className="row">
-            <span>Index 01–09</span>
-            <span>14 active partners</span>
-            <span>Measured results on every engagement</span>
+            <span>Cases 01 to 09</span>
+            <span>14 active clients</span>
+            <span>Measured results on every project</span>
             <span style={{ color: 'var(--terracotta)' }}>2026</span>
           </div>
         </div>
@@ -272,7 +272,7 @@ export default function CaseStudiesIndex() {
                     </Link>
                   )}
                   <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-link">
-                    Discuss a similar engagement →
+                    Book a free 20-minute call →
                   </a>
                 </div>
               </div>
@@ -292,7 +292,7 @@ export default function CaseStudiesIndex() {
                 Managing Partner · Belford &amp; Co.
               </span>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: 28, display: 'inline-flex' }}>
-                Become a partner <span className="arrow">↗</span>
+                Book a free 20-minute call <span className="arrow">↗</span>
               </a>
             </div>
           </div>
@@ -308,14 +308,14 @@ export default function CaseStudiesIndex() {
             </h2>
             <div className="stack">
               <p style={{ color: 'color-mix(in oklch, var(--paper) 75%, transparent)', fontSize: 17, lineHeight: 1.55, margin: 0, maxWidth: '44ch' }}>
-                We take on a small number of new partners each quarter. If you&rsquo;ve got a real problem and a real budget, let&rsquo;s talk.
+                We take on a small number of new clients each quarter. If you&rsquo;ve got a real problem and a real budget, let&rsquo;s talk.
               </p>
               <div className="row">
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)' }}>
-                  Book a discovery call <span className="arrow">↗</span>
+                  Book a free 20-minute call <span className="arrow">↗</span>
                 </a>
                 <Link to="/services" className="btn btn-ghost" style={{ color: 'var(--paper)', borderColor: 'color-mix(in oklch, var(--paper) 30%, transparent)' }}>
-                  See services
+                  See what we do
                 </Link>
               </div>
             </div>
@@ -327,10 +327,10 @@ export default function CaseStudiesIndex() {
       <footer className="footer">
         <div className="wrap">
           <div className="footer-head">
-            <h2>Engineer growth that&nbsp;scales.<br />Influence that&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>sticks</em>.</h2>
+            <h2>Tell us what you&rsquo;re trying to&nbsp;grow.<br />We&rsquo;ll tell you if we can&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>help</em>.</h2>
             <div className="cta-stack">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
-                <span>Book a discovery call</span><span className="arrow">↗</span>
+                <span>Book a free 20-minute call</span><span className="arrow">↗</span>
               </a>
               <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
                 info@taqhaus.com
@@ -339,7 +339,7 @@ export default function CaseStudiesIndex() {
           </div>
           <div className="footer-cols">
             <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
+            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
             <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
             <div><h4>Elsewhere</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Substack</a></li><li><a href="#">X / Twitter</a></li></ul></div>
           </div>

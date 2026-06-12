@@ -18,15 +18,15 @@ export default function Contact() {
   return (
     <div className="tq-editorial">
       <SEO
-        title="Book a call — TaqHaus"
-        description="30 minutes. No deck. We'll ask about the constraint, not the brief."
+        title="Book a Free 20-Minute Call | TaqHaus"
+        description="Free, 20 minutes, phone or video. Tell us what you want to grow. If we're not the right fit, we'll say so."
         canonical="/contact"
       />
 
       {/* Topbar */}
       <div className="topbar">
         <span className="pulse" />
-        <span>Now booking Q3 engagements · 2 retainer seats open</span>
+        <span>Now booking for Q3 · 2 retainer spots open</span>
       </div>
 
       {/* Nav */}
@@ -37,7 +37,7 @@ export default function Contact() {
           </Link>
           <nav className="nav-links">
             <Link to="/services">Services</Link>
-            <Link to="/case-studies">Work</Link>
+            <Link to="/case-studies">Results</Link>
             <Link to="/about">About</Link>
             <Link to="/insights">Insights</Link>
             <Link to="/contact" className="active">Contact</Link>
@@ -53,17 +53,17 @@ export default function Contact() {
         <div className="wrap">
           <div className="grid">
             <div>
-              <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Book a discovery call</span>
-              <h1>Tell us what you&rsquo;re trying to&nbsp;<em>move</em>.</h1>
+              <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Book a free 20-minute call</span>
+              <h1>Tell us what you&rsquo;re trying to&nbsp;<em>grow</em>.</h1>
             </div>
             <motion.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
-                30 minutes. No deck. We&rsquo;ll ask about the constraint, not the brief. You&rsquo;ll leave with a point of view — whether or not we work together.
+                Free, 20 minutes, phone or video. No pressure. We&rsquo;ll ask what you want to grow and what&rsquo;s in the way. If we&rsquo;re not the right fit, we&rsquo;ll say so.
               </p>
               <div className="row" style={{ marginTop: 24 }}>
-                <span className="tag dot">No-pitch zone</span>
-                <span className="tag dot">30 minutes</span>
-                <span className="tag dot">No deck required</span>
+                <span className="tag dot">No sales pitch</span>
+                <span className="tag dot">20 minutes</span>
+                <span className="tag dot">Nothing to prepare</span>
               </div>
             </motion.div>
           </div>
@@ -77,14 +77,14 @@ export default function Contact() {
             {/* Aside */}
             <aside className="booking-aside">
               <div>
-                <span className="lbl">— Discovery call</span>
-                <h3>30 minutes with <em>Ola</em>.</h3>
+                <span className="lbl">— Your free call</span>
+                <h3>20 minutes with <em>Ola</em>.</h3>
               </div>
-              <p>A direct conversation with our founder. We&rsquo;ll explore the constraint, sketch out what a plan might look like, and decide together if there&rsquo;s a fit.</p>
+              <p>A direct conversation with our founder. You tell us what you want to grow and what&rsquo;s in the way. We&rsquo;ll tell you what we&rsquo;d do first, and whether we&rsquo;re the right fit.</p>
 
               <div className="meta-grid">
-                <div className="row-item"><span className="k">Length</span><span className="v">30 minutes</span></div>
-                <div className="row-item"><span className="k">Format</span><span className="v">Video · Google Meet</span></div>
+                <div className="row-item"><span className="k">Length</span><span className="v">20 minutes</span></div>
+                <div className="row-item"><span className="k">Format</span><span className="v">Phone or video</span></div>
                 <div className="row-item"><span className="k">Who</span><span className="v">Ola Raji, Founder</span></div>
                 <div className="row-item"><span className="k">Bring</span><span className="v">A real problem</span></div>
                 <div className="row-item"><span className="k">Time zone</span><span className="v">Eastern (ET)</span></div>
@@ -112,7 +112,7 @@ export default function Contact() {
                     Pick a time that works for you.
                   </h3>
                   <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6, marginBottom: 32, maxWidth: '50ch' }}>
-                    Select a slot directly on Calendly. You&rsquo;ll get a calendar invite and a short prep note from Ola before the call.
+                    Pick a slot on Calendly. You&rsquo;ll get a calendar invite, and a short note from Ola before the call so you know what to expect.
                   </p>
                   <a
                     href={CALENDLY_URL}
@@ -121,7 +121,7 @@ export default function Contact() {
                     className="btn btn-accent"
                     style={{ display: 'inline-flex', gap: 12, fontSize: 16, padding: '16px 28px' }}
                   >
-                    Open Calendly &amp; book a slot <span className="arrow">↗</span>
+                    Book a free 20-minute call <span className="arrow">↗</span>
                   </a>
                 </div>
 
@@ -130,7 +130,7 @@ export default function Contact() {
                     What to expect
                   </p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 10 }}>
-                    {['We ask about the constraint, not the brief', 'You get a point of view — even if we\'re not the right fit', 'No deck, no sales script, no hard close', 'We confirm by email within 15 minutes'].map((item) => (
+                    {['We ask what you want to grow and what\'s in the way', 'You get honest advice, even if we\'re not the right fit', 'No sales script and no hard sell', 'We confirm by email within 15 minutes'].map((item) => (
                       <li key={item} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                         <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
                         {item}
@@ -151,15 +151,15 @@ export default function Contact() {
             <div className="inquiry-grid">
               <div>
                 <span className="eyebrow" style={{ marginBottom: 24, display: 'inline-flex' }}>Not ready to book?</span>
-                <h3>Send us the <em>brief</em> instead.</h3>
-                <p style={{ marginTop: 18 }}>If you&rsquo;d rather start with a written intro, drop us a note. We read everything, and we reply to everyone within two business days.</p>
+                <h3>Send us a <em>note</em> instead.</h3>
+                <p style={{ marginTop: 18 }}>If you&rsquo;d rather start in writing, that works too. We read everything, and we reply to everyone within two business days.</p>
               </div>
               <div>
                 {inquiryDone ? (
                   <div className="form-success show">
                     <div className="check">✓</div>
                     <div>
-                      <strong style={{ display: 'block', fontWeight: 500, marginBottom: 2 }}>Thanks — we&rsquo;ve got it.</strong>
+                      <strong style={{ display: 'block', fontWeight: 500, marginBottom: 2 }}>Thanks, we&rsquo;ve got it.</strong>
                       <span style={{ color: 'var(--ink-2)', fontSize: 14 }}>We&rsquo;ll reply within two business days, usually faster.</span>
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export default function Contact() {
                       </label>
                       <label className="field full">I&rsquo;m interested in
                         <select className="input">
-                          <option>Sprint engagement</option>
+                          <option>A one-off project</option>
                           <option>Monthly retainer</option>
                           <option>Fractional CMO</option>
                           <option>Political / Election campaign</option>
@@ -188,11 +188,11 @@ export default function Contact() {
                           <option>Speaking / partnership / press</option>
                         </select>
                       </label>
-                      <label className="field full">Tell us about the constraint
-                        <textarea className="input" rows={4} placeholder="What are you trying to move, and what's in the way?" />
+                      <label className="field full">Tell us what you&rsquo;re trying to grow
+                        <textarea className="input" rows={4} placeholder="What are you trying to grow, and what's in the way?" />
                       </label>
                       <button type="submit" className="btn btn-primary full" style={{ justifyContent: 'space-between' }}>
-                        <span>Send the brief</span>
+                        <span>Send your note</span>
                         <span className="arrow">↗</span>
                       </button>
                     </div>
@@ -212,26 +212,26 @@ export default function Contact() {
               <span className="eyebrow">Other ways to reach us</span>
               <h2 className="display-md">Pick the door that <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>fits</em>.</h2>
             </div>
-            <p className="lede">Calendars are busy; we don&rsquo;t want yours to be the reason we don&rsquo;t talk. Whichever channel works best for you, works for us.</p>
+            <p className="lede">If a call isn&rsquo;t the easiest way for you, that&rsquo;s fine. Whichever way works best for you works for us.</p>
           </div>
 
           <div className="methods">
             <motion.div className="method" {...rv()}>
               <span className="num">— 01</span>
               <h4>Email us directly</h4>
-              <p>Direct line for engagement inquiries, sensitive briefs, or anything you&rsquo;d rather not put through a form.</p>
+              <p>A direct line for new work, private questions, or anything you&rsquo;d rather not put through a form.</p>
               <a href="mailto:info@taqhaus.com">info@taqhaus.com →</a>
             </motion.div>
             <motion.div className="method" {...rv(0.1)}>
               <span className="num">— 02</span>
               <h4>Press &amp; partnerships</h4>
-              <p>Speaking, panels, podcasts, partnership inquiries, or you&rsquo;re a journalist on deadline. We try to reply within 24 hours.</p>
+              <p>Speaking, panels, podcasts, partnerships, or you&rsquo;re a journalist on deadline. We try to reply within 24 hours.</p>
               <a href="mailto:info@taqhaus.com">info@taqhaus.com →</a>
             </motion.div>
             <motion.div className="method" {...rv(0.2)}>
               <span className="num">— 03</span>
               <h4>Working with us</h4>
-              <p>Operators, freelancers and specialists — we&rsquo;re always interested in meeting good ones, even when we&rsquo;re not actively hiring.</p>
+              <p>Freelancers and specialists: we&rsquo;re always interested in meeting good ones, even when we&rsquo;re not actively hiring.</p>
               <a href="mailto:info@taqhaus.com">info@taqhaus.com →</a>
             </motion.div>
           </div>
@@ -242,10 +242,10 @@ export default function Contact() {
       <footer className="footer">
         <div className="wrap">
           <div className="footer-head">
-            <h2>Engineer growth that&nbsp;scales.<br />Influence that&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>sticks</em>.</h2>
+            <h2>You run the&nbsp;business.<br />We handle the&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>marketing</em>.</h2>
             <div className="cta-stack">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
-                <span>Book a discovery call</span><span className="arrow">↗</span>
+                <span>Book a free 20-minute call</span><span className="arrow">↗</span>
               </a>
               <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
                 info@taqhaus.com
@@ -254,7 +254,7 @@ export default function Contact() {
           </div>
           <div className="footer-cols">
             <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
+            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
             <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
             <div><h4>Elsewhere</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Substack</a></li><li><a href="#">X / Twitter</a></li></ul></div>
           </div>

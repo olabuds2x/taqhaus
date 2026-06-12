@@ -127,7 +127,7 @@ export default function LandingPageRedesign() {
               </span>
               <h1>
                 You run the business.<br />
-                <em>We bring the customers.</em>
+                <em>We handle the marketing.</em>
               </h1>
             </div>
 
