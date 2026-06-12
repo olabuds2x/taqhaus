@@ -166,13 +166,21 @@ export default function LandingPageRedesign() {
             >
               Free · 20 minutes · One channel at a time · No long contracts
             </motion.span>
-            <button
-              className="scroll-cue"
-              aria-label="Scroll to see how it works"
-              onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })}
+            <motion.div
+              className="quiet-media"
+              initial={{ opacity: 0, y: 36 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.6, ease: [0.2, 0.7, 0.2, 1] }}
             >
-              ↓
-            </button>
+              <img src="/images/hero-quiet.jpg" alt="A sunlit small business storefront" fetchPriority="high" />
+              <button
+                className="scroll-cue"
+                aria-label="Scroll to see how it works"
+                onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                ↓
+              </button>
+            </motion.div>
           </div>
         </div>
       </section>
