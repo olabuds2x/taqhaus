@@ -15,10 +15,10 @@ const rv = (delay = 0) => ({
 })
 
 const pains = [
-  'I know I should post more. I just never have the time.',
-  "We're good at what we do. People just can't find us.",
-  "I put money into ads once. I still don't know where it went.",
-  "I can't pay a full-time marketer. But I need one.",
+  { quote: 'I know I should post more. I just never have the time.', img: '/images/biz/biz-1.jpg', alt: 'Barbershop interior' },
+  { quote: "We're good at what we do. People just can't find us.", img: '/images/biz/biz-2.jpg', alt: 'Florist shop counter' },
+  { quote: "I put money into ads once. I still don't know where it went.", img: '/images/biz/biz-3.jpg', alt: 'Cafe espresso counter' },
+  { quote: "I can't pay a full-time marketer. But I need one.", img: '/images/biz/biz-4.jpg', alt: 'Bakery window display' },
 ]
 
 const services = [
@@ -126,8 +126,15 @@ export default function LandingPageRedesign() {
                 Marketing, done for you
               </span>
               <h1>
-                You run the business.<br />
-                <em>We handle the marketing.</em>
+                You run the{' '}
+                <span className="scribble">
+                  business
+                  <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M2,7 Q18,2 34,6 T64,5 T98,4" />
+                  </svg>
+                </span>
+                .<br />
+                <em>We handle the <span className="hl" style={{ color: 'var(--ink)' }}>marketing</span>.</em>
               </h1>
             </div>
 
@@ -155,7 +162,18 @@ export default function LandingPageRedesign() {
           </div>
 
           {/* Proof strip — figures from published case studies */}
-          <motion.div {...rv(0.25)}>
+          <motion.div {...rv(0.25)} style={{ position: 'relative' }}>
+            <a
+              className="sticker"
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ top: -66, right: 'clamp(8px, 3vw, 48px)', pointerEvents: 'auto' }}
+              aria-label="Book a free 20-minute call"
+            >
+              <strong>Free</strong>
+              <span>20-min call<br />no pressure</span>
+            </a>
             <div className="hero-strip" style={{ marginTop: 'clamp(56px,7vw,96px)' }}>
               <div className="cell">
                 <span className="stat"><em>+</em>188<em>%</em></span>
@@ -188,6 +206,7 @@ export default function LandingPageRedesign() {
           {[...marqueeLogos, ...marqueeLogos].map((logo, i) => (
             <span key={i} className="marquee-item">
               <img src={logo.src} alt={logo.alt} className="marquee-logo" loading="lazy" />
+              <span className={`star s${(i % 4) + 1}`} aria-hidden="true">✦</span>
             </span>
           ))}
         </div>
@@ -205,8 +224,9 @@ export default function LandingPageRedesign() {
 
           <div className="pains-grid">
             {pains.map((pain, i) => (
-              <motion.div key={pain} className="pain-card" {...rv(i * 0.08)}>
-                <p className="q">{pain}</p>
+              <motion.div key={pain.quote} className="pain-card" {...rv(i * 0.08)}>
+                <img src={pain.img} alt={pain.alt} className="pain-snap" loading="lazy" />
+                <p className="q">{pain.quote}</p>
               </motion.div>
             ))}
           </div>
@@ -231,7 +251,7 @@ export default function LandingPageRedesign() {
           <ol className="numlist">
             {services.map((svc, i) => (
               <motion.li key={svc.num} {...rv(i * 0.06)}>
-                <span className="num">{svc.num}</span>
+                <span className="num"><span className={`num-chip c${i + 1}`}>{svc.num}</span></span>
                 <div className="title-col">
                   <h3>{svc.title}</h3>
                   <p>{svc.desc}</p>
@@ -317,7 +337,7 @@ export default function LandingPageRedesign() {
             <div className="stack" style={{ gap: 24 }}>
               <MotionLink to="/case-studies/saas-startup" className="case" {...rv(0.1)}>
                 <div className="media">
-                  <div className="case-art case-art--paper compact">
+                  <div className="case-art case-art--cobalt compact">
                     <div className="ca-meta"><span>Case 02</span><span>Software company</span></div>
                     <div className="ca-mark">Page 5 <em>→ 1.</em></div>
                     <div className="ca-foot">
@@ -339,7 +359,7 @@ export default function LandingPageRedesign() {
               </MotionLink>
               <MotionLink to="/case-studies/fashion-brand" className="case" {...rv(0.18)}>
                 <div className="media">
-                  <div className="case-art case-art--terra compact">
+                  <div className="case-art case-art--gold compact">
                     <div className="ca-meta"><span>Case 03</span><span>Fashion brand</span></div>
                     <div className="ca-mark"><em>$57K</em> from email.</div>
                     <div className="ca-foot">
@@ -364,7 +384,7 @@ export default function LandingPageRedesign() {
           <div className="work-grid-secondary">
             <MotionLink to="/case-studies/toptier-trader" className="case" {...rv()}>
               <div className="media">
-                <div className="case-art case-art--paper thumb">
+                <div className="case-art case-art--teal thumb">
                   <div className="ca-meta"><span>Case 04</span><span>TopTier Trader</span></div>
                   <div className="ca-mark">Searches <em>up 142%.</em></div>
                   <div className="ca-foot">
@@ -380,7 +400,7 @@ export default function LandingPageRedesign() {
             </MotionLink>
             <MotionLink to="/case-studies/public-official" className="case" {...rv(0.08)}>
               <div className="media">
-                <div className="case-art case-art--terra thumb">
+                <div className="case-art case-art--ink thumb">
                   <div className="ca-meta"><span>Case 05</span><span>Public figure</span></div>
                   <div className="ca-mark">Image<br /><em>rebuilt.</em></div>
                   <div className="ca-foot">
@@ -495,10 +515,10 @@ export default function LandingPageRedesign() {
       </section>
 
       {/* ── CTA band ─────────────────────────────────────────────────────────── */}
-      <motion.div className="cta-band" {...rv()}>
+      <motion.div className="cta-band cta-band--gold" {...rv()}>
         <h2>Ready to hand <em>it</em> off?</h2>
         <div className="stack">
-          <p style={{ color: 'color-mix(in oklch, var(--paper) 75%, transparent)', fontSize: 16, lineHeight: 1.55, maxWidth: '42ch', margin: 0 }}>
+          <p style={{ color: 'color-mix(in oklch, var(--ink) 78%, transparent)', fontSize: 16, lineHeight: 1.55, maxWidth: '42ch', margin: 0 }}>
             20 minutes, free. Tell us what's not working. We'll tell you how we'd fix it, whether or not you hire us.
           </p>
           <div className="row">
