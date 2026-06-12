@@ -120,65 +120,67 @@ export default function LandingPageRedesign() {
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="hero">
         <div className="wrap">
-          <div className="hero-stack">
-            <span className="eyebrow" style={{ marginBottom: 'clamp(24px,4vw,44px)', display: 'inline-flex' }}>
-              Marketing, done for you
-            </span>
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
-            >
-              You run the{' '}
-              <span className="scribble">
-                business
-                <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                  <path d="M2,7 Q18,2 34,6 T64,5 T98,4" />
-                </svg>
-              </span>
-              .<br />
-              <em>We handle the <span className="hl" style={{ color: 'var(--ink)' }}>marketing</span>.</em>
-            </motion.h1>
-          </div>
-
-          <motion.div className="hero-row" {...rv(0.15)}>
-            <p className="lede">
-              Social media, Google, email, ads, and your website. All of it, handled by one team, so you don't have to learn marketing or hire anyone.
-            </p>
-            <div>
-              <div className="row">
-                <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
-                  Book a free 20-minute call <span className="arrow">↗</span>
-                </a>
-                <a href="#pricing" className="btn-link">See what it costs</a>
-              </div>
-              <div className="hero-meta" style={{ marginTop: 28 }}>
-                <div className="item">
-                  <span className="label">The first call</span>
-                  <p>Free · 20 minutes · No pressure</p>
-                </div>
-                <div className="item">
-                  <span className="label">How you can start</span>
-                  <p>One channel at a time · No long contracts</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Proof strip — figures from published case studies */}
-          <motion.div {...rv(0.25)} style={{ position: 'relative' }}>
+          <div className="hero-full">
+            <span className="ghost-word" aria-hidden="true">handled.</span>
             <a
               className="sticker"
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ top: -66, right: 'clamp(8px, 3vw, 48px)', pointerEvents: 'auto' }}
+              style={{ top: 'clamp(120px, 16vw, 230px)', right: 'clamp(4px, 5vw, 90px)', pointerEvents: 'auto' }}
               aria-label="Book a free 20-minute call"
             >
               <strong>Free</strong>
               <span>20-min call<br />no pressure</span>
             </a>
-            <div className="hero-strip" style={{ marginTop: 'clamp(56px,7vw,96px)' }}>
+
+            <div className="hero-stack">
+              <span className="eyebrow" style={{ marginBottom: 'clamp(20px,3vw,36px)', display: 'inline-flex' }}>
+                Marketing, done for you
+              </span>
+              <motion.h1
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
+              >
+                You run the{' '}
+                <span className="scribble">
+                  business
+                  <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M2,7 Q18,2 34,6 T64,5 T98,4" />
+                  </svg>
+                </span>
+                .<br />
+                <em>We handle the <span className="hl" style={{ color: 'var(--ink)' }}>marketing</span>.</em>
+              </motion.h1>
+            </div>
+
+            <motion.div className="hero-bottom" {...rv(0.2)}>
+              <button
+                className="scroll-cue"
+                aria-label="Scroll to see how it works"
+                onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                ↓
+              </button>
+              <div className="hero-lede-block">
+                <p className="lede">
+                  Social media, Google, email, ads, and your website. All of it, handled by one team, so you don't have to learn marketing or hire anyone.
+                </p>
+                <div className="row">
+                  <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
+                    Book a free 20-minute call <span className="arrow">↗</span>
+                  </a>
+                  <a href="#pricing" className="btn-link">See what it costs</a>
+                </div>
+                <span className="hero-note">Free · 20 minutes · One channel at a time · No long contracts</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Proof strip — figures from published case studies */}
+          <motion.div {...rv(0.25)}>
+            <div className="hero-strip" style={{ marginTop: 'clamp(24px,3vw,48px)' }}>
               <div className="cell">
                 <span className="stat"><em>+</em>188<em>%</em></span>
                 <span className="label">More signups from Google</span>
@@ -217,7 +219,7 @@ export default function LandingPageRedesign() {
       </div>
 
       {/* ── Sound familiar? ──────────────────────────────────────────────────── */}
-      <section>
+      <section id="problem">
         <div className="wrap">
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
