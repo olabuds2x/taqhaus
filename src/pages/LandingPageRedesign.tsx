@@ -120,7 +120,7 @@ export default function LandingPageRedesign() {
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="hero hero--quiet">
         <span className="edge-note edge-note--left">info@taqhaus.com</span>
-        <span className="edge-note edge-note--right">Toronto · Serving everywhere</span>
+        <span className="edge-note edge-note--right">Strategy · Content · Paid media · Web</span>
         <div className="wrap">
           <div className="hero-split">
             <div className="hero-copy">
@@ -130,14 +130,14 @@ export default function LandingPageRedesign() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
               >
-                Marketing, done for you
+                Marketing, strategy, and visibility
               </motion.span>
               <motion.h1
                 initial={{ opacity: 0, y: 26 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
               >
-                You run the business. We handle the <em>marketing</em>.
+                Marketing that helps the <em>right people</em> find you.
               </motion.h1>
               <motion.p
                 className="sub"
@@ -145,7 +145,7 @@ export default function LandingPageRedesign() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.2, ease: [0.2, 0.7, 0.2, 1] }}
               >
-                Social media, Google, email, ads, and your website. All of it, handled by one team, so you don't have to learn marketing or hire anyone.
+                From businesses to public-facing leaders, we build digital campaigns that grow awareness, trust, leads, and engagement across the channels that matter.
               </motion.p>
               <motion.div
                 className="cta-row"
@@ -154,9 +154,9 @@ export default function LandingPageRedesign() {
                 transition={{ duration: 0.9, delay: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
-                  Book a free 20-minute call <span className="arrow">↗</span>
+                  Book a free strategy call <span className="arrow">↗</span>
                 </a>
-                <a href="#pricing" className="btn btn-ghost">See pricing</a>
+                <Link to="/services" className="btn btn-ghost">Explore services</Link>
               </motion.div>
               <motion.span
                 className="quiet-note"
@@ -175,11 +175,11 @@ export default function LandingPageRedesign() {
               transition={{ duration: 1, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
             >
               <div className="frame">
-                <img src="/images/hero-quiet.jpg" alt="A sunlit small business storefront" fetchPriority="high" />
+                <img src="/images/hero-strategy.jpg" alt="Campaign planning boards and analytics on a strategy desk" fetchPriority="high" />
               </div>
               <div className="stat-chip">
                 <span className="num">+188%</span>
-                <span className="lbl">Signups from Google · real client</span>
+                <span className="lbl">Increase in qualified signups</span>
               </div>
             </motion.div>
           </div>
