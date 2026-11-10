@@ -9,30 +9,31 @@ import path from 'node:path'
 
 const OUT = path.resolve(process.cwd(), 'public/images')
 
+/* Studio palette: ivory + pine foundation, coral focal accent. */
 const VARIANTS = {
   ink: {
-    bg: 'oklch(0.17 0.012 60)',
-    text: '#F0EAD6',
-    sub: 'color-mix(in oklch, #F0EAD6 0.65, transparent)',
-    accent: 'oklch(0.62 0.135 38)',
-    grid: 'rgb(240 234 214 / 0.07)',
-    hairline: 'rgb(240 234 214 / 0.22)',
+    bg: '#133029',
+    text: '#F6F1E7',
+    sub: 'rgb(246 241 231 / 0.68)',
+    accent: '#FF6A4D',
+    grid: 'rgb(246 241 231 / 0.06)',
+    hairline: 'rgb(246 241 231 / 0.2)',
   },
   terra: {
-    bg: 'oklch(0.62 0.135 38)',
-    text: '#F0EAD6',
-    sub: 'color-mix(in oklch, #F0EAD6 0.78, transparent)',
-    accent: 'oklch(0.17 0.012 60)',
-    grid: 'rgb(240 234 214 / 0.14)',
-    hairline: 'rgb(240 234 214 / 0.35)',
+    bg: '#FF6A4D',
+    text: '#12241F',
+    sub: 'rgb(18 36 31 / 0.72)',
+    accent: '#FFFDF8',
+    grid: 'rgb(18 36 31 / 0.07)',
+    hairline: 'rgb(18 36 31 / 0.25)',
   },
   paper: {
-    bg: '#F0EAD6',
-    text: 'oklch(0.17 0.012 60)',
-    sub: 'oklch(0.32 0.012 60)',
-    accent: 'oklch(0.62 0.135 38)',
-    grid: 'oklch(0.17 0.012 60 / 0.05)',
-    hairline: 'oklch(0.85 0.015 70)',
+    bg: '#F6F1E7',
+    text: '#12241F',
+    sub: '#3E4F49',
+    accent: '#C2412A',
+    grid: 'rgb(18 36 31 / 0.05)',
+    hairline: '#DDD5C4',
   },
 }
 
@@ -117,7 +118,7 @@ function cardHtml({ variant, eyebrow, meta, headline, size, foot }) {
 <html><head><meta charset="UTF-8" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600&family=Hanken+Grotesk:wght@600&display=swap" rel="stylesheet" />
 <style>
   * { margin: 0; box-sizing: border-box; }
   body { width: 1200px; height: 630px; overflow: hidden; }
@@ -144,40 +145,40 @@ function cardHtml({ variant, eyebrow, meta, headline, size, foot }) {
   }
   .eyebrow {
     display: inline-flex; align-items: center; gap: 12px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-family: "Hanken Grotesk", sans-serif; font-weight: 600;
+    font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase;
     color: ${v.sub};
   }
-  .eyebrow::before { content: ""; width: 32px; height: 1.5px; background: ${v.accent}; }
+  .eyebrow::before { content: ""; width: 14px; height: 14px; border-radius: 4px; background: ${v.accent}; }
   .meta {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: "Hanken Grotesk", sans-serif; font-weight: 600;
+    font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase;
     color: ${v.sub};
   }
   h1 {
     margin: auto 0;
-    font-family: "Fraunces", Georgia, serif;
-    font-weight: 400;
-    font-size: ${size}px;
-    line-height: 0.98;
-    letter-spacing: -0.025em;
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 600;
+    font-size: ${Math.round(size * 0.9)}px;
+    line-height: 1;
+    letter-spacing: -0.045em;
     max-width: 1020px;
     text-wrap: balance;
   }
-  h1 em { font-style: italic; color: ${v.accent}; }
+  h1 em { font-style: normal; color: ${v.accent}; }
   .footrow {
     display: flex; justify-content: space-between; align-items: baseline;
     padding-top: 26px;
     border-top: 1px solid ${v.hairline};
   }
   .wordmark {
-    font-family: "Fraunces", Georgia, serif;
-    font-size: 42px; letter-spacing: -0.03em;
+    font-family: "Inter Tight", sans-serif; font-weight: 600;
+    font-size: 42px; letter-spacing: -0.045em;
   }
   .wordmark span { color: ${v.accent}; }
   .url {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: "Hanken Grotesk", sans-serif; font-weight: 600;
+    font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase;
     color: ${v.sub};
   }
 </style></head>

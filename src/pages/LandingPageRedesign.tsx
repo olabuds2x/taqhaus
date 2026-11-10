@@ -1,9 +1,17 @@
 import '../styles/taqhaus-editorial.css'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import {
+  ArrowLeft, ArrowRight, Check, ClipboardList, Layers, LineChart, Mail, Megaphone,
+  MonitorSmartphone, Palette, PhoneCall, Search, Sprout, Target,
+} from 'lucide-react'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
+import SiteNav from '@/components/site/SiteNav'
+import SiteFooter from '@/components/site/SiteFooter'
+import { HookArrow } from '@/components/site/HookArrow'
+import { blogPosts } from '@/data/blogPosts'
 
 const MotionLink = motion(Link)
 
@@ -11,53 +19,14 @@ const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.12 },
-  transition: { duration: 0.9, delay, ease: [0.2, 0.7, 0.2, 1] as const },
+  transition: { duration: 0.8, delay, ease: [0.2, 0.7, 0.2, 1] as const },
 })
 
-const pains = [
-  { quote: 'I know I should post more. I just never have the time.', img: '/images/biz/biz-1.jpg', alt: 'Barbershop interior' },
-  { quote: "We're good at what we do. People just can't find us.", img: '/images/biz/biz-2.jpg', alt: 'Florist shop counter' },
-  { quote: "I put money into ads once. I still don't know where it went.", img: '/images/biz/biz-3.jpg', alt: 'Cafe espresso counter' },
-  { quote: "I can't pay a full-time marketer. But I need one.", img: '/images/biz/biz-4.jpg', alt: 'Bakery window display' },
-]
+/* ── Content ─────────────────────────────────────────────────────────────── */
 
-const services = [
-  { num: '01', title: 'Social media', desc: 'We plan it, make it, post it, and reply to comments. Your pages stay alive without you touching them.', type: 'Monthly' },
-  { num: '02', title: 'Google (SEO)', desc: 'When someone searches for what you sell, you show up. We make that happen.', type: 'Monthly' },
-  { num: '03', title: 'Your website', desc: 'We build or fix your site so visitors actually call, book, or buy.', type: 'Project' },
-  { num: '04', title: 'Email', desc: 'We write and send the emails that bring customers back to buy again.', type: 'Monthly' },
-  { num: '05', title: 'Ads', desc: 'We run your ads on Facebook, Instagram, and Google, and make sure they pay for themselves.', type: 'Monthly' },
-  { num: '06', title: 'Design & video', desc: 'Posts, flyers, menus, videos. Whatever you need, looking good and ready to use.', type: 'As needed' },
-]
-
-const steps = [
-  { num: 'step 01', title: 'We talk', desc: "Free, 20 minutes, phone or video. You tell us about your business and what's not working." },
-  { num: 'step 02', title: 'You get a plan', desc: "What we'd do, what it costs, what to expect. In plain English. It's yours to keep, even if you don't hire us." },
-  { num: 'step 03', title: 'We get to work', desc: 'Every month you see what we did and what it brought in. No jargon, no mystery.' },
-]
-
-const plans = [
-  {
-    num: '— 01',
-    title: 'One thing handled',
-    desc: 'Pick a channel: social media, email, ads, or Google. We run it for you.',
-    price: 'Priced per channel',
-    terms: 'Month to month',
-  },
-  {
-    num: '— 02',
-    title: 'Everything handled',
-    desc: 'We become your whole marketing team. One plan, one monthly bill, every channel covered.',
-    price: 'From $9k / month',
-    terms: '6 months',
-  },
-  {
-    num: '— 03',
-    title: 'The deep-dive plan',
-    desc: 'For bigger brands: a full look at your marketing and a 12-month plan your team can run.',
-    price: 'From $14k',
-    terms: 'One-time · 4–6 wk',
-  },
+const heroStats = [
+  { num: '+188', unit: '%', label: 'More signups from Google', chip: 'The Funded Trader' },
+  { num: '$57', unit: 'K', label: 'Sales from email in 90 days', chip: 'Fashion brand' },
 ]
 
 const marqueeLogos = [
@@ -72,6 +41,108 @@ const marqueeLogos = [
   { src: '/logos/logo-10.jpg', alt: 'Client logo' },
 ]
 
+const pains = [
+  { quote: 'I know I should post more. I just never have the time.', img: '/images/biz/biz-1.jpg', alt: 'Barbershop interior' },
+  { quote: "We're good at what we do. People just can't find us.", img: '/images/biz/biz-2.jpg', alt: 'Florist shop counter' },
+  { quote: "I put money into ads once. I still don't know where it went.", img: '/images/biz/biz-3.jpg', alt: 'Cafe espresso counter' },
+  { quote: "I can't pay a full-time marketer. But I need one.", img: '/images/biz/biz-4.jpg', alt: 'Bakery window display' },
+]
+
+const services = [
+  { num: '01', type: 'Monthly', icon: Megaphone, title: 'Social media', desc: 'We plan it, make it, post it, and reply to comments. Your pages stay alive without you touching them.' },
+  { num: '02', type: 'Monthly', icon: Search, title: 'Google (SEO)', desc: 'When someone searches for what you sell, you show up. We make that happen.' },
+  { num: '03', type: 'Project', icon: MonitorSmartphone, title: 'Your website', desc: 'We build or fix your site so visitors actually call, book, or buy.' },
+  { num: '04', type: 'Monthly', icon: Mail, title: 'Email', desc: 'We write and send the emails that bring customers back to buy again.' },
+  { num: '05', type: 'Monthly', icon: Target, title: 'Ads', desc: 'We run your ads on Facebook, Instagram, and Google, and make sure they pay for themselves.' },
+  { num: '06', type: 'As needed', icon: Palette, title: 'Design & video', desc: 'Posts, flyers, menus, videos. Whatever you need, looking good and ready to use.' },
+]
+
+type Case = {
+  to: string
+  size: 'wide' | 'narrow'
+  tone: 'pine' | 'coral' | 'sand' | 'moss' | 'ink'
+  label: string
+  stat: string
+  unit: string
+  statLabel: string
+  title: string
+  meta: string
+}
+
+/* The five verifiable case studies only. */
+const cases: Case[] = [
+  { to: '/case-studies/the-funded-trader', size: 'wide', tone: 'pine', label: 'The Funded Trader', stat: '+188', unit: '%', statLabel: 'Signups from Google', title: 'The Funded Trader: more signups, for less', meta: 'Google · Content · Email · cost per customer down 34%' },
+  { to: '/case-studies/saas-startup', size: 'narrow', tone: 'coral', label: 'Software company', stat: '+320', unit: '%', statLabel: 'Website visitors', title: 'Software startup: page 5 to page 1', meta: 'Google · Content · six months' },
+  { to: '/case-studies/fashion-brand', size: 'narrow', tone: 'sand', label: 'Fashion brand', stat: '$57', unit: 'K', statLabel: 'Sales from email in 90 days', title: 'Fashion brand: a quiet list that started selling', meta: 'Email · 90 days' },
+  { to: '/case-studies/toptier-trader', size: 'wide', tone: 'moss', label: 'TopTier Trader', stat: '+142', unit: '%', statLabel: 'Searches for their name', title: 'TopTier Trader: a reputation, fixed', meta: 'Reputation · Content' },
+  { to: '/case-studies/public-official', size: 'wide', tone: 'ink', label: 'Public figure', stat: '5', unit: '×', statLabel: 'More engagement', title: "A public figure's image, rebuilt before election season", meta: 'Reputation · Social' },
+]
+
+const steps = [
+  { icon: PhoneCall, title: 'We talk', desc: "Free, 20 minutes, phone or video. You tell us about your business and what's not working." },
+  { icon: ClipboardList, title: 'You get a plan', desc: "What we'd do, what it costs, what to expect. In plain English. It's yours to keep, even if you don't hire us." },
+  { icon: LineChart, title: 'We get to work', desc: 'Every month you see what we did and what it brought in. No jargon, no mystery.' },
+]
+
+const plans = [
+  {
+    icon: Sprout,
+    name: 'One thing handled',
+    pre: '',
+    price: 'Per channel',
+    post: '',
+    desc: 'Pick a channel: social media, email, ads, or Google. We run it for you.',
+    cta: 'Get started',
+    featured: false,
+    features: [
+      ['One channel, your choice', 'Social, email, ads, or Google'],
+      ['Month to month', 'No long contract'],
+      ['A report every month', 'What we did and what it brought in'],
+      ['Add more any time', 'Only if it earns it'],
+    ],
+  },
+  {
+    icon: Layers,
+    name: 'Everything handled',
+    pre: 'From',
+    price: '$9k',
+    post: '/month',
+    desc: 'We become your whole marketing team. One plan, one monthly bill, every channel covered.',
+    cta: 'Start growing',
+    featured: true,
+    features: [
+      ['Every channel covered', 'Social, Google, email, ads, website'],
+      ['One team, one bill', 'No juggling five different agencies'],
+      ['Six-month plan', 'Real results take time'],
+      ['Progress every month', 'You see the numbers along the way'],
+    ],
+  },
+  {
+    icon: ClipboardList,
+    name: 'The deep-dive plan',
+    pre: 'From',
+    price: '$14k',
+    post: 'one-time',
+    desc: 'For bigger brands: a full look at your marketing and a 12-month plan your team can run.',
+    cta: 'Talk to us',
+    featured: false,
+    features: [
+      ['A full marketing review', 'Every channel, start to finish'],
+      ['A 12-month plan', 'Written for your team to run'],
+      ['Done in 4–6 weeks', 'One-time project'],
+    ],
+  },
+]
+
+/* Quotes from the five published case studies, verbatim. */
+const quotes = [
+  { q: "We'd squeezed all we could from the channels we had, and every rule change threw our numbers around. We needed growth that didn't depend on any of that.", who: 'VP of Growth', org: 'The Funded Trader', to: '/case-studies/the-funded-trader' },
+  { q: 'We were leaving so much money on the table. TaqHaus turned our email list into our most profitable channel in less than 3 months.', who: 'Sarah Mitchell', org: 'Founder, Luxe Apparel Co.', to: '/case-studies/fashion-brand' },
+  { q: 'We were burning cash on ads with no sign it would ever pay for itself. TaqHaus built us growth that keeps building on itself.', who: 'Head of Growth', org: 'SaaS startup', to: '/case-studies/saas-startup' },
+  { q: "People knew who we were, but they didn't trust us enough to sign up. We needed to take back the story being told about us.", who: 'Head of Marketing', org: 'TopTier Trader', to: '/case-studies/toptier-trader' },
+  { q: "They helped us take back control of our narrative. When voters searched for me, they finally saw the real story, not the opposition's spin.", who: 'Elected official', org: 'Name withheld', to: '/case-studies/public-official' },
+]
+
 const faqs = [
   { q: 'How much does it cost?', a: "It depends on what you need. One channel costs less than a part-time hire. The full team starts at $9k a month. You'll get an exact number on the free call, and the call costs nothing." },
   { q: 'Do I have to sign a long contract?', a: "No. Single-channel work runs month to month. Bigger plans run six months because real results take time, but you'll see progress every month along the way." },
@@ -80,11 +151,27 @@ const faqs = [
   { q: 'What happens on the free call?', a: "You talk about your business for 20 minutes. We tell you what we'd fix first and roughly what it would cost. No pressure, no obligation. If we're not the right fit, we'll say so and point you somewhere better." },
 ]
 
+/* Owner-facing posts only; the public-figures essays live on /public-figures. */
+const latestPosts = blogPosts
+  .filter(p => p.category !== 'Politicians & Public Figures')
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 3)
+
+/* ── Page ────────────────────────────────────────────────────────────────── */
+
 export default function LandingPageRedesign() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [openFaq, setOpenFaq] = useState<number | null>(0)
+  const railRef = useRef<HTMLDivElement>(null)
+
+  const scrollRail = (dir: 1 | -1) => {
+    const rail = railRef.current
+    if (!rail) return
+    const card = rail.querySelector<HTMLElement>('.h-svc')
+    rail.scrollBy({ left: dir * ((card?.offsetWidth ?? 360) + 16), behavior: 'smooth' })
+  }
 
   return (
-    <div className="tq-editorial">
+    <div className="tq-editorial tq-home">
       <SEO
         title="TaqHaus — Your Marketing, Done For You"
         description="We run your social media, Google, email, ads, and website so you don't have to. One team, one bill. Book a free 20-minute call."
@@ -92,534 +179,414 @@ export default function LandingPageRedesign() {
         canonical="/"
       />
 
-      {/* ── Topbar ───────────────────────────────────────────────────────────── */}
-      <div className="topbar">
-        <span className="pulse" />
-        <span>Taking on new clients · Working with businesses worldwide</span>
-      </div>
+      <SiteNav />
 
-      {/* ── Navigation ───────────────────────────────────────────────────────── */}
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" aria-label="TaqHaus — Home">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" width={120} height={44} style={{ height: 44, width: 'auto' }} />
-          </Link>
-          <nav className="nav-links">
-            <Link to="/services">Services</Link>
-            <Link to="/case-studies">Results</Link>
-            <Link to="/about">About</Link>
-            <Link to="/insights">Insights</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
-            Book a free call <span className="arrow">→</span>
-          </a>
-        </div>
-      </header>
-
-      {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="hero hero--quiet">
-        <span className="edge-note edge-note--left">info@taqhaus.com</span>
-        <span className="edge-note edge-note--right">Strategy · Content · Paid media · Web</span>
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className="h-hero">
         <div className="wrap">
-          <div className="hero-split">
-            <div className="hero-copy">
-              <motion.span
-                className="eyebrow"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-              >
-                Marketing, strategy, and visibility
-              </motion.span>
-              <motion.h1
-                initial={{ opacity: 0, y: 26 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
-              >
-                Marketing that helps the <em>right people</em> find you.
-              </motion.h1>
-              <motion.p
-                className="sub"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.2, ease: [0.2, 0.7, 0.2, 1] }}
-              >
-                From businesses to public-facing leaders, we build digital campaigns that grow awareness, trust, leads, and engagement across the channels that matter.
-              </motion.p>
-              <motion.div
-                className="cta-row"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
-              >
-                <a href={CALENDLY_URL} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
-                  Book a free strategy call <span className="arrow">↗</span>
-                </a>
-                <Link to="/services" className="btn btn-ghost">Explore services</Link>
-              </motion.div>
-              <motion.span
-                className="quiet-note"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.9, delay: 0.5 }}
-              >
-                Free · 20 minutes · No long contracts
-              </motion.span>
+          <motion.span className="eyebrow" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+            Marketing, strategy, and visibility
+          </motion.span>
+          <motion.h1
+            className="h-hero-title"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
+          >
+            <span className="ln">Marketing that helps</span>{' '}
+            <span className="ln">
+              the{' '}
+              <span className="h-tile" aria-hidden="true"><HookArrow /></span>{' '}
+              <em>right people</em>
+            </span>{' '}
+            <span className="ln"><em>find you.</em></span>
+          </motion.h1>
+          <motion.p
+            className="h-hero-sub"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.2, 0.7, 0.2, 1] }}
+          >
+            From businesses to public-facing leaders, we build digital campaigns that grow awareness, trust, leads, and engagement across the channels that matter.
+          </motion.p>
+          <motion.div
+            className="h-hero-ctas"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
+          >
+            <a href={CALENDLY_URL} className="pill-btn pill-btn--coral" target="_blank" rel="noopener noreferrer">
+              Book a free strategy call <HookArrow />
+            </a>
+            <Link to="/services" className="pill-btn pill-btn--line">Explore services</Link>
+          </motion.div>
+          <motion.span className="h-note" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.4 }}>
+            Free · 20 minutes · No long contracts
+          </motion.span>
+        </div>
+      </section>
+
+      {/* ── Split: who we are + proof photo ─────────────────────────────── */}
+      <section className="h-split-section">
+        <div className="wrap h-split">
+          <motion.div className="h-split-dark" {...rv()}>
+            <span className="eyebrow">How we work</span>
+            <h2 className="h-title h-title--light">
+              You run the business.<br /><em>We handle the marketing.</em>
+            </h2>
+            <p className="h-split-copy">
+              Social media, Google, email, ads, and your website. One team does all of it, and every month you see what we did and what it brought in.
+            </p>
+            <div className="h-split-ctas">
+              <Link to="/about" className="pill-btn pill-btn--coral">More about us <HookArrow /></Link>
+              <Link to="/services" className="pill-btn pill-btn--ivory">See services <HookArrow /></Link>
             </div>
 
-            <motion.div
-              className="hero-visual"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
-            >
-              <div className="frame">
-                <img src="/images/hero-strategy.jpg" alt="Campaign planning boards and analytics on a strategy desk" fetchPriority="high" />
+            <Link to="/case-studies/the-funded-trader" className="h-mini-case">
+              <img src="/images/growth-still.jpg" alt="" loading="lazy" />
+              <div>
+                <span className="h-mini-label">Latest result</span>
+                <strong>The Funded Trader: 188% more signups</strong>
+                <span className="h-mini-link">Read the story <HookArrow /></span>
               </div>
-              <div className="stat-chip">
-                <span className="num">+188%</span>
-                <span className="lbl">Increase in qualified signups</span>
-              </div>
-            </motion.div>
+            </Link>
+          </motion.div>
+
+          <motion.div className="h-split-photo" {...rv(0.1)}>
+            <img src="/images/hero-strategy.jpg" alt="Campaign planning boards and analytics on a strategy desk" fetchPriority="high" />
+            <div className="h-stat-row">
+              {heroStats.map(s => (
+                <div key={s.label} className="h-stat">
+                  <span className="h-stat-num">{s.num}<em>{s.unit}</em></span>
+                  <span className="h-stat-label">{s.label}</span>
+                  <span className="h-stat-chip"><HookArrow /> {s.chip}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="h-logos" aria-label="Clients and partners">
+          <div className="h-logos-track">
+            {[...marqueeLogos, ...marqueeLogos].map((logo, i) => (
+              <img key={i} src={logo.src} alt={i < marqueeLogos.length ? logo.alt : ''} aria-hidden={i >= marqueeLogos.length || undefined} loading="lazy" />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Proof strip — figures from published case studies ───────────────── */}
-      <section className="strip-band">
+      {/* ── Sound familiar? ─────────────────────────────────────────────── */}
+      <section className="h-pains-section">
         <div className="wrap">
-          <motion.div {...rv(0.1)}>
-            <div className="hero-strip" style={{ marginTop: 0 }}>
-              <div className="cell">
-                <span className="stat"><em>+</em>188<em>%</em></span>
-                <span className="label">More signups from Google</span>
-              </div>
-              <div className="cell">
-                <span className="stat">−34<em>%</em></span>
-                <span className="label">Cost to win each customer</span>
-              </div>
-              <div className="cell">
-                <span className="stat"><em>+</em>320<em>%</em></span>
-                <span className="label">More website visitors</span>
-              </div>
-              <div className="cell">
-                <span className="stat">$57<em>K</em></span>
-                <span className="label">Sales from email in 90 days</span>
-              </div>
-            </div>
-            <div className="strip-note">
-              <span>Numbers from real client work</span>
-              <Link to="/case-studies">Read the stories →</Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Marquee — logo trust strip ───────────────────────────────────────── */}
-      <div className="marquee marquee--ink" aria-label="Clients & partners">
-        <div className="marquee-track">
-          {[...marqueeLogos, ...marqueeLogos].map((logo, i) => (
-            <span key={i} className="marquee-item">
-              <img src={logo.src} alt={logo.alt} className="marquee-logo" loading="lazy" />
-              <span className={`star s${(i % 4) + 1}`} aria-hidden="true">✦</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Sound familiar? ──────────────────────────────────────────────────── */}
-      <section id="problem">
-        <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
-            <div className="sh-meta">
-              <span className="eyebrow">The problem</span>
-              <h2 className="display-md">Sound familiar?</h2>
-            </div>
+          <motion.div className="h-head h-head--center" {...rv()}>
+            <span className="eyebrow">Sound familiar?</span>
+            <h2 className="h-title">Good at what you do.<br /><em>Too busy to market it.</em></h2>
+            <p className="h-lede">We hear these every week from owners like you.</p>
           </motion.div>
 
-          <div className="pains-grid">
-            {pains.map((pain, i) => (
-              <motion.div key={pain.quote} className="pain-card" {...rv(i * 0.08)}>
-                <img src={pain.img} alt={pain.alt} className="pain-snap" loading="lazy" />
-                <p className="q">{pain.quote}</p>
-              </motion.div>
+          <div className="h-pains">
+            {pains.map((p, i) => (
+              <motion.figure key={p.quote} className="h-pain" {...rv(i * 0.07)}>
+                <img src={p.img} alt={p.alt} loading="lazy" />
+                <figcaption>“{p.quote}”</figcaption>
+              </motion.figure>
             ))}
           </div>
 
-          <motion.p className="bridge" {...rv(0.2)}>
+          <motion.p className="h-bridge" {...rv(0.15)}>
             That's where we come in. You hand it over. We do the work. <em>You see the numbers.</em>
           </motion.p>
         </div>
       </section>
 
-      {/* ── What we do ───────────────────────────────────────────────────────── */}
-      <section className="section-paper-2">
+      {/* ── What we do ──────────────────────────────────────────────────── */}
+      <section className="h-services">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
-            <div className="sh-meta">
+          <motion.div className="h-head h-head--split" {...rv()}>
+            <div>
               <span className="eyebrow">What we do</span>
-              <h2 className="display-md">Pick what you want <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>off your plate</em>.</h2>
+              <h2 className="h-title">Pick what you want<br /><em>off your plate.</em></h2>
             </div>
-            <p className="lede">Take one. Take a few. Take all of it.</p>
+            <div className="h-head-side">
+              <p className="h-lede">Take one. Take a few. Take all of it. Every service is run for you, start to finish.</p>
+              <div className="h-rail-ctrl">
+                <button type="button" onClick={() => scrollRail(-1)} aria-label="Previous services"><ArrowLeft size={18} /></button>
+                <button type="button" onClick={() => scrollRail(1)} aria-label="Next services"><ArrowRight size={18} /></button>
+              </div>
+            </div>
           </motion.div>
+        </div>
 
-          <ol className="numlist">
-            {services.map((svc, i) => (
-              <motion.li key={svc.num} {...rv(i * 0.06)}>
-                <span className="num"><span className={`num-chip c${i + 1}`}>{svc.num}</span></span>
-                <div className="title-col">
-                  <h3>{svc.title}</h3>
-                  <p>{svc.desc}</p>
+        <div className="h-rail" ref={railRef}>
+          {services.map((svc, i) => {
+            const Icon = svc.icon
+            return (
+              <motion.article key={svc.num} className="h-svc" {...rv(i * 0.05)}>
+                <div className="h-svc-top">
+                  <span className="h-svc-num">{svc.num} — {svc.type}</span>
+                  <span className="h-svc-icon"><Icon size={22} strokeWidth={2.2} /></span>
                 </div>
-                <span className="meta-col">{svc.type}</span>
-              </motion.li>
-            ))}
-          </ol>
-
-          <div style={{ marginTop: 48 }}>
-            <Link to="/services" className="btn btn-ghost">
-              See all 9 services <span className="arrow">→</span>
-            </Link>
-          </div>
+                <h3>{svc.title}</h3>
+                <p>{svc.desc}</p>
+              </motion.article>
+            )
+          })}
+          <Link to="/services" className="h-svc h-svc--more">
+            <span className="h-svc-num">All services</span>
+            <h3>See all 9 services</h3>
+            <span className="h-tile h-tile--sm" aria-hidden="true"><HookArrow /></span>
+          </Link>
         </div>
       </section>
 
-      {/* ── How it works ─────────────────────────────────────────────────────── */}
-      <section className="section-gold-tint">
+      {/* ── Results ─────────────────────────────────────────────────────── */}
+      <section className="h-work">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
-            <div className="sh-meta">
-              <span className="eyebrow">How it works</span>
-              <h2 className="display-md">Three steps. <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>No surprises.</em></h2>
+          <motion.div className="h-head h-head--split" {...rv()}>
+            <div>
+              <span className="eyebrow">Results</span>
+              <h2 className="h-title">Real businesses.<br /><em>Real numbers.</em></h2>
             </div>
+            <p className="h-lede">Click any of these to read exactly what we did and what happened.</p>
           </motion.div>
 
-          <ol className="numlist">
-            {steps.map((step, i) => (
-              <motion.li key={step.num} {...rv(i * 0.07)}>
-                <span className="num">{step.num}</span>
-                <div className="title-col">
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
+          <div className="h-work-grid">
+            {cases.map((c, i) => (
+              <MotionLink key={c.to} to={c.to} className={`h-case h-case--${c.size}`} {...rv((i % 2) * 0.08)}>
+                <div className={`h-case-art tone-${c.tone}`}>
+                  <span className="h-case-label">Case 0{i + 1} · {c.label}</span>
+                  <span className="h-case-hook" aria-hidden="true"><HookArrow /></span>
+                  <div className="h-case-stat">
+                    <span className="num">{c.stat}<em>{c.unit}</em></span>
+                    <span className="lbl">{c.statLabel}</span>
+                  </div>
                 </div>
-              </motion.li>
+                <h3>{c.title}</h3>
+                <span className="h-case-meta">{c.meta}</span>
+              </MotionLink>
             ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* ── Proof — the one dark moment ──────────────────────────────────────── */}
-      <section className="section-dark">
-        <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
-            <div className="sh-meta">
-              <span className="eyebrow">Proof</span>
-              <h2 className="display-md" style={{ color: 'var(--paper)' }}>Real businesses. <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>Real numbers.</em></h2>
-            </div>
-            <p className="lede">Click any of these to read exactly what we did and what happened.</p>
-          </motion.div>
-
-          <div className="work-grid">
-            <MotionLink to="/case-studies/the-funded-trader" className="case feature" {...rv()}>
-              <div className="media">
-                <div className="case-art case-art--terra">
-                  <div className="ca-meta"><span>Case 01</span><span>The Funded Trader</span></div>
-                  <div className="ca-mark">188% more<br /><em>signups.</em></div>
-                  <div className="ca-foot">
-                    <div className="ca-stat-big">−34<em>%</em></div>
-                    <div className="ca-stat-label">Cost per customer</div>
-                  </div>
+            <motion.a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="h-case h-case--narrow h-case--cta" {...rv(0.08)}>
+              <div className="h-case-art tone-open">
+                <span className="h-case-label">Case 06 · Not written yet</span>
+                <div className="h-case-stat">
+                  <span className="num">Yours<em>?</em></span>
+                  <span className="lbl">It starts with a free call</span>
                 </div>
               </div>
-              <div className="body">
-                <div className="tags">
-                  <span className="tag dot">Google</span>
-                  <span className="tag">Content</span>
-                  <span className="tag">Email</span>
-                </div>
-                <h3>188% more signups from Google search.</h3>
-                <p className="desc">
-                  They were paying for every single customer. We made Google bring them in free, and the cost of winning a customer dropped by a third.
-                </p>
-                <div className="stats">
-                  <div><div className="stat">+188%</div><span className="lbl">Signups</span></div>
-                  <div><div className="stat">−34%</div><span className="lbl">Cost per customer</span></div>
-                  <div><div className="stat">90d</div><span className="lbl">First results</span></div>
-                </div>
-              </div>
-            </MotionLink>
-
-            <div className="stack" style={{ gap: 24 }}>
-              <MotionLink to="/case-studies/saas-startup" className="case" {...rv(0.1)}>
-                <div className="media">
-                  <div className="case-art case-art--cobalt compact">
-                    <div className="ca-meta"><span>Case 02</span><span>Software company</span></div>
-                    <div className="ca-mark">Page 5 <em>→ 1.</em></div>
-                    <div className="ca-foot">
-                      <div className="ca-stat-big"><em>+</em>320<em>%</em></div>
-                      <div className="ca-stat-label">Website visitors</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="body">
-                  <div className="tags">
-                    <span className="tag dot">Google</span>
-                    <span className="tag">Content</span>
-                  </div>
-                  <h3>From invisible on Google to page 1 in six months.</h3>
-                  <p className="desc">
-                    Nobody could find them. We fixed that: three times the visitors, and winning a customer now costs 60% less.
-                  </p>
-                </div>
-              </MotionLink>
-              <MotionLink to="/case-studies/fashion-brand" className="case" {...rv(0.18)}>
-                <div className="media">
-                  <div className="case-art case-art--gold compact">
-                    <div className="ca-meta"><span>Case 03</span><span>Fashion brand</span></div>
-                    <div className="ca-mark"><em>$57K</em> from email.</div>
-                    <div className="ca-foot">
-                      <div className="ca-stat-big">90<em>d</em></div>
-                      <div className="ca-stat-label">Sales in 90 days</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="body">
-                  <div className="tags">
-                    <span className="tag dot">Email</span>
-                  </div>
-                  <h3>$57K in sales from emails in 90 days.</h3>
-                  <p className="desc">
-                    Their customer list was just sitting there. We started writing to it, and it started selling.
-                  </p>
-                </div>
-              </MotionLink>
-            </div>
-          </div>
-
-          <div className="work-grid-secondary">
-            <MotionLink to="/case-studies/toptier-trader" className="case" {...rv()}>
-              <div className="media">
-                <div className="case-art case-art--teal thumb">
-                  <div className="ca-meta"><span>Case 04</span><span>TopTier Trader</span></div>
-                  <div className="ca-mark">Searches <em>up 142%.</em></div>
-                  <div className="ca-foot">
-                    <div className="ca-stat-big"><em>+</em>142<em>%</em></div>
-                    <div className="ca-stat-label">Brand searches</div>
-                  </div>
-                </div>
-              </div>
-              <div className="body">
-                <div className="tags"><span className="tag dot">Reputation</span></div>
-                <h3>Searches for their name up 142% after we fixed their reputation.</h3>
-              </div>
-            </MotionLink>
-            <MotionLink to="/case-studies/public-official" className="case" {...rv(0.08)}>
-              <div className="media">
-                <div className="case-art case-art--ink thumb">
-                  <div className="ca-meta"><span>Case 05</span><span>Public figure</span></div>
-                  <div className="ca-mark">Image<br /><em>rebuilt.</em></div>
-                  <div className="ca-foot">
-                    <div className="ca-stat-big">5<em>×</em></div>
-                    <div className="ca-stat-label">More engagement</div>
-                  </div>
-                </div>
-              </div>
-              <div className="body">
-                <div className="tags"><span className="tag dot">Reputation</span><span className="tag">Social</span></div>
-                <h3>A public figure's online image, rebuilt before election season.</h3>
-              </div>
-            </MotionLink>
-            <motion.a href={CALENDLY_URL} className="case cta-tile" target="_blank" rel="noopener noreferrer" {...rv(0.16)}>
-              <div className="media">
-                <div className="case-art thumb">
-                  <div className="ca-meta"><span>Case 06</span><span>Not written yet</span></div>
-                  <div className="ca-mark">Your business<br /><em>here.</em></div>
-                  <div className="ca-foot">
-                    <div className="ca-stat-big"><em>?</em></div>
-                    <div className="ca-stat-label">Let's find out</div>
-                  </div>
-                </div>
-              </div>
-              <div className="body">
-                <div className="tags"><span className="tag dot">Free call</span></div>
-                <h3>Your business could be next. It starts with a free call.</h3>
-              </div>
+              <h3>Your business could be next</h3>
+              <span className="h-case-meta">Book a free 20-minute call</span>
             </motion.a>
           </div>
 
-          <div style={{ marginTop: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-            <p className="cap" style={{ margin: 0 }}>Every story includes what we did and what it cost</p>
-            <Link to="/case-studies" className="btn btn-ghost" style={{ color: 'var(--paper)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
-              See all results <span className="arrow">→</span>
-            </Link>
+          <div className="h-center-cta">
+            <Link to="/case-studies" className="pill-btn pill-btn--pine">See all results <HookArrow /></Link>
           </div>
         </div>
       </section>
 
-      {/* ── Pricing ──────────────────────────────────────────────────────────── */}
-      <section id="pricing">
+      {/* ── How it works — card over full-bleed photo ───────────────────── */}
+      <section className="h-how">
+        <img className="h-how-bg" src="/images/hero-quiet.jpg" alt="" loading="lazy" />
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
-            <div className="sh-meta">
-              <span className="eyebrow">Pricing</span>
-              <h2 className="display-md">Start small, or hand it <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>all over</em>.</h2>
+          <motion.div className="h-how-card" {...rv()}>
+            <div className="h-how-intro">
+              <span className="eyebrow">How it works</span>
+              <h2 className="h-title">Three steps.<br /><em>No surprises.</em></h2>
+              <p>No black boxes. No jargon. Every month you see what we did and what it brought in.</p>
             </div>
-            <p className="lede">Every option starts with the same free call. We'll tell you which one fits, and we'll tell you if none of them do.</p>
+            <div className="h-how-photo">
+              <img src="/images/growth-still.jpg" alt="Paper bar chart rising in coral and ivory" loading="lazy" />
+            </div>
+            <ol className="h-how-steps">
+              {steps.map((s, i) => {
+                const Icon = s.icon
+                return (
+                  <li key={s.title}>
+                    <span className="h-how-icon"><Icon size={18} strokeWidth={2.2} /></span>
+                    <div>
+                      <h3><span className="step-n">Step {i + 1}</span>{s.title}</h3>
+                      <p>{s.desc}</p>
+                    </div>
+                  </li>
+                )
+              })}
+            </ol>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Pricing ─────────────────────────────────────────────────────── */}
+      <section className="h-pricing" id="pricing">
+        <div className="wrap">
+          <motion.div className="h-head h-head--center" {...rv()}>
+            <span className="eyebrow">Pricing</span>
+            <h2 className="h-title">Start small, or <em>hand it all over.</em></h2>
+            <p className="h-lede">Every option starts with the same free call. We'll tell you which one fits, and we'll tell you if none of them do.</p>
           </motion.div>
 
-          <div className="engagements" style={{ marginTop: 0 }}>
-            {plans.map(plan => (
-              <motion.div key={plan.num} className="engagement" {...rv(0.08)}>
-                <span className="num">{plan.num}</span>
-                <h4>{plan.title}</h4>
-                <p>{plan.desc}</p>
-                <div className="footer-row">
-                  <span className="price">{plan.price}</span>
-                  <span>{plan.terms}</span>
-                </div>
-              </motion.div>
-            ))}
+          <div className="h-plans">
+            {plans.map((plan, i) => {
+              const Icon = plan.icon
+              return (
+                <motion.div key={plan.name} className={`h-plan${plan.featured ? ' h-plan--featured' : ''}`} {...rv(i * 0.07)}>
+                  <div className="h-plan-head">
+                    <span className="h-plan-name"><Icon size={16} strokeWidth={2.2} /> {plan.name}</span>
+                    {plan.featured && <span className="h-plan-badge">Full team</span>}
+                  </div>
+                  <div className="h-plan-price">
+                    {plan.pre && <span className="pre">{plan.pre}</span>}
+                    <span className="amt">{plan.price}</span>
+                    {plan.post && <span className="post">{plan.post}</span>}
+                  </div>
+                  <p className="h-plan-desc">{plan.desc}</p>
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`pill-btn pill-btn--block ${plan.featured ? 'pill-btn--coral' : 'pill-btn--pine'}`}
+                  >
+                    {plan.cta} <HookArrow />
+                  </a>
+                  <ul className="h-plan-list">
+                    {plan.features.map(([t, s]) => (
+                      <li key={t}>
+                        <Check size={18} strokeWidth={3} className="tick" />
+                        <div><strong>{t}</strong><span>{s}</span></div>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )
+            })}
           </div>
 
-          <motion.div className="route-band" style={{ marginTop: 56 }} {...rv(0.15)}>
+          <motion.div className="h-route" {...rv(0.1)}>
             <p>Run a bigger brand, or managing a public profile? We do that too.</p>
-            <div className="links">
-              <Link to="/services" className="btn-link">Growing brands →</Link>
-              <Link to="/public-figures" className="btn-link">Public figures →</Link>
+            <div>
+              <Link to="/services" className="pill-btn pill-btn--line">Growing brands</Link>
+              <Link to="/public-figures" className="pill-btn pill-btn--line">Public figures</Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
-      <section className="section-paper-2">
+      {/* ── Kind words ──────────────────────────────────────────────────── */}
+      <section className="h-quotes">
+        <div className="h-bigline" aria-hidden="true">
+          <div className="h-bigline-track">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <span key={i}>Kind words from clients <span className="dash">—</span> </span>
+            ))}
+          </div>
+        </div>
+        <h2 className="sr-only">Kind words from clients</h2>
         <div className="wrap">
-          <motion.div {...rv()} style={{ maxWidth: 800 }}>
-            <span className="eyebrow">Questions</span>
-            <h2 className="display-md" style={{ marginTop: 20 }}>Asked all the time.</h2>
-          </motion.div>
-          <div style={{ marginTop: 48, maxWidth: 800 }}>
-            {faqs.map((faq, i) => (
-              <motion.div key={faq.q} {...rv(i * 0.06)} className="faq-item">
-                <button
-                  className="faq-trigger"
-                  aria-expanded={openFaq === i}
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                >
-                  <span>{faq.q}</span>
-                  <span className="faq-icon">{openFaq === i ? '−' : '+'}</span>
-                </button>
-                <AnimatePresence>
-                  {openFaq === i && (
-                    <motion.p
-                      className="faq-answer"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
-                      style={{ overflow: 'hidden' }}
-                    >
-                      {faq.a}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+          <div className="h-quote-grid">
+            {[0, 1, 2].map(col => (
+              <div key={col} className="h-quote-col">
+                {quotes.filter((_, i) => i % 3 === col).map(t => (
+                  <motion.figure key={t.org} className="h-quote" {...rv(col * 0.08)}>
+                    <blockquote>“{t.q}”</blockquote>
+                    <figcaption>
+                      <span className="h-tile h-tile--xs" aria-hidden="true"><HookArrow /></span>
+                      <span className="who">
+                        <strong>{t.who}</strong>
+                        <span>{t.org}</span>
+                      </span>
+                      <Link to={t.to} className="h-quote-link" aria-label={`Read the ${t.org} story`}>
+                        <ArrowRight size={16} />
+                      </Link>
+                    </figcaption>
+                  </motion.figure>
+                ))}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA band ─────────────────────────────────────────────────────────── */}
-      <motion.div className="cta-band cta-band--gold" {...rv()}>
-        <h2>Ready to hand <em>it</em> off?</h2>
-        <div className="stack">
-          <p style={{ color: 'color-mix(in oklch, var(--ink) 78%, transparent)', fontSize: 16, lineHeight: 1.55, maxWidth: '42ch', margin: 0 }}>
-            20 minutes, free. Tell us what's not working. We'll tell you how we'd fix it, whether or not you hire us.
-          </p>
-          <div className="row">
-            <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-              Book a free 20-minute call <span className="arrow">↗</span>
-            </a>
-            <a href="mailto:info@taqhaus.com" className="btn btn-ghost">Or just email us</a>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* ── Footer ───────────────────────────────────────────────────────────── */}
-      <footer className="footer">
+      {/* ── FAQ ─────────────────────────────────────────────────────────── */}
+      <section className="h-faq">
         <div className="wrap">
-          <div className="footer-head">
-            <h2>
-              Less marketing stress.<br />
-              More&nbsp;<em className="italic" style={{ color: 'var(--terracotta)' }}>customers</em>.
-            </h2>
-            <div className="cta-stack">
-              <a
-                href={CALENDLY_URL}
-                className="btn"
-                style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>Book a free 20-minute call</span>
-                <span className="arrow">↗</span>
-              </a>
-              <a
-                href="mailto:info@taqhaus.com"
-                className="btn-link"
-                style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}
-              >
-                info@taqhaus.com
-              </a>
-            </div>
+          <motion.div className="h-head h-head--center" {...rv()}>
+            <span className="eyebrow">Questions</span>
+            <h2 className="h-title">Your questions,<br /><em>answered.</em></h2>
+            <p className="h-lede">Straight answers. If yours isn't here, just email us.</p>
+          </motion.div>
+
+          <div className="h-faq-list">
+            {faqs.map((faq, i) => {
+              const open = openFaq === i
+              return (
+                <div key={faq.q} className={`h-faq-item${open ? ' open' : ''}`}>
+                  <button
+                    type="button"
+                    aria-expanded={open}
+                    aria-controls={`faq-${i}`}
+                    id={`faq-btn-${i}`}
+                    onClick={() => setOpenFaq(open ? null : i)}
+                  >
+                    <span>{faq.q}</span>
+                    <span className="h-faq-icon" aria-hidden="true" />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {open && (
+                      <motion.div
+                        id={`faq-${i}`}
+                        role="region"
+                        aria-labelledby={`faq-btn-${i}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        style={{ overflow: 'hidden' }}
+                      >
+                        <p>{faq.a}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )
+            })}
           </div>
 
-          <div className="footer-cols">
-            <div>
-              <img
-                src="/taqhaus-logo.png"
-                alt="TaqHaus"
-                style={{ height: 40, width: 'auto', marginBottom: 16, filter: 'brightness(0) invert(1)' }}
-              />
-              <p style={{ color: 'color-mix(in oklch, var(--paper) 65%, transparent)', fontSize: 14, lineHeight: 1.55, maxWidth: '30ch', margin: 0 }}>
-                We do your marketing for you, and show you the numbers every month.
-              </p>
-            </div>
-            <div>
-              <h4>Explore</h4>
-              <ul>
-                <li><Link to="/services">Services</Link></li>
-                <li><Link to="/case-studies">Results</Link></li>
-                <li><Link to="/about">About</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Read</h4>
-              <ul>
-                <li><Link to="/insights">Insights</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Elsewhere</h4>
-              <ul>
-                <li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <span>© 2026 TaqHaus Consultancy Inc.</span>
-            <span>Made in Toronto · Serving everywhere</span>
-          </div>
-
-          <div className="footer-mark">
-            TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span>
+          <div className="h-center-cta">
+            <a href="mailto:info@taqhaus.com" className="pill-btn pill-btn--coral">Email us a question <HookArrow /></a>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* ── From the blog ───────────────────────────────────────────────── */}
+      <section className="h-blog">
+        <div className="wrap">
+          <motion.div className="h-head h-head--center" {...rv()}>
+            <span className="eyebrow">From the blog</span>
+            <h2 className="h-title">Plain advice<br /><em>for busy owners.</em></h2>
+          </motion.div>
+
+          <div className="h-posts">
+            {latestPosts.map((post, i) => (
+              <motion.article key={post.slug} className="h-post" {...rv(i * 0.07)}>
+                <span className="h-post-n">0{i + 1}</span>
+                <Link to={`/insights/${post.slug}`} className="h-post-card">
+                  <img src={post.image} alt="" loading="lazy" />
+                  <div className="h-post-panel">
+                    <div className="h-post-meta">
+                      <span className="h-post-tag">{post.category}</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <span className="h-post-date">{post.date}</span>
+                    <h3>{post.title}</h3>
+                    <span className="pill-btn pill-btn--coral pill-btn--sm">Read more <HookArrow /></span>
+                  </div>
+                </Link>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter />
     </div>
   )
 }

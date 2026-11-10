@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
+import SiteNav from '@/components/site/SiteNav'
+import SiteFooter from '@/components/site/SiteFooter'
 
 const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -49,30 +51,7 @@ export default function PublicFigures() {
         canonical="/public-figures"
       />
 
-      {/* Topbar */}
-      <div className="topbar">
-        <span className="pulse" />
-        <span>All political &amp; public figure enquiries are confidential</span>
-      </div>
-
-      {/* Nav */}
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" aria-label="TaqHaus, Home">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
-          </Link>
-          <nav className="nav-links">
-            <Link to="/services">Services</Link>
-            <Link to="/case-studies">Results</Link>
-            <Link to="/about">About</Link>
-            <Link to="/insights">Insights</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-          <a href={PRIVATE_CALL_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
-            Book a private call <span className="arrow">→</span>
-          </a>
-        </div>
-      </header>
+      <SiteNav />
 
       {/* Hero */}
       <section className="page-head">
@@ -108,7 +87,7 @@ export default function PublicFigures() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">What we do</span>
-              <h2 className="display-md">Everything your online presence <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>needs</em>.</h2>
+              <h2 className="display-md">Everything your online presence <em>needs</em>.</h2>
             </div>
             <p className="lede">We handle the whole picture: the website people land on, the search results they see, and the social channels they follow.</p>
           </motion.div>
@@ -130,7 +109,7 @@ export default function PublicFigures() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Case study · Government &amp; public office</span>
-              <h2 className="display-md">A reputation repaired <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>before campaign season</em>.</h2>
+              <h2 className="display-md">A reputation repaired <em>before campaign season</em>.</h2>
             </div>
           </motion.div>
 
@@ -142,7 +121,7 @@ export default function PublicFigures() {
               <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.7, marginTop: 16 }}>
                 We reviewed everything: search results, social profiles, news mentions, and online sentiment. We built a six-month plan, wrote a clear story connecting the official&rsquo;s background to their work in public service, and started publishing.
               </p>
-              <blockquote style={{ borderLeft: '2px solid var(--terracotta)', paddingLeft: 20, margin: '28px 0 0', fontFamily: 'var(--serif)', fontSize: 18, fontStyle: 'italic', color: 'var(--ink)', lineHeight: 1.5 }}>
+              <blockquote style={{ borderLeft: '2px solid var(--terracotta)', paddingLeft: 20, margin: '28px 0 0', fontFamily: 'var(--serif)', fontSize: 18, fontStyle: 'normal', color: 'var(--ink)', lineHeight: 1.5 }}>
                 &ldquo;They understand how you're seen and how you perform. In public office, you need both.&rdquo;
                 <cite style={{ display: 'block', fontFamily: 'var(--mono)', fontSize: 11.5, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--ink-3)', fontStyle: 'normal', marginTop: 10 }}>
                   Anonymous · Elected Official
@@ -161,7 +140,7 @@ export default function PublicFigures() {
                   'Community outreach initiative',
                 ].map((item) => (
                   <li key={item} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                    <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
+                    <span style={{ color: 'var(--accent-text)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
                     {item}
                   </li>
                 ))}
@@ -173,7 +152,7 @@ export default function PublicFigures() {
                   { val: '72%', lbl: 'Digital following growth' },
                 ].map((stat) => (
                   <div key={stat.lbl}>
-                    <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px,2vw,28px)', fontStyle: 'italic', color: 'var(--terracotta)', lineHeight: 1 }}>{stat.val}</div>
+                    <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px,2vw,28px)', fontStyle: 'normal', color: 'var(--accent-text)', lineHeight: 1 }}>{stat.val}</div>
                     <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--ink-3)', marginTop: 6 }}>{stat.lbl}</div>
                   </div>
                 ))}
@@ -194,7 +173,7 @@ export default function PublicFigures() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Why TaqHaus</span>
-              <h2 className="display-md" style={{ color: 'var(--paper)' }}>We understand <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>the stakes</em>.</h2>
+              <h2 className="display-md" style={{ color: 'var(--paper)' }}>We understand <em>the stakes</em>.</h2>
             </div>
             <p className="lede">For most businesses, a bad week online is a setback. For a public figure, it can define a career. We treat the work accordingly.</p>
           </motion.div>
@@ -240,33 +219,7 @@ export default function PublicFigures() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="wrap">
-          <div className="footer-head">
-            <h2>Your name is the asset.<br />Treat it like&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>one</em>.</h2>
-            <div className="cta-stack">
-              <a href={PRIVATE_CALL_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
-                <span>Book a private call</span><span className="arrow">↗</span>
-              </a>
-              <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
-                info@taqhaus.com
-              </a>
-            </div>
-          </div>
-          <div className="footer-cols">
-            <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
-            <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
-            <div><h4>Elsewhere</h4><ul><li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li><li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li></ul></div>
-          </div>
-          <div className="footer-bottom">
-            <span>© 2026 TaqHaus Consultancy Inc.</span>
-            <span>Made in&nbsp;Toronto · Serving everywhere</span>
-          </div>
-          <div className="footer-mark">TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span></div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

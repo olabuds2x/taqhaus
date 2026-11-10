@@ -1,7 +1,7 @@
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import ScrollToTop from '@/components/ScrollToTop'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
+import SiteNav from '@/components/site/SiteNav'
+import SiteFooter from '@/components/site/SiteFooter'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import NotFound from '@/pages/NotFound'
 import LandingPageRedesign from '@/pages/LandingPageRedesign'
@@ -37,6 +37,11 @@ const EDITORIAL_ROUTES = [
   '/services/motion-graphics', '/services/content-writing',
 ]
 
+/* Wraps shared chrome so its scoped styles apply on Tailwind-built pages. */
+function Chrome({ children }: { children: React.ReactNode }) {
+  return <div className="tq-editorial tq-chrome">{children}</div>
+}
+
 /* ── Route renderer ── */
 function AppRoutes() {
   const location = useLocation()
@@ -46,8 +51,9 @@ function AppRoutes() {
     <>
       <ScrollToTop />
 
-      {/* Shared nav only for pages that don't use the editorial design system */}
-      {!isEditorial && <Navigation />}
+      {/* Pages outside the editorial system get the same nav as everyone else.
+          `display: contents` keeps the sticky nav relative to the page. */}
+      {!isEditorial && <div className="tq-editorial tq-chrome"><SiteNav /></div>}
 
       <Routes>
         <Route path="/" element={<LandingPageRedesign />} />
@@ -66,13 +72,13 @@ function AppRoutes() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/case-studies" element={<CaseStudiesIndex />} />
-        <Route path="/portfolio" element={<><Portfolio /><Footer /></>} />
-        <Route path="/insights/:slug" element={<><BlogPost /><Footer /></>} />
-        <Route path="/case-studies/the-funded-trader" element={<><CaseStudyTFT /><Footer /></>} />
-        <Route path="/case-studies/toptier-trader" element={<><CaseStudyTopTier /><Footer /></>} />
-        <Route path="/case-studies/saas-startup" element={<><CaseStudySaaS /><Footer /></>} />
-        <Route path="/case-studies/fashion-brand" element={<><CaseStudyFashion /><Footer /></>} />
-        <Route path="/case-studies/public-official" element={<><CaseStudyPublicOfficial /><Footer /></>} />
+        <Route path="/portfolio" element={<><Portfolio /><Chrome><SiteFooter /></Chrome></>} />
+        <Route path="/insights/:slug" element={<><BlogPost /><Chrome><SiteFooter /></Chrome></>} />
+        <Route path="/case-studies/the-funded-trader" element={<><CaseStudyTFT /><Chrome><SiteFooter /></Chrome></>} />
+        <Route path="/case-studies/toptier-trader" element={<><CaseStudyTopTier /><Chrome><SiteFooter /></Chrome></>} />
+        <Route path="/case-studies/saas-startup" element={<><CaseStudySaaS /><Chrome><SiteFooter /></Chrome></>} />
+        <Route path="/case-studies/fashion-brand" element={<><CaseStudyFashion /><Chrome><SiteFooter /></Chrome></>} />
+        <Route path="/case-studies/public-official" element={<><CaseStudyPublicOfficial /><Chrome><SiteFooter /></Chrome></>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

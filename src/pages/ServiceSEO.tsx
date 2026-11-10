@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
+import SiteNav from '@/components/site/SiteNav'
+import SiteFooter from '@/components/site/SiteFooter'
 
 const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -20,21 +22,7 @@ export default function ServiceSEO() {
         canonical="/services/seo"
       />
 
-      <div className="topbar"><span className="pulse" /><span>Taking new clients for Q3 · Working with clients worldwide</span></div>
-
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" aria-label="TaqHaus — Home"><img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} /></Link>
-          <nav className="nav-links">
-            <Link to="/services" className="active">Services</Link>
-            <Link to="/case-studies">Results</Link>
-            <Link to="/about">About</Link>
-            <Link to="/insights">Insights</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">Book a call <span className="arrow">→</span></a>
-        </div>
-      </header>
+      <SiteNav />
 
       <section className="page-head">
         <div className="wrap">
@@ -67,7 +55,7 @@ export default function ServiceSEO() {
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 {['We find and fix the problems holding your site back', 'We find the searches your customers actually type', 'We tune your pages so Google understands them', 'Blog posts written for you, made to show up in search', 'We get trusted sites to link to you', 'Behind-the-scenes code that helps Google read your site', 'Show up when people ask AI tools instead of Google', 'A simple monthly report on rankings and visitors'].map(item => (
                   <li key={item} style={{ fontSize: 15, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                    <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>{item}
+                    <span style={{ color: 'var(--accent-text)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>{item}
                   </li>
                 ))}
               </ul>
@@ -103,7 +91,7 @@ export default function ServiceSEO() {
             <div style={{ display: 'flex', gap: 40, marginTop: 28, paddingTop: 24, borderTop: '1px solid var(--hairline)', flexWrap: 'wrap' as const }}>
               {[{ val: '320%', lbl: 'More visitors' }, { val: 'Position 3', lbl: 'Main search term (was page 5)' }, { val: '60%', lbl: 'Lower cost per customer' }].map(stat => (
                 <div key={stat.lbl}>
-                  <div style={{ fontFamily: 'var(--serif)', fontSize: 28, fontStyle: 'italic', color: 'var(--terracotta)', lineHeight: 1 }}>{stat.val}</div>
+                  <div style={{ fontFamily: 'var(--serif)', fontSize: 28, fontStyle: 'normal', color: 'var(--accent-text)', lineHeight: 1 }}>{stat.val}</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--ink-3)', marginTop: 6 }}>{stat.lbl}</div>
                 </div>
               ))}
@@ -128,25 +116,7 @@ export default function ServiceSEO() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="wrap">
-          <div className="footer-head">
-            <h2>We handle the&nbsp;marketing.<br />You run the&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>business</em>.</h2>
-            <div className="cta-stack">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}><span>Book a free 20-minute call</span><span className="arrow">↗</span></a>
-              <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>info@taqhaus.com</a>
-            </div>
-          </div>
-          <div className="footer-cols">
-            <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Company</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
-            <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
-            <div><h4>Elsewhere</h4><ul><li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li><li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li></ul></div>
-          </div>
-          <div className="footer-bottom"><span>© 2026 TaqHaus Consultancy Inc.</span><span>Made in&nbsp;Toronto · Serving everywhere</span></div>
-          <div className="footer-mark">TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span></div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

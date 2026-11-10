@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
+import SiteNav from '@/components/site/SiteNav'
+import SiteFooter from '@/components/site/SiteFooter'
 
 const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -237,30 +239,7 @@ export default function Services() {
         ogImage="/images/og/services.png"
       />
 
-      {/* Topbar */}
-      <div className="topbar">
-        <span className="pulse" />
-        <span>Now booking for Q3 · 2 retainer spots open · Working with clients worldwide</span>
-      </div>
-
-      {/* Nav */}
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" aria-label="TaqHaus — Home">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
-          </Link>
-          <nav className="nav-links">
-            <Link to="/services" className="active">Services</Link>
-            <Link to="/case-studies">Results</Link>
-            <Link to="/about">About</Link>
-            <Link to="/insights">Insights</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
-            Book a call <span className="arrow">→</span>
-          </a>
-        </div>
-      </header>
+      <SiteNav />
 
       {/* Page head */}
       <section className="page-head">
@@ -291,7 +270,7 @@ export default function Services() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Layer 1: Strategy</span>
-              <h2 className="display-md">We figure out <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>the plan</em>.</h2>
+              <h2 className="display-md">We figure out <em>the plan</em>.</h2>
             </div>
             <p className="lede">
               Start here if you need direction. We find what&rsquo;s holding your business back and tell you exactly what to do next, in plain English.
@@ -306,7 +285,7 @@ export default function Services() {
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 8 }}>
                   {svc.deliverables.map((d) => (
                     <li key={d} style={{ fontSize: 13.5, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                      <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
+                      <span style={{ color: 'var(--accent-text)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
                       {d}
                     </li>
                   ))}
@@ -327,7 +306,7 @@ export default function Services() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Layer 2: Execution</span>
-              <h2 className="display-md">We do <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>the work</em>.</h2>
+              <h2 className="display-md">We do <em>the work</em>.</h2>
             </div>
             <p className="lede">
               This is the hands-on work. Pick what you want off your plate: one service, a few, or all of them. Every one of these can run on its own. No full retainer required.
@@ -351,7 +330,7 @@ export default function Services() {
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 9 }}>
                     {svc.deliverables.map((d) => (
                       <li key={d} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                        <span style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
+                        <span style={{ color: 'var(--accent-text)', fontFamily: 'var(--mono)', fontSize: 11, marginTop: 3, flexShrink: 0 }}>✦</span>
                         {d}
                       </li>
                     ))}
@@ -374,7 +353,7 @@ export default function Services() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Ways to work with us</span>
-              <h2 className="display-md" style={{ color: 'var(--paper)' }}>Three ways to <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>work</em> with us.</h2>
+              <h2 className="display-md" style={{ color: 'var(--paper)' }}>Three ways to <em>work</em> with us.</h2>
             </div>
             <p className="lede">Pick the one that fits where you are. Most people start with a sprint or a free call, so we can both make sure it&rsquo;s a fit.</p>
           </motion.div>
@@ -394,7 +373,7 @@ export default function Services() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`btn ${m.featured ? '' : 'btn-ghost'}`}
-                    style={m.featured ? { background: 'var(--terracotta)', color: 'var(--paper)', width: '100%', justifyContent: 'space-between' } : { width: '100%', justifyContent: 'space-between' }}
+                    style={m.featured ? { background: 'var(--terracotta)', color: 'var(--ink)', width: '100%', justifyContent: 'space-between' } : { width: '100%', justifyContent: 'space-between' }}
                   >
                     {m.cta} <span className="arrow">→</span>
                   </a>
@@ -411,25 +390,25 @@ export default function Services() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Not sure where to start?</span>
-              <h2 className="display-md">Find your <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>entry point</em>.</h2>
+              <h2 className="display-md">Find your <em>entry point</em>.</h2>
             </div>
             <p className="lede">Different businesses start in different places. Here&rsquo;s where most people begin.</p>
           </motion.div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20, marginTop: 40 }}>
             <motion.div {...rv(0)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
-              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--terracotta)', marginBottom: 12 }}>For small businesses</p>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent-text)', marginBottom: 12 }}>For small businesses</p>
               <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Start with a free 20-minute call.</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>We look at your marketing, find the biggest gap, and tell you exactly what to do first. No retainer required.</p>
               <Link to="/for-small-businesses" className="btn-link" style={{ fontSize: 13.5 }}>Learn more →</Link>
             </motion.div>
             <motion.div {...rv(0.08)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
-              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--terracotta)', marginBottom: 12 }}>For politicians &amp; public figures</p>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent-text)', marginBottom: 12 }}>For politicians &amp; public figures</p>
               <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Book a private conversation.</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>Reputation management, social media, website design, and campaign communications, all handled with full discretion.</p>
               <Link to="/public-figures" className="btn-link" style={{ fontSize: 13.5 }}>See how we work →</Link>
             </motion.div>
             <motion.div {...rv(0.16)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
-              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--terracotta)', marginBottom: 12 }}>For growing businesses</p>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent-text)', marginBottom: 12 }}>For growing businesses</p>
               <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Book a call with us.</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>30 minutes. No slideshow. We&rsquo;ll ask what&rsquo;s getting in the way, sketch out a plan, and decide together if there&rsquo;s a fit.</p>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-link" style={{ fontSize: 13.5 }}>Book a call →</a>
@@ -444,7 +423,7 @@ export default function Services() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Common questions</span>
-              <h2 className="display-md">Things people ask <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>before</em> they sign.</h2>
+              <h2 className="display-md">Things people ask <em>before</em> they sign.</h2>
             </div>
             <p className="lede">If your question isn&rsquo;t here, book a call. Straight answers, no sales script.</p>
           </motion.div>
@@ -491,33 +470,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="wrap">
-          <div className="footer-head">
-            <h2>You run the&nbsp;business.<br />We handle the&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>marketing</em>.</h2>
-            <div className="cta-stack">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
-                <span>Book a free 20-minute call</span><span className="arrow">↗</span>
-              </a>
-              <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
-                info@taqhaus.com
-              </a>
-            </div>
-          </div>
-          <div className="footer-cols">
-            <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Explore</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
-            <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
-            <div><h4>Elsewhere</h4><ul><li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li><li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li></ul></div>
-          </div>
-          <div className="footer-bottom">
-            <span>© 2026 TaqHaus Consultancy Inc.</span>
-            <span>Made in&nbsp;Toronto · Serving everywhere</span>
-          </div>
-          <div className="footer-mark">TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span></div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

@@ -7,52 +7,55 @@ export default {
   ],
   theme: {
     extend: {
-      /* ─── Modern Noir / Stealth Luxury Palette ─── */
+      /* ─── Studio palette (Nov 2026) ───
+         Legacy Noir token names now resolve to the pine / ivory / coral
+         system so the Tailwind-built pages (case studies, blog posts,
+         portfolio) match the editorial pages. */
       colors: {
-        /* Surface hierarchy — obsidian depth system */
+        black: '#0F231E',
+        white: '#F6F1E7',
+
         noir: {
-          void: '#050505',        // page background
-          surface: '#0a0a0a',     // primary surface
-          lowest: '#000000',      // deepest wells
-          low: '#121212',         // card bodies
-          DEFAULT: '#1a1a1a',     // mid-level containers
-          high: '#2c1c13',        // elevated (warm noir)
-          highest: '#171717',     // highest elevation
-          bright: '#262626',      // maximum brightness
+          void: '#0F231E',
+          surface: '#133029',
+          lowest: '#0B1B17',
+          low: '#17362E',
+          DEFAULT: '#1C3D35',
+          high: '#22463D',
+          highest: '#1A3932',
+          bright: '#27504A',
         },
-
-        /* Maroon signature — the "Noir" anchor */
+        dark: {
+          DEFAULT: '#133029',
+          900: '#0F231E',
+        },
+        neutral: {
+          light: '#F6F1E7',
+          lighter: '#FFFDF8',
+        },
         maroon: {
-          DEFAULT: '#800f35',
-          deep: '#2c000e',
-          light: '#a93152',
+          DEFAULT: '#27504A',
+          deep: '#0F231E',
+          light: '#3B6A61',
         },
-
-        /* Soft editorial accents */
         blush: {
-          DEFAULT: '#ffb2be',     // primary pink
-          warm: '#ffb5a0',        // secondary warm
-          muted: '#eabdac',       // tertiary muted
-          cream: '#fbdcce',       // on-surface text
+          DEFAULT: '#FFB4A3',
+          warm: '#FF9A82',
+          muted: '#C9D3CE',
+          cream: '#F6F1E7',
         },
-
-        /* The singular CTA accent — used ONLY for conversions */
         strike: {
-          DEFAULT: '#FF5722',
-          glow: 'rgba(255, 87, 34, 0.25)',
+          DEFAULT: '#FF6A4D',
+          glow: 'rgba(255, 106, 77, 0.25)',
         },
-
-        /* Text hierarchy */
         ink: {
-          DEFAULT: '#fbdcce',     // primary text on dark
-          secondary: '#a3a3a3',   // body / secondary text
-          muted: '#737373',       // tertiary / disabled
+          DEFAULT: '#F6F1E7',
+          secondary: '#B9C4BE',
+          muted: '#8FA59D',
         },
-
-        /* Structural */
         outline: {
-          DEFAULT: '#404040',
-          ghost: '#262626',       // ghost borders (15% opacity feel)
+          DEFAULT: '#2F5A50',
+          ghost: '#22463D',
         },
 
         /* Legacy compatibility aliases */
@@ -99,12 +102,12 @@ export default {
 
       /* ─── Typography — Authority meets Utility ─── */
       fontFamily: {
-        headline: ['"Noto Serif"', 'Georgia', '"Times New Roman"', 'serif'],
-        body: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', 'sans-serif'],
-        label: ['"Inter"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        headline: ['"Inter Tight"', '"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+        body: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+        label: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
         /* Legacy aliases */
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        display: ['"Noto Serif"', 'Georgia', 'serif'],
+        sans: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+        display: ['"Inter Tight"', '"Hanken Grotesk"', 'system-ui', 'sans-serif'],
       },
 
       /* ─── Spacing — Luxury breathing room ─── */

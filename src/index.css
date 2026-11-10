@@ -9,25 +9,25 @@
 @layer base {
   :root {
     /* Shadcn compatibility tokens */
-    --background: 0 0% 4%;
-    --foreground: 20 60% 91%;
-    --card: 0 0% 7%;
-    --card-foreground: 20 60% 91%;
-    --popover: 0 0% 5%;
-    --popover-foreground: 20 60% 91%;
-    --primary: 14 100% 56%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 9%;
-    --secondary-foreground: 20 60% 91%;
-    --muted: 0 0% 9%;
-    --muted-foreground: 0 0% 50%;
-    --accent: 14 100% 56%;
-    --accent-foreground: 0 0% 100%;
+    --background: 165 43% 13%;
+    --foreground: 40 47% 94%;
+    --card: 165 40% 15%;
+    --card-foreground: 40 47% 94%;
+    --popover: 165 43% 13%;
+    --popover-foreground: 40 47% 94%;
+    --primary: 10 100% 65%;
+    --primary-foreground: 163 33% 11%;
+    --secondary: 165 37% 17%;
+    --secondary-foreground: 40 47% 94%;
+    --muted: 165 37% 17%;
+    --muted-foreground: 155 12% 60%;
+    --accent: 10 100% 65%;
+    --accent-foreground: 163 33% 11%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 20 60% 91%;
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
-    --ring: 14 100% 56%;
+    --destructive-foreground: 40 47% 94%;
+    --border: 165 30% 22%;
+    --input: 165 30% 22%;
+    --ring: 10 100% 65%;
     --radius: 0.5rem;
   }
 
@@ -66,8 +66,8 @@
 
   /* Selection — strike accent */
   ::selection {
-    background: #FF5722;
-    color: white;
+    background: #FF6A4D;
+    color: #12241F;
   }
 }
 
@@ -99,7 +99,7 @@
   }
 
   .shadow-strike {
-    box-shadow: 0 16px 40px rgba(255, 87, 34, 0.25);
+    box-shadow: 0 16px 40px rgba(255, 106, 77, 0.25);
   }
 
   /* The "Satin Finish" gradient for premium CTAs */
@@ -154,17 +154,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #0F231E;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #27504A;
   border-radius: 4px;
-  border: 2px solid #050505;
+  border: 2px solid #0F231E;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: #3B6A61;
 }
 
 /* Smooth scroll */
@@ -181,26 +181,26 @@ body {
    COMPONENT STYLES
 ═══════════════════════════════════════════ */
 
-/* Primary CTA button — the ONLY place #FF5722 lives */
+/* Primary CTA button — the ONLY place the coral accent lives */
 .btn-strike {
-  background: #FF5722;
-  color: white;
+  background: #FF6A4D;
+  color: #12241F;
   padding: 0.875rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  box-shadow: 0 16px 40px rgba(255, 87, 34, 0.25);
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  box-shadow: 0 16px 40px rgba(255, 106, 77, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .btn-strike:hover {
-  background: #e04d1f;
+  background: #E9512F;
   transform: translateY(-1px);
-  box-shadow: 0 20px 50px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 20px 50px rgba(255, 106, 77, 0.3);
 }
 
 .btn-strike:focus-visible {
-  outline: 3px solid rgba(255, 87, 34, 0.5);
+  outline: 3px solid rgba(255, 106, 77, 0.5);
   outline-offset: 3px;
 }
 

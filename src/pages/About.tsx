@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
+import SiteNav from '@/components/site/SiteNav'
+import SiteFooter from '@/components/site/SiteFooter'
 
 const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -98,30 +100,7 @@ export default function About() {
         canonical="/about"
       />
 
-      {/* Topbar */}
-      <div className="topbar">
-        <span className="pulse" />
-        <span>Now booking for Q3 · 2 retainer spots open</span>
-      </div>
-
-      {/* Nav */}
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" aria-label="TaqHaus — Home">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
-          </Link>
-          <nav className="nav-links">
-            <Link to="/services">Services</Link>
-            <Link to="/case-studies">Results</Link>
-            <Link to="/about" className="active">About</Link>
-            <Link to="/insights">Insights</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
-            Book a call <span className="arrow">→</span>
-          </a>
-        </div>
-      </header>
+      <SiteNav />
 
       {/* Manifesto */}
       <section className="manifesto">
@@ -164,7 +143,7 @@ export default function About() {
                 <div className="ca-mark" style={{ fontSize: 'clamp(64px, 9vw, 144px)' }}>A<br />small<br /><em>Haus.</em></div>
                 <div className="ca-foot">
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' as const, opacity: 0.7 }}>Capped at 14&nbsp;partners</div>
-                  <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 32, color: 'var(--ink)', lineHeight: 1 }}>Ola.</div>
+                  <div style={{ fontFamily: 'var(--serif)', fontStyle: 'normal', fontSize: 32, color: 'var(--ink)', lineHeight: 1 }}>Ola.</div>
                 </div>
               </div>
             </div>
@@ -196,7 +175,7 @@ export default function About() {
           <div className="section-head">
             <div className="sh-meta">
               <span className="eyebrow">Principles</span>
-              <h2 className="display-md">What we&rsquo;ll <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>never</em> ask you to do.</h2>
+              <h2 className="display-md">What we&rsquo;ll <em>never</em> ask you to do.</h2>
             </div>
             <p className="lede">Most agencies tell you what they stand for. It&rsquo;s easier to tell you what we won&rsquo;t do. Six promises we&rsquo;ve never broken.</p>
           </div>
@@ -219,7 +198,7 @@ export default function About() {
           <div className="section-head" style={{ marginBottom: 'clamp(32px,4vw,64px)' }}>
             <div className="sh-meta">
               <span className="eyebrow">By the numbers</span>
-              <h2 className="display-md">A small Haus that&rsquo;s done <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>a lot</em>.</h2>
+              <h2 className="display-md">A small Haus that&rsquo;s done <em>a lot</em>.</h2>
             </div>
             <p className="lede">Capped at fourteen partners. Eleven years in business. Numbers as of Q2 2026.</p>
           </div>
@@ -254,7 +233,7 @@ export default function About() {
                       <div className="ca-mark" style={{ fontSize: 'clamp(36px, 4.5vw, 64px)', lineHeight: 0.92 }}>Ola<br /><em>Raji.</em></div>
                       <div className="ca-foot" style={{ marginTop: 12, paddingTop: 12 }}>
                         <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase' as const, opacity: 0.75 }}>Toronto · Lagos</div>
-                        <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 20, color: 'var(--ink)' }}>est. &lsquo;15</div>
+                        <div style={{ fontFamily: 'var(--serif)', fontStyle: 'normal', fontSize: 20, color: 'var(--ink)' }}>est. &lsquo;15</div>
                       </div>
                     </div>
                   ) : (
@@ -281,14 +260,14 @@ export default function About() {
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'end' }}>
             <h2 className="display-lg" style={{ color: 'var(--paper)' }}>
-              Come work <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>with</em> us.
+              Come work <em>with</em> us.
             </h2>
             <div className="stack">
               <p style={{ color: 'color-mix(in oklch, var(--paper) 75%, transparent)', fontSize: 17, lineHeight: 1.55, margin: 0, maxWidth: '44ch' }}>
                 Whether you run a business and want help with your marketing, or you do this work and want to join us, we&rsquo;d love to&nbsp;hear from you.
               </p>
               <div className="row">
-                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)' }}>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--ink)' }}>
                   Book a free 20-minute call <span className="arrow">↗</span>
                 </a>
                 <Link to="/contact" className="btn btn-ghost" style={{ color: 'var(--paper)', borderColor: 'color-mix(in oklch, var(--paper) 30%, transparent)' }}>
@@ -300,33 +279,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="wrap">
-          <div className="footer-head">
-            <h2>You run the&nbsp;business.<br />We handle the&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>marketing</em>.</h2>
-            <div className="cta-stack">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
-                <span>Book a free 20-minute call</span><span className="arrow">↗</span>
-              </a>
-              <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
-                info@taqhaus.com
-              </a>
-            </div>
-          </div>
-          <div className="footer-cols">
-            <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
-            <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
-            <div><h4>Elsewhere</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Substack</a></li><li><a href="#">X / Twitter</a></li></ul></div>
-          </div>
-          <div className="footer-bottom">
-            <span>© 2026 TaqHaus Consultancy Inc.</span>
-            <span>Made in&nbsp;Toronto · Serving everywhere</span>
-          </div>
-          <div className="footer-mark">TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span></div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

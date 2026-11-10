@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
+import SiteNav from '@/components/site/SiteNav'
+import SiteFooter from '@/components/site/SiteFooter'
 
 const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -108,30 +110,7 @@ export default function Insights() {
         ogImage="/images/og/insights.png"
       />
 
-      {/* Topbar */}
-      <div className="topbar">
-        <span className="pulse" />
-        <span>Now booking Q3 engagements · 2 retainer seats open</span>
-      </div>
-
-      {/* Nav */}
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" aria-label="TaqHaus — Home">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
-          </Link>
-          <nav className="nav-links">
-            <Link to="/services">Services</Link>
-            <Link to="/case-studies">Work</Link>
-            <Link to="/about">About</Link>
-            <Link to="/insights" className="active">Insights</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
-            Book a call <span className="arrow">→</span>
-          </a>
-        </div>
-      </header>
+      <SiteNav />
 
       {/* Page head */}
       <section className="page-head">
@@ -240,7 +219,7 @@ export default function Insights() {
             </div>
             <div>
               {subscribeSuccess ? (
-                <div style={{ color: 'var(--terracotta)', fontFamily: 'var(--mono)', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
+                <div style={{ color: 'var(--accent-text)', fontFamily: 'var(--mono)', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
                   ✓ Thanks. Confirm via email.
                 </div>
               ) : (
@@ -264,7 +243,7 @@ export default function Insights() {
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'end' }}>
             <h2 className="display-lg">
-              Need help running this <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>in</em> your business?
+              Need help running this <em>in</em> your business?
             </h2>
             <div className="stack">
               <p style={{ color: 'var(--ink-2)', fontSize: 17, lineHeight: 1.55, margin: 0, maxWidth: '44ch' }}>
@@ -281,33 +260,7 @@ export default function Insights() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="wrap">
-          <div className="footer-head">
-            <h2>Engineer growth that&nbsp;scales.<br />Influence that&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>sticks</em>.</h2>
-            <div className="cta-stack">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
-                <span>Book a discovery call</span><span className="arrow">↗</span>
-              </a>
-              <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
-                info@taqhaus.com
-              </a>
-            </div>
-          </div>
-          <div className="footer-cols">
-            <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Work</Link></li><li><Link to="/about">About</Link></li></ul></div>
-            <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
-            <div><h4>Elsewhere</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Substack</a></li><li><a href="#">X / Twitter</a></li></ul></div>
-          </div>
-          <div className="footer-bottom">
-            <span>© 2026 TaqHaus Consultancy Inc.</span>
-            <span>Made in&nbsp;Toronto · Serving everywhere</span>
-          </div>
-          <div className="footer-mark">TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span></div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

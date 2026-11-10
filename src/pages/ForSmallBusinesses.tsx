@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
+import SiteNav from '@/components/site/SiteNav'
+import SiteFooter from '@/components/site/SiteFooter'
 
 const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -37,30 +39,7 @@ export default function ForSmallBusinesses() {
         canonical="/for-small-businesses"
       />
 
-      {/* Topbar */}
-      <div className="topbar">
-        <span className="pulse" />
-        <span>Free 20-minute call · No commitment · Start this week</span>
-      </div>
-
-      {/* Nav */}
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" aria-label="TaqHaus, Home">
-            <img src="/taqhaus-logo.png" alt="TaqHaus" style={{ height: 44, width: 'auto' }} />
-          </Link>
-          <nav className="nav-links">
-            <Link to="/services">Services</Link>
-            <Link to="/case-studies">Results</Link>
-            <Link to="/about">About</Link>
-            <Link to="/insights">Insights</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-          <a href={CALENDLY_URL} className="nav-cta" target="_blank" rel="noopener noreferrer">
-            Book a free call <span className="arrow">→</span>
-          </a>
-        </div>
-      </header>
+      <SiteNav />
 
       {/* Hero */}
       <section className="page-head">
@@ -97,7 +76,7 @@ export default function ForSmallBusinesses() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">What we handle for you</span>
-              <h2 className="display-md">Pick one service. <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>Or all of them.</em></h2>
+              <h2 className="display-md">Pick one service. <em>Or all of them.</em></h2>
             </div>
             <p className="lede">
               You don&rsquo;t have to hand us everything at once. Most owners start with one or two services and add more once they see the results.
@@ -122,7 +101,7 @@ export default function ForSmallBusinesses() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Sound familiar?</span>
-              <h2 className="display-md">We&rsquo;ve heard this <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>before</em>.</h2>
+              <h2 className="display-md">We&rsquo;ve heard this <em>before</em>.</h2>
             </div>
             <p className="lede">Most small business marketing problems are the same five problems. Here&rsquo;s how we handle each one.</p>
           </motion.div>
@@ -132,7 +111,7 @@ export default function ForSmallBusinesses() {
               <motion.li key={item.num} {...rv(i * 0.07)}>
                 <span className="num">{item.num}</span>
                 <div className="title-col">
-                  <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(17px,1.3vw,20px)', fontStyle: 'italic', fontWeight: 400 }}>{item.problem}</h3>
+                  <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(17px,1.3vw,20px)', fontStyle: 'normal', fontWeight: 400 }}>{item.problem}</h3>
                   <p>{item.solution}</p>
                 </div>
               </motion.li>
@@ -147,7 +126,7 @@ export default function ForSmallBusinesses() {
           <motion.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">How it starts</span>
-              <h2 className="display-md" style={{ color: 'var(--paper)' }}>No commitment. <em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>Just clarity.</em></h2>
+              <h2 className="display-md" style={{ color: 'var(--paper)' }}>No commitment. <em>Just clarity.</em></h2>
             </div>
             <p className="lede">We don&rsquo;t ask you to sign anything before we&rsquo;ve shown we understand your business. Here&rsquo;s how most owners start.</p>
           </motion.div>
@@ -193,33 +172,7 @@ export default function ForSmallBusinesses() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="wrap">
-          <div className="footer-head">
-            <h2>Less marketing stress.<br />More&nbsp;<em style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>customers</em>.</h2>
-            <div className="cta-stack">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'var(--terracotta)', color: 'var(--paper)', justifyContent: 'space-between' }}>
-                <span>Book a free 20-minute call</span><span className="arrow">↗</span>
-              </a>
-              <a href="mailto:info@taqhaus.com" className="btn-link" style={{ color: 'color-mix(in oklch, var(--paper) 80%, transparent)', borderColor: 'color-mix(in oklch, var(--paper) 24%, transparent)' }}>
-                info@taqhaus.com
-              </a>
-            </div>
-          </div>
-          <div className="footer-cols">
-            <div><h4>Office</h4><ul><li>71 Albion Road</li><li>Toronto, ON M5V 2H1</li><li>By appointment</li></ul></div>
-            <div><h4>Practice</h4><ul><li><Link to="/services">Services</Link></li><li><Link to="/case-studies">Results</Link></li><li><Link to="/about">About</Link></li></ul></div>
-            <div><h4>Read</h4><ul><li><Link to="/insights">Insights</Link></li><li><Link to="/insights">Field notes</Link></li><li><Link to="/insights">Newsletter</Link></li></ul></div>
-            <div><h4>Elsewhere</h4><ul><li><a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="#" target="_blank" rel="noopener noreferrer">Substack</a></li><li><a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X / Twitter</a></li></ul></div>
-          </div>
-          <div className="footer-bottom">
-            <span>© 2026 TaqHaus Consultancy Inc.</span>
-            <span>Made in&nbsp;Toronto · Serving everywhere</span>
-          </div>
-          <div className="footer-mark">TaqHaus<span style={{ color: 'var(--terracotta)' }}>.</span></div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
