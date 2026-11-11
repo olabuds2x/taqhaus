@@ -1,0 +1,6 @@
+# Local tooling and working docs: not part of the website
+.gemini
+mcp
+stitch_taqhaus_glass_monolith_luxe
+*.docx
+docs

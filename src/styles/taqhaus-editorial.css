@@ -3280,6 +3280,17 @@
 .tq-home .h-svc-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--coral); color: var(--ink); }
 .tq-home .h-svc h3 { margin: auto 0 0; padding-top: 48px; font-weight: 600; font-size: clamp(32px, 3vw, 42px); line-height: 1; letter-spacing: -0.04em; color: var(--ivory); }
 .tq-home .h-svc p { margin: 16px 0 0; min-height: 4.65em; font-size: 16px; line-height: 1.55; color: color-mix(in srgb, var(--ivory) 80%, transparent); }
+/* Entry-offer bridge on the Google card → /google ($99 one-time; not a plan tier) */
+.tq-home .h-svc-offer {
+  display: flex; flex-direction: column; gap: 4px;
+  margin-top: 18px; padding: 12px 14px; border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--ivory) 24%, transparent);
+  font-size: 14px; line-height: 1.4; color: color-mix(in srgb, var(--ivory) 85%, transparent);
+  transition: border-color .2s, background .2s;
+}
+.tq-home .h-svc-offer strong { display: inline-flex; align-items: center; gap: 6px; color: var(--coral); font-weight: 700; }
+.tq-home .h-svc-offer:hover { border-color: var(--coral); background: color-mix(in srgb, var(--ivory) 6%, transparent); }
+.tq-home .h-svc-offer:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
 .tq-home .h-svc--more { background: var(--coral); color: var(--ink); justify-content: space-between; }
 .tq-home .h-svc--more .h-svc-num { color: var(--ink); }
 .tq-home .h-svc--more h3 { color: var(--ink); margin: 0; padding: 0; }

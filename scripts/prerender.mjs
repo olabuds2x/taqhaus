@@ -42,6 +42,12 @@ const STATIC_ROUTES = [
   '/case-studies/saas-startup',
   '/case-studies/fashion-brand',
   '/case-studies/public-official',
+  '/google',
+  '/google/terms',
+  // Prerendered as the neutral "Checking your order" shell so the payment
+  // return page never flashes the homepage before React mounts.
+  '/google/welcome',
+  '/privacy',
 ]
 
 const MIME = {

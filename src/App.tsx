@@ -27,6 +27,10 @@ import ServiceWebsites from '@/pages/ServiceWebsites'
 import ServiceGraphicDesign from '@/pages/ServiceGraphicDesign'
 import ServiceMotionGraphics from '@/pages/ServiceMotionGraphics'
 import ServiceContentWriting from '@/pages/ServiceContentWriting'
+import GoogleOffer from '@/pages/GoogleOffer'
+import GoogleOfferTerms from '@/pages/GoogleOfferTerms'
+import GoogleOnboarding from '@/pages/GoogleOnboarding'
+import Privacy from '@/pages/Privacy'
 
 /* Pages using the editorial design system — they include their own nav + footer */
 const EDITORIAL_ROUTES = [
@@ -35,6 +39,9 @@ const EDITORIAL_ROUTES = [
   '/services/social-media', '/services/seo', '/services/email-marketing',
   '/services/paid-ads', '/services/websites', '/services/graphic-design',
   '/services/motion-graphics', '/services/content-writing',
+  /* $99 Google package funnel: own minimal header, no site nav */
+  '/google', '/google/terms', '/google/welcome',
+  '/privacy',
 ]
 
 /* Wraps shared chrome so its scoped styles apply on Tailwind-built pages. */
@@ -72,6 +79,10 @@ function AppRoutes() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/case-studies" element={<CaseStudiesIndex />} />
+        <Route path="/google" element={<GoogleOffer />} />
+        <Route path="/google/terms" element={<GoogleOfferTerms />} />
+        <Route path="/google/welcome" element={<GoogleOnboarding />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="/portfolio" element={<><Portfolio /><Chrome><SiteFooter /></Chrome></>} />
         <Route path="/insights/:slug" element={<><BlogPost /><Chrome><SiteFooter /></Chrome></>} />
         <Route path="/case-studies/the-funded-trader" element={<><CaseStudyTFT /><Chrome><SiteFooter /></Chrome></>} />

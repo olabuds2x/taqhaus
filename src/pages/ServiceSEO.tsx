@@ -42,6 +42,10 @@ export default function ServiceSEO() {
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a free 20-minute call <span className="arrow">↗</span></a>
                 <Link to="/services" className="btn-link">All services</Link>
               </div>
+              <p style={{ marginTop: 20, color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.6 }}>
+                Just need your Google listing in shape? Google presence + review-request setup. $99 one-time.{' '}
+                <Link to="/google" style={{ color: 'var(--ink)', fontWeight: 700, textDecoration: 'underline', textDecorationColor: 'var(--coral)', textUnderlineOffset: 3 }}>See the package</Link>
+              </p>
             </motion.div>
           </div>
         </div>

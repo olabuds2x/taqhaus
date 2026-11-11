@@ -328,6 +328,12 @@ export default function LandingPageRedesign() {
                 </div>
                 <h3>{svc.title}</h3>
                 <p>{svc.desc}</p>
+                {svc.num === '02' && (
+                  <Link to="/google" className="h-svc-offer">
+                    <span>Google presence + review-request setup. $99 one-time.</span>
+                    <strong>See the package <HookArrow /></strong>
+                  </Link>
+                )}
               </motion.article>
             )
           })}

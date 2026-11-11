@@ -6,6 +6,8 @@ type SEOProps = {
   keywords?: string
   canonical?: string
   ogImage?: string
+  /** e.g. "noindex, nofollow" for order pages; restored to the default on unmount. */
+  robots?: string
 }
 
 const SITE_URL = 'https://www.taqhaus.com'
@@ -21,7 +23,13 @@ function upsertMeta(attr: string, value: string, content: string) {
   meta.content = content
 }
 
-export default function SEO({ title, description, keywords, canonical, ogImage }: SEOProps) {
+export default function SEO({ title, description, keywords, canonical, ogImage, robots }: SEOProps) {
+  useEffect(() => {
+    if (!robots) return
+    upsertMeta('name', 'robots', robots)
+    return () => upsertMeta('name', 'robots', 'index, follow')
+  }, [robots])
+
   useEffect(() => {
     if (title) {
       document.title = title
