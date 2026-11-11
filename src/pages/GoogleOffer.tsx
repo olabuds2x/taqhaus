@@ -2,13 +2,16 @@ import '../styles/taqhaus-editorial.css'
 import '../styles/google-offer.css'
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Check, ClipboardCheck, Clock, MessageSquareText, Minus, PencilLine, QrCode, X } from 'lucide-react'
+import {
+  Building2, Check, ChevronDown, ClipboardCheck, Clock, KeyRound, MessageSquareText, Minus, PencilLine, QrCode,
+  RotateCcw, UserCheck, X,
+} from 'lucide-react'
 import { SEO } from '@/components/SEO'
 import { OfferCta, OfferFooter, OfferNav } from '@/components/google/OfferChrome'
 import { captureUtm, track } from '@/lib/track'
 import { BUSINESS, COMPLEX_MAILTO, OFFER, TERMS_PATH } from '@/lib/googleOffer'
 import {
-  bestFor, deliverySummary, faqs, notFitYet, notIncluded, pillars, scopeNote, steps, timeline,
+  bestFor, deliverySummary, faqs, keyExclusions, notFitYet, notIncluded, pillars, scopeNote, steps, timeline,
 } from '@/data/googleOffer'
 
 const TITLE = 'Google Business Profile Optimization & Review Setup | $99 | TaqHaus'
@@ -41,6 +44,30 @@ const reportRows = [
   { s: 'done', t: 'Replies drafted to 3 existing reviews, for your approval' },
   { s: 'pending', t: 'Category change: waiting on Google' },
   { s: 'na', t: 'Photos: none supplied' },
+] as const
+
+/** Facts only: each point is backed by the package terms. No badges, counts or testimonials until real ones exist. */
+const assurances = [
+  {
+    icon: Building2,
+    title: 'A real, independent company',
+    text: `${BUSINESS.legalName} is a marketing services business. We are not Google and don’t claim to be.`,
+  },
+  {
+    icon: KeyRound,
+    title: 'Your profile stays yours',
+    text: 'You add us as a manager. We never ask for your Google password, and you can remove our access at any time.',
+  },
+  {
+    icon: UserCheck,
+    title: 'You approve the changes',
+    text: 'We check details with you, ask before making material changes, and list everything we changed.',
+  },
+  {
+    icon: RotateCcw,
+    title: 'Full refund until we start',
+    text: 'Cancel before we begin work on your profile and you get the full $99 back.',
+  },
 ] as const
 
 const statusLabel = { done: 'Completed', pending: 'Pending', na: 'Not applicable' } as const
@@ -118,11 +145,11 @@ export default function GoogleOffer() {
             <div className="go-hero-copy">
               <span className="eyebrow">For local service businesses</span>
               <h1 id="go-hero-title">
-                Make a stronger impression on Google. <em>Give customers more reasons to choose you.</em>
+                Give customers more reasons <em>to choose you on Google.</em>
               </h1>
               <p className="go-hero-sub">
-                We improve how your business appears on Google and set up a simple way to request genuine customer
-                reviews. One-time service. No monthly contract.
+                We improve your Google business listing and set up a simple way to request genuine customer reviews.
+                Done for you, for $99 one time. No monthly commitment.
               </p>
             </div>
 
@@ -132,13 +159,36 @@ export default function GoogleOffer() {
                 <span className="unit">USD · one-time</span>
               </p>
               <OfferCta location="hero" block />
-              <p className="go-micro">No discovery call required. You approve the changes. Your Google profile stays yours.</p>
+              <p className="go-micro">
+                No discovery call required. We aim to finish within two business days of getting access and your details.
+              </p>
               <a href="#included" className="go-secondary">{OFFER.secondaryLabel}</a>
               <ul className="go-offer-pillars" aria-label="The two parts of the package">
                 <li><PencilLine size={18} strokeWidth={2.2} aria-hidden="true" /> A clearer Google business listing</li>
                 <li><MessageSquareText size={18} strokeWidth={2.2} aria-hidden="true" /> A simple, genuine review-request setup</li>
               </ul>
             </aside>
+          </div>
+        </section>
+
+        {/* A2 ── Reassurance before payment */}
+        <section className="go-trust" aria-label="Before you pay">
+          <div className="wrap">
+            <ul className="go-trust-list">
+              {assurances.map(({ icon: Icon, title, text }) => (
+                <li key={title}>
+                  <Icon size={20} strokeWidth={2.2} aria-hidden="true" />
+                  <div>
+                    <strong>{title}</strong>
+                    <p>{text}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="go-trust-more">
+              Questions before you buy? Email <a href={`mailto:${BUSINESS.email}`} onClick={supportClick('trust_strip')}>{BUSINESS.email}</a>.{' '}
+              <Link to={TERMS_PATH}>Read the package terms</Link>.
+            </p>
           </div>
         </section>
 
@@ -203,9 +253,15 @@ export default function GoogleOffer() {
               <p><strong>Delivery summary:</strong> {deliverySummary}</p>
             </div>
 
-            <div className="go-excluded">
-              <h3>Not included at $99</h3>
-              <ul>
+            <details className="go-excluded">
+              <summary>
+                <span className="go-excluded-sum">
+                  <span className="go-excluded-q">What&rsquo;s outside this package?</span>
+                  <span className="go-excluded-key">{keyExclusions}</span>
+                </span>
+                <ChevronDown size={20} strokeWidth={2.4} className="go-excluded-chev" aria-hidden="true" />
+              </summary>
+              <ul aria-label="Not included at $99">
                 {notIncluded.map(item => (
                   <li key={item}><X size={16} strokeWidth={2.6} aria-hidden="true" />{item}</li>
                 ))}
@@ -213,7 +269,7 @@ export default function GoogleOffer() {
               <p className="go-excluded-note">
                 {scopeNote} <Link to={TERMS_PATH}>Read the full scope and eligibility terms</Link>.
               </p>
-            </div>
+            </details>
           </div>
         </section>
 

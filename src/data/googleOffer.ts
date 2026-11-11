@@ -44,6 +44,10 @@ export const notIncluded = [
   'Unlimited revisions',
 ] as const
 
+/** Shown even when the exclusions list is collapsed: the ones most likely to matter before checkout. */
+export const keyExclusions =
+  'Creating a new profile, verification or suspension problems, paid ads, and ongoing management.'
+
 export const scopeNote = 'Scope may vary by profile and Google feature availability.'
 
 export const steps = [
@@ -67,7 +71,7 @@ export const accessFailure = [
 ] as const
 
 export const timeline =
-  "We aim to complete our work within two business days after receiving required access and information. Google's review and publication timing may take longer."
+  'We aim to complete the agreed work within two business days after we receive access and the information we need. Some changes can take longer to appear on Google, because Google reviews and approves certain updates.'
 
 export const bestFor =
   'Existing, owner-controlled, verified Google Business Profiles for independent US home-service businesses that need clearer service information or a simple review-request process.'
@@ -111,7 +115,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How fast is delivery?',
-    a: "Our target is two business days after receiving the details and access we need. Google's processing can take longer.",
+    a: 'We aim to complete the agreed work within two business days after we receive access and the information we need. That is when our work is done, not when every change shows on Google: Google reviews and approves certain updates, which can take longer.',
   },
   {
     q: 'Is it a subscription?',

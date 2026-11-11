@@ -267,7 +267,7 @@ export async function saveOnboarding(s: CheckoutSession, data: OnboardingInput):
       '',
       'If you have not yet invited TaqHaus as a Manager on your Google Business Profile, please do that next. We will never ask for your Google password.',
       '',
-      "We aim to complete our work within two business days after receiving required access and information. Google's review and publication timing may take longer. We will ask for your approval before making material changes.",
+      'We aim to complete the agreed work within two business days after we receive access and the information we need. Some changes can take longer to appear on Google, because Google reviews and approves certain updates. We will ask for your approval before making material changes.',
       '',
       `Order reference: ${ref}`,
       'Questions? Just reply to this email.',

@@ -31,7 +31,7 @@ export const OFFER = {
   id: 'google-99',
   priceUsd: 99,
   priceLabel: '$99 USD · one-time',
-  ctaLabel: 'Get my Google presence improved — $99',
+  ctaLabel: 'Improve my Google listing for $99',
   ctaLabelOffline: 'Email us to order — $99',
   secondaryLabel: "See what's included",
 } as const

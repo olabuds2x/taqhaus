@@ -157,6 +157,22 @@
   .tq-offer .go-offer { padding: 20px; gap: 12px; }
 }
 
+/* ── A2. Reassurance strip ────────────────────────────────── */
+.tq-offer .go-trust { padding: 0 0 clamp(40px, 5vw, 64px); }
+.tq-offer .go-trust-list {
+  list-style: none; margin: 0; padding: clamp(20px, 2.4vw, 28px);
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.4vw, 32px);
+  border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+}
+.tq-offer .go-trust-list li { display: flex; align-items: flex-start; gap: 12px; }
+.tq-offer .go-trust-list svg { flex-shrink: 0; margin-top: 1px; color: var(--coral-ink); }
+.tq-offer .go-trust-list strong { display: block; font-size: 15.5px; line-height: 1.3; color: var(--ink); }
+.tq-offer .go-trust-list p { margin: 4px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.tq-offer .go-trust-more { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-2); }
+.tq-offer .go-trust-more a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--coral); text-underline-offset: 3px; }
+@media (max-width: 1000px) { .tq-offer .go-trust-list { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .tq-offer .go-trust-list { grid-template-columns: 1fr; padding: 20px 0; } }
+
 /* ── B. Problem ───────────────────────────────────────────── */
 .tq-offer .go-problem { background: var(--ivory-2); }
 .tq-offer .go-issues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -209,15 +225,30 @@
 .tq-offer .go-delivery p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink-2); }
 .tq-offer .go-delivery strong { color: var(--ink); }
 
+/* Exclusions: collapsed by default so they don't dominate the offer; the key ones stay visible in the summary. */
 .tq-offer .go-excluded {
-  margin-top: 16px; padding: clamp(22px, 3vw, 34px); border-radius: 18px;
-  background: var(--ivory-2);
+  margin-top: 16px; border-radius: 18px;
+  border: 1px solid var(--hairline); background: transparent;
 }
-.tq-offer .go-excluded h3 { margin: 0 0 18px; font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; }
-.tq-offer .go-excluded ul { list-style: none; margin: 0; padding: 0; columns: 3 220px; column-gap: 32px; }
-.tq-offer .go-excluded li { display: flex; align-items: flex-start; gap: 10px; break-inside: avoid; padding: 6px 0; font-size: 15.5px; line-height: 1.45; color: var(--ink); }
+.tq-offer .go-excluded summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 24px; cursor: pointer; list-style: none;
+}
+.tq-offer .go-excluded summary::-webkit-details-marker { display: none; }
+.tq-offer .go-excluded-sum { display: flex; flex-direction: column; gap: 4px; }
+.tq-offer .go-excluded-q { font-size: 16px; font-weight: 700; color: var(--ink); }
+.tq-offer .go-excluded-key { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.tq-offer .go-excluded-chev { flex-shrink: 0; color: var(--ink-2); transition: transform .25s; }
+.tq-offer .go-excluded[open] .go-excluded-chev { transform: rotate(180deg); }
+.tq-offer .go-excluded ul { list-style: none; margin: 0; padding: 4px 24px 0; columns: 3 220px; column-gap: 32px; }
+.tq-offer .go-excluded li { display: flex; align-items: flex-start; gap: 10px; break-inside: avoid; padding: 5px 0; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
 .tq-offer .go-excluded li svg { flex-shrink: 0; margin-top: 3px; color: var(--ink-3); }
-.tq-offer .go-excluded-note { margin: 18px 0 0; font-size: 15px; color: var(--ink-2); }
+.tq-offer .go-excluded-note { margin: 0; padding: 14px 24px 20px; font-size: 14.5px; color: var(--ink-2); }
+@media (max-width: 560px) {
+  .tq-offer .go-excluded summary { padding: 16px 18px; }
+  .tq-offer .go-excluded ul { padding: 4px 18px 0; }
+  .tq-offer .go-excluded-note { padding: 12px 18px 18px; }
+}
 @media (max-width: 800px) { .tq-offer .go-pillars { grid-template-columns: 1fr; } }
 
 /* ── D. How it works ──────────────────────────────────────── */
