@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -31,7 +31,7 @@ export default function ServiceGraphicDesign() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Graphic Design &amp; Creative</span>
               <h1>Everything your brand needs <em>to look the part.</em></h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 Good design doesn&rsquo;t just look nice. It earns trust before a word is read. We design everything your business needs to look professional, everywhere it shows up.
               </p>
@@ -42,7 +42,7 @@ export default function ServiceGraphicDesign() {
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a free 20-minute call <span className="arrow">↗</span></a>
                 <Link to="/services" className="btn-link">All services</Link>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function ServiceGraphicDesign() {
       <section>
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start' }}>
-            <motion.div {...rv()}>
+            <m.div {...rv()}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>What&rsquo;s included</span>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 {['Graphics and templates for your social posts', 'Ad images and animated banners', 'Slides and pitch decks that look the part', 'Logos, icons, and a look that ties it all together', 'Email newsletter templates', 'Printed pieces: brochures, flyers, and business cards', 'PDFs, reports, and guides'].map(item => (
@@ -59,8 +59,8 @@ export default function ServiceGraphicDesign() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div {...rv(0.1)}>
+            </m.div>
+            <m.div {...rv(0.1)}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Who it&rsquo;s for</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 {[
@@ -75,7 +75,7 @@ export default function ServiceGraphicDesign() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

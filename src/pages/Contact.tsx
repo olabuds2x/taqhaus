@@ -1,6 +1,6 @@
 import '../styles/taqhaus-editorial.css'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
 import SiteNav from '@/components/site/SiteNav'
@@ -34,7 +34,7 @@ export default function Contact() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Book a free 20-minute call</span>
               <h1>Tell us what you&rsquo;re trying to&nbsp;<em>grow</em>.</h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 Free, 20 minutes, phone or video. No pressure. We&rsquo;ll ask what you want to grow and what&rsquo;s in the way. If we&rsquo;re not the right fit, we&rsquo;ll say so.
               </p>
@@ -43,7 +43,7 @@ export default function Contact() {
                 <span className="tag dot">20 minutes</span>
                 <span className="tag dot">Nothing to prepare</span>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -194,24 +194,24 @@ export default function Contact() {
           </div>
 
           <div className="methods">
-            <motion.div className="method" {...rv()}>
+            <m.div className="method" {...rv()}>
               <span className="num">— 01</span>
               <h4>Email us directly</h4>
               <p>A direct line for new work, private questions, or anything you&rsquo;d rather not put through a form.</p>
               <a href="mailto:info@taqhaus.com">info@taqhaus.com →</a>
-            </motion.div>
-            <motion.div className="method" {...rv(0.1)}>
+            </m.div>
+            <m.div className="method" {...rv(0.1)}>
               <span className="num">— 02</span>
               <h4>Press &amp; partnerships</h4>
               <p>Speaking, panels, podcasts, partnerships, or you&rsquo;re a journalist on deadline. We try to reply within 24 hours.</p>
               <a href="mailto:info@taqhaus.com">info@taqhaus.com →</a>
-            </motion.div>
-            <motion.div className="method" {...rv(0.2)}>
+            </m.div>
+            <m.div className="method" {...rv(0.2)}>
               <span className="num">— 03</span>
               <h4>Working with us</h4>
               <p>Freelancers and specialists: we&rsquo;re always interested in meeting good ones, even when we&rsquo;re not actively hiring.</p>
               <a href="mailto:info@taqhaus.com">info@taqhaus.com →</a>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

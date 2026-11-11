@@ -1,6 +1,6 @@
 import '../styles/taqhaus-editorial.css'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -120,14 +120,14 @@ export default function Insights() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Field notes from inside the&nbsp;work</span>
               <h1>Insights, not <em>content</em>.</h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 Essays, teardowns, and the occasional uncomfortable opinion — written by the operators doing the work, not the marketing team.
               </p>
               <p style={{ marginTop: 18, color: 'var(--ink-2)', fontSize: 14.5 }}>
                 New piece roughly every two weeks. Subscribe below to get them in your inbox.
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -135,7 +135,7 @@ export default function Insights() {
       {/* Featured essay */}
       <section style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <motion.div className="featured-essay" {...rv()}>
+          <m.div className="featured-essay" {...rv()}>
             <div className="media imgholder terra" data-label="essay 01 · death of the briefing" />
             <div className="body">
               <div className="meta">
@@ -160,7 +160,7 @@ export default function Insights() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

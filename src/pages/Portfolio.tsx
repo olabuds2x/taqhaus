@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Target, Compass, Code, PenTool, CheckCircle2, TrendingUp, X } from 'lucide-react'
 import SEO from '@/components/SEO'
 import { CALENDLY_URL } from '@/lib/constants'
+import { enter } from '@/lib/firstView'
 
 // --- Data ---
 
@@ -163,14 +164,14 @@ function StudyModal({ study, onClose }: { study: any, onClose: () => void }) {
   }, [])
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md"
       onClick={onClose}
     >
-      <motion.div
+      <m.div
         initial={{ y: 50, opacity: 0, scale: 0.95 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         exit={{ y: 50, opacity: 0, scale: 0.95 }}
@@ -235,8 +236,8 @@ function StudyModal({ study, onClose }: { study: any, onClose: () => void }) {
             </ul>
           </div>
         </div>
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   )
 }
 
@@ -256,8 +257,8 @@ export default function Portfolio() {
         
         {/* --- Hero Section Refactored --- */}
         <div className="max-w-6xl mx-auto px-6 mb-24 md:mb-40">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <m.div
+            initial={enter({ opacity: 0, y: 20 })}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -282,13 +283,13 @@ export default function Portfolio() {
               </span>
               Book Your Strategy Call
             </a>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* --- The Stack --- */}
         <div className="border-y border-white/5 bg-white/[0.01] py-24 mb-24">
           <div className="max-w-7xl mx-auto px-6">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -296,11 +297,11 @@ export default function Portfolio() {
             >
               <h2 className="text-3xl md:text-4xl font-headline font-bold text-white mb-4">The TaqHaus Stack</h2>
               <p className="text-neutral-light">Full-Stack Marketing Strategy & Execution under one roof.</p>
-            </motion.div>
+            </m.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {taqhausStack.map((item, i) => (
-                <motion.div
+                <m.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -313,7 +314,7 @@ export default function Portfolio() {
                   </div>
                   <h3 className="text-lg font-bold text-white mb-3">{item.title}</h3>
                   <p className="text-neutral-light text-sm leading-relaxed">{item.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -321,7 +322,7 @@ export default function Portfolio() {
 
         {/* --- Notion-Style Gallery View (Case Studies) --- */}
         <div className="max-w-7xl mx-auto px-6 mb-32">
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -331,11 +332,11 @@ export default function Portfolio() {
               <h2 className="text-3xl md:text-4xl font-headline font-bold text-white mb-2">Featured Architectures</h2>
               <p className="text-neutral-light text-lg">Click any card to view the full-stack strategy deployed.</p>
             </div>
-          </motion.div>
+          </m.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {caseStudies.map((study, idx) => (
-              <motion.div
+              <m.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -376,7 +377,7 @@ export default function Portfolio() {
                     <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-accent transition-colors flex-shrink-0" />
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -401,7 +402,7 @@ export default function Portfolio() {
               { title: 'Full-Stack Execution', desc: 'Our team deploys the strategy—whether that means rewriting your website, launching a Meta ads ecosystem, or scaling SEO content.' },
               { title: 'Measure & Optimize', desc: 'We operate on continuous iteration. We track revenue, reduce CAC, and scale what works.' }
             ].map((step, idx) => (
-              <motion.div 
+              <m.div 
                 key={idx}
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -416,7 +417,7 @@ export default function Portfolio() {
                   <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
                   <p className="text-neutral-light text-sm leading-relaxed">{step.desc}</p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

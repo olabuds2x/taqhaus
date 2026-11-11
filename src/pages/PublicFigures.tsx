@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -61,7 +61,7 @@ export default function PublicFigures() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Politicians &amp; Public Figures</span>
               <h1>Your name is the <em>asset</em>.</h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 When people search your name, what do they find? Voters and stakeholders look you up before they decide whether to trust you. The first page of results does a lot of that deciding for them.
               </p>
@@ -76,7 +76,7 @@ export default function PublicFigures() {
               <p style={{ marginTop: 16, fontFamily: 'var(--mono)', fontSize: 11.5, letterSpacing: '0.08em', color: 'var(--ink-3)', textTransform: 'uppercase' as const }}>
                 Private call · 30 minutes · No obligation
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -84,20 +84,20 @@ export default function PublicFigures() {
       {/* Services */}
       <section>
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">What we do</span>
               <h2 className="display-md">Everything your online presence <em>needs</em>.</h2>
             </div>
             <p className="lede">We handle the whole picture: the website people land on, the search results they see, and the social channels they follow.</p>
-          </motion.div>
+          </m.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginTop: 48 }}>
             {services.map((svc, i) => (
-              <motion.div key={svc.title} {...rv(i * 0.07)} style={{ border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,32px)', display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
+              <m.div key={svc.title} {...rv(i * 0.07)} style={{ border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,32px)', display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(18px,1.4vw,22px)', fontWeight: 400, lineHeight: 1.2, letterSpacing: '-0.012em', color: 'var(--ink)' }}>{svc.title}</h3>
                 <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.65, margin: 0, flex: 1 }}>{svc.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -106,14 +106,14 @@ export default function PublicFigures() {
       {/* Case study */}
       <section className="section-paper-2">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Case study · Government &amp; public office</span>
               <h2 className="display-md">A reputation repaired <em>before campaign season</em>.</h2>
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div {...rv(0.1)} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start', marginTop: 48 }}>
+          <m.div {...rv(0.1)} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start', marginTop: 48 }}>
             <div>
               <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.7 }}>
                 A public official was heading into an important campaign with a serious reputation problem. Negative results filled page one of the search results. Social media was out of date and not reaching constituents. There was no clear story online.
@@ -163,20 +163,20 @@ export default function PublicFigures() {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* Why TaqHaus for this */}
       <section className="section-dark">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Why TaqHaus</span>
               <h2 className="display-md" style={{ color: 'var(--paper)' }}>We understand <em>the stakes</em>.</h2>
             </div>
             <p className="lede">For most businesses, a bad week online is a setback. For a public figure, it can define a career. We treat the work accordingly.</p>
-          </motion.div>
+          </m.div>
 
           <ol className="numlist">
             {[
@@ -185,13 +185,13 @@ export default function PublicFigures() {
               { num: '03', title: 'Control and clarity', desc: 'You always know what is being posted, what is being said about you, and what we are doing about it. Plain reporting, no surprises. Nothing goes out without your approval.' },
               { num: '04', title: 'Timing matters', desc: 'Whether you are 18 months from an election or three weeks out, we set the pace to match. Early work beats a scramble, but we can move fast when we need to.' },
             ].map((item) => (
-              <motion.li key={item.num} {...rv()}>
+              <m.li key={item.num} {...rv()}>
                 <span className="num">{item.num}</span>
                 <div className="title-col">
                   <h3>{item.title}</h3>
                   <p>{item.desc}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
           </ol>
         </div>

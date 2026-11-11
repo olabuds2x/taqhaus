@@ -1,6 +1,6 @@
 import '../styles/taqhaus-editorial.css'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -249,7 +249,7 @@ export default function Services() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Services</span>
               <h1>The plan <em>and</em> the work. Under one&nbsp;roof.</h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 Most businesses juggle five different agencies who&rsquo;ve never met each other. We handle everything, from making the plan to doing the work. One team. One bill. No gaps.
               </p>
@@ -259,7 +259,7 @@ export default function Services() {
                 </a>
                 <a href="#engagements" className="btn-link">How we work</a>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -267,7 +267,7 @@ export default function Services() {
       {/* Layer 1 — Strategy */}
       <section>
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Layer 1: Strategy</span>
               <h2 className="display-md">We figure out <em>the plan</em>.</h2>
@@ -275,11 +275,11 @@ export default function Services() {
             <p className="lede">
               Start here if you need direction. We find what&rsquo;s holding your business back and tell you exactly what to do next, in plain English.
             </p>
-          </motion.div>
+          </m.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginTop: 48 }}>
             {strategyServices.map((svc, i) => (
-              <motion.div key={svc.id} {...rv(i * 0.08)} style={{ background: 'var(--paper)', border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,36px)', display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
+              <m.div key={svc.id} {...rv(i * 0.08)} style={{ background: 'var(--paper)', border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,36px)', display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px,1.6vw,24px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.015em', color: 'var(--ink)' }}>{svc.title}</h3>
                 <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.65, margin: 0 }}>{svc.summary}</p>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 8 }}>
@@ -294,7 +294,7 @@ export default function Services() {
                   <p style={{ fontSize: 12.5, color: 'var(--ink-3)', fontFamily: 'var(--mono)', letterSpacing: '0.02em', marginTop: 4, paddingTop: 12, borderTop: '1px solid var(--hairline)' }}>{svc.note}</p>
                 )}
                 <Link to="/contact" className="btn-link" style={{ marginTop: 'auto', fontSize: 13.5 }}>Ask us about this →</Link>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -303,7 +303,7 @@ export default function Services() {
       {/* Layer 2 — Execution */}
       <section className="section-paper-2">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Layer 2: Execution</span>
               <h2 className="display-md">We do <em>the work</em>.</h2>
@@ -311,11 +311,11 @@ export default function Services() {
             <p className="lede">
               This is the hands-on work. Pick what you want off your plate: one service, a few, or all of them. Every one of these can run on its own. No full retainer required.
             </p>
-          </motion.div>
+          </m.div>
 
           <div style={{ marginTop: 48 }}>
             {executionServices.map((svc) => (
-              <motion.div key={svc.id} {...rv()} style={{ borderTop: '1px solid var(--hairline)', padding: 'clamp(28px,4vw,48px) 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(24px,4vw,64px)', alignItems: 'start' }}>
+              <m.div key={svc.id} {...rv()} style={{ borderTop: '1px solid var(--hairline)', padding: 'clamp(28px,4vw,48px) 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(24px,4vw,64px)', alignItems: 'start' }}>
                 <div>
                   <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px,1.8vw,28px)', fontWeight: 400, lineHeight: 1.1, letterSpacing: '-0.016em', color: 'var(--ink)', marginBottom: 12 }}>{svc.title}</h3>
                   <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.65, margin: 0 }}>{svc.summary}</p>
@@ -341,7 +341,7 @@ export default function Services() {
                     </a>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -350,13 +350,13 @@ export default function Services() {
       {/* Engagement models */}
       <section className="section-dark" id="engagements">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Ways to work with us</span>
               <h2 className="display-md" style={{ color: 'var(--paper)' }}>Three ways to <em>work</em> with us.</h2>
             </div>
             <p className="lede">Pick the one that fits where you are. Most people start with a sprint or a free call, so we can both make sure it&rsquo;s a fit.</p>
-          </motion.div>
+          </m.div>
 
           <div className="models">
             {models.map((m) => (
@@ -387,32 +387,32 @@ export default function Services() {
       {/* Audience entry points */}
       <section>
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Not sure where to start?</span>
               <h2 className="display-md">Find your <em>entry point</em>.</h2>
             </div>
             <p className="lede">Different businesses start in different places. Here&rsquo;s where most people begin.</p>
-          </motion.div>
+          </m.div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20, marginTop: 40 }}>
-            <motion.div {...rv(0)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
+            <m.div {...rv(0)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
               <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent-text)', marginBottom: 12 }}>For small businesses</p>
               <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Start with a free 20-minute call.</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>We look at your marketing, find the biggest gap, and tell you exactly what to do first. No retainer required.</p>
               <Link to="/for-small-businesses" className="btn-link" style={{ fontSize: 13.5 }}>Learn more →</Link>
-            </motion.div>
-            <motion.div {...rv(0.08)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
+            </m.div>
+            <m.div {...rv(0.08)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
               <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent-text)', marginBottom: 12 }}>For politicians &amp; public figures</p>
               <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Book a private conversation.</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>Reputation management, social media, website design, and campaign communications, all handled with full discretion.</p>
               <Link to="/public-figures" className="btn-link" style={{ fontSize: 13.5 }}>See how we work →</Link>
-            </motion.div>
-            <motion.div {...rv(0.16)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
+            </m.div>
+            <m.div {...rv(0.16)} style={{ border: '1px solid var(--hairline)', borderRadius: 14, padding: 28 }}>
               <p style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent-text)', marginBottom: 12 }}>For growing businesses</p>
               <h4 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 400, color: 'var(--ink)', marginBottom: 10, lineHeight: 1.2 }}>Book a call with us.</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>30 minutes. No slideshow. We&rsquo;ll ask what&rsquo;s getting in the way, sketch out a plan, and decide together if there&rsquo;s a fit.</p>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-link" style={{ fontSize: 13.5 }}>Book a call →</a>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -420,13 +420,13 @@ export default function Services() {
       {/* FAQ */}
       <section className="section-paper-2">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Common questions</span>
               <h2 className="display-md">Things people ask <em>before</em> they sign.</h2>
             </div>
             <p className="lede">If your question isn&rsquo;t here, book a call. Straight answers, no sales script.</p>
-          </motion.div>
+          </m.div>
 
           <div>
             {faqs.map((faq, i) => (

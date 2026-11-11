@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -31,7 +31,7 @@ export default function ServicePaidAds() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Paid Advertising</span>
               <h1>Ads that bring in customers. <em>Not ads that burn budget.</em></h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 Running ads without a strategy is expensive. Most businesses either boost posts randomly, run campaigns with no clear targeting, or hand it off to someone who reports on clicks but never on customers.
               </p>
@@ -42,7 +42,7 @@ export default function ServicePaidAds() {
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a free 20-minute call <span className="arrow">↗</span></a>
                 <Link to="/services" className="btn-link">All services</Link>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function ServicePaidAds() {
       <section>
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start' }}>
-            <motion.div {...rv()}>
+            <m.div {...rv()}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>What&rsquo;s included</span>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 {['A plan for who sees your ads, and why', 'The ads themselves: words and design, included', 'Meta (Facebook and Instagram) ads', 'Google Search and Display ads', 'LinkedIn ads', 'YouTube ads (when they make sense for you)', 'A simple weekly report on how your ads are doing', 'We keep adjusting the ads and testing new versions'].map(item => (
@@ -59,8 +59,8 @@ export default function ServicePaidAds() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div {...rv(0.1)}>
+            </m.div>
+            <m.div {...rv(0.1)}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Who it&rsquo;s for</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 {[
@@ -75,14 +75,14 @@ export default function ServicePaidAds() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
 
       <section className="section-paper-2">
         <div className="wrap">
-          <motion.div {...rv()} style={{ maxWidth: 760 }}>
+          <m.div {...rv()} style={{ maxWidth: 760 }}>
             <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Case study · Fintech &amp; prop trading</span>
             <h2 className="display-md">Signups up 188%. Each customer cost 34% less.</h2>
             <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.7, marginTop: 20 }}>
@@ -97,7 +97,7 @@ export default function ServicePaidAds() {
               ))}
             </div>
             <Link to="/case-studies/the-funded-trader" className="btn-link" style={{ marginTop: 24, display: 'inline-flex', fontSize: 13.5 }}>Read the full case study →</Link>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

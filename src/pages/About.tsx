@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -115,7 +115,7 @@ export default function About() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>A note from the&nbsp;Haus</span>
               <h1>We took the parts of an agency that worked, and threw away <em>the rest</em>.</h1>
             </div>
-            <motion.div className="right-rail" {...rv(0.15)}>
+            <m.div className="right-rail" {...rv(0.15)}>
               <p className="lede">
                 TaqHaus is a marketing team run by people who have built and run businesses themselves. We work inside your business, treat your money like our own, and stay on the hook for the&nbsp;results.
               </p>
@@ -125,7 +125,7 @@ export default function About() {
                 </a>
                 <a href="#team" className="btn-link">Meet the team</a>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -189,11 +189,11 @@ export default function About() {
 
           <div className="principles">
             {principles.map((p) => (
-              <motion.div key={p.num} className="principle" {...rv()}>
+              <m.div key={p.num} className="principle" {...rv()}>
                 <span className="num">{p.num}</span>
                 <h3>{p.title}</h3>
                 <p>{p.body}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -231,10 +231,10 @@ export default function About() {
           </div>
 
           <div className="team">
-            {team.filter(m => !HIDDEN_MEMBERS.includes(m.name)).map((m) => (
-              <motion.div key={m.name} className="member" {...rv()}>
+            {team.filter(m => !HIDDEN_MEMBERS.includes(m.name)).map((member) => (
+              <m.div key={member.name} className="member" {...rv()}>
                 <div className="portrait">
-                  {m.name === 'Ola Raji' ? (
+                  {member.name === 'Ola Raji' ? (
                     <div className="case-art case-art--terra" style={{ height: '100%', padding: 20 }}>
                       <div className="ca-meta"><span>Founder</span><span>— 01</span></div>
                       <div className="ca-mark" style={{ fontSize: 'clamp(36px, 4.5vw, 64px)', lineHeight: 0.92 }}>Ola<br /><em>Raji.</em></div>
@@ -244,14 +244,14 @@ export default function About() {
                       </div>
                     </div>
                   ) : (
-                    <div className="imgholder" data-label={m.label} style={{ height: '100%' }} />
+                    <div className="imgholder" data-label={member.label} style={{ height: '100%' }} />
                   )}
                 </div>
-                <h4>{m.name}</h4>
-                <div className="role">{m.role}</div>
-                <p className="bio">{m.bio}</p>
-                <div className="prior">{m.prior}</div>
-              </motion.div>
+                <h4>{member.name}</h4>
+                <div className="role">{member.role}</div>
+                <p className="bio">{member.bio}</p>
+                <div className="prior">{member.prior}</div>
+              </m.div>
             ))}
           </div>
 

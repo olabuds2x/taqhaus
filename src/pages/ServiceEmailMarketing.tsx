@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -31,7 +31,7 @@ export default function ServiceEmailMarketing() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Email Marketing</span>
               <h1>Email that makes money. <em>Not email that gets ignored.</em></h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 Most businesses either never email their customers, or send bland newsletters that get deleted. Done right, email still pays back more than any other channel. It&rsquo;s just rarely done right.
               </p>
@@ -42,7 +42,7 @@ export default function ServiceEmailMarketing() {
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a free 20-minute call <span className="arrow">↗</span></a>
                 <Link to="/services" className="btn-link">All services</Link>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function ServiceEmailMarketing() {
       <section>
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start' }}>
-            <motion.div {...rv()}>
+            <m.div {...rv()}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>What&rsquo;s included</span>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 {['Full setup on Klaviyo, Mailchimp, or HubSpot, done for you', 'Welcome emails that go out automatically to new subscribers', 'Automatic emails that warm up new contacts and win back old ones', 'A weekly or monthly email sent to your whole list', 'The right emails to the right people, landing in inboxes, not spam', 'We test subject lines, send times, and content to find what works', 'A simple report: who opened, who clicked, and what it earned'].map(item => (
@@ -59,8 +59,8 @@ export default function ServiceEmailMarketing() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div {...rv(0.1)}>
+            </m.div>
+            <m.div {...rv(0.1)}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Who it&rsquo;s for</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 {[
@@ -75,14 +75,14 @@ export default function ServiceEmailMarketing() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
 
       <section className="section-paper-2">
         <div className="wrap">
-          <motion.div {...rv()} style={{ maxWidth: 760 }}>
+          <m.div {...rv()} style={{ maxWidth: 760 }}>
             <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Case study · Fashion e-commerce</span>
             <h2 className="display-md">$57K in 90 days. 51% open rate. Email became their top revenue channel.</h2>
             <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.7, marginTop: 20 }}>
@@ -101,7 +101,7 @@ export default function ServiceEmailMarketing() {
               ))}
             </div>
             <Link to="/case-studies/fashion-brand" className="btn-link" style={{ marginTop: 24, display: 'inline-flex', fontSize: 13.5 }}>Read the full case study →</Link>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

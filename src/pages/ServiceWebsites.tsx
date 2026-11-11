@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -31,7 +31,7 @@ export default function ServiceWebsites() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Website Design &amp; Development</span>
               <h1>A website that works <em>as hard as you do.</em></h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 A lot of websites look fine and do nothing. People visit, don&rsquo;t understand what you offer, don&rsquo;t know what to do next, and leave. We build sites that are clear, fast, and built to turn visitors into enquiries.
               </p>
@@ -42,7 +42,7 @@ export default function ServiceWebsites() {
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a free 20-minute call <span className="arrow">↗</span></a>
                 <Link to="/services" className="btn-link">All services</Link>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function ServiceWebsites() {
       <section>
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start' }}>
-            <motion.div {...rv()}>
+            <m.div {...rv()}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>What&rsquo;s included</span>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 {['A design made just for you (built on Webflow, Framer, or Next.js)', 'Loads fast and works well on phones', 'Every word written for you', 'Set up to show on Google from day one', 'Tools that show who visits and what they do', 'We show you how to update it yourself', '90 days of help after launch, included'].map(item => (
@@ -59,8 +59,8 @@ export default function ServiceWebsites() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div {...rv(0.1)}>
+            </m.div>
+            <m.div {...rv(0.1)}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Who it&rsquo;s for</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 {[
@@ -75,7 +75,7 @@ export default function ServiceWebsites() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

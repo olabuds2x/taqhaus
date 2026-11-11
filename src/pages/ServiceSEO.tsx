@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -31,7 +31,7 @@ export default function ServiceSEO() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>SEO</span>
               <h1>Get found on Google, <em>without paying for every click.</em></h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 When someone searches for what you do, they should find you. If they&rsquo;re finding your competitors instead, you&rsquo;re losing business every single day to people who haven&rsquo;t even heard of you.
               </p>
@@ -46,7 +46,7 @@ export default function ServiceSEO() {
                 Just need your Google listing in shape? Google presence + review-request setup. $99 one-time.{' '}
                 <Link to="/google" style={{ color: 'var(--ink)', fontWeight: 700, textDecoration: 'underline', textDecorationColor: 'var(--coral)', textUnderlineOffset: 3 }}>See the package</Link>
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -54,7 +54,7 @@ export default function ServiceSEO() {
       <section>
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start' }}>
-            <motion.div {...rv()}>
+            <m.div {...rv()}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>What&rsquo;s included</span>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 {['We find and fix the problems holding your site back', 'We find the searches your customers actually type', 'We tune your pages so Google understands them', 'Blog posts written for you, made to show up in search', 'We get trusted sites to link to you', 'Behind-the-scenes code that helps Google read your site', 'Show up when people ask AI tools instead of Google', 'A simple monthly report on rankings and visitors'].map(item => (
@@ -63,8 +63,8 @@ export default function ServiceSEO() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div {...rv(0.1)}>
+            </m.div>
+            <m.div {...rv(0.1)}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Who it&rsquo;s for</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 {[
@@ -79,14 +79,14 @@ export default function ServiceSEO() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
 
       <section className="section-paper-2">
         <div className="wrap">
-          <motion.div {...rv()} style={{ maxWidth: 760 }}>
+          <m.div {...rv()} style={{ maxWidth: 760 }}>
             <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Case study · SaaS</span>
             <h2 className="display-md">Page 5 to page 1 in 6 months. 320% more traffic. Customers cost 60% less.</h2>
             <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.7, marginTop: 20 }}>
@@ -101,7 +101,7 @@ export default function ServiceSEO() {
               ))}
             </div>
             <Link to="/case-studies/saas-startup" className="btn-link" style={{ marginTop: 24, display: 'inline-flex', fontSize: 13.5 }}>Read the full case study →</Link>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

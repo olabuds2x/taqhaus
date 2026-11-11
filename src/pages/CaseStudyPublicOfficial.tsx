@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { CALENDLY_URL } from '@/lib/constants'
 import { Shield, TrendingUp, Users, Eye, CheckCircle2, Quote } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { SEO } from '@/components/SEO'
 import RelatedCaseStudies from '@/components/RelatedCaseStudies'
+import { enter } from '@/lib/firstView'
 
 const keyMetrics = [
   { value: '+127%', label: 'More positive coverage in search results', icon: TrendingUp },
@@ -137,7 +138,7 @@ export default function CaseStudyPublicOfficial() {
             <span className="text-neutral-light">Public Official</span>
           </nav>
 
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
+          <m.div initial={enter({ opacity: 0, y: 16 })} animate={{ opacity: 1, y: 0 }} className="mt-6">
             <span className="text-sm uppercase tracking-[0.35em] text-accent/80">Case Study</span>
             <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight">
               A Reputation Rebuilt Before Campaign Season
@@ -145,14 +146,14 @@ export default function CaseStudyPublicOfficial() {
             <p className="mt-4 text-lg text-neutral-light/80 max-w-3xl">
               How a public official fixed what voters found when searching their name, got their own story heard, and built direct lines to voters ahead of a close election.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Key Metrics */}
           <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
             {keyMetrics.map((item, idx) => (
-              <motion.div
+              <m.div
                 key={item.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={enter({ opacity: 0, y: 20 })}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 className="rounded-xl border border-white/10 bg-dark-900/50 p-6 text-center"
@@ -160,7 +161,7 @@ export default function CaseStudyPublicOfficial() {
                 <item.icon className="mx-auto h-8 w-8 text-accent mb-3" />
                 <p className="text-3xl font-bold text-white">{item.value}</p>
                 <p className="mt-2 text-sm text-neutral-light/70">{item.label}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -195,7 +196,7 @@ export default function CaseStudyPublicOfficial() {
           <h2 className="text-3xl font-semibold text-center">The Challenge</h2>
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             {challenges.map((challenge, idx) => (
-              <motion.div
+              <m.div
                 key={challenge.title}
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -204,12 +205,12 @@ export default function CaseStudyPublicOfficial() {
               >
                 <h3 className="text-xl font-semibold">{challenge.title}</h3>
                 <p className="mt-3 text-neutral-light/80">{challenge.description}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Client Quote */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -222,7 +223,7 @@ export default function CaseStudyPublicOfficial() {
             <p className="mt-4 text-sm uppercase tracking-[0.3em] text-accent/80">
               — Anonymous, Elected Official
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -236,7 +237,7 @@ export default function CaseStudyPublicOfficial() {
 
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {solutions.map((solution, idx) => (
-              <motion.div
+              <m.div
                 key={solution.category}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -253,7 +254,7 @@ export default function CaseStudyPublicOfficial() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -265,7 +266,7 @@ export default function CaseStudyPublicOfficial() {
           <h2 className="text-3xl font-semibold text-center">What We Did, and When</h2>
           <div className="mt-12 space-y-8">
             {timeline.map((phase, idx) => (
-              <motion.div
+              <m.div
                 key={phase.phase}
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -290,7 +291,7 @@ export default function CaseStudyPublicOfficial() {
                     </ul>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -306,7 +307,7 @@ export default function CaseStudyPublicOfficial() {
             <h3 className="text-xl font-semibold text-accent/90 mb-6">First 60 Days</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {results.early.map((item, idx) => (
-                <motion.div
+                <m.div
                   key={item.description}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -316,7 +317,7 @@ export default function CaseStudyPublicOfficial() {
                 >
                   <p className="text-3xl font-bold text-accent">{item.metric}</p>
                   <p className="mt-2 text-sm text-neutral-light/70">{item.description}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -326,7 +327,7 @@ export default function CaseStudyPublicOfficial() {
             <h3 className="text-xl font-semibold text-accent/90 mb-6">12-Week Impact</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {results.longTerm.map((item, idx) => (
-                <motion.div
+                <m.div
                   key={item.description}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -336,7 +337,7 @@ export default function CaseStudyPublicOfficial() {
                 >
                   <p className="text-3xl font-bold text-white">{item.metric}</p>
                   <p className="mt-2 text-sm text-neutral-light/80">{item.description}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

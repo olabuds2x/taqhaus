@@ -2,36 +2,11 @@ import { ErrorBoundary } from '@/components/ErrorBoundary'
 import ScrollToTop from '@/components/ScrollToTop'
 import SiteNav from '@/components/site/SiteNav'
 import SiteFooter from '@/components/site/SiteFooter'
+import { Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import NotFound from '@/pages/NotFound'
-import LandingPageRedesign from '@/pages/LandingPageRedesign'
-import Services from '@/pages/Services'
-import About from '@/pages/About'
-import Contact from '@/pages/Contact'
-import Insights from '@/pages/Insights'
-import CaseStudiesIndex from '@/pages/CaseStudiesIndex'
-import CaseStudyTFT from '@/pages/CaseStudyTFT'
-import CaseStudyTopTier from '@/pages/CaseStudyTopTier'
-import CaseStudySaaS from '@/pages/CaseStudySaaS'
-import CaseStudyFashion from '@/pages/CaseStudyFashion'
-import CaseStudyPublicOfficial from '@/pages/CaseStudyPublicOfficial'
-import Portfolio from '@/pages/Portfolio'
-import BlogPost from '@/pages/BlogPost'
-import PublicFigures from '@/pages/PublicFigures'
-import ForSmallBusinesses from '@/pages/ForSmallBusinesses'
-import ServiceSocialMedia from '@/pages/ServiceSocialMedia'
-import ServiceSEO from '@/pages/ServiceSEO'
-import ServiceEmailMarketing from '@/pages/ServiceEmailMarketing'
-import ServicePaidAds from '@/pages/ServicePaidAds'
-import ServiceWebsites from '@/pages/ServiceWebsites'
-import ServiceGraphicDesign from '@/pages/ServiceGraphicDesign'
-import ServiceMotionGraphics from '@/pages/ServiceMotionGraphics'
-import ServiceContentWriting from '@/pages/ServiceContentWriting'
-import GoogleOffer from '@/pages/GoogleOffer'
-import GoogleOfferTerms from '@/pages/GoogleOfferTerms'
-import GoogleOnboarding from '@/pages/GoogleOnboarding'
-import Privacy from '@/pages/Privacy'
-
+import { LazyMotion, MotionConfig, domAnimation } from 'framer-motion'
+import { ROUTES } from '@/routes'
+import { isPrerenderedFirstView } from '@/lib/firstView'
 /* Pages using the editorial design system — they include their own nav + footer */
 const EDITORIAL_ROUTES = [
   '/', '/services', '/about', '/contact', '/insights', '/case-studies',
@@ -53,6 +28,9 @@ function Chrome({ children }: { children: React.ReactNode }) {
 function AppRoutes() {
   const location = useLocation()
   const isEditorial = EDITORIAL_ROUTES.includes(location.pathname)
+  // Marks the landing page as left as soon as the URL changes, so entrances
+  // play on every later page, including a return to the first one.
+  isPrerenderedFirstView()
 
   return (
     <>
@@ -62,36 +40,20 @@ function AppRoutes() {
           `display: contents` keeps the sticky nav relative to the page. */}
       {!isEditorial && <div className="tq-editorial tq-chrome"><SiteNav /></div>}
 
-      <Routes>
-        <Route path="/" element={<LandingPageRedesign />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/services/social-media" element={<ServiceSocialMedia />} />
-        <Route path="/services/seo" element={<ServiceSEO />} />
-        <Route path="/services/email-marketing" element={<ServiceEmailMarketing />} />
-        <Route path="/services/paid-ads" element={<ServicePaidAds />} />
-        <Route path="/services/websites" element={<ServiceWebsites />} />
-        <Route path="/services/graphic-design" element={<ServiceGraphicDesign />} />
-        <Route path="/services/motion-graphics" element={<ServiceMotionGraphics />} />
-        <Route path="/services/content-writing" element={<ServiceContentWriting />} />
-        <Route path="/public-figures" element={<PublicFigures />} />
-        <Route path="/for-small-businesses" element={<ForSmallBusinesses />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/insights" element={<Insights />} />
-        <Route path="/case-studies" element={<CaseStudiesIndex />} />
-        <Route path="/google" element={<GoogleOffer />} />
-        <Route path="/google/terms" element={<GoogleOfferTerms />} />
-        <Route path="/google/welcome" element={<GoogleOnboarding />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/portfolio" element={<><Portfolio /><Chrome><SiteFooter /></Chrome></>} />
-        <Route path="/insights/:slug" element={<><BlogPost /><Chrome><SiteFooter /></Chrome></>} />
-        <Route path="/case-studies/the-funded-trader" element={<><CaseStudyTFT /><Chrome><SiteFooter /></Chrome></>} />
-        <Route path="/case-studies/toptier-trader" element={<><CaseStudyTopTier /><Chrome><SiteFooter /></Chrome></>} />
-        <Route path="/case-studies/saas-startup" element={<><CaseStudySaaS /><Chrome><SiteFooter /></Chrome></>} />
-        <Route path="/case-studies/fashion-brand" element={<><CaseStudyFashion /><Chrome><SiteFooter /></Chrome></>} />
-        <Route path="/case-studies/public-official" element={<><CaseStudyPublicOfficial /><Chrome><SiteFooter /></Chrome></>} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      {/* Navigations run in a transition (React Router v7), so the current page
+          stays on screen while the next chunk loads; this fallback only shows
+          if a chunk is requested outside a transition. */}
+      <Suspense fallback={null}>
+        <Routes>
+          {ROUTES.map(({ path, page: Page, footer }) => (
+            <Route
+              key={path}
+              path={path}
+              element={footer ? <><Page /><Chrome><SiteFooter /></Chrome></> : <Page />}
+            />
+          ))}
+        </Routes>
+      </Suspense>
     </>
   )
 }
@@ -99,9 +61,17 @@ function AppRoutes() {
 function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
+      {/* domAnimation covers everything the site uses (animate, exit, whileInView,
+          hover/tap) at roughly half the size of the full `motion` component.
+          reducedMotion="user" honours the OS "reduce motion" setting for
+          JS-driven animations, which the CSS media queries can't reach. */}
+      <LazyMotion features={domAnimation}>
+        <MotionConfig reducedMotion="user">
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </MotionConfig>
+      </LazyMotion>
     </ErrorBoundary>
   )
 }

@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { CALENDLY_URL } from '@/lib/constants'
 import { TrendingUp, DollarSign, Target, Users, CheckCircle2, Quote } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { SEO } from '@/components/SEO'
 import RelatedCaseStudies from '@/components/RelatedCaseStudies'
+import { enter } from '@/lib/firstView'
 
 const keyMetrics = [
   { value: '+320%', label: 'Growth in visits from unpaid search', icon: TrendingUp },
@@ -138,7 +139,7 @@ export default function CaseStudySaaS() {
             <span className="text-neutral-light">SaaS Startup</span>
           </nav>
 
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
+          <m.div initial={enter({ opacity: 0, y: 16 })} animate={{ opacity: 1, y: 0 }} className="mt-6">
             <span className="text-sm uppercase tracking-[0.35em] text-accent/80">Case Study</span>
             <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight">
               From Page 5 of Google to Page 1 in 6 Months
@@ -146,14 +147,14 @@ export default function CaseStudySaaS() {
             <p className="mt-4 text-lg text-neutral-light/80 max-w-3xl">
               How a B2B software company stopped depending on paid ads and started winning customers from search instead.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Key Metrics */}
           <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
             {keyMetrics.map((item, idx) => (
-              <motion.div
+              <m.div
                 key={item.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={enter({ opacity: 0, y: 20 })}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 className="rounded-xl border border-white/10 bg-dark-900/50 p-6 text-center"
@@ -161,7 +162,7 @@ export default function CaseStudySaaS() {
                 <item.icon className="mx-auto h-8 w-8 text-accent mb-3" />
                 <p className="text-3xl font-bold text-white">{item.value}</p>
                 <p className="mt-2 text-sm text-neutral-light/70">{item.label}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -196,7 +197,7 @@ export default function CaseStudySaaS() {
           <h2 className="text-3xl font-semibold text-center">The Challenge</h2>
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             {challenges.map((challenge, idx) => (
-              <motion.div
+              <m.div
                 key={challenge.title}
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -205,12 +206,12 @@ export default function CaseStudySaaS() {
               >
                 <h3 className="text-xl font-semibold">{challenge.title}</h3>
                 <p className="mt-3 text-neutral-light/80">{challenge.description}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Client Quote */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -223,7 +224,7 @@ export default function CaseStudySaaS() {
             <p className="mt-4 text-sm uppercase tracking-[0.3em] text-accent/80">
               — Head of Growth, SaaS Startup
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -237,7 +238,7 @@ export default function CaseStudySaaS() {
 
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {solutions.map((solution, idx) => (
-              <motion.div
+              <m.div
                 key={solution.category}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -254,7 +255,7 @@ export default function CaseStudySaaS() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -266,7 +267,7 @@ export default function CaseStudySaaS() {
           <h2 className="text-3xl font-semibold text-center">What We Did, and When</h2>
           <div className="mt-12 space-y-8">
             {timeline.map((phase, idx) => (
-              <motion.div
+              <m.div
                 key={phase.phase}
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -291,7 +292,7 @@ export default function CaseStudySaaS() {
                     </ul>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -307,7 +308,7 @@ export default function CaseStudySaaS() {
             <h3 className="text-xl font-semibold text-accent/90 mb-6">First 75 Days</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {results.early.map((item, idx) => (
-                <motion.div
+                <m.div
                   key={item.description}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -317,7 +318,7 @@ export default function CaseStudySaaS() {
                 >
                   <p className="text-3xl font-bold text-accent">{item.metric}</p>
                   <p className="mt-2 text-sm text-neutral-light/70">{item.description}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -327,7 +328,7 @@ export default function CaseStudySaaS() {
             <h3 className="text-xl font-semibold text-accent/90 mb-6">6-Month Impact</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {results.longTerm.map((item, idx) => (
-                <motion.div
+                <m.div
                   key={item.description}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -337,7 +338,7 @@ export default function CaseStudySaaS() {
                 >
                   <p className="text-3xl font-bold text-white">{item.metric}</p>
                   <p className="mt-2 text-sm text-neutral-light/80">{item.description}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

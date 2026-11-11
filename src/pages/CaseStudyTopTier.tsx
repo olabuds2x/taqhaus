@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CALENDLY_URL } from '@/lib/constants'
@@ -16,6 +16,7 @@ import {
   Star
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { enter } from '@/lib/firstView'
 
 const keyMetrics = [
   { value: '+142%', label: 'People searching the brand by name', icon: TrendingUp },
@@ -154,8 +155,8 @@ export default function CaseStudyTopTier() {
             <span className="text-neutral-light">TopTier Trader</span>
           </nav>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <m.div
+            initial={enter({ opacity: 0, y: 20 })}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -175,9 +176,9 @@ export default function CaseStudyTopTier() {
             {/* Key Metrics Grid */}
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
               {keyMetrics.map((metric, index) => (
-                <motion.div
+                <m.div
                   key={metric.label}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={enter({ opacity: 0, y: 20 })}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                   className="relative group"
@@ -192,10 +193,10 @@ export default function CaseStudyTopTier() {
                       <p className="text-xs uppercase tracking-wider text-neutral-light/70">{metric.label}</p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -234,7 +235,7 @@ export default function CaseStudyTopTier() {
       {/* The Challenge */}
       <section className="py-24 bg-dark-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -249,11 +250,11 @@ export default function CaseStudyTopTier() {
               their story for them. Forums, review sites, and social media painted a confusing picture
               that put buyers off and buried their support team in questions.
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             {challenges.map((challenge, index) => (
-              <motion.div
+              <m.div
                 key={challenge.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -268,12 +269,12 @@ export default function CaseStudyTopTier() {
                     <p className="text-neutral-light/80">{challenge.description}</p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Quote from stakeholder */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -291,14 +292,14 @@ export default function CaseStudyTopTier() {
                 </p>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* Our Approach */}
       <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -313,11 +314,11 @@ export default function CaseStudyTopTier() {
               publishing content that proves the company does what it says, and building trust into
               every step of buying. We only tracked things that lead to actual sales.
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="mt-12 space-y-8">
             {solutions.map((solution, index) => (
-              <motion.div
+              <m.div
                 key={solution.category}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -342,7 +343,7 @@ export default function CaseStudyTopTier() {
                     </ul>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -351,7 +352,7 @@ export default function CaseStudyTopTier() {
       {/* Timeline */}
       <section className="py-24 bg-dark-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -361,7 +362,7 @@ export default function CaseStudyTopTier() {
             <h2 className="mt-4 text-4xl font-bold">
               90 Days to Build, Then Keep It Going
             </h2>
-          </motion.div>
+          </m.div>
 
           <div className="mt-12 relative">
             {/* Timeline Line */}
@@ -369,7 +370,7 @@ export default function CaseStudyTopTier() {
 
             <div className="space-y-12">
               {timeline.map((phase, index) => (
-                <motion.div
+                <m.div
                   key={phase.phase}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -403,7 +404,7 @@ export default function CaseStudyTopTier() {
                       </CardContent>
                     </Card>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -413,7 +414,7 @@ export default function CaseStudyTopTier() {
       {/* Results */}
       <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -424,14 +425,14 @@ export default function CaseStudyTopTier() {
             <h2 className="mt-4 text-4xl md:text-5xl font-bold">
               Trust Came Back, and Growth Followed
             </h2>
-          </motion.div>
+          </m.div>
 
           {/* Early Results */}
           <div className="mt-12">
             <h3 className="text-2xl font-semibold text-center mb-8">First 75 Days</h3>
             <div className="grid md:grid-cols-4 gap-6">
               {results.early.map((result, index) => (
-                <motion.div
+                <m.div
                   key={result.metric}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -448,7 +449,7 @@ export default function CaseStudyTopTier() {
                       <p className="text-xs text-neutral-light/60 mt-1">{result.period}</p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -458,7 +459,7 @@ export default function CaseStudyTopTier() {
             <h3 className="text-2xl font-semibold text-center mb-8">Longer Term, Over 6 to 12 Months</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {results.longTerm.map((result, index) => (
-                <motion.div
+                <m.div
                   key={result.metric}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -476,13 +477,13 @@ export default function CaseStudyTopTier() {
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
 
           {/* Key Takeaways */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -519,7 +520,7 @@ export default function CaseStudyTopTier() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -529,7 +530,7 @@ export default function CaseStudyTopTier() {
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-b from-dark-900 via-navy/20 to-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -568,7 +569,7 @@ export default function CaseStudyTopTier() {
             <p className="mt-6 text-sm text-neutral-light/60">
               The call is free and there is no obligation.
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </div>

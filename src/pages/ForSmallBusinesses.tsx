@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -49,7 +49,7 @@ export default function ForSmallBusinesses() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>For Small &amp; Growing Businesses</span>
               <h1>Your marketing department, <em>without hiring one</em>.</h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 You don&rsquo;t have a marketing team. It&rsquo;s you, maybe a few staff, and a list of jobs that never gets shorter. Marketing keeps falling to the bottom of that list because you&rsquo;re busy running the business.
               </p>
@@ -65,7 +65,7 @@ export default function ForSmallBusinesses() {
               <p style={{ marginTop: 16, fontFamily: 'var(--mono)', fontSize: 11.5, letterSpacing: '0.08em', color: 'var(--ink-3)', textTransform: 'uppercase' as const }}>
                 Free call · No commitment · We&rsquo;ll tell you what to do first
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function ForSmallBusinesses() {
       {/* Services */}
       <section>
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">What we handle for you</span>
               <h2 className="display-md">Pick one service. <em>Or all of them.</em></h2>
@@ -81,15 +81,15 @@ export default function ForSmallBusinesses() {
             <p className="lede">
               You don&rsquo;t have to hand us everything at once. Most owners start with one or two services and add more once they see the results.
             </p>
-          </motion.div>
+          </m.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginTop: 48 }}>
             {services.map((svc, i) => (
-              <motion.div key={svc.title} {...rv(i * 0.07)} style={{ border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,32px)', display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
+              <m.div key={svc.title} {...rv(i * 0.07)} style={{ border: '1px solid var(--hairline)', borderRadius: 16, padding: 'clamp(24px,3vw,32px)', display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(18px,1.4vw,22px)', fontWeight: 400, lineHeight: 1.2, letterSpacing: '-0.012em', color: 'var(--ink)' }}>{svc.title}</h3>
                 <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.65, margin: 0, flex: 1 }}>{svc.desc}</p>
                 <Link to={svc.href} className="btn-link" style={{ fontSize: 13.5, marginTop: 8 }}>Learn more →</Link>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -98,23 +98,23 @@ export default function ForSmallBusinesses() {
       {/* Common problems */}
       <section className="section-paper-2">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">Sound familiar?</span>
               <h2 className="display-md">We&rsquo;ve heard this <em>before</em>.</h2>
             </div>
             <p className="lede">Most small business marketing problems are the same five problems. Here&rsquo;s how we handle each one.</p>
-          </motion.div>
+          </m.div>
 
           <ol className="numlist" style={{ marginTop: 48 }}>
             {commonProblems.map((item, i) => (
-              <motion.li key={item.num} {...rv(i * 0.07)}>
+              <m.li key={item.num} {...rv(i * 0.07)}>
                 <span className="num">{item.num}</span>
                 <div className="title-col">
                   <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(17px,1.3vw,20px)', fontStyle: 'normal', fontWeight: 400 }}>{item.problem}</h3>
                   <p>{item.solution}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
           </ol>
         </div>
@@ -123,13 +123,13 @@ export default function ForSmallBusinesses() {
       {/* How we start */}
       <section className="section-dark">
         <div className="wrap">
-          <motion.div className="section-head" {...rv()}>
+          <m.div className="section-head" {...rv()}>
             <div className="sh-meta">
               <span className="eyebrow">How it starts</span>
               <h2 className="display-md" style={{ color: 'var(--paper)' }}>No commitment. <em>Just clarity.</em></h2>
             </div>
             <p className="lede">We don&rsquo;t ask you to sign anything before we&rsquo;ve shown we understand your business. Here&rsquo;s how most owners start.</p>
-          </motion.div>
+          </m.div>
 
           <ol className="numlist">
             {[
@@ -138,13 +138,13 @@ export default function ForSmallBusinesses() {
               { num: 'Step 03', title: 'We get to work', desc: 'Once we agree what we\'re doing, we start. Most services are up and running within two weeks. You run your business. We market it.' },
               { num: 'Step 04', title: 'You see the results', desc: 'We report on what matters to you: enquiries, traffic, followers, bookings. Not impressions. Not reach. Not charts that go up without telling you why.' },
             ].map((step) => (
-              <motion.li key={step.num} {...rv()}>
+              <m.li key={step.num} {...rv()}>
                 <span className="num">{step.num}</span>
                 <div className="title-col">
                   <h3>{step.title}</h3>
                   <p>{step.desc}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
           </ol>
         </div>

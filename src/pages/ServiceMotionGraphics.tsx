@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -31,7 +31,7 @@ export default function ServiceMotionGraphics() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Motion Graphics &amp; Video Editing</span>
               <h1>Content that stops the <em>scroll.</em></h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 Still posts get scrolled past. Video gets watched, shared, and remembered. If you never show up in video, a growing share of your audience never sees you.
               </p>
@@ -42,7 +42,7 @@ export default function ServiceMotionGraphics() {
                 <a href={CALENDLY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a free 20-minute call <span className="arrow">↗</span></a>
                 <Link to="/services" className="btn-link">All services</Link>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function ServiceMotionGraphics() {
       <section>
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,4vw,64px)', alignItems: 'start' }}>
-            <motion.div {...rv()}>
+            <m.div {...rv()}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>What&rsquo;s included</span>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
                 {['Short videos for Instagram, TikTok, and YouTube Shorts', 'Videos that explain what you sell and how it works', 'Video ads for Facebook, Instagram, YouTube, and LinkedIn', 'Animated graphics and logos', 'Text that moves on screen', 'We edit the footage you already have', 'Captions, subtitles, and sound'].map(item => (
@@ -59,8 +59,8 @@ export default function ServiceMotionGraphics() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div {...rv(0.1)}>
+            </m.div>
+            <m.div {...rv(0.1)}>
               <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>Who it&rsquo;s for</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 16 }}>
                 {[
@@ -75,7 +75,7 @@ export default function ServiceMotionGraphics() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

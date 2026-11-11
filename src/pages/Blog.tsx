@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -14,7 +14,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen bg-dark pt-16">
       {/* Hero Section */}
-      <motion.section
+      <m.section
         className="py-24 bg-accent text-white"
         variants={staggerContainer(0.12)}
         initial="hidden"
@@ -22,7 +22,7 @@ export default function Blog() {
         viewport={{ once: true, amount: 0.45 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="text-center" variants={fadeInUp}>
+          <m.div className="text-center" variants={fadeInUp}>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               The TaqHaus Blog
             </h1>
@@ -31,7 +31,7 @@ export default function Blog() {
             </p>
 
             {/* Search Bar */}
-            <motion.div className="max-w-2xl mx-auto" variants={scaleIn}>
+            <m.div className="max-w-2xl mx-auto" variants={scaleIn}>
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
@@ -40,13 +40,13 @@ export default function Blog() {
                   className="pl-12 bg-white/90 border-white/30 h-12"
                 />
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
-      </motion.section>
+      </m.section>
 
       {/* Category Filters */}
-      <motion.section
+      <m.section
         className="py-8 bg-dark-800 border-b border-dark-600"
         variants={staggerContainer(0.08)}
         initial="hidden"
@@ -54,9 +54,9 @@ export default function Blog() {
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="flex flex-wrap gap-3 justify-center" variants={staggerContainer(0.05)}>
+          <m.div className="flex flex-wrap gap-3 justify-center" variants={staggerContainer(0.05)}>
             {categories.map((category, index) => (
-              <motion.div key={category} variants={scaleIn} whileHover={{ y: -4 }}>
+              <m.div key={category} variants={scaleIn} whileHover={{ y: -4 }}>
                 <Button
                   variant={index === 0 ? 'default' : 'outline'}
                   size="sm"
@@ -64,14 +64,14 @@ export default function Blog() {
                 >
                   {category}
                 </Button>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
-      </motion.section>
+      </m.section>
 
       {/* Featured Post */}
-      <motion.section
+      <m.section
         className="py-16 bg-dark"
         variants={staggerContainer(0.12)}
         initial="hidden"
@@ -79,7 +79,7 @@ export default function Blog() {
         viewport={{ once: true, amount: 0.4 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={fadeInUp}>
+          <m.div variants={fadeInUp}>
             <Link to={`/blog/${displayPosts[0].slug}`}>
               <Card className="overflow-hidden hover:shadow-2xl transition-shadow bg-dark-800 border-dark-600">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -126,12 +126,12 @@ export default function Blog() {
                 </div>
               </Card>
             </Link>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.section>
+      </m.section>
 
       {/* Blog Grid */}
-      <motion.section
+      <m.section
         className="py-16 bg-dark-800"
         variants={staggerContainer(0.14)}
         initial="hidden"
@@ -139,9 +139,9 @@ export default function Blog() {
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={staggerContainer(0.1)}>
+          <m.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={staggerContainer(0.1)}>
             {displayPosts.slice(1).map((post) => (
-              <motion.div key={post.slug} variants={blurFade} whileHover={{ y: -8 }}>
+              <m.div key={post.slug} variants={blurFade} whileHover={{ y: -8 }}>
                 <Link to={`/blog/${post.slug}`}>
                   <Card className="group overflow-hidden h-full hover:shadow-xl transition-all duration-300 bg-dark-700 border-dark-600">
                     <div className="relative h-48 overflow-hidden">
@@ -182,14 +182,14 @@ export default function Blog() {
                     </CardContent>
                   </Card>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
-      </motion.section>
+      </m.section>
 
       {/* Newsletter CTA */}
-      <motion.section
+      <m.section
         className="py-20 bg-accent text-white"
         variants={staggerContainer(0.12)}
         initial="hidden"
@@ -197,14 +197,14 @@ export default function Blog() {
         viewport={{ once: true, amount: 0.4 }}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div variants={fadeInUp}>
+          <m.div variants={fadeInUp}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Get Growth Insights Delivered to Your Inbox
             </h2>
             <p className="text-xl mb-8 text-white/90">
               Join 5,000+ marketers and founders who get our weekly email with actionable SEO, email marketing, and content strategy tips.
             </p>
-            <motion.div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" variants={scaleIn}>
+            <m.div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" variants={scaleIn}>
               <Input
                 type="email"
                 placeholder="Your email address"
@@ -213,13 +213,13 @@ export default function Blog() {
               <Button size="lg" variant="secondary" className="bg-white text-dark hover:bg-gray-100">
                 Subscribe Now
               </Button>
-            </motion.div>
+            </m.div>
             <p className="text-sm text-white/70 mt-4">
               No spam. Unsubscribe anytime. We respect your inbox.
             </p>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.section>
+      </m.section>
     </div>
   )
 }

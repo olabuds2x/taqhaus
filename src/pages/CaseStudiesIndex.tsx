@@ -1,5 +1,5 @@
 import '../styles/taqhaus-editorial.css'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CALENDLY_URL } from '@/lib/constants'
 import { SEO } from '@/components/SEO'
@@ -182,12 +182,12 @@ export default function CaseStudiesIndex() {
               <span className="eyebrow" style={{ marginBottom: 36, display: 'inline-flex' }}>Case studies · 2022 to 2026</span>
               <h1>The work. The <em>numbers</em>.</h1>
             </div>
-            <motion.div {...rv(0.15)}>
+            <m.div {...rv(0.15)}>
               <p className="lede" style={{ fontSize: 'clamp(18px,1.4vw,22px)' }}>
                 A selection of the clients we&rsquo;ve worked with. Every project is measured against revenue, pipeline, or the outcome the client hired us for, not vanity metrics.
               </p>
               <p style={{ marginTop: 18, color: 'var(--ink-2)', fontSize: 14.5 }}>Some clients prefer to stay anonymous. Full case studies are available on request, under NDA.</p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -221,7 +221,7 @@ export default function CaseStudiesIndex() {
           </div>
 
           {cases.map((c) => (
-            <motion.article key={c.num} className={`case-row${c.reverse ? ' reverse' : ''}`} {...rv()}>
+            <m.article key={c.num} className={`case-row${c.reverse ? ' reverse' : ''}`} {...rv()}>
               <div className={`media-col imgholder${c.media ? ` ${c.media}` : ''}`} data-label={c.mediaLabel} />
               <div className="copy-col">
                 <div className="ticker">
@@ -255,7 +255,7 @@ export default function CaseStudiesIndex() {
                   </a>
                 </div>
               </div>
-            </motion.article>
+            </m.article>
           ))}
         </div>
       </section>

@@ -1,6 +1,6 @@
 import '../styles/taqhaus-editorial.css'
 import { useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
   ArrowLeft, ArrowRight, Check, ClipboardList, Layers, LineChart, Mail, Megaphone,
@@ -12,8 +12,9 @@ import SiteNav from '@/components/site/SiteNav'
 import SiteFooter from '@/components/site/SiteFooter'
 import { HookArrow } from '@/components/site/HookArrow'
 import { blogPosts } from '@/data/blogPosts'
+import { enter } from '@/lib/firstView'
 
-const MotionLink = motion(Link)
+const MotionLink = m.create(Link)
 
 const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -184,12 +185,12 @@ export default function LandingPageRedesign() {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="h-hero">
         <div className="wrap">
-          <motion.span className="eyebrow" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+          <m.span className="eyebrow" initial={enter({ opacity: 0 })} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
             Marketing, strategy, and visibility
-          </motion.span>
-          <motion.h1
+          </m.span>
+          <m.h1
             className="h-hero-title"
-            initial={{ opacity: 0, y: 24 }}
+            initial={enter({ opacity: 0, y: 24 })}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
           >
@@ -200,18 +201,18 @@ export default function LandingPageRedesign() {
               <em>right people</em>
             </span>{' '}
             <span className="ln"><em>find you.</em></span>
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             className="h-hero-sub"
-            initial={{ opacity: 0, y: 14 }}
+            initial={enter({ opacity: 0, y: 14 })}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.2, 0.7, 0.2, 1] }}
           >
             From businesses to public-facing leaders, we build digital campaigns that grow awareness, trust, leads, and engagement across the channels that matter.
-          </motion.p>
-          <motion.div
+          </m.p>
+          <m.div
             className="h-hero-ctas"
-            initial={{ opacity: 0, y: 12 }}
+            initial={enter({ opacity: 0, y: 12 })}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
           >
@@ -219,17 +220,17 @@ export default function LandingPageRedesign() {
               Book a free strategy call <HookArrow />
             </a>
             <Link to="/services" className="pill-btn pill-btn--line">Explore services</Link>
-          </motion.div>
-          <motion.span className="h-note" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.4 }}>
+          </m.div>
+          <m.span className="h-note" initial={enter({ opacity: 0 })} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.4 }}>
             Free · 20 minutes · No long contracts
-          </motion.span>
+          </m.span>
         </div>
       </section>
 
       {/* ── Split: who we are + proof photo ─────────────────────────────── */}
       <section className="h-split-section">
         <div className="wrap h-split">
-          <motion.div className="h-split-dark" {...rv()}>
+          <m.div className="h-split-dark" {...rv()}>
             <span className="eyebrow">How we work</span>
             <h2 className="h-title h-title--light">
               You run the business.<br /><em>We handle the marketing.</em>
@@ -250,9 +251,9 @@ export default function LandingPageRedesign() {
                 <span className="h-mini-link">Read the story <HookArrow /></span>
               </div>
             </Link>
-          </motion.div>
+          </m.div>
 
-          <motion.div className="h-split-photo" {...rv(0.1)}>
+          <m.div className="h-split-photo" {...rv(0.1)}>
             <img src="/images/hero-strategy.jpg" alt="Campaign planning boards and analytics on a strategy desk" fetchPriority="high" />
             <div className="h-stat-row">
               {heroStats.map(s => (
@@ -263,7 +264,7 @@ export default function LandingPageRedesign() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="h-logos" aria-label="Clients and partners">
@@ -278,31 +279,31 @@ export default function LandingPageRedesign() {
       {/* ── Sound familiar? ─────────────────────────────────────────────── */}
       <section className="h-pains-section">
         <div className="wrap">
-          <motion.div className="h-head h-head--center" {...rv()}>
+          <m.div className="h-head h-head--center" {...rv()}>
             <span className="eyebrow">Sound familiar?</span>
             <h2 className="h-title">Good at what you do.<br /><em>Too busy to market it.</em></h2>
             <p className="h-lede">We hear these every week from owners like you.</p>
-          </motion.div>
+          </m.div>
 
           <div className="h-pains">
             {pains.map((p, i) => (
-              <motion.figure key={p.quote} className="h-pain" {...rv(i * 0.07)}>
+              <m.figure key={p.quote} className="h-pain" {...rv(i * 0.07)}>
                 <img src={p.img} alt={p.alt} loading="lazy" />
                 <figcaption>“{p.quote}”</figcaption>
-              </motion.figure>
+              </m.figure>
             ))}
           </div>
 
-          <motion.p className="h-bridge" {...rv(0.15)}>
+          <m.p className="h-bridge" {...rv(0.15)}>
             That's where we come in. You hand it over. We do the work. <em>You see the numbers.</em>
-          </motion.p>
+          </m.p>
         </div>
       </section>
 
       {/* ── What we do ──────────────────────────────────────────────────── */}
       <section className="h-services">
         <div className="wrap">
-          <motion.div className="h-head h-head--split" {...rv()}>
+          <m.div className="h-head h-head--split" {...rv()}>
             <div>
               <span className="eyebrow">What we do</span>
               <h2 className="h-title">Pick what you want<br /><em>off your plate.</em></h2>
@@ -314,14 +315,14 @@ export default function LandingPageRedesign() {
                 <button type="button" onClick={() => scrollRail(1)} aria-label="Next services"><ArrowRight size={18} /></button>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="h-rail" ref={railRef}>
           {services.map((svc, i) => {
             const Icon = svc.icon
             return (
-              <motion.article key={svc.num} className="h-svc" {...rv(i * 0.05)}>
+              <m.article key={svc.num} className="h-svc" {...rv(i * 0.05)}>
                 <div className="h-svc-top">
                   <span className="h-svc-num">{svc.num} — {svc.type}</span>
                   <span className="h-svc-icon"><Icon size={22} strokeWidth={2.2} /></span>
@@ -334,7 +335,7 @@ export default function LandingPageRedesign() {
                     <strong>See the package <HookArrow /></strong>
                   </Link>
                 )}
-              </motion.article>
+              </m.article>
             )
           })}
           <Link to="/services" className="h-svc h-svc--more">
@@ -348,13 +349,13 @@ export default function LandingPageRedesign() {
       {/* ── Results ─────────────────────────────────────────────────────── */}
       <section className="h-work">
         <div className="wrap">
-          <motion.div className="h-head h-head--split" {...rv()}>
+          <m.div className="h-head h-head--split" {...rv()}>
             <div>
               <span className="eyebrow">Results</span>
               <h2 className="h-title">Real businesses.<br /><em>Real numbers.</em></h2>
             </div>
             <p className="h-lede">Click any of these to read exactly what we did and what happened.</p>
-          </motion.div>
+          </m.div>
 
           <div className="h-work-grid">
             {cases.map((c, i) => (
@@ -371,7 +372,7 @@ export default function LandingPageRedesign() {
                 <span className="h-case-meta">{c.meta}</span>
               </MotionLink>
             ))}
-            <motion.a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="h-case h-case--narrow h-case--cta" {...rv(0.08)}>
+            <m.a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="h-case h-case--narrow h-case--cta" {...rv(0.08)}>
               <div className="h-case-art tone-open">
                 <span className="h-case-label">Case 06 · Not written yet</span>
                 <div className="h-case-stat">
@@ -381,7 +382,7 @@ export default function LandingPageRedesign() {
               </div>
               <h3>Your business could be next</h3>
               <span className="h-case-meta">Book a free 20-minute call</span>
-            </motion.a>
+            </m.a>
           </div>
 
           <div className="h-center-cta">
@@ -394,7 +395,7 @@ export default function LandingPageRedesign() {
       <section className="h-how">
         <img className="h-how-bg" src="/images/hero-quiet.jpg" alt="" loading="lazy" />
         <div className="wrap">
-          <motion.div className="h-how-card" {...rv()}>
+          <m.div className="h-how-card" {...rv()}>
             <div className="h-how-intro">
               <span className="eyebrow">How it works</span>
               <h2 className="h-title">Three steps.<br /><em>No surprises.</em></h2>
@@ -417,24 +418,24 @@ export default function LandingPageRedesign() {
                 )
               })}
             </ol>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* ── Pricing ─────────────────────────────────────────────────────── */}
       <section className="h-pricing" id="pricing">
         <div className="wrap">
-          <motion.div className="h-head h-head--center" {...rv()}>
+          <m.div className="h-head h-head--center" {...rv()}>
             <span className="eyebrow">Pricing</span>
             <h2 className="h-title">Start small, or <em>hand it all over.</em></h2>
             <p className="h-lede">Every option starts with the same free call. We'll tell you which one fits, and we'll tell you if none of them do.</p>
-          </motion.div>
+          </m.div>
 
           <div className="h-plans">
             {plans.map((plan, i) => {
               const Icon = plan.icon
               return (
-                <motion.div key={plan.name} className={`h-plan${plan.featured ? ' h-plan--featured' : ''}`} {...rv(i * 0.07)}>
+                <m.div key={plan.name} className={`h-plan${plan.featured ? ' h-plan--featured' : ''}`} {...rv(i * 0.07)}>
                   <div className="h-plan-head">
                     <span className="h-plan-name"><Icon size={16} strokeWidth={2.2} /> {plan.name}</span>
                     {plan.featured && <span className="h-plan-badge">Full team</span>}
@@ -461,18 +462,18 @@ export default function LandingPageRedesign() {
                       </li>
                     ))}
                   </ul>
-                </motion.div>
+                </m.div>
               )
             })}
           </div>
 
-          <motion.div className="h-route" {...rv(0.1)}>
+          <m.div className="h-route" {...rv(0.1)}>
             <p>Run a bigger brand, or managing a public profile? We do that too.</p>
             <div>
               <Link to="/services" className="pill-btn pill-btn--line">Growing brands</Link>
               <Link to="/public-figures" className="pill-btn pill-btn--line">Public figures</Link>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -491,7 +492,7 @@ export default function LandingPageRedesign() {
             {[0, 1, 2].map(col => (
               <div key={col} className="h-quote-col">
                 {quotes.filter((_, i) => i % 3 === col).map(t => (
-                  <motion.figure key={t.org} className="h-quote" {...rv(col * 0.08)}>
+                  <m.figure key={t.org} className="h-quote" {...rv(col * 0.08)}>
                     <blockquote>“{t.q}”</blockquote>
                     <figcaption>
                       <span className="h-tile h-tile--xs" aria-hidden="true"><HookArrow /></span>
@@ -503,7 +504,7 @@ export default function LandingPageRedesign() {
                         <ArrowRight size={16} />
                       </Link>
                     </figcaption>
-                  </motion.figure>
+                  </m.figure>
                 ))}
               </div>
             ))}
@@ -514,11 +515,11 @@ export default function LandingPageRedesign() {
       {/* ── FAQ ─────────────────────────────────────────────────────────── */}
       <section className="h-faq">
         <div className="wrap">
-          <motion.div className="h-head h-head--center" {...rv()}>
+          <m.div className="h-head h-head--center" {...rv()}>
             <span className="eyebrow">Questions</span>
             <h2 className="h-title">Your questions,<br /><em>answered.</em></h2>
             <p className="h-lede">Straight answers. If yours isn't here, just email us.</p>
-          </motion.div>
+          </m.div>
 
           <div className="h-faq-list">
             {faqs.map((faq, i) => {
@@ -537,7 +538,7 @@ export default function LandingPageRedesign() {
                   </button>
                   <AnimatePresence initial={false}>
                     {open && (
-                      <motion.div
+                      <m.div
                         id={`faq-${i}`}
                         role="region"
                         aria-labelledby={`faq-btn-${i}`}
@@ -548,7 +549,7 @@ export default function LandingPageRedesign() {
                         style={{ overflow: 'hidden' }}
                       >
                         <p>{faq.a}</p>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
                 </div>
@@ -565,14 +566,14 @@ export default function LandingPageRedesign() {
       {/* ── From the blog ───────────────────────────────────────────────── */}
       <section className="h-blog">
         <div className="wrap">
-          <motion.div className="h-head h-head--center" {...rv()}>
+          <m.div className="h-head h-head--center" {...rv()}>
             <span className="eyebrow">From the blog</span>
             <h2 className="h-title">Plain advice<br /><em>for busy owners.</em></h2>
-          </motion.div>
+          </m.div>
 
           <div className="h-posts">
             {latestPosts.map((post, i) => (
-              <motion.article key={post.slug} className="h-post" {...rv(i * 0.07)}>
+              <m.article key={post.slug} className="h-post" {...rv(i * 0.07)}>
                 <span className="h-post-n">0{i + 1}</span>
                 <Link to={`/insights/${post.slug}`} className="h-post-card">
                   <img src={post.image} alt="" loading="lazy" />
@@ -586,7 +587,7 @@ export default function LandingPageRedesign() {
                     <span className="pill-btn pill-btn--coral pill-btn--sm">Read more <HookArrow /></span>
                   </div>
                 </Link>
-              </motion.article>
+              </m.article>
             ))}
           </div>
         </div>

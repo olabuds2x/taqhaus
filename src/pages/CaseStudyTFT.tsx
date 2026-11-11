@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CALENDLY_URL } from '@/lib/constants'
@@ -17,6 +17,7 @@ import {
   Zap
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { enter } from '@/lib/firstView'
 
 const keyMetrics = [
   { value: '+188%', label: 'Signups from unpaid search, year on year', icon: TrendingUp },
@@ -155,8 +156,8 @@ export default function CaseStudyTFT() {
             <span className="text-neutral-light">The Funded Trader</span>
           </nav>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <m.div
+            initial={enter({ opacity: 0, y: 20 })}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -176,9 +177,9 @@ export default function CaseStudyTFT() {
             {/* Key Metrics Grid */}
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
               {keyMetrics.map((metric, index) => (
-                <motion.div
+                <m.div
                   key={metric.label}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={enter({ opacity: 0, y: 20 })}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                   className="relative group"
@@ -193,10 +194,10 @@ export default function CaseStudyTFT() {
                       <p className="text-xs uppercase tracking-wider text-neutral-light/70">{metric.label}</p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -235,7 +236,7 @@ export default function CaseStudyTFT() {
       {/* The Challenge */}
       <section className="py-24 bg-dark-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -250,11 +251,11 @@ export default function CaseStudyTFT() {
               the cost of winning each customer kept climbing, and changes to challenge rules made buyers hesitate.
               In a heavily regulated market where reputation matters, they needed growth without cutting corners on compliance or trust.
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             {challenges.map((challenge, index) => (
-              <motion.div
+              <m.div
                 key={challenge.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -269,12 +270,12 @@ export default function CaseStudyTFT() {
                     <p className="text-neutral-light/80">{challenge.description}</p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Quote from stakeholder */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -292,14 +293,14 @@ export default function CaseStudyTFT() {
                 </p>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* Our Approach */}
       <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -314,11 +315,11 @@ export default function CaseStudyTFT() {
               between landing on the site and paying, and sending follow-up emails that increase what each
               customer spends over time. Everything was measurable and kept within the rules.
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="mt-12 space-y-8">
             {solutions.map((solution, index) => (
-              <motion.div
+              <m.div
                 key={solution.category}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -343,7 +344,7 @@ export default function CaseStudyTFT() {
                     </ul>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -352,7 +353,7 @@ export default function CaseStudyTFT() {
       {/* Timeline */}
       <section className="py-24 bg-dark-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -362,7 +363,7 @@ export default function CaseStudyTFT() {
             <h2 className="mt-4 text-4xl font-bold">
               12 Weeks to Build, Then Ongoing Improvement
             </h2>
-          </motion.div>
+          </m.div>
 
           <div className="mt-12 relative">
             {/* Timeline Line */}
@@ -370,7 +371,7 @@ export default function CaseStudyTFT() {
 
             <div className="space-y-12">
               {timeline.map((phase, index) => (
-                <motion.div
+                <m.div
                   key={phase.phase}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -404,7 +405,7 @@ export default function CaseStudyTFT() {
                       </CardContent>
                     </Card>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -414,7 +415,7 @@ export default function CaseStudyTFT() {
       {/* Results */}
       <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -425,14 +426,14 @@ export default function CaseStudyTFT() {
             <h2 className="mt-4 text-4xl md:text-5xl font-bold">
               More Signups, Lower Costs, Steadier Results
             </h2>
-          </motion.div>
+          </m.div>
 
           {/* Early Results */}
           <div className="mt-12">
             <h3 className="text-2xl font-semibold text-center mb-8">First 90 Days</h3>
             <div className="grid md:grid-cols-4 gap-6">
               {results.early.map((result, index) => (
-                <motion.div
+                <m.div
                   key={result.metric}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -449,7 +450,7 @@ export default function CaseStudyTFT() {
                       <p className="text-xs text-neutral-light/60 mt-1">{result.period}</p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -459,7 +460,7 @@ export default function CaseStudyTFT() {
             <h3 className="text-2xl font-semibold text-center mb-8">Longer Term, Over 12 to 18 Months</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {results.longTerm.map((result, index) => (
-                <motion.div
+                <m.div
                   key={result.metric}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -477,13 +478,13 @@ export default function CaseStudyTFT() {
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
 
           {/* Key Takeaways */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -520,7 +521,7 @@ export default function CaseStudyTFT() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -530,7 +531,7 @@ export default function CaseStudyTFT() {
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-b from-dark-900 via-navy/20 to-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -569,7 +570,7 @@ export default function CaseStudyTFT() {
             <p className="mt-6 text-sm text-neutral-light/60">
               The call is free and there is no obligation.
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </div>

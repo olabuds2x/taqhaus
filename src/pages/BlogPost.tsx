@@ -1,9 +1,10 @@
 import { useParams, Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { CALENDLY_URL } from '@/lib/constants'
 import { Calendar, Clock, ArrowLeft, Linkedin, Twitter } from 'lucide-react'
 import { blogPosts } from '@/data/blogPosts'
 import { SEO } from '@/components/SEO'
+import { enter } from '@/lib/firstView'
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
@@ -52,8 +53,8 @@ export default function BlogPost() {
             </Link>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <m.div
+            initial={enter({ opacity: 0, y: 20 })}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -98,15 +99,15 @@ export default function BlogPost() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* Article Content */}
       <article className="max-w-3xl mx-auto px-6 pb-24">
         {/* Featured Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
+        <m.div
+          initial={enter({ opacity: 0, scale: 0.98 })}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.7 }}
           className="mb-16 -mt-6"
@@ -121,10 +122,10 @@ export default function BlogPost() {
             {/* Noir overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-noir-void via-transparent to-transparent z-20" />
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <m.div
+          initial={enter({ opacity: 0, y: 20 })}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           className="prose prose-lg prose-invert max-w-none"
@@ -162,10 +163,10 @@ export default function BlogPost() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Author Bio Box */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -182,13 +183,13 @@ export default function BlogPost() {
               <p className="text-ink-secondary leading-relaxed max-w-xl text-lg">{post.authorBio}</p>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </article>
 
       {/* CTA Section */}
       <section className="py-24 px-6 bg-gradient-to-b from-noir-void to-maroon-deep/20 border-t border-white/5">
         <div className="max-w-3xl mx-auto text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -216,7 +217,7 @@ export default function BlogPost() {
                 View Consulting Services
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </div>

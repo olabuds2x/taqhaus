@@ -1,26 +1,27 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { CALENDLY_URL } from '@/lib/constants'
+import { enter } from '@/lib/firstView'
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-noir-void flex items-center justify-center px-6">
       <div className="max-w-2xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <m.div
+          initial={enter({ opacity: 0, y: 20 })}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           {/* 404 */}
-          <motion.p
+          <m.p
             className="text-8xl sm:text-[140px] font-headline font-bold text-strike/20 mb-4"
-            initial={{ scale: 0.8, opacity: 0 }}
+            initial={enter({ scale: 0.8, opacity: 0 })}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             404
-          </motion.p>
+          </m.p>
 
           <h1 className="text-3xl sm:text-4xl font-headline font-bold text-white mb-4">
             This page isn't ranking.
@@ -56,7 +57,7 @@ export default function NotFound() {
               <Link to="/contact" className="text-blush hover:text-white transition-colors">Contact</Link>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </div>
   )
