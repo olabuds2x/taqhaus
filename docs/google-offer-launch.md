@@ -12,7 +12,7 @@ Review fixes (12 Nov 2026):
 - `/google/terms#access-delays`: if access or information isn't provided, the team contacts the customer up to three times over seven days, then offers a full refund or an audit-only summary based on the public profile. **This is a manual process:** nothing automates the reminders, so track it from the order's `paid_at` in Stripe.
 - Stripe product name: "Google Business Profile optimization & review-request setup" (one-time payment mode, no subscription possible).
 - Tax: Stripe Tax is off by choice, and the terms say no tax is added at checkout. If Stripe Tax is switched on later, update the "Price and payment" paragraph in `GoogleOfferTerms.tsx` at the same time.
-- **Order emails are not being sent:** `RESEND_API_KEY`, `ORDER_FROM_EMAIL` and `ORDER_NOTIFY_EMAIL` are not set in Vercel, so nobody gets the internal notification and customers don't get the resume link. Watch Stripe → Payments until this is set up.
+- **Order emails are live (12 Nov 2026):** Resend (free plan: 3,000/month, 100/day), sending from `TaqHaus Orders <orders@taqhaus.com>`, team alerts to `taqhausinc@gmail.com`, customer replies also go there. The domain is verified in Resend; its DNS records are at GoDaddy, separate from the Microsoft 365 mail records.
 
 Local currency: checkout requests Stripe Adaptive Pricing. In test mode, Stripe still showed USD for simulated Canadian, UK and US customers, so the account may need it switched on in the dashboard, or it may not be offered for this account. Either way, customers are charged correctly.
 
