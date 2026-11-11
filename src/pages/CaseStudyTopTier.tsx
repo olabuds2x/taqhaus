@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { enter } from '@/lib/firstView'
+import { CountUp } from '@/components/site/CountUp'
 
 const keyMetrics = [
   { value: '+142%', label: 'People searching the brand by name', icon: TrendingUp },
@@ -187,7 +188,7 @@ export default function CaseStudyTopTier() {
                   <Card className="relative bg-dark-900/80 border-white/10 backdrop-blur">
                     <CardHeader className="text-center pb-3">
                       <metric.icon className="h-8 w-8 text-accent mx-auto mb-2" />
-                      <div className="text-3xl md:text-4xl font-bold text-accent">{metric.value}</div>
+                      <div className="text-3xl md:text-4xl font-bold text-accent"><CountUp value={metric.value} /></div>
                     </CardHeader>
                     <CardContent className="text-center pt-0">
                       <p className="text-xs uppercase tracking-wider text-neutral-light/70">{metric.label}</p>
@@ -470,7 +471,7 @@ export default function CaseStudyTopTier() {
                     <CardContent className="p-6 flex items-center justify-between">
                       <div>
                         <p className="text-sm text-neutral-light/70 uppercase tracking-wider mb-1">{result.metric}</p>
-                        <p className="text-3xl font-bold text-accent">{result.value}</p>
+                        <p className="text-3xl font-bold text-accent"><CountUp value={result.value} /></p>
                       </div>
                       <div className="text-right text-sm text-neutral-light/60 max-w-xs">
                         {result.context}

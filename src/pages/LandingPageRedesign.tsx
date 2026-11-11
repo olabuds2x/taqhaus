@@ -1,6 +1,6 @@
 import '../styles/taqhaus-editorial.css'
 import { useRef, useState } from 'react'
-import { m, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
   ArrowLeft, ArrowRight, Check, ClipboardList, Layers, LineChart, Mail, Megaphone,
@@ -13,8 +13,8 @@ import SiteFooter from '@/components/site/SiteFooter'
 import { HookArrow } from '@/components/site/HookArrow'
 import { blogPosts } from '@/data/blogPosts'
 import { enter } from '@/lib/firstView'
+import { CountUp } from '@/components/site/CountUp'
 
-const MotionLink = m.create(Link)
 
 const rv = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -163,6 +163,10 @@ const latestPosts = blogPosts
 export default function LandingPageRedesign() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const railRef = useRef<HTMLDivElement>(null)
+  const photoRef = useRef<HTMLDivElement>(null)
+  const reduceMotion = useReducedMotion()
+  const { scrollYProgress: photoProgress } = useScroll({ target: photoRef, offset: ['start end', 'end start'] })
+  const photoY = useTransform(photoProgress, [0, 1], ['-6%', '6%'])
 
   const scrollRail = (dir: 1 | -1) => {
     const rail = railRef.current
@@ -253,18 +257,24 @@ export default function LandingPageRedesign() {
             </Link>
           </m.div>
 
-          <m.div className="h-split-photo" {...rv(0.1)}>
-            <img src="/images/hero-strategy.jpg" alt="Campaign planning boards and analytics on a strategy desk" fetchPriority="high" />
+          {/* Scroll-linked: the photo drifts inside its frame as the section passes. */}
+          <div className="h-split-photo" ref={photoRef}>
+            <m.img
+              src="/images/hero-strategy.jpg"
+              alt="Campaign planning boards and analytics on a strategy desk"
+              fetchPriority="high"
+              style={reduceMotion ? undefined : { y: photoY, scale: 1.14 }}
+            />
             <div className="h-stat-row">
               {heroStats.map(s => (
                 <div key={s.label} className="h-stat">
-                  <span className="h-stat-num">{s.num}<em>{s.unit}</em></span>
+                  <span className="h-stat-num"><CountUp value={s.num} /><em>{s.unit}</em></span>
                   <span className="h-stat-label">{s.label}</span>
                   <span className="h-stat-chip"><HookArrow /> {s.chip}</span>
                 </div>
               ))}
             </div>
-          </m.div>
+          </div>
         </div>
 
         <div className="h-logos" aria-label="Clients and partners">
@@ -286,17 +296,17 @@ export default function LandingPageRedesign() {
           </m.div>
 
           <div className="h-pains">
-            {pains.map((p, i) => (
-              <m.figure key={p.quote} className="h-pain" {...rv(i * 0.07)}>
+            {pains.map((p) => (
+              <figure key={p.quote} className="h-pain">
                 <img src={p.img} alt={p.alt} loading="lazy" />
                 <figcaption>“{p.quote}”</figcaption>
-              </m.figure>
+              </figure>
             ))}
           </div>
 
-          <m.p className="h-bridge" {...rv(0.15)}>
+          <p className="h-bridge">
             That's where we come in. You hand it over. We do the work. <em>You see the numbers.</em>
-          </m.p>
+          </p>
         </div>
       </section>
 
@@ -319,10 +329,10 @@ export default function LandingPageRedesign() {
         </div>
 
         <div className="h-rail" ref={railRef}>
-          {services.map((svc, i) => {
+          {services.map((svc) => {
             const Icon = svc.icon
             return (
-              <m.article key={svc.num} className="h-svc" {...rv(i * 0.05)}>
+              <article key={svc.num} className="h-svc">
                 <div className="h-svc-top">
                   <span className="h-svc-num">{svc.num} — {svc.type}</span>
                   <span className="h-svc-icon"><Icon size={22} strokeWidth={2.2} /></span>
@@ -335,7 +345,7 @@ export default function LandingPageRedesign() {
                     <strong>See the package <HookArrow /></strong>
                   </Link>
                 )}
-              </m.article>
+              </article>
             )
           })}
           <Link to="/services" className="h-svc h-svc--more">
@@ -359,7 +369,7 @@ export default function LandingPageRedesign() {
 
           <div className="h-work-grid">
             {cases.map((c, i) => (
-              <MotionLink key={c.to} to={c.to} className={`h-case h-case--${c.size}`} {...rv((i % 2) * 0.08)}>
+              <Link key={c.to} to={c.to} className={`h-case h-case--${c.size}`}>
                 <div className={`h-case-art tone-${c.tone}`}>
                   <span className="h-case-label">Case 0{i + 1} · {c.label}</span>
                   <span className="h-case-hook" aria-hidden="true"><HookArrow /></span>
@@ -370,9 +380,9 @@ export default function LandingPageRedesign() {
                 </div>
                 <h3>{c.title}</h3>
                 <span className="h-case-meta">{c.meta}</span>
-              </MotionLink>
+              </Link>
             ))}
-            <m.a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="h-case h-case--narrow h-case--cta" {...rv(0.08)}>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="h-case h-case--narrow h-case--cta">
               <div className="h-case-art tone-open">
                 <span className="h-case-label">Case 06 · Not written yet</span>
                 <div className="h-case-stat">
@@ -382,7 +392,7 @@ export default function LandingPageRedesign() {
               </div>
               <h3>Your business could be next</h3>
               <span className="h-case-meta">Book a free 20-minute call</span>
-            </m.a>
+            </a>
           </div>
 
           <div className="h-center-cta">
@@ -432,10 +442,10 @@ export default function LandingPageRedesign() {
           </m.div>
 
           <div className="h-plans">
-            {plans.map((plan, i) => {
+            {plans.map((plan) => {
               const Icon = plan.icon
               return (
-                <m.div key={plan.name} className={`h-plan${plan.featured ? ' h-plan--featured' : ''}`} {...rv(i * 0.07)}>
+                <div key={plan.name} className={`h-plan${plan.featured ? ' h-plan--featured' : ''}`}>
                   <div className="h-plan-head">
                     <span className="h-plan-name"><Icon size={16} strokeWidth={2.2} /> {plan.name}</span>
                     {plan.featured && <span className="h-plan-badge">Full team</span>}
@@ -462,18 +472,18 @@ export default function LandingPageRedesign() {
                       </li>
                     ))}
                   </ul>
-                </m.div>
+                </div>
               )
             })}
           </div>
 
-          <m.div className="h-route" {...rv(0.1)}>
+          <div className="h-route">
             <p>Run a bigger brand, or managing a public profile? We do that too.</p>
             <div>
               <Link to="/services" className="pill-btn pill-btn--line">Growing brands</Link>
               <Link to="/public-figures" className="pill-btn pill-btn--line">Public figures</Link>
             </div>
-          </m.div>
+          </div>
         </div>
       </section>
 
@@ -492,7 +502,7 @@ export default function LandingPageRedesign() {
             {[0, 1, 2].map(col => (
               <div key={col} className="h-quote-col">
                 {quotes.filter((_, i) => i % 3 === col).map(t => (
-                  <m.figure key={t.org} className="h-quote" {...rv(col * 0.08)}>
+                  <figure key={t.org} className="h-quote">
                     <blockquote>“{t.q}”</blockquote>
                     <figcaption>
                       <span className="h-tile h-tile--xs" aria-hidden="true"><HookArrow /></span>
@@ -504,7 +514,7 @@ export default function LandingPageRedesign() {
                         <ArrowRight size={16} />
                       </Link>
                     </figcaption>
-                  </m.figure>
+                  </figure>
                 ))}
               </div>
             ))}
@@ -573,7 +583,7 @@ export default function LandingPageRedesign() {
 
           <div className="h-posts">
             {latestPosts.map((post, i) => (
-              <m.article key={post.slug} className="h-post" {...rv(i * 0.07)}>
+              <article key={post.slug} className="h-post">
                 <span className="h-post-n">0{i + 1}</span>
                 <Link to={`/insights/${post.slug}`} className="h-post-card">
                   <img src={post.image} alt="" loading="lazy" />
@@ -587,7 +597,7 @@ export default function LandingPageRedesign() {
                     <span className="pill-btn pill-btn--coral pill-btn--sm">Read more <HookArrow /></span>
                   </div>
                 </Link>
-              </m.article>
+              </article>
             ))}
           </div>
         </div>

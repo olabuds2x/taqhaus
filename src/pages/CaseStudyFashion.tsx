@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { SEO } from '@/components/SEO'
 import RelatedCaseStudies from '@/components/RelatedCaseStudies'
 import { enter } from '@/lib/firstView'
+import { CountUp } from '@/components/site/CountUp'
 
 const keyMetrics = [
   { value: '$57K', label: 'Revenue from email in 90 days', icon: Mail },
@@ -162,7 +163,7 @@ export default function CaseStudyFashion() {
                 className="rounded-xl border border-white/10 bg-dark-900/50 p-6 text-center"
               >
                 <item.icon className="mx-auto h-8 w-8 text-accent mb-3" />
-                <p className="text-3xl font-bold text-white">{item.value}</p>
+                <p className="text-3xl font-bold text-white"><CountUp value={item.value} /></p>
                 <p className="mt-2 text-sm text-neutral-light/70">{item.label}</p>
               </m.div>
             ))}
@@ -338,7 +339,7 @@ export default function CaseStudyFashion() {
                   transition={{ delay: idx * 0.1 }}
                   className="rounded-xl border border-accent/20 bg-gradient-to-br from-accent/10 to-transparent p-6 text-center"
                 >
-                  <p className="text-3xl font-bold text-white">{item.metric}</p>
+                  <p className="text-3xl font-bold text-white"><CountUp value={item.metric} /></p>
                   <p className="mt-2 text-sm text-neutral-light/80">{item.description}</p>
                 </m.div>
               ))}

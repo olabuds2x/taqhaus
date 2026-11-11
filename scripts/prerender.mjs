@@ -87,6 +87,10 @@ function serveDist() {
   return new Promise(resolve => server.listen(PORT, () => resolve(server)))
 }
 
+/* Lets the app tell a snapshot run from a visitor: count-ups stay at their
+   real values so the saved HTML never holds a half-counted number. */
+const MARK_PRERENDER = () => { window.__TQ_PRERENDER__ = true }
+
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
 /**
@@ -113,6 +117,7 @@ async function launchPage() {
         }
       }
       const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+      await page.addInitScript(MARK_PRERENDER)
       console.log('[prerender] engine: playwright')
       return { browser, page }
     } catch (err) {
@@ -127,6 +132,7 @@ async function launchPage() {
     headless: true,
   })
   const page = await browser.newPage()
+  await page.evaluateOnNewDocument(MARK_PRERENDER)
   await page.setViewport({ width: 1440, height: 900 })
   console.log('[prerender] engine: puppeteer-core + @sparticuz/chromium')
   return { browser, page }

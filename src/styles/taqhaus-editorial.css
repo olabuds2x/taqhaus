@@ -3495,3 +3495,28 @@
 .tq-editorial.tq-chrome .snav-bar,
 .tq-editorial.tq-chrome .snav-menu { background: var(--pine-2); box-shadow: inset 0 0 0 1px rgba(246, 241, 231, .12), 0 18px 40px -24px rgba(0, 0, 0, .6); }
 .tq-editorial :is(.page-head h1, .contact-hero h1) { font-size: clamp(48px, 6.2vw, 100px); line-height: 1; }
+
+/* ── Hover craft (Nov 2026) ───────────────────────────────────────────────
+   Pointer devices only, and off for "reduce motion". Small, springy, and
+   always on something the visitor can click. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  /* The hook arrow leans forward on any link or button that carries one. */
+  .tq-editorial :is(a, button) .hook { transition: transform .45s cubic-bezier(.34, 1.56, .64, 1); }
+  .tq-editorial :is(a, button):hover .hook { transform: translateX(3px); }
+  /* The oversized case-study hook already has its own swing. */
+  .tq-home .h-case-hook .hook,
+  .tq-home .h-case:hover .h-case-hook .hook { transform: none; }
+
+  /* Service cards: a slightly lighter pine and the icon tile tips. */
+  .tq-home .h-svc { transition: background-color .3s ease; }
+  .tq-home .h-svc:not(.h-svc--more):hover { background: var(--pine-2); }
+  .tq-home .h-svc-icon,
+  .tq-home .h-svc--more .h-tile { transition: transform .5s cubic-bezier(.34, 1.56, .64, 1); }
+  .tq-home .h-svc:hover .h-svc-icon { transform: rotate(-8deg) scale(1.06); }
+  .tq-home .h-svc--more:hover .h-tile { transform: rotate(-8deg); }
+
+  /* Buttons: a softer, springier lift than the default 1px. */
+  .tq-editorial .pill-btn { transition: background .2s, color .2s, border-color .2s, transform .35s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s; }
+  .tq-editorial .pill-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rgba(19, 48, 41, .55); }
+  .tq-editorial .pill-btn:active { transform: translateY(0); box-shadow: none; transition-duration: .1s; }
+}
