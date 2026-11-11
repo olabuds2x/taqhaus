@@ -11,9 +11,9 @@ import {
   bestFor, deliverySummary, faqs, notFitYet, notIncluded, pillars, scopeNote, steps, timeline,
 } from '@/data/googleOffer'
 
-const TITLE = 'Google Business Listing & Review Setup | $99 | TaqHaus'
+const TITLE = 'Google Business Profile Optimization & Review Setup | $99 | TaqHaus'
 const DESCRIPTION =
-  'Improve how your local business appears on Google and set up a simple way to request genuine customer reviews. $99 USD, one-time. No discovery call required.'
+  'Google Business Profile optimization and review-request setup for local businesses. $99 USD, one-time. No discovery call required.'
 
 const issues = [
   {
@@ -49,7 +49,7 @@ const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Google business listing & review-request setup',
+    name: 'Google Business Profile optimization & review-request setup',
     description: DESCRIPTION,
     provider: { '@type': 'Organization', name: 'TaqHaus', url: 'https://www.taqhaus.com' },
     areaServed: { '@type': 'Country', name: 'United States' },
@@ -310,7 +310,7 @@ export default function GoogleOffer() {
               <div>
                 <h3>Who&rsquo;s doing the work</h3>
                 <p>
-                  TaqHaus is a marketing consultancy based in {BUSINESS.location}. Questions before you buy? Email{' '}
+                  {BUSINESS.legalName} is the marketing consultancy behind this package. Questions before you buy? Email{' '}
                   <a href={`mailto:${BUSINESS.email}`} onClick={supportClick('who_section')}>{BUSINESS.email}</a>.
                 </p>
               </div>

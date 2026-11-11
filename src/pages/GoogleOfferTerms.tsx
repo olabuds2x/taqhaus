@@ -40,7 +40,7 @@ export default function GoogleOfferTerms() {
           <section aria-labelledby="t-who">
             <h2 id="t-who">Who provides this service</h2>
             <p>
-              The service is provided by {BUSINESS.legalName}, {BUSINESS.location} (&ldquo;TaqHaus&rdquo;). Contact:{' '}
+              The service is provided by {BUSINESS.legalName} (&ldquo;TaqHaus&rdquo;). Contact:{' '}
               <a href={`mailto:${BUSINESS.email}`} onClick={mail('terms_who')}>{BUSINESS.email}</a>.
             </p>
             <p>{independenceNote}</p>

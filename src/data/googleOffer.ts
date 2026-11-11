@@ -84,6 +84,13 @@ export const faqs: Faq[] = [
     a: 'No. TaqHaus is an independent marketing services provider. Google Business Profiles are free; our fee covers the improvements and setup work.',
   },
   {
+    // Wording checked against Google's "Tips to improve your local ranking"
+    // (support.google.com/business/answer/7091), 11 Nov 2026.
+    q: 'Is this SEO?',
+    a: 'It covers the Google Business Profile side of local SEO. Google says complete, accurate business information and reviews help businesses show up in local search results, and that’s what this package works on. Website SEO isn’t included; we offer that separately.',
+    link: { to: '/services/seo', label: 'See our SEO service' },
+  },
+  {
     q: 'Will I rank higher or receive more calls?',
     a: 'We improve eligible information and the review-request process, but do not guarantee rankings, calls, customers, or review volume.',
   },

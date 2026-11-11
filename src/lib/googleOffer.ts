@@ -39,7 +39,7 @@ export const OFFER = {
 /** Business identity, confirmed by the owner on 11 Nov 2026. */
 export const BUSINESS = {
   legalName: 'TaqHaus Inc.',
-  location: 'Toronto, Canada',
+  // No city/country on purpose: the owner found it put off US prospects (11 Nov 2026).
   email: 'info@taqhaus.com',
 } as const
 

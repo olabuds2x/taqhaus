@@ -61,7 +61,7 @@ export default function SiteFooter() {
           </nav>
 
           <div className="sfoot-bottom">
-            <span>© {new Date().getFullYear()} TaqHaus Inc. · Made in Toronto, serving everywhere · <Link to="/privacy">Privacy</Link></span>
+            <span>© {new Date().getFullYear()} TaqHaus Inc. · <Link to="/privacy">Privacy</Link></span>
             <div className="sfoot-social">
               <a href="https://linkedin.com/company/taqhaus" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href="https://twitter.com/taqhaus" target="_blank" rel="noopener noreferrer">X</a>

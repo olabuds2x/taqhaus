@@ -30,7 +30,7 @@ export default function Privacy() {
             <span className="eyebrow">Privacy</span>
             <h1>Privacy <em>policy</em></h1>
             <p>
-              This policy explains how {BUSINESS.legalName} (&ldquo;TaqHaus&rdquo;, &ldquo;we&rdquo;), based in {BUSINESS.location}, handles
+              This policy explains how {BUSINESS.legalName} (&ldquo;TaqHaus&rdquo;, &ldquo;we&rdquo;) handles
               personal information when you visit taqhaus.com, contact us, or buy our services. Last updated {LAST_UPDATED}.
             </p>
           </header>
@@ -93,8 +93,8 @@ export default function Privacy() {
               <li><strong>Google</strong>: fonts on this site and, with your permission, your Business Profile</li>
             </ul>
             <p>
-              We may also disclose information if the law requires it. Some of these providers store data outside Canada,
-              including in the United States, where it may be accessed under local law.
+              We may also disclose information if the law requires it. Some of these providers store data in other countries,
+              including the United States, where it may be accessed under local law.
             </p>
           </section>
 
@@ -128,7 +128,7 @@ export default function Privacy() {
           <section aria-labelledby="p-contact">
             <h2 id="p-contact">Contact</h2>
             <p>
-              Questions about this policy or your information: {mail}. {BUSINESS.legalName}, {BUSINESS.location}.
+              Questions about this policy or your information: {mail}.
             </p>
             <p>
               Buying the Google presence package? See the <Link to="/google/terms">package terms</Link> as well.

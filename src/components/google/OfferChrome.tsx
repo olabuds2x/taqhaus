@@ -66,7 +66,7 @@ export function OfferFooter() {
         </div>
         <p className="go-foot-note">{independenceNote} {trademarkNote}</p>
         <p className="go-foot-legal">
-          © {new Date().getFullYear()} {BUSINESS.legalName} · {BUSINESS.location}
+          © {new Date().getFullYear()} {BUSINESS.legalName}
         </p>
       </div>
     </footer>
