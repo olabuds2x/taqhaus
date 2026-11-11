@@ -25,19 +25,19 @@ const issues = [
     title: 'Unclear services',
     text: 'The listing says “general services.” A customer can’t tell if you repair furnaces, install AC, or clear drains.',
     rows: [{ k: 'Services', v: 'General services', flag: true }, { k: 'Service area', v: 'Listed' }],
-    fix: 'We improve your service descriptions using details you confirm.',
+    fix: 'We improve how your services are presented on Google so potential customers can quickly understand what you offer.',
   },
   {
     title: 'Incomplete contact details',
     text: 'No hours, an old phone number, or a website link that goes nowhere. People move on to the next company.',
     rows: [{ k: 'Hours', v: 'Not listed', flag: true }, { k: 'Website', v: 'Missing', flag: true }],
-    fix: 'We check and correct your hours and contact links.',
+    fix: 'We review and improve the important details customers rely on, making it easier to trust and contact your business.',
   },
   {
     title: 'No way to ask for reviews',
     text: 'Happy customers would leave a review. Nobody asked them, and there’s no simple link to send.',
     rows: [{ k: 'Review link', v: 'None set up', flag: true }, { k: 'Phone', v: 'Listed' }],
-    fix: 'We create your review link, a QR code and two request templates.',
+    fix: 'We set up a ready-to-use review-request system that helps you consistently ask real customers for reviews.',
   },
 ]
 
@@ -252,6 +252,10 @@ export default function GoogleOffer() {
                 </figure>
               ))}
             </div>
+            <p className="go-issues-note">
+              These are just a few examples. We review your Google listing, improve the areas that need attention, and
+              give you a simple way to keep requesting customer reviews. <a href="#included">{OFFER.secondaryLabel}</a>
+            </p>
           </div>
         </section>
 

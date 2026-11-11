@@ -238,6 +238,14 @@
 .tq-offer .go-issue-fix-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
 .tq-offer .go-issue-fix-text { display: flex; align-items: flex-start; gap: 8px; font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--ink); }
 .tq-offer .go-issue-fix-text svg { flex-shrink: 0; margin-top: 2px; color: var(--pine-3); }
+.tq-offer .go-issues-note {
+  margin: 28px 0 0; max-width: 68ch;
+  font-size: clamp(16px, 1.2vw, 17.5px); line-height: 1.6; color: var(--ink-2);
+}
+.tq-offer .go-issues-note a {
+  color: var(--ink); font-weight: 600; white-space: nowrap;
+  text-decoration: underline; text-decoration-color: var(--coral); text-underline-offset: 3px;
+}
 @media (max-width: 900px) { .tq-offer .go-issues { grid-template-columns: 1fr; max-width: 560px; } }
 
 /* ── C. Included ──────────────────────────────────────────── */
