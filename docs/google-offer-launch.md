@@ -7,6 +7,13 @@ Homepage bridge: a link inside the "Google (SEO)" service card. A second link si
 
 Taking real payments. Vercel Production holds a live **restricted** Stripe key (`rk_live_…`, "full access except sensitive operations") and the live webhook secret (`we_1UaTxVEBto62pJQMv9258j2Y` → `https://www.taqhaus.com/api/google/webhook`), and `VITE_GOOGLE_CHECKOUT_ENABLED=true`. The test-mode webhook `we_1UaTd3Cp1NbI4rjKe7sHjaZF` is disabled. To test in the sandbox again, use a Preview deployment with test keys rather than production.
 
+Review fixes (12 Nov 2026):
+- Up to **three** drafted review replies (page, sample summary, terms).
+- `/google/terms#access-delays`: if access or information isn't provided, the team contacts the customer up to three times over seven days, then offers a full refund or an audit-only summary based on the public profile. **This is a manual process:** nothing automates the reminders, so track it from the order's `paid_at` in Stripe.
+- Stripe product name: "Google Business Profile optimization & review-request setup" (one-time payment mode, no subscription possible).
+- Tax: Stripe Tax is off by choice, and the terms say no tax is added at checkout. If Stripe Tax is switched on later, update the "Price and payment" paragraph in `GoogleOfferTerms.tsx` at the same time.
+- **Order emails are not being sent:** `RESEND_API_KEY`, `ORDER_FROM_EMAIL` and `ORDER_NOTIFY_EMAIL` are not set in Vercel, so nobody gets the internal notification and customers don't get the resume link. Watch Stripe → Payments until this is set up.
+
 Local currency: checkout requests Stripe Adaptive Pricing. In test mode, Stripe still showed USD for simulated Canadian, UK and US customers, so the account may need it switched on in the dashboard, or it may not be offered for this account. Either way, customers are charged correctly.
 
 ## Original launch checklist (for reference)
@@ -23,7 +30,7 @@ Checkout is **off** by default. Until `VITE_GOOGLE_CHECKOUT_ENABLED=true`, every
 | Confirm legal name/location ("TaqHaus Consultancy Inc., Toronto, Canada", taken from the current site footer) and public email | `BUSINESS` in `src/lib/googleOffer.ts` | Yes |
 | Stripe account (owned by the business) | env vars below | Yes |
 | Google account clients invite as Manager | `VITE_GOOGLE_MANAGER_EMAIL` | No. Without it, the page says "we'll email you the address" |
-| Response-draft allowance (5) and turnaround (2 business days) | `src/data/googleOffer.ts` | No |
+| Response-draft allowance (3, set 12 Nov 2026) and turnaround (2 business days) | `src/data/googleOffer.ts` | No |
 | Order email sender (domain verified in Resend) | env vars below | No, but strongly recommended |
 
 ## Environment variables (Vercel → Project → Settings → Environment Variables)

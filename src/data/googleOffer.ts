@@ -21,7 +21,7 @@ export const pillars = [
     items: [
       'Create direct Google review link and downloadable digital QR asset.',
       'Provide two short neutral customer-review-request templates (SMS/email) and a recommended ask routine.',
-      'Draft up to five personalized responses to existing genuine reviews for owner approval.',
+      'Draft up to three personalized responses to existing genuine reviews for owner approval.',
       'Give the owner straightforward instructions for continuing to request reviews from actual customers.',
     ],
   },
@@ -57,6 +57,13 @@ export const steps = [
     desc: 'TaqHaus checks the details and requests approval for material changes.',
   },
   { title: 'See what changed.', desc: 'Receive a concise completion summary and reusable review-request materials.' },
+] as const
+
+/** Owner-approved clause (11 Nov 2026) for when access or information never arrives. */
+export const accessFailure = [
+  'If we cannot start because manager access or required information is not provided, we will contact you up to three times over seven days.',
+  'After seven days, you may choose a full refund or an audit-only summary based on the public profile.',
+  'The two-business-day delivery target starts only after we receive the required access and information.',
 ] as const
 
 export const timeline =

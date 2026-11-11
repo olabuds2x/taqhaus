@@ -6,7 +6,7 @@ import { OfferFooter, OfferNav } from '@/components/google/OfferChrome'
 import { track } from '@/lib/track'
 import { BUSINESS, COMPLEX_MAILTO, PRIVACY_POLICY_URL, REFUND_TERMS } from '@/lib/googleOffer'
 import {
-  bestFor, deliverySummary, independenceNote, notFitYet, notIncluded, pillars, scopeNote, timeline, trademarkNote,
+  accessFailure, bestFor, deliverySummary, independenceNote, notFitYet, notIncluded, pillars, scopeNote, timeline, trademarkNote,
 } from '@/data/googleOffer'
 
 const LAST_UPDATED = '10 November 2026'
@@ -97,13 +97,18 @@ export default function GoogleOfferTerms() {
             <p>{timeline}</p>
           </section>
 
+          <section id="access-delays" aria-labelledby="t-access-delays">
+            <h2 id="t-access-delays">If we can&rsquo;t get access</h2>
+            <p>{accessFailure.join(' ')}</p>
+          </section>
+
           <section aria-labelledby="t-price">
             <h2 id="t-price">Price and payment</h2>
             <p>
               The price is $99 in US dollars, paid once. It is not a subscription. Where our payment provider supports
               it, customers outside the US may see the price converted to their local currency at checkout, and the exact
               amount is shown before you pay. Payment is processed securely by Stripe; TaqHaus does not see or store your
-              card details. Any applicable tax is shown at checkout before you pay.
+              card details. No tax is currently added at checkout, so the total shown is the full amount you pay.
             </p>
           </section>
 

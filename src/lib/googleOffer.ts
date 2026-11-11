@@ -48,6 +48,7 @@ export const REFUND_TERMS: string[] = [
   'If we find your profile isn’t eligible for this package, we cancel the order and refund the full $99.',
   'If you cancel before we start working on your profile, we refund the full $99.',
   'If we can’t complete the work for reasons on our side, we refund the full $99.',
+  'If we can’t start because manager access or required information isn’t provided, the “If we can’t get access” section above applies, including the option of a full refund after seven days.',
   'Once we’ve delivered your completion summary, the fee isn’t refundable. If something in scope isn’t right, tell us within 14 days and we’ll fix it at no charge.',
   'Google’s own decisions (such as declining an edit or delaying a review) aren’t grounds for a refund, because they’re outside our control.',
   'Refunds go back to your original payment method. To ask for one, email info@taqhaus.com with your order reference.',

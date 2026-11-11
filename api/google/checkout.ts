@@ -31,7 +31,7 @@ export async function POST(request: Request): Promise<Response> {
           currency: CURRENCY,
           unit_amount: PRICE_CENTS,
           product_data: {
-            name: 'Google presence + review-request setup',
+            name: 'Google Business Profile optimization & review-request setup',
             description: 'One-time service. A clearer Google business listing and a simple, genuine review-request setup.',
           },
         },
