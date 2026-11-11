@@ -48,8 +48,8 @@ const principles = [
 
 /** Hidden from the team grid for now at the owner's request (11 Nov 2026). Remove a name to show the card again. */
 const HIDDEN_MEMBERS = ['Ola Raji']
-/** Founder sign-off under the origin story, hidden for now (11 Nov 2026). Set to true to show it again. */
-const SHOW_FOUNDER_SIGNATURE = false
+/** Founder's name on the origin card and sign-off, hidden for now (11 Nov 2026). Set to true to show both again. */
+const SHOW_FOUNDER_NAME = false
 
 const team = [
   {
@@ -148,16 +148,16 @@ export default function About() {
                 <div className="ca-mark" style={{ fontSize: 'clamp(64px, 9vw, 144px)' }}>A<br />small<br /><em>Haus.</em></div>
                 <div className="ca-foot">
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' as const, opacity: 0.7 }}>Capped at 14&nbsp;partners</div>
-                  <div style={{ fontFamily: 'var(--serif)', fontStyle: 'normal', fontSize: 32, color: 'var(--ink)', lineHeight: 1 }}>Ola.</div>
+                  {SHOW_FOUNDER_NAME && <div style={{ fontFamily: 'var(--serif)', fontStyle: 'normal', fontSize: 32, color: 'var(--ink)', lineHeight: 1 }}>Ola.</div>}
                 </div>
               </div>
             </div>
             <div className="copy">
               <p>
-                Before I started TaqHaus, I&rsquo;d run marketing as a CMO twice and worked as a consultant once. Each time I watched the same thing happen. A business would pay one firm for a beautiful plan. Then the plan went to three other agencies who had never met each other. By month four the plan was dead, and the owner was back to writing their own LinkedIn posts at midnight.
+                Before TaqHaus, we led marketing inside other organizations. Again and again, we watched the same thing happen. A business would pay one firm for a beautiful plan. Then the plan went to three other agencies who had never met each other. By month four the plan was dead, and the owner was back to writing their own LinkedIn posts at midnight.
               </p>
               <p>
-                The problem wasn&rsquo;t a lack of talent. The talent was everywhere. The problem was the gap between the people who made the plan and the people who did the work. The plan got thrown over the fence, then thrown back when it didn&rsquo;t work. Every agency I&rsquo;d worked with was built around that gap. We built TaqHaus to remove it.
+                The problem wasn&rsquo;t a lack of talent. The talent was everywhere. The problem was the gap between the people who made the plan and the people who did the work. The plan got thrown over the fence, then thrown back when it didn&rsquo;t work. Every agency we&rsquo;d worked with was built around that gap. We built TaqHaus to remove it.
               </p>
               <p>
                 At TaqHaus, one senior team works out what&rsquo;s wrong, makes the plan, and does the work. The same team stays answerable for your numbers for as long as you&rsquo;ll have us. No hand-offs, no middlemen, no &ldquo;that&rsquo;s a different team&rsquo;s job.&rdquo; If we can&rsquo;t help, we&rsquo;ll tell you. And if we believe we can, we&rsquo;ll treat your business like our&nbsp;own.
@@ -165,7 +165,7 @@ export default function About() {
               <p>
                 We&rsquo;re a small Haus on purpose. Fourteen partners at any one time, never more. We&rsquo;d rather do a few jobs well than grow into the kind of agency we left behind.
               </p>
-              {SHOW_FOUNDER_SIGNATURE && (
+              {SHOW_FOUNDER_NAME && (
                 <div className="signature">
                   — Ola<br />
                   <span className="signature-meta">Ola Raji · Founder &amp; Managing Partner</span>
