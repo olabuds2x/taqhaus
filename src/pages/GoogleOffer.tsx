@@ -3,8 +3,8 @@ import '../styles/google-offer.css'
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
-  Building2, Check, ChevronDown, ClipboardCheck, Clock, KeyRound, MessageSquareText, Minus, PencilLine, QrCode,
-  RotateCcw, UserCheck, X,
+  AlertCircle, Building2, Check, ChevronDown, ClipboardCheck, Clock, KeyRound, MessageSquareText, Minus, PencilLine, QrCode,
+  Info, RotateCcw, UserCheck, X,
 } from 'lucide-react'
 import { SEO } from '@/components/SEO'
 import { OfferCta, OfferFooter, OfferNav } from '@/components/google/OfferChrome'
@@ -18,21 +18,26 @@ const TITLE = 'Google Business Profile Optimization & Review Setup | $99 | TaqHa
 const DESCRIPTION =
   'Google Business Profile optimization and review-request setup for local businesses. $99 USD, one-time. No discovery call required.'
 
+/* Illustrative listings (labelled as such on the page). Each "fix" restates a
+   package item from src/data/googleOffer.ts; keep them in step with it. */
 const issues = [
   {
     title: 'Unclear services',
     text: 'The listing says “general services.” A customer can’t tell if you repair furnaces, install AC, or clear drains.',
-    rows: [{ k: 'Services', v: 'General services', flag: true }, { k: 'Area', v: '' }],
+    rows: [{ k: 'Services', v: 'General services', flag: true }, { k: 'Service area', v: 'Listed' }],
+    fix: 'We improve your service descriptions using details you confirm.',
   },
   {
     title: 'Incomplete contact details',
     text: 'No hours, an old phone number, or a website link that goes nowhere. People move on to the next company.',
     rows: [{ k: 'Hours', v: 'Not listed', flag: true }, { k: 'Website', v: 'Missing', flag: true }],
+    fix: 'We check and correct your hours and contact links.',
   },
   {
     title: 'No way to ask for reviews',
     text: 'Happy customers would leave a review. Nobody asked them, and there’s no simple link to send.',
-    rows: [{ k: 'Review link', v: 'None set up', flag: true }, { k: 'Phone', v: '' }],
+    rows: [{ k: 'Review link', v: 'None set up', flag: true }, { k: 'Phone', v: 'Listed' }],
+    fix: 'We create your review link, a QR code and two request templates.',
   },
 ]
 
@@ -154,10 +159,15 @@ export default function GoogleOffer() {
             </div>
 
             <aside className="go-offer" aria-label="Price and order">
-              <p className="go-price">
-                <span className="amt">$99</span>
-                <span className="unit">USD · one-time</span>
-              </p>
+              <div className="go-price-panel">
+                <p className="go-price">
+                  <span className="cur">$</span><span className="amt">99</span>
+                  <span className="unit">
+                    <strong>USD · one-time</strong>
+                    <span>No monthly commitment</span>
+                  </span>
+                </p>
+              </div>
               <OfferCta location="hero" block />
               <p className="go-micro">
                 No discovery call required. We aim to finish within two business days of getting access and your details.
@@ -202,24 +212,43 @@ export default function GoogleOffer() {
                 harder for people to understand and choose your business. We handle the practical fixes.
               </p>
             </div>
-            <p className="go-label">Illustrative examples, not real businesses</p>
+            <p className="go-label">
+              <Info size={15} strokeWidth={2.2} aria-hidden="true" /> Illustrative examples, not real businesses
+            </p>
             <div className="go-issues">
               {issues.map(issue => (
                 <figure key={issue.title} className="go-issue">
                   <div className="go-sketch" aria-hidden="true">
-                    <span className="bar bar--name" />
-                    <span className="bar bar--sub" />
-                    {issue.rows.map(r => (
-                      <span key={r.k} className={`row${'flag' in r && r.flag ? ' row--flag' : ''}`}>
-                        <span className="k">{r.k}</span>
-                        {r.v ? <span className="v">{r.v}</span> : <span className="bar bar--val" />}
+                    <div className="go-sketch-head">
+                      <span className="go-sketch-avatar"><Building2 size={18} strokeWidth={2.2} /></span>
+                      <span>
+                        <span className="go-sketch-name">Your business</span>
+                        <span className="go-sketch-sub">Local service business</span>
                       </span>
-                    ))}
+                    </div>
+                    {issue.rows.map(r => {
+                      const flag = 'flag' in r && r.flag
+                      return (
+                        <span key={r.k} className={`row${flag ? ' row--flag' : ''}`}>
+                          <span className="k">
+                            {flag ? <AlertCircle size={15} strokeWidth={2.4} /> : <Check size={15} strokeWidth={2.6} />}
+                            {r.k}
+                          </span>
+                          <span className="v">{r.v}</span>
+                        </span>
+                      )
+                    })}
                   </div>
                   <figcaption>
                     <h3>{issue.title}</h3>
                     <p>{issue.text}</p>
                   </figcaption>
+                  <p className="go-issue-fix">
+                    <span className="go-issue-fix-label">What we do</span>
+                    <span className="go-issue-fix-text">
+                      <Check size={16} strokeWidth={3} aria-hidden="true" /> {issue.fix}
+                    </span>
+                  </p>
                 </figure>
               ))}
             </div>

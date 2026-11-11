@@ -78,10 +78,10 @@
 }
 .tq-offer .go-lede { margin: 0; font-size: clamp(16.5px, 1.25vw, 18.5px); line-height: 1.6; color: var(--ink-2); max-width: 62ch; }
 .tq-offer .go-label {
-  display: inline-flex; margin: 0 0 16px; padding: 5px 12px; border-radius: 999px;
-  border: 1px dashed color-mix(in srgb, var(--ink) 30%, transparent);
-  font-size: 13px; font-weight: 600; color: var(--ink-3);
+  display: flex; align-items: center; gap: 7px; margin: 0 0 16px;
+  font-size: 13.5px; font-weight: 600; color: var(--ink-3);
 }
+.tq-offer .go-label svg { flex-shrink: 0; }
 
 /* ── Notice (cancelled checkout) ──────────────────────────── */
 .tq-offer .go-notice {
@@ -118,9 +118,28 @@
   background: var(--card); border: 1px solid var(--hairline); border-radius: var(--radius-lg);
   box-shadow: 0 30px 60px -40px rgba(18, 36, 31, .5);
 }
-.tq-offer .go-price { display: flex; align-items: baseline; gap: 12px; margin: 0 0 4px; }
-.tq-offer .go-price .amt { font-family: var(--display); font-weight: 600; font-size: clamp(52px, 5vw, 68px); line-height: 1; letter-spacing: -0.05em; color: var(--ink); }
-.tq-offer .go-price .unit { font-size: 16px; font-weight: 600; color: var(--ink-2); }
+/* Price: its own pine panel so it reads first, with the terms stacked beside it. */
+.tq-offer .go-price-panel {
+  margin: 0 0 4px; padding: 20px 22px; border-radius: 18px;
+  background: var(--pine); color: var(--ivory);
+}
+.tq-offer .go-price { display: flex; align-items: center; margin: 0; }
+.tq-offer .go-price .cur {
+  align-self: flex-start; margin: 6px 3px 0 0;
+  font-family: var(--display); font-weight: 600; font-size: clamp(24px, 2.2vw, 30px); line-height: 1;
+  color: color-mix(in srgb, var(--ivory) 72%, transparent);
+}
+.tq-offer .go-price .amt {
+  font-family: var(--display); font-weight: 600; font-size: clamp(60px, 5.6vw, 76px);
+  line-height: .9; letter-spacing: -0.055em; color: var(--ivory);
+}
+.tq-offer .go-price .unit {
+  display: flex; flex-direction: column; gap: 3px;
+  margin-left: 18px; padding-left: 18px;
+  border-left: 1px solid color-mix(in srgb, var(--ivory) 22%, transparent);
+}
+.tq-offer .go-price .unit strong { font-size: 15px; font-weight: 700; letter-spacing: -0.005em; color: var(--ivory); }
+.tq-offer .go-price .unit span { font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--ivory) 70%, transparent); }
 .tq-offer .go-micro { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
 .tq-offer .go-secondary {
   align-self: flex-start; font-size: 15px; font-weight: 700; color: var(--ink);
@@ -153,7 +172,9 @@
   .tq-offer .go-hero { padding-top: 28px; }
   .tq-offer .go-hero h1 { font-size: clamp(31px, 8.6vw, 38px); margin-top: 14px; }
   .tq-offer .go-hero-sub { margin-top: 16px; font-size: 16.5px; line-height: 1.55; }
-  .tq-offer .go-price .amt { font-size: 48px; }
+  .tq-offer .go-price .amt { font-size: 56px; }
+  .tq-offer .go-price-panel { padding: 18px; }
+  .tq-offer .go-price .unit { margin-left: 14px; padding-left: 14px; }
   .tq-offer .go-offer { padding: 20px; gap: 12px; }
 }
 
@@ -176,28 +197,47 @@
 /* ── B. Problem ───────────────────────────────────────────── */
 .tq-offer .go-problem { background: var(--ivory-2); }
 .tq-offer .go-issues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.tq-offer .go-issue { margin: 0; background: var(--card); border-radius: 20px; padding: 14px 14px 24px; display: flex; flex-direction: column; gap: 20px; }
+.tq-offer .go-issue {
+  margin: 0; background: var(--card); border-radius: 20px; padding: 14px 14px 22px;
+  display: flex; flex-direction: column; gap: 20px;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent);
+}
+/* A plain, unbranded listing card: "Your business", then the rows that matter. */
 .tq-offer .go-sketch {
-  display: flex; flex-direction: column; gap: 10px;
-  padding: 18px; border-radius: 14px;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 16px; border-radius: 14px;
   background: var(--ivory); border: 1px solid var(--hairline);
 }
-.tq-offer .go-sketch .bar { display: block; height: 10px; border-radius: 6px; background: color-mix(in srgb, var(--ink) 12%, transparent); }
-.tq-offer .go-sketch .bar--name { width: 62%; height: 14px; background: color-mix(in srgb, var(--ink) 22%, transparent); }
-.tq-offer .go-sketch .bar--sub { width: 38%; margin-bottom: 6px; }
-.tq-offer .go-sketch .bar--val { width: 45%; }
+.tq-offer .go-sketch-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.tq-offer .go-sketch-avatar {
+  display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px;
+  background: var(--pine); color: var(--ivory);
+}
+.tq-offer .go-sketch-name { display: block; font-family: var(--display); font-weight: 600; font-size: 17px; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); }
+.tq-offer .go-sketch-sub { display: block; margin-top: 2px; font-size: 12.5px; color: var(--ink-3); }
 .tq-offer .go-sketch .row {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 9px 12px; border-radius: 10px; background: var(--card);
+  padding: 10px 12px; border-radius: 10px; background: var(--card);
   font-size: 13.5px;
 }
-.tq-offer .go-sketch .row .k { font-weight: 600; color: var(--ink-3); }
-.tq-offer .go-sketch .row .v { font-weight: 600; color: var(--ink-2); }
-.tq-offer .go-sketch .row--flag { box-shadow: inset 0 0 0 2px var(--coral); }
-.tq-offer .go-sketch .row--flag .v { color: var(--coral-ink); }
+.tq-offer .go-sketch .row .k { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--ink-2); }
+.tq-offer .go-sketch .row .k svg { flex-shrink: 0; color: color-mix(in srgb, var(--ink) 38%, transparent); }
+.tq-offer .go-sketch .row .v { font-weight: 500; color: var(--ink-3); }
+.tq-offer .go-sketch .row--flag { box-shadow: inset 0 0 0 1.5px var(--coral); background: color-mix(in srgb, var(--coral) 7%, var(--card)); }
+.tq-offer .go-sketch .row--flag .k svg { color: var(--coral); }
+.tq-offer .go-sketch .row--flag .v { font-weight: 700; color: var(--coral-ink); }
 .tq-offer .go-issue figcaption { padding: 0 8px; }
 .tq-offer .go-issue h3 { margin: 0 0 8px; font-family: var(--display); font-size: 22px; line-height: 1.15; letter-spacing: -0.03em; }
-.tq-offer .go-issue p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
+.tq-offer .go-issue figcaption p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
+/* Problem → fix: what the package does about it, pinned to the card's foot. */
+.tq-offer .go-issue-fix {
+  display: flex; flex-direction: column; gap: 6px;
+  margin: auto 8px 0; padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+.tq-offer .go-issue-fix-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.tq-offer .go-issue-fix-text { display: flex; align-items: flex-start; gap: 8px; font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--ink); }
+.tq-offer .go-issue-fix-text svg { flex-shrink: 0; margin-top: 2px; color: var(--pine-3); }
 @media (max-width: 900px) { .tq-offer .go-issues { grid-template-columns: 1fr; max-width: 560px; } }
 
 /* ── C. Included ──────────────────────────────────────────── */
