@@ -46,6 +46,9 @@ const principles = [
   },
 ]
 
+/** Hidden from the team grid for now at the owner's request (11 Nov 2026). Remove a name to show the card again. */
+const HIDDEN_MEMBERS = ['Ola Raji']
+
 const team = [
   {
     name: 'Ola Raji',
@@ -224,7 +227,7 @@ export default function About() {
           </div>
 
           <div className="team">
-            {team.map((m) => (
+            {team.filter(m => !HIDDEN_MEMBERS.includes(m.name)).map((m) => (
               <motion.div key={m.name} className="member" {...rv()}>
                 <div className="portrait">
                   {m.name === 'Ola Raji' ? (
