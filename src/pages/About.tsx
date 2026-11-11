@@ -48,6 +48,8 @@ const principles = [
 
 /** Hidden from the team grid for now at the owner's request (11 Nov 2026). Remove a name to show the card again. */
 const HIDDEN_MEMBERS = ['Ola Raji']
+/** Founder sign-off under the origin story, hidden for now (11 Nov 2026). Set to true to show it again. */
+const SHOW_FOUNDER_SIGNATURE = false
 
 const team = [
   {
@@ -163,10 +165,12 @@ export default function About() {
               <p>
                 We&rsquo;re a small Haus on purpose. Fourteen partners at any one time, never more. We&rsquo;d rather do a few jobs well than grow into the kind of agency we left behind.
               </p>
-              <div className="signature">
-                — Ola<br />
-                <span className="signature-meta">Ola Raji · Founder &amp; Managing Partner</span>
-              </div>
+              {SHOW_FOUNDER_SIGNATURE && (
+                <div className="signature">
+                  — Ola<br />
+                  <span className="signature-meta">Ola Raji · Founder &amp; Managing Partner</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
