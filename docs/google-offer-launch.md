@@ -7,6 +7,14 @@ Homepage bridge: a link inside the "Google (SEO)" service card. A second link si
 
 Taking real payments. Vercel Production holds a live **restricted** Stripe key (`rk_live_…`, "full access except sensitive operations") and the live webhook secret (`we_1UaTxVEBto62pJQMv9258j2Y` → `https://www.taqhaus.com/api/google/webhook`), and `VITE_GOOGLE_CHECKOUT_ENABLED=true`. The test-mode webhook `we_1UaTd3Cp1NbI4rjKe7sHjaZF` is disabled. To test in the sandbox again, use a Preview deployment with test keys rather than production.
 
+Offer upgrade (11 Nov 2026, after the offer audit):
+- **Audience broadened** from US plumbers/HVAC to small businesses generally (owner's call: the price needs reach). "Best for" and the page copy changed to match.
+- **30-day check-up added to the scope** (third block in `pillars`, shown on `/google/terms` and in the customer details email). **Manual process:** about 30 days after an order reaches `delivered`, re-check the listing, fix anything in scope that was undone (with approval), then set `order_status` to `checkup_done`. Nothing automates the reminder. If manager access was removed, send a short what-to-fix summary instead. This is also the natural moment to offer ongoing help.
+- **Real reviews** from two earlier Google-listing customers (Dave C., Ben W.) are shown verbatim, labelled as pre-package work with a "results vary" note. Don't edit the wording without the reviewer's OK.
+- Owner-approved price line: "One booked job more than covers $99."
+- A seasonal holiday-hours note shows in the hero and hides itself on 1 Jan 2027 (`seasonalNote.until` in `src/data/googleOffer.ts`).
+- `/google/` (trailing slash) no longer shows the site nav above the funnel's own.
+
 Review fixes (12 Nov 2026):
 - Up to **three** drafted review replies (page, sample summary, terms).
 - `/google/terms#access-delays`: if access or information isn't provided, the team contacts the customer up to three times over seven days, then offers a full refund or an audit-only summary based on the public profile. **This is a manual process:** nothing automates the reminders, so track it from the order's `paid_at` in Stripe.
@@ -67,7 +75,7 @@ Account notes: the account is Canadian with default currency CAD. Checkout charg
 
 ### Statuses (team updates them in Stripe: Payments → open payment → Metadata → edit `order_status`)
 
-`paid` → `awaiting_details` (set automatically on payment) → `awaiting_access` (set automatically when onboarding is submitted) → `in_review` → `changes_approved` → `working` → `delivered`. Exceptions: `not_eligible`, `refunded` (set automatically on a full refund), `blocked`.
+`paid` → `awaiting_details` (set automatically on payment) → `awaiting_access` (set automatically when onboarding is submitted) → `in_review` → `changes_approved` → `working` → `delivered` → `checkup_done` (about 30 days later). Exceptions: `not_eligible`, `refunded` (set automatically on a full refund), `blocked`.
 
 ## Analytics
 

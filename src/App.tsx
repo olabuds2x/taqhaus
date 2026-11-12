@@ -27,7 +27,9 @@ function Chrome({ children }: { children: React.ReactNode }) {
 /* ── Route renderer ── */
 function AppRoutes() {
   const location = useLocation()
-  const isEditorial = EDITORIAL_ROUTES.includes(location.pathname)
+  // Vercel serves both /google and /google/, so ignore a trailing slash; otherwise
+  // /google/ gets the site nav (and its "Book a free call" CTA) stacked on the funnel's own.
+  const isEditorial = EDITORIAL_ROUTES.includes(location.pathname.replace(/\/+$/, '') || '/')
   // Marks the landing page as left as soon as the URL changes, so entrances
   // play on every later page, including a return to the first one.
   isPrerenderedFirstView()

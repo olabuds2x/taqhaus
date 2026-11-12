@@ -141,6 +141,33 @@
 .tq-offer .go-price .unit strong { font-size: 15px; font-weight: 700; letter-spacing: -0.005em; color: var(--ivory); }
 .tq-offer .go-price .unit span { font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--ivory) 70%, transparent); }
 .tq-offer .go-micro { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.tq-offer .go-payoff { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.tq-offer .go-seasonal {
+  display: inline-flex; align-items: flex-start; gap: 10px;
+  margin: 22px 0 0; padding: 12px 16px; border-radius: 14px; max-width: 52ch;
+  background: color-mix(in srgb, var(--coral) 10%, var(--card)); border: 1px solid color-mix(in srgb, var(--coral) 30%, transparent);
+  font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--ink);
+}
+.tq-offer .go-seasonal svg { flex-shrink: 0; margin-top: 1px; color: var(--coral-ink); }
+
+/* ── A3. Proof: real reviews ──────────────────────────────── */
+.tq-offer .go-proof { padding-top: clamp(24px, 4vw, 56px); }
+.tq-offer .go-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tq-offer .go-quote {
+  position: relative; margin: 0; display: flex; flex-direction: column; gap: 20px;
+  padding: clamp(24px, 3vw, 36px); padding-top: clamp(52px, 5vw, 64px);
+  border-radius: var(--radius-lg); background: var(--card); border: 1px solid var(--hairline);
+}
+.tq-offer .go-quote::before {
+  content: '\201C'; position: absolute; top: clamp(10px, 1.4vw, 16px); left: clamp(22px, 3vw, 34px);
+  font-family: var(--display); font-size: 64px; line-height: 1; color: var(--coral);
+}
+.tq-offer .go-quote blockquote { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.tq-offer .go-quote blockquote p { margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--ink); }
+.tq-offer .go-quote figcaption { margin-top: auto; font-weight: 700; font-size: 15.5px; color: var(--ink); }
+.tq-offer .go-proof-note { margin: 16px 0 0; align-items: flex-start; line-height: 1.5; }
+.tq-offer .go-proof-note svg { margin-top: 2px; }
+@media (max-width: 800px) { .tq-offer .go-quotes { grid-template-columns: 1fr; } }
 .tq-offer .go-secondary {
   align-self: flex-start; font-size: 15px; font-weight: 700; color: var(--ink);
   border-bottom: 2px solid var(--coral); padding-bottom: 1px;
@@ -249,29 +276,46 @@
 @media (max-width: 900px) { .tq-offer .go-issues { grid-template-columns: 1fr; max-width: 560px; } }
 
 /* ── C. Included ──────────────────────────────────────────── */
-.tq-offer .go-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.tq-offer .go-pillar {
-  padding: clamp(24px, 3vw, 40px); border-radius: var(--radius-lg);
-  background: var(--pine); color: var(--ivory);
+/* The stack: every part of the $99, named, with the doubt it removes. */
+.tq-offer .go-stack {
+  list-style: none; margin: 0; padding: clamp(10px, 1.4vw, 16px);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.4vw, 16px);
+  border-radius: var(--radius-lg); background: var(--pine);
 }
-.tq-offer .go-pillar-n {
-  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
-  background: var(--coral); color: var(--ink);
-  font-family: var(--display); font-weight: 600; font-size: 22px;
+.tq-offer .go-stack-item {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: clamp(20px, 2.4vw, 28px); border-radius: 18px;
+  background: var(--pine-2); border: 1px solid color-mix(in srgb, var(--ivory) 12%, transparent);
 }
-.tq-offer .go-pillar h3 { margin: 20px 0 22px; font-family: var(--display); font-size: clamp(26px, 2.5vw, 34px); line-height: 1.08; letter-spacing: -0.035em; color: var(--ivory); }
-.tq-offer .go-pillar ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-.tq-offer .go-pillar li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; font-size: 16px; line-height: 1.55; color: color-mix(in srgb, var(--ivory) 88%, transparent); }
-.tq-offer .go-pillar li svg { margin-top: 3px; color: var(--coral); }
+.tq-offer .go-stack-n { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: .02em; color: var(--coral); }
+.tq-offer .go-stack-item h3 {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0;
+  font-family: var(--display); font-size: clamp(20px, 1.7vw, 23px); line-height: 1.15; letter-spacing: -0.03em; color: var(--ivory);
+}
+.tq-offer .go-stack-tag {
+  padding: 3px 10px; border-radius: 999px; background: var(--coral); color: var(--ink);
+  font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .02em;
+}
+.tq-offer .go-stack-item p { margin: 0; font-size: 15.5px; line-height: 1.55; color: color-mix(in srgb, var(--ivory) 82%, transparent); }
+.tq-offer .go-stack-item .go-stack-why {
+  display: flex; align-items: flex-start; gap: 8px; margin-top: auto; padding-top: 12px;
+  border-top: 1px solid color-mix(in srgb, var(--ivory) 12%, transparent);
+  font-weight: 600; color: var(--ivory);
+}
+.tq-offer .go-stack-why svg { flex-shrink: 0; margin-top: 3px; color: var(--coral); }
+@media (max-width: 1000px) { .tq-offer .go-stack { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .tq-offer .go-stack { grid-template-columns: 1fr; } }
 
-.tq-offer .go-delivery {
-  display: flex; align-items: flex-start; gap: 14px;
-  margin-top: 16px; padding: 20px 24px; border-radius: 18px;
-  background: var(--card); border: 1px solid var(--hairline);
+.tq-offer .go-stack-total {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap;
+  margin-top: 16px; padding: clamp(20px, 2.4vw, 28px) clamp(20px, 3vw, 32px); border-radius: 18px;
+  background: color-mix(in srgb, var(--coral) 12%, var(--card)); border: 1px solid color-mix(in srgb, var(--coral) 35%, transparent);
 }
-.tq-offer .go-delivery svg { flex-shrink: 0; color: var(--coral-ink); margin-top: 1px; }
-.tq-offer .go-delivery p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink-2); }
-.tq-offer .go-delivery strong { color: var(--ink); }
+.tq-offer .go-stack-total p { margin: 0; }
+.tq-offer .go-stack-total-price { font-family: var(--display); font-size: clamp(22px, 2vw, 28px); line-height: 1.2; letter-spacing: -0.03em; color: var(--ink); }
+.tq-offer .go-stack-total-sub { margin-top: 6px !important; font-size: 16px; font-weight: 600; color: var(--ink-2); }
+.tq-offer .go-stack-total .go-cta { flex: 0 1 340px; }
+@media (max-width: 640px) { .tq-offer .go-stack-total .go-cta { flex-basis: 100%; } }
 
 /* Exclusions: collapsed by default so they don't dominate the offer; the key ones stay visible in the summary. */
 .tq-offer .go-excluded {

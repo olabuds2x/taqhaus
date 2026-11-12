@@ -3,41 +3,45 @@ import '../styles/google-offer.css'
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
-  AlertCircle, Building2, Check, ChevronDown, ClipboardCheck, Clock, KeyRound, MessageSquareText, Minus, PencilLine, QrCode,
-  Info, RotateCcw, UserCheck, X,
+  AlertCircle, Building2, CalendarClock, Check, ChevronDown, Clock, KeyRound, MessageSquareText, Minus,
+  PencilLine, QrCode, Info, RotateCcw, UserCheck, X,
 } from 'lucide-react'
 import { SEO } from '@/components/SEO'
 import { OfferCta, OfferFooter, OfferNav } from '@/components/google/OfferChrome'
 import { captureUtm, track } from '@/lib/track'
 import { BUSINESS, COMPLEX_MAILTO, OFFER, TERMS_PATH } from '@/lib/googleOffer'
 import {
-  bestFor, deliverySummary, faqs, keyExclusions, notFitYet, notIncluded, pillars, scopeNote, steps, timeline,
+  bestFor, faqs, keyExclusions, notFitYet, notIncluded, scopeNote, seasonalNote, stack, steps,
+  testimonialNote, testimonials, timeline,
 } from '@/data/googleOffer'
 
 const TITLE = 'Google Business Profile Optimization & Review Setup | $99 | TaqHaus'
 const DESCRIPTION =
-  'Google Business Profile optimization and review-request setup for local businesses. $99 USD, one-time. No discovery call required.'
+  'Google listing tune-up and review-request setup for small businesses. Done for you within two business days, with a 30-day check-up. $99 USD, one time. No call needed.'
+
+/** Owner-approved line (11 Nov 2026). Arithmetic about the price, not a promise of jobs. */
+const PAYOFF = 'One booked job more than covers $99.'
 
 /* Illustrative listings (labelled as such on the page). Each "fix" restates a
    package item from src/data/googleOffer.ts; keep them in step with it. */
 const issues = [
   {
     title: 'Unclear services',
-    text: 'The listing says “general services.” A customer can’t tell if you repair furnaces, install AC, or clear drains.',
+    text: 'The listing says “general services.” A customer can’t tell what you actually do, so they choose someone whose listing says it clearly.',
     rows: [{ k: 'Services', v: 'General services', flag: true }, { k: 'Service area', v: 'Listed' }],
-    fix: 'We improve how your services are presented on Google so potential customers can quickly understand what you offer.',
+    fix: 'We rewrite your services and description from your notes, so people see what you do at a glance.',
   },
   {
-    title: 'Incomplete contact details',
-    text: 'No hours, an old phone number, or a website link that goes nowhere. People move on to the next company.',
+    title: 'Missing or wrong details',
+    text: 'No hours, an old phone number, or a website link that goes nowhere. People move on to the next business.',
     rows: [{ k: 'Hours', v: 'Not listed', flag: true }, { k: 'Website', v: 'Missing', flag: true }],
-    fix: 'We review and improve the important details customers rely on, making it easier to trust and contact your business.',
+    fix: 'We check and fix your hours, phone number, website link and service area.',
   },
   {
-    title: 'No way to ask for reviews',
+    title: 'No easy way to ask for reviews',
     text: 'Happy customers would leave a review. Nobody asked them, and there’s no simple link to send.',
     rows: [{ k: 'Review link', v: 'None set up', flag: true }, { k: 'Phone', v: 'Listed' }],
-    fix: 'We set up a ready-to-use review-request system that helps you consistently ask real customers for reviews.',
+    fix: 'We set up a review link, a QR code and ready-to-send messages, so asking every customer takes seconds.',
   },
 ]
 
@@ -51,27 +55,27 @@ const reportRows = [
   { s: 'na', t: 'Photos: none supplied' },
 ] as const
 
-/** Facts only: each point is backed by the package terms. No badges, counts or testimonials until real ones exist. */
+/** Facts only: each point is backed by the package terms (REFUND_TERMS in src/lib/googleOffer.ts). */
 const assurances = [
   {
     icon: Building2,
-    title: 'A real, independent company',
-    text: `${BUSINESS.legalName} is a marketing services business. We are not Google and don’t claim to be.`,
+    title: 'Real people, not Google',
+    text: `${BUSINESS.legalName} is an independent marketing business. We’re not Google, and we never pretend to be.`,
   },
   {
     icon: KeyRound,
-    title: 'Your profile stays yours',
-    text: 'You add us as a manager. We never ask for your Google password, and you can remove our access at any time.',
+    title: 'We never need your password',
+    text: 'You add us as a manager and can remove us at any time. Your profile stays yours.',
   },
   {
     icon: UserCheck,
-    title: 'You approve the changes',
-    text: 'We check details with you, ask before making material changes, and list everything we changed.',
+    title: 'You approve every big change',
+    text: 'We check details with you first, and list everything we changed.',
   },
   {
     icon: RotateCcw,
-    title: 'Full refund until we start',
-    text: 'Cancel before we begin work on your profile and you get the full $99 back.',
+    title: 'Refund until we start. Free fixes after.',
+    text: 'Cancel before we start for a full $99 refund. After we deliver, we fix anything in scope for 14 days, free.',
   },
 ] as const
 
@@ -111,6 +115,7 @@ function FauxQr() {
 export default function GoogleOffer() {
   const [params] = useSearchParams()
   const [cancelled, setCancelled] = useState(params.get('checkout') === 'cancelled')
+  const showSeasonal = new Date() < new Date(seasonalNote.until)
 
   useEffect(() => {
     captureUtm()
@@ -148,14 +153,19 @@ export default function GoogleOffer() {
         <section className="go-hero" aria-labelledby="go-hero-title">
           <div className="wrap go-hero-grid">
             <div className="go-hero-copy">
-              <span className="eyebrow">For local service businesses</span>
+              <span className="eyebrow">For small businesses</span>
               <h1 id="go-hero-title">
-                Give customers more reasons <em>to choose you on Google.</em>
+                Make your Google listing <em>worth calling.</em>
               </h1>
               <p className="go-hero-sub">
-                We improve your Google business listing and set up a simple way to request genuine customer reviews.
-                Done for you, for $99 one time. No monthly commitment.
+                Most people check your Google listing before they call, book or visit. We fix what&rsquo;s holding it
+                back and set you up to ask every customer for a review. Done for you within two business days.
               </p>
+              {showSeasonal && (
+                <p className="go-seasonal">
+                  <CalendarClock size={18} strokeWidth={2.2} aria-hidden="true" /> {seasonalNote.text}
+                </p>
+              )}
             </div>
 
             <aside className="go-offer" aria-label="Price and order">
@@ -168,14 +178,16 @@ export default function GoogleOffer() {
                   </span>
                 </p>
               </div>
+              <p className="go-payoff">{PAYOFF}</p>
               <OfferCta location="hero" block />
               <p className="go-micro">
-                No discovery call required. We aim to finish within two business days of getting access and your details.
+                No call needed. We aim to finish within two business days of getting access and your details.
               </p>
               <a href="#included" className="go-secondary">{OFFER.secondaryLabel}</a>
-              <ul className="go-offer-pillars" aria-label="The two parts of the package">
-                <li><PencilLine size={18} strokeWidth={2.2} aria-hidden="true" /> A clearer Google business listing</li>
-                <li><MessageSquareText size={18} strokeWidth={2.2} aria-hidden="true" /> A simple, genuine review-request setup</li>
+              <ul className="go-offer-pillars" aria-label="What the $99 covers">
+                <li><PencilLine size={18} strokeWidth={2.2} aria-hidden="true" /> Listing tune-up</li>
+                <li><MessageSquareText size={18} strokeWidth={2.2} aria-hidden="true" /> Review link, QR code and ready-to-send requests</li>
+                <li><CalendarClock size={18} strokeWidth={2.2} aria-hidden="true" /> 30-day check-up included</li>
               </ul>
             </aside>
           </div>
@@ -202,14 +214,39 @@ export default function GoogleOffer() {
           </div>
         </section>
 
+        {/* A3 ── Proof: real reviews, verbatim (see testimonials in src/data/googleOffer.ts) */}
+        <section className="go-proof" aria-labelledby="go-proof-title">
+          <div className="wrap">
+            <div className="go-head">
+              <span className="eyebrow">What owners say</span>
+              <h2 id="go-proof-title" className="go-title">
+                &ldquo;They knew what they were doing <em>and got the job done.&rdquo;</em>
+              </h2>
+            </div>
+            <div className="go-quotes">
+              {testimonials.map(t => (
+                <figure key={t.name} className="go-quote">
+                  <blockquote>
+                    {t.quote.map(para => <p key={para}>{para}</p>)}
+                  </blockquote>
+                  <figcaption>{t.name}</figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="go-label go-proof-note">
+              <Info size={15} strokeWidth={2.2} aria-hidden="true" /> {testimonialNote}
+            </p>
+          </div>
+        </section>
+
         {/* B ── The customer problem */}
         <section className="go-problem" aria-labelledby="go-problem-title">
           <div className="wrap">
             <div className="go-head">
               <h2 id="go-problem-title" className="go-title">When someone finds you on Google, <em>what do they see?</em></h2>
               <p className="go-lede">
-                Outdated business details, unclear services, and no easy way to ask customers for reviews can make it
-                harder for people to understand and choose your business. We handle the practical fixes.
+                People decide fast. Wrong hours, vague services or no recent reviews can send them to the next business.
+                We fix the practical stuff.
               </p>
             </div>
             <p className="go-label">
@@ -223,7 +260,7 @@ export default function GoogleOffer() {
                       <span className="go-sketch-avatar"><Building2 size={18} strokeWidth={2.2} /></span>
                       <span>
                         <span className="go-sketch-name">Your business</span>
-                        <span className="go-sketch-sub">Local service business</span>
+                        <span className="go-sketch-sub">Local business</span>
                       </span>
                     </div>
                     {issue.rows.map(r => {
@@ -253,8 +290,8 @@ export default function GoogleOffer() {
               ))}
             </div>
             <p className="go-issues-note">
-              These are just a few examples. We review your Google listing, improve the areas that need attention, and
-              give you a simple way to keep requesting customer reviews. <a href="#included">{OFFER.secondaryLabel}</a>
+              These are just a few examples. We go through your whole listing, fix what needs fixing, and give you an
+              easy way to keep asking for reviews. <a href="#included">{OFFER.secondaryLabel}</a>
             </p>
           </div>
         </section>
@@ -264,26 +301,29 @@ export default function GoogleOffer() {
           <div className="wrap">
             <div className="go-head">
               <span className="eyebrow">What&rsquo;s included</span>
-              <h2 id="go-included-title" className="go-title">Two parts. <em>One price: $99.</em></h2>
+              <h2 id="go-included-title" className="go-title">Six parts. <em>One price: $99.</em></h2>
             </div>
 
-            <div className="go-pillars">
-              {pillars.map(p => (
-                <article key={p.n} className="go-pillar">
-                  <span className="go-pillar-n" aria-hidden="true">{p.n}</span>
-                  <h3>{p.title}</h3>
-                  <ul>
-                    {p.items.map(item => (
-                      <li key={item}><Check size={18} strokeWidth={3} aria-hidden="true" />{item}</li>
-                    ))}
-                  </ul>
-                </article>
+            <ol className="go-stack">
+              {stack.map((s, i) => (
+                <li key={s.name} className="go-stack-item">
+                  <span className="go-stack-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                  <h3>
+                    {s.name}
+                    {'isNew' in s && s.isNew && <span className="go-stack-tag">Included</span>}
+                  </h3>
+                  <p>{s.what}</p>
+                  <p className="go-stack-why"><Check size={16} strokeWidth={3} aria-hidden="true" /> {s.why}</p>
+                </li>
               ))}
-            </div>
+            </ol>
 
-            <div className="go-delivery">
-              <ClipboardCheck size={22} strokeWidth={2.2} aria-hidden="true" />
-              <p><strong>Delivery summary:</strong> {deliverySummary}</p>
+            <div className="go-stack-total">
+              <div>
+                <p className="go-stack-total-price">Everything above: <strong>$99, one time.</strong></p>
+                <p className="go-stack-total-sub">{PAYOFF}</p>
+              </div>
+              <OfferCta location="included" />
             </div>
 
             <details className="go-excluded">
@@ -399,14 +439,12 @@ export default function GoogleOffer() {
               <div>
                 <h3>Who&rsquo;s doing the work</h3>
                 <p>
-                  {BUSINESS.legalName} is the marketing consultancy behind this package. Questions before you buy? Email{' '}
+                  {BUSINESS.legalName} is the marketing company behind this package. Questions before you buy? Email{' '}
                   <a href={`mailto:${BUSINESS.email}`} onClick={supportClick('who_section')}>{BUSINESS.email}</a>.
                 </p>
               </div>
               <p className="go-who-note">
-                We also run other marketing work for brands in trading, software and fashion. That is different work, so
-                we don&rsquo;t present it as proof of what this package does. <Link to="/case-studies">See that work</Link>{' '}
-                or <Link to="/about">read about TaqHaus</Link>.
+                <Link to="/about">About TaqHaus</Link>
               </p>
             </div>
           </div>
@@ -440,10 +478,10 @@ export default function GoogleOffer() {
         <section className="go-final" aria-labelledby="go-final-title">
           <div className="wrap">
             <div className="go-final-card">
-              <h2 id="go-final-title">Let customers see your business <em>at its best.</em></h2>
+              <h2 id="go-final-title">Make your Google listing <em>worth calling.</em></h2>
               <div className="go-final-cta">
                 <OfferCta location="final" />
-                <p>One-time. Clear scope. No required call.</p>
+                <p>$99 one time, 30-day check-up included. No call needed.</p>
               </div>
             </div>
           </div>
