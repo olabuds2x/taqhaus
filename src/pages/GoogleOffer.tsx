@@ -3,7 +3,7 @@ import '../styles/google-offer.css'
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
-  AlertCircle, Building2, CalendarClock, Check, ChevronDown, Clock, KeyRound, MessageSquareText, Minus,
+  AlertCircle, Building2, CalendarClock, Check, ChevronDown, KeyRound, MessageSquareText, Minus,
   PencilLine, QrCode, Quote, Info, RotateCcw, UserCheck, X,
 } from 'lucide-react'
 import { SEO } from '@/components/SEO'
@@ -12,7 +12,7 @@ import { captureUtm, track } from '@/lib/track'
 import { BUSINESS, COMPLEX_MAILTO, OFFER, TERMS_PATH } from '@/lib/googleOffer'
 import {
   bestFor, faqs, keyExclusions, notFitYet, notIncluded, scopeNote, seasonalNote, stack, steps,
-  testimonialNote, testimonials, timeline,
+  testimonialNote, testimonials,
 } from '@/data/googleOffer'
 
 const TITLE = 'Google Business Profile Optimization & Review Setup | $99 | TaqHaus'
@@ -22,38 +22,25 @@ const DESCRIPTION =
 /** Owner-approved line (11 Nov 2026). Arithmetic about the price, not a promise of jobs. */
 const PAYOFF = 'One booked job more than covers $99.'
 
-/* Illustrative listings (labelled as such on the page). Each "fix" restates a
-   package item from src/data/googleOffer.ts; keep them in step with it. */
+/* Illustrative listings (labelled as such on the page). The stack below them
+   (src/data/googleOffer.ts) is the answer, so the cards show only the problem. */
 const issues = [
   {
     title: 'Unclear services',
     text: 'The listing says “general services.” A customer can’t tell what you actually do, so they choose someone whose listing says it clearly.',
     rows: [{ k: 'Services', v: 'General services', flag: true }, { k: 'Service area', v: 'Listed' }],
-    fix: 'We rewrite your services and description from your notes, so people see what you do at a glance.',
   },
   {
     title: 'Missing or wrong details',
     text: 'No hours, an old phone number, or a website link that goes nowhere. People move on to the next business.',
     rows: [{ k: 'Hours', v: 'Not listed', flag: true }, { k: 'Website', v: 'Missing', flag: true }],
-    fix: 'We check and fix your hours, phone number, website link and service area.',
   },
   {
     title: 'No easy way to ask for reviews',
     text: 'Happy customers would leave a review. Nobody asked them, and there’s no simple link to send.',
     rows: [{ k: 'Review link', v: 'None set up', flag: true }, { k: 'Phone', v: 'Listed' }],
-    fix: 'We set up a review link, a QR code and ready-to-send messages, so asking every customer takes seconds.',
   },
 ]
-
-const reportRows = [
-  { s: 'done', t: 'Business hours checked and updated' },
-  { s: 'done', t: 'Service descriptions rewritten from your notes' },
-  { s: 'done', t: 'Service areas reviewed' },
-  { s: 'done', t: 'Review link and QR code created' },
-  { s: 'done', t: 'Replies drafted to 3 existing reviews, for your approval' },
-  { s: 'pending', t: 'Category change: waiting on Google' },
-  { s: 'na', t: 'Photos: none supplied' },
-] as const
 
 /** Facts only: each point is backed by the package terms (REFUND_TERMS in src/lib/googleOffer.ts). */
 const assurances = [
@@ -78,8 +65,6 @@ const assurances = [
     text: 'Cancel before we start for a full $99 refund. After we deliver, we fix anything in scope for 14 days, free.',
   },
 ] as const
-
-const statusLabel = { done: 'Completed', pending: 'Pending', na: 'Not applicable' } as const
 
 const schema = [
   {
@@ -107,6 +92,19 @@ function highlightIn(text: string, phrase: string) {
 
 /** "Dave C." → "DC" */
 const initials = (name: string) => name.replace(/[^A-Z]/g, '').slice(0, 2)
+
+/* Sample finished report (labelled as an illustration on the page). Rows restate
+   stack items; keep one pending and one not-applicable row so it reads honestly. */
+const reportRows = [
+  { s: 'done', t: 'Business hours checked and updated' },
+  { s: 'done', t: 'Service descriptions rewritten from your notes' },
+  { s: 'done', t: 'Review link and QR code created' },
+  { s: 'done', t: 'Replies drafted to 3 existing reviews, for your approval' },
+  { s: 'pending', t: 'Category change: waiting on Google' },
+  { s: 'na', t: 'Photos: none supplied' },
+] as const
+
+const statusLabel = { done: 'Completed', pending: 'Pending', na: 'Not applicable' } as const
 
 /** Decorative QR-style grid for the illustration only. It does not scan. */
 function FauxQr() {
@@ -269,7 +267,7 @@ export default function GoogleOffer() {
             <p className="go-label">
               <Info size={15} strokeWidth={2.2} aria-hidden="true" /> Illustrative examples, not real businesses
             </p>
-            <div className="go-issues">
+            <div className="go-issues" role="region" aria-label="Examples of common listing problems" tabIndex={0}>
               {issues.map(issue => (
                 <figure key={issue.title} className="go-issue">
                   <div className="go-sketch" aria-hidden="true">
@@ -297,12 +295,6 @@ export default function GoogleOffer() {
                     <h3>{issue.title}</h3>
                     <p>{issue.text}</p>
                   </figcaption>
-                  <p className="go-issue-fix">
-                    <span className="go-issue-fix-label">What we do</span>
-                    <span className="go-issue-fix-text">
-                      <Check size={16} strokeWidth={3} aria-hidden="true" /> {issue.fix}
-                    </span>
-                  </p>
                 </figure>
               ))}
             </div>
@@ -334,6 +326,40 @@ export default function GoogleOffer() {
                 </li>
               ))}
             </ol>
+
+            {/* Show, don't just tell: what the customer holds at the end. */}
+            <div className="go-sample">
+              <p className="go-sample-label">
+                <strong>What you get at the end</strong>
+                <span>Sample layout, not a real customer&rsquo;s report</span>
+              </p>
+              <div className="go-sample-grid">
+                <figure className="go-report">
+                  <div className="go-report-head">
+                    <span className="go-report-kicker">Completion summary</span>
+                    <strong>Your business name</strong>
+                  </div>
+                  <ul>
+                    {reportRows.map(r => (
+                      <li key={r.t} data-s={r.s}>
+                        <span className="go-chip">{statusLabel[r.s]}</span>
+                        <span>{r.t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <figcaption className="sr-only">Sample completion summary showing completed, pending and not-applicable changes.</figcaption>
+                </figure>
+                <figure className="go-qrcard">
+                  <FauxQr />
+                  <div>
+                    <span className="go-report-kicker"><QrCode size={14} aria-hidden="true" /> Your review QR code</span>
+                    <strong>How did we do?</strong>
+                    <p>Scan to leave an honest review on Google.</p>
+                  </div>
+                  <figcaption className="sr-only">Sample digital review-request card with a QR code.</figcaption>
+                </figure>
+              </div>
+            </div>
 
             <div className="go-stack-total">
               <div>
@@ -379,7 +405,6 @@ export default function GoogleOffer() {
                 </li>
               ))}
             </ol>
-            <p className="go-timeline"><Clock size={20} strokeWidth={2.2} aria-hidden="true" /> {timeline}</p>
           </div>
         </section>
 
@@ -402,67 +427,6 @@ export default function GoogleOffer() {
                   Have a more complex situation? Email us
                 </a>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* F ── Trust: what you'll receive (illustrated) + who we are */}
-        <section className="go-receive" aria-labelledby="go-receive-title">
-          <div className="wrap">
-            <div className="go-head">
-              <span className="eyebrow">What you&rsquo;ll receive</span>
-              <h2 id="go-receive-title" className="go-title">A clear record <em>of what we changed.</em></h2>
-              <p className="go-lede">When we finish, you get a short summary of every change and the review-request materials to keep using.</p>
-            </div>
-
-            <p className="go-label">Illustration: a sample layout, not a real customer&rsquo;s report</p>
-            <div className="go-receive-grid">
-              <figure className="go-report">
-                <div className="go-report-head">
-                  <span className="go-report-kicker">Completion summary</span>
-                  <strong>Your business name</strong>
-                </div>
-                <ul>
-                  {reportRows.map(r => (
-                    <li key={r.t} data-s={r.s}>
-                      <span className="go-chip">{statusLabel[r.s]}</span>
-                      <span>{r.t}</span>
-                    </li>
-                  ))}
-                </ul>
-                <figcaption className="sr-only">Sample completion summary showing completed, pending and not-applicable changes.</figcaption>
-              </figure>
-
-              <div className="go-receive-side">
-                <figure className="go-qrcard">
-                  <FauxQr />
-                  <div>
-                    <span className="go-report-kicker"><QrCode size={14} aria-hidden="true" /> Review QR card (digital)</span>
-                    <strong>How did we do?</strong>
-                    <p>Scan to leave an honest review on Google.</p>
-                  </div>
-                  <figcaption className="sr-only">Sample digital review-request card with a QR code.</figcaption>
-                </figure>
-                <figure className="go-template">
-                  <span className="go-report-kicker"><MessageSquareText size={14} aria-hidden="true" /> Text message template</span>
-                  <blockquote>
-                    Hi [name], thanks for choosing [business]. If you have a minute, we&rsquo;d appreciate an honest review on Google: [link]
-                  </blockquote>
-                </figure>
-              </div>
-            </div>
-
-            <div className="go-who">
-              <div>
-                <h3>Who&rsquo;s doing the work</h3>
-                <p>
-                  {BUSINESS.legalName} is the marketing company behind this package. Questions before you buy? Email{' '}
-                  <a href={`mailto:${BUSINESS.email}`} onClick={supportClick('who_section')}>{BUSINESS.email}</a>.
-                </p>
-              </div>
-              <p className="go-who-note">
-                <Link to="/about">About TaqHaus</Link>
-              </p>
             </div>
           </div>
         </section>
