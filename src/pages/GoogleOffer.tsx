@@ -3,21 +3,21 @@ import '../styles/google-offer.css'
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
-  AlertCircle, Building2, CalendarClock, Check, ChevronDown, KeyRound, MessageSquareText, Minus,
-  PencilLine, QrCode, Quote, Info, RotateCcw, UserCheck, X,
+  AlertCircle, Building2, CalendarClock, Check, ChevronDown, Clock, KeyRound, MessageSquareText, Minus,
+  PencilLine, QrCode, Quote, Info, RotateCcw, X,
 } from 'lucide-react'
 import { SEO } from '@/components/SEO'
 import { OfferCta, OfferFooter, OfferNav } from '@/components/google/OfferChrome'
 import { captureUtm, track } from '@/lib/track'
 import { BUSINESS, COMPLEX_MAILTO, OFFER, TERMS_PATH } from '@/lib/googleOffer'
 import {
-  bestFor, faqs, keyExclusions, notFitYet, notIncluded, scopeNote, seasonalNote, stack, steps,
+  bestFor, capacityNote, faqs, keyExclusions, notFitYet, notIncluded, promise, scopeNote, seasonalNote, stack, steps,
   testimonialNote, testimonials,
 } from '@/data/googleOffer'
 
-const TITLE = 'Google Business Profile Optimization & Review Setup | $99 | TaqHaus'
+const TITLE = 'The 2-Day Google Listing Tune-Up for Small Businesses | $99 | TaqHaus'
 const DESCRIPTION =
-  'Google listing tune-up and review-request setup for small businesses. Done for you within two business days, with a 30-day check-up. $99 USD, one time. No call needed.'
+  'Your Google Business Profile fixed and a simple review-request setup, done for you in two business days or your $99 back. Includes a 30-day check-up. One time, no call needed.'
 
 /** Owner-approved line (11 Nov 2026). Arithmetic about the price, not a promise of jobs. */
 const PAYOFF = 'One booked job more than covers $99.'
@@ -51,13 +51,13 @@ const assurances = [
   },
   {
     icon: KeyRound,
-    title: 'We never need your password',
-    text: 'You add us as a manager and can remove us at any time. Your profile stays yours.',
+    title: 'Your profile stays yours',
+    text: 'You add us as a manager, never your password. We ask before any big change, and you can remove us at any time.',
   },
   {
-    icon: UserCheck,
-    title: 'You approve every big change',
-    text: 'We check details with you first, and list everything we changed.',
+    icon: Clock,
+    title: 'Done in 2 days, or your $99 back',
+    text: 'If we take longer than two business days after getting access and your details, you get a full refund, and we still finish.',
   },
   {
     icon: RotateCcw,
@@ -70,7 +70,7 @@ const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Google Business Profile optimization & review-request setup',
+    name: OFFER.name,
     description: DESCRIPTION,
     provider: { '@type': 'Organization', name: 'TaqHaus', url: 'https://www.taqhaus.com' },
     areaServed: { '@type': 'Country', name: 'United States' },
@@ -177,6 +177,7 @@ export default function GoogleOffer() {
             </div>
 
             <aside className="go-offer" aria-label="Price and order">
+              <p className="go-offer-name">{OFFER.name}</p>
               <div className="go-price-panel">
                 <p className="go-price">
                   <span className="cur">$</span><span className="amt">99</span>
@@ -188,9 +189,11 @@ export default function GoogleOffer() {
               </div>
               <p className="go-payoff">{PAYOFF}</p>
               <OfferCta location="hero" block />
-              <p className="go-micro">
-                No call needed. We aim to finish within two business days of getting access and your details.
-              </p>
+              <div className="go-promise">
+                <Clock size={20} strokeWidth={2.2} aria-hidden="true" />
+                <p><strong>{promise.name}:</strong> {promise.short}</p>
+              </div>
+              <p className="go-micro">No call needed. {capacityNote}</p>
               <a href="#included" className="go-secondary">{OFFER.secondaryLabel}</a>
               <ul className="go-offer-pillars" aria-label="What the $99 covers">
                 <li><PencilLine size={18} strokeWidth={2.2} aria-hidden="true" /> Listing tune-up</li>
@@ -242,7 +245,7 @@ export default function GoogleOffer() {
                     <span className="go-quote-avatar" aria-hidden="true">{initials(t.name)}</span>
                     <span>
                       <span className="go-quote-name">{t.name}</span>
-                      <span className="go-quote-role">Google listing client</span>
+                      <span className="go-quote-role">{t.role}</span>
                     </span>
                   </figcaption>
                 </figure>
@@ -309,7 +312,7 @@ export default function GoogleOffer() {
         <section id="included" className="go-included" aria-labelledby="go-included-title">
           <div className="wrap">
             <div className="go-head">
-              <span className="eyebrow">What&rsquo;s included</span>
+              <span className="eyebrow">{OFFER.name}</span>
               <h2 id="go-included-title" className="go-title">Six parts. <em>One price: $99.</em></h2>
             </div>
 
@@ -365,6 +368,7 @@ export default function GoogleOffer() {
               <div>
                 <p className="go-stack-total-price">Everything above: <strong>$99, one time.</strong></p>
                 <p className="go-stack-total-sub">{PAYOFF}</p>
+                <p className="go-stack-total-note"><Clock size={16} strokeWidth={2.4} aria-hidden="true" /> {promise.name}: done in 2 business days, or your $99 back.</p>
               </div>
               <OfferCta location="included" />
             </div>
@@ -462,7 +466,7 @@ export default function GoogleOffer() {
               <h2 id="go-final-title">Make your Google listing <em>worth calling.</em></h2>
               <div className="go-final-cta">
                 <OfferCta location="final" />
-                <p>$99 one time, 30-day check-up included. No call needed.</p>
+                <p>$99 one time. Done in 2 business days or your money back. 30-day check-up included.</p>
               </div>
             </div>
           </div>

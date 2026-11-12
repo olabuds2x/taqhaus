@@ -92,6 +92,7 @@ export const testimonials = [
       'Since then, we’ve been getting more customer enquiries and have seen an increase in new clients. We’re really pleased with the results and would happily recommend them.',
     ],
     name: 'Dave C.',
+    role: 'Owner, plumbing business',
     /** Must match the quote text exactly; it's emphasised, not changed. */
     highlight: 'the difference has been noticeable',
   },
@@ -102,6 +103,7 @@ export const testimonials = [
       'We’ve since seen more interest from potential customers, which has been great for the business. What I appreciated most was how simple they made everything. They knew what they were doing and got the job done.',
     ],
     name: 'Ben W.',
+    role: 'Owner, cleaning business',
     highlight: 'What I appreciated most was how simple they made everything.',
   },
 ] as const
@@ -118,6 +120,21 @@ export const seasonalNote = {
   text: 'Holidays coming up? Customers check your hours on Google first. Get them right before the rush.',
   until: '2027-01-01',
 } as const
+
+/**
+ * Owner-approved guarantee (11 Nov 2026, option A from the offer audit).
+ * The binding wording is in REFUND_TERMS (src/lib/googleOffer.ts); keep both in step.
+ */
+export const promise = {
+  name: 'The 2-Day Promise',
+  short: 'Done within 2 business days of getting access and your details, or your $99 back. We still finish the work.',
+} as const
+
+/**
+ * Owner-approved capacity limit (11 Nov 2026). It must be real: once a week's
+ * 60 orders are in, new buyers have to wait (see docs/google-offer-launch.md).
+ */
+export const capacityNote = 'We take 60 new listings a week so each one gets done in 2 days.'
 
 export const notIncluded = [
   'Verification, recovery or reinstatement',
@@ -146,8 +163,8 @@ export const steps = [
     desc: 'Fill in a short form and add us as a manager on your profile. We show you how, and we never need your password.',
   },
   {
-    title: 'We do the work.',
-    desc: 'We check the details with you and ask before any big change.',
+    title: 'We do the work in 2 business days.',
+    desc: 'We check the details with you and ask before any big change. Late? Your $99 back, and we still finish.',
   },
   {
     title: 'See what changed.',
@@ -159,11 +176,11 @@ export const steps = [
 export const accessFailure = [
   'If we cannot start because manager access or required information is not provided, we will contact you up to three times over seven days.',
   'After seven days, you may choose a full refund or an audit-only summary based on the public profile.',
-  'The two-business-day delivery target starts only after we receive the required access and information.',
+  'The two-business-day promise starts only after we receive the required access and information.',
 ] as const
 
 export const timeline =
-  'We aim to complete the agreed work within two business days after we receive access and the information we need. Some changes can take longer to appear on Google, because Google reviews and approves certain updates.'
+  'We complete the agreed work within two business days (Monday to Friday, excluding public holidays) after we receive manager access and the information we need. If we don’t, you can have your $99 back and we’ll still finish. Some changes take longer to appear on Google, because Google reviews and approves certain updates; that wait doesn’t count against the two days.'
 
 export const bestFor =
   'Independent small businesses with an existing, verified Google Business Profile the owner controls, that want clearer information on Google or a simple way to ask customers for reviews.'
@@ -207,7 +224,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How fast is delivery?',
-    a: 'We aim to complete the agreed work within two business days after we receive access and the information we need. That is when our work is done, not when every change shows on Google: Google reviews and approves certain updates, which can take longer.',
+    a: 'Two business days after we get manager access and your details. If we take longer, you get your $99 back and we still finish the work. That’s when our work is done, not when every change shows on Google: Google reviews some updates first, which can take longer.',
   },
   {
     q: 'What’s the 30-day check-up?',

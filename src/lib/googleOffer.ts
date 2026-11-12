@@ -29,6 +29,8 @@ export const GOOGLE_MANAGER_EMAIL: string = env.VITE_GOOGLE_MANAGER_EMAIL || ''
 
 export const OFFER = {
   id: 'google-99',
+  /** Owner-approved package name (11 Nov 2026). */
+  name: 'The 2-Day Google Listing Tune-Up',
   priceUsd: 99,
   priceLabel: '$99 USD · one-time',
   ctaLabel: 'Improve my Google listing for $99',
@@ -49,7 +51,8 @@ export const REFUND_TERMS: string[] = [
   'If you cancel before we start working on your profile, we refund the full $99.',
   'If we can’t complete the work for reasons on our side, we refund the full $99.',
   'If we can’t start because manager access or required information isn’t provided, the “If we can’t get access” section above applies, including the option of a full refund after seven days.',
-  'Once we’ve delivered your completion summary, the fee isn’t refundable. If something in scope isn’t right, tell us within 14 days and we’ll fix it at no charge.',
+  'The 2-Day Promise (added 11 November 2026): if we don’t complete the agreed work within two business days (Monday to Friday, excluding public holidays) after we receive manager access and the information we need, we refund the full $99 on request and still finish the work. Time Google takes to review or publish changes doesn’t count. Ask within 14 days of your completion summary.',
+  'Apart from the 2-Day Promise, once we’ve delivered your completion summary the fee isn’t refundable. If something in scope isn’t right, tell us within 14 days and we’ll fix it at no charge.',
   'Google’s own decisions (such as declining an edit or delaying a review) aren’t grounds for a refund, because they’re outside our control.',
   'Refunds go back to your original payment method. To ask for one, email info@taqhaus.com with your order reference.',
 ]

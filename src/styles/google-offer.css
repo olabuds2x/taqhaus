@@ -142,6 +142,18 @@
 .tq-offer .go-price .unit span { font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--ivory) 70%, transparent); }
 .tq-offer .go-micro { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
 .tq-offer .go-payoff { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.tq-offer .go-offer-name {
+  margin: 0; font-family: var(--display); font-weight: 600; font-size: 19px; line-height: 1.2;
+  letter-spacing: -0.02em; color: var(--ink);
+}
+/* The guarantee sits right under the buy button, where the doubt is. */
+.tq-offer .go-promise {
+  display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border-radius: 14px;
+  background: color-mix(in srgb, var(--pine) 7%, var(--card)); border: 1px solid color-mix(in srgb, var(--pine) 18%, transparent);
+}
+.tq-offer .go-promise svg { flex-shrink: 0; margin-top: 1px; color: var(--pine-3); }
+.tq-offer .go-promise p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.tq-offer .go-promise strong { color: var(--ink); }
 .tq-offer .go-seasonal {
   display: inline-flex; align-items: flex-start; gap: 10px;
   margin: 22px 0 0; padding: 12px 16px; border-radius: 14px; max-width: 52ch;
@@ -399,6 +411,8 @@
 .tq-offer .go-stack-total p { margin: 0; }
 .tq-offer .go-stack-total-price { font-family: var(--display); font-size: clamp(22px, 2vw, 28px); line-height: 1.2; letter-spacing: -0.03em; color: var(--ink); }
 .tq-offer .go-stack-total-sub { margin-top: 6px !important; font-size: 16px; font-weight: 600; color: var(--ink-2); }
+.tq-offer .go-stack-total-note { display: flex; align-items: center; gap: 8px; margin-top: 10px !important; font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.tq-offer .go-stack-total-note svg { flex-shrink: 0; color: var(--coral-ink); }
 .tq-offer .go-stack-total .go-cta { flex: 0 1 340px; }
 @media (max-width: 640px) { .tq-offer .go-stack-total .go-cta { flex-basis: 100%; } }
 

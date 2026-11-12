@@ -15,6 +15,12 @@ Offer upgrade (11 Nov 2026, after the offer audit):
 - A seasonal holiday-hours note shows in the hero and hides itself on 1 Jan 2027 (`seasonalNote.until` in `src/data/googleOffer.ts`).
 - `/google/` (trailing slash) no longer shows the site nav above the funnel's own.
 
+Grand Slam upgrade (11 Nov 2026, owner-approved):
+- **Name:** "The 2-Day Google Listing Tune-Up" (`OFFER.name`). The Stripe product name is unchanged; rename it in the Stripe dashboard if you want receipts to match.
+- **The 2-Day Promise** (option A): work not completed within two business days (Mon–Fri, excluding public holidays) of receiving manager access *and* required info → full refund on request, and we still finish. Google's review/publish time doesn't count. Claim window: 14 days after the completion summary. Binding wording: `REFUND_TERMS` in `src/lib/googleOffer.ts`. **Ops:** the clock starts when access and info are both in, which nothing records today. When the Manager invite is accepted, add `access_at` (ISO date) to the payment's metadata so a claim can be checked.
+- **Capacity: 60 new listings a week** ("so each one gets done in 2 days"). This must stay true. Nothing enforces it in code: if a week reaches 60 paid orders, pause sales (set `VITE_GOOGLE_CHECKOUT_ENABLED=false` and redeploy, which switches CTAs to "Email us to order") or tell new buyers their 2 days start the following week, before they pay.
+- Reviews now show business type: Dave C. (plumbing), Ben W. (cleaning), confirmed by the owner.
+
 Review fixes (12 Nov 2026):
 - Up to **three** drafted review replies (page, sample summary, terms).
 - `/google/terms#access-delays`: if access or information isn't provided, the team contacts the customer up to three times over seven days, then offers a full refund or an audit-only summary based on the public profile. **This is a manual process:** nothing automates the reminders, so track it from the order's `paid_at` in Stripe.

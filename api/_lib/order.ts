@@ -268,7 +268,7 @@ export async function saveOnboarding(s: CheckoutSession, data: OnboardingInput):
       '',
       'If you have not yet invited TaqHaus as a Manager on your Google Business Profile, please do that next. We will never ask for your Google password.',
       '',
-      'We aim to complete the agreed work within two business days after we receive access and the information we need. Some changes can take longer to appear on Google, because Google reviews and approves certain updates. We will ask for your approval before making material changes.',
+      'We complete the agreed work within two business days after we receive manager access and the information we need. If we take longer, you can have your $99 back and we will still finish (the 2-Day Promise). Some changes take longer to appear on Google, because Google reviews and approves certain updates; that wait does not count against the two days. We will ask for your approval before making material changes.',
       '',
       'About 30 days after we deliver, we will check your listing again and fix anything we changed that has since been undone. Please keep TaqHaus as a Manager until then.',
       '',
