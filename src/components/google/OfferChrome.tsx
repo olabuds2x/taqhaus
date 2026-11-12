@@ -81,13 +81,17 @@ type CtaProps = {
   beside?: React.ReactNode
   /** One-line consent note for tight spots like the hero. Same terms, fewer words. */
   compactNote?: boolean
+  /** Button only, no note (the caller shows its own consent line, e.g. the phone buy bar). */
+  bare?: boolean
+  /** Shorter button text where space is tight. */
+  label?: string
 }
 
 /**
  * With checkout enabled: asks the server for a Stripe Checkout URL and
  * redirects. Without it: an honest email link, never a pretend purchase.
  */
-export function OfferCta({ location, block, tone = 'coral', beside, compactNote }: CtaProps) {
+export function OfferCta({ location, block, tone = 'coral', beside, compactNote, bare, label }: CtaProps) {
   const [state, setState] = useState<'idle' | 'loading' | 'error'>('idle')
   const cls = `pill-btn pill-btn--${tone} go-cta-btn${block ? ' pill-btn--block' : ''}`
 
@@ -108,7 +112,7 @@ export function OfferCta({ location, block, tone = 'coral', beside, compactNote 
         >
           {OFFER.ctaLabelOffline} <HookArrow />
         </a>
-        <p className="go-cta-note">Online checkout isn&rsquo;t open yet. Email us and we&rsquo;ll take it from there.</p>
+        {!bare && <p className="go-cta-note">Online checkout isn&rsquo;t open yet. Email us and we&rsquo;ll take it from there.</p>}
       </div>
     )
   }
@@ -134,14 +138,15 @@ export function OfferCta({ location, block, tone = 'coral', beside, compactNote 
 
   const button = (
     <button type="button" className={cls} onClick={startCheckout} disabled={state === 'loading'} aria-busy={state === 'loading'}>
-      {state === 'loading' ? 'Opening secure checkout…' : OFFER.ctaLabel} {state !== 'loading' && <HookArrow />}
+      {state === 'loading' ? (bare ? 'Opening…' : 'Opening secure checkout…') : (label ?? OFFER.ctaLabel)}{' '}
+      {state !== 'loading' && <HookArrow />}
     </button>
   )
 
   return (
     <div className="go-cta">
       {beside ? <div className="go-cta-row">{button}{beside}</div> : button}
-      {compactNote ? (
+      {bare ? null : compactNote ? (
         <p className="go-cta-note">
           Secure checkout by Stripe. By ordering you agree to our <Link to={TERMS_PATH}>terms</Link>,{' '}
           <Link to={`${TERMS_PATH}#refunds`}>refunds</Link> and <Link to={PRIVACY_POLICY_URL}>privacy policy</Link>.

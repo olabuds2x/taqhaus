@@ -178,14 +178,18 @@ export default function GoogleOffer() {
                     </span>
                   )}
                 </div>
-                <h1 id="go-hero-title">
-                  <span className="ln">Make your Google</span>{' '}
-                  <span className="ln">
-                    listing{' '}
-                    <span className="go-tile" aria-hidden="true"><HookArrow /></span>{' '}
-                    <em>worth calling.</em>
-                  </span>
-                </h1>
+                {/* Phones: this block sits over the photo (see the 640px rules in google-offer.css). */}
+                <div className="go-hero-head">
+                  <p className="go-hero-kicker" aria-hidden="true">{OFFER.name}</p>
+                  <h1 id="go-hero-title">
+                    <span className="ln">Make your Google</span>{' '}
+                    <span className="ln">
+                      listing{' '}
+                      <span className="go-tile" aria-hidden="true"><HookArrow /></span>{' '}
+                      <em>worth calling.</em>
+                    </span>
+                  </h1>
+                </div>
                 <p className="go-hero-sub">
                   Most people check your Google listing before they call, book or visit. We fix what&rsquo;s holding it
                   back and set you up to ask every customer for a review.
@@ -283,21 +287,7 @@ export default function GoogleOffer() {
               </h2>
             </div>
             <div className="go-quotes">
-              {testimonials.map(t => (
-                <figure key={t.name} className="go-quote">
-                  <span className="go-quote-mark" aria-hidden="true"><Quote size={20} strokeWidth={2.4} /></span>
-                  <blockquote>
-                    {t.quote.map(para => <p key={para}>{highlightIn(para, t.highlight)}</p>)}
-                  </blockquote>
-                  <figcaption>
-                    <span className="go-quote-avatar" aria-hidden="true">{initials(t.name)}</span>
-                    <span>
-                      <span className="go-quote-name">{t.name}</span>
-                      <span className="go-quote-role">{t.role}</span>
-                    </span>
-                  </figcaption>
-                </figure>
-              ))}
+              {testimonials.map(t => <QuoteCard key={t.name} t={t} />)}
             </div>
             <p className="go-label go-proof-note">
               <Info size={15} strokeWidth={2.2} aria-hidden="true" /> {testimonialNote}
@@ -356,7 +346,7 @@ export default function GoogleOffer() {
           </div>
         </section>
 
-        {/* C ── What's included */}
+        {/* C ── What's included: a plain list beside one visual (the sample report). No cards. */}
         <section id="included" className="go-included" aria-labelledby="go-included-title">
           <div className="wrap">
             <div className="go-head">
@@ -364,27 +354,21 @@ export default function GoogleOffer() {
               <h2 id="go-included-title" className="go-title">Six parts. <em>One price: $99.</em></h2>
             </div>
 
-            <ol className="go-stack">
-              {stack.map((s, i) => (
-                <li key={s.name} className="go-stack-item">
-                  <span className="go-stack-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                  <h3>
-                    {s.name}
-                    {'isNew' in s && s.isNew && <span className="go-stack-tag">Included</span>}
-                  </h3>
-                  <p>{s.what}</p>
-                  <p className="go-stack-why"><Check size={16} strokeWidth={3} aria-hidden="true" /> {s.why}</p>
-                </li>
-              ))}
-            </ol>
+            <div className="go-incl-grid">
+              <ol className="go-list">
+                {stack.map((s, i) => (
+                  <li key={s.name}>
+                    <span className="go-list-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                    <div>
+                      <h3>{s.name}</h3>
+                      <p>{s.short}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
 
-            {/* Show, don't just tell: what the customer holds at the end. */}
-            <div className="go-sample">
-              <p className="go-sample-label">
-                <strong>What you get at the end</strong>
-                <span>Sample layout, not a real customer&rsquo;s report</span>
-              </p>
-              <div className="go-sample-grid">
+              {/* Show, don't just tell: what the customer holds at the end. */}
+              <div className="go-sample">
                 <figure className="go-report">
                   <div className="go-report-head">
                     <span className="go-report-kicker">Completion summary</span>
@@ -409,6 +393,7 @@ export default function GoogleOffer() {
                   </div>
                   <figcaption className="sr-only">Sample digital review-request card with a QR code.</figcaption>
                 </figure>
+                <p className="go-sample-label">Sample of what you get at the end, not a real customer&rsquo;s report.</p>
               </div>
             </div>
 
@@ -416,7 +401,6 @@ export default function GoogleOffer() {
               <div>
                 <p className="go-stack-total-price">Everything above: <strong>$99, one time.</strong></p>
                 <p className="go-stack-total-sub">{PAYOFF}</p>
-                <p className="go-stack-total-note"><Clock size={16} strokeWidth={2.4} aria-hidden="true" /> {promise.name}: done in 2 business days, or your $99 back.</p>
               </div>
               <OfferCta location="included" />
             </div>
@@ -522,6 +506,73 @@ export default function GoogleOffer() {
       </main>
 
       <OfferFooter />
+      <MobileBuyBar />
+    </div>
+  )
+}
+
+/**
+ * Phones only (CSS hides it above 640px). Slides up once the hero's buy box has
+ * scrolled away, and steps aside while another buy button or the footer is on screen.
+ */
+/**
+ * One review. Phones open on the reviewer's highlighted line (their exact words) with the
+ * full verbatim review behind "Read the full review"; wider screens always show it all (CSS).
+ */
+function QuoteCard({ t }: { t: (typeof testimonials)[number] }) {
+  const [open, setOpen] = useState(false)
+  const id = `review-${t.name.replace(/\W+/g, '').toLowerCase()}`
+  const pull = `${/^[a-z]/.test(t.highlight) ? '…' : ''}${t.highlight}${/[.!?]$/.test(t.highlight) ? '' : '…'}`
+  return (
+    <figure className="go-quote" data-open={open || undefined}>
+      <span className="go-quote-mark" aria-hidden="true"><Quote size={20} strokeWidth={2.4} /></span>
+      <p className="go-quote-pull">&ldquo;{pull}&rdquo;</p>
+      <blockquote id={id}>
+        {t.quote.map(para => <p key={para}>{highlightIn(para, t.highlight)}</p>)}
+      </blockquote>
+      <button type="button" className="go-quote-more" aria-expanded={open} aria-controls={id} onClick={() => setOpen(o => !o)}>
+        {open ? 'Show less' : 'Read the full review'}
+      </button>
+      <figcaption>
+        <span className="go-quote-avatar" aria-hidden="true">{initials(t.name)}</span>
+        <span>
+          <span className="go-quote-name">{t.name}</span>
+          <span className="go-quote-role">{t.role}</span>
+        </span>
+      </figcaption>
+    </figure>
+  )
+}
+
+function MobileBuyBar() {
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    const hero = document.querySelector('.go-hero .go-buy')
+    const others = Array.from(document.querySelectorAll('.go-stack-total, .go-final, .go-foot'))
+    if (!hero || typeof IntersectionObserver === 'undefined') return
+    let heroPassed = false
+    const visible = new Set<Element>()
+    const io = new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (e.target === hero) heroPassed = !e.isIntersecting && e.boundingClientRect.top < 0
+        else if (e.isIntersecting) visible.add(e.target)
+        else visible.delete(e.target)
+      }
+      setShow(heroPassed && visible.size === 0)
+    })
+    io.observe(hero)
+    others.forEach(el => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+
+  return (
+    <div className="go-bar" data-show={show || undefined} role="region" aria-label="Order the tune-up">
+      <div className="go-bar-info">
+        <strong>$99 one-time</strong>
+        <span>By ordering you agree to our <Link to={TERMS_PATH}>terms</Link>.</span>
+      </div>
+      <OfferCta location="mobile_bar" bare label="Improve my listing" />
     </div>
   )
 }

@@ -49,31 +49,43 @@ export const deliverySummary =
 export const stack = [
   {
     name: 'Listing tune-up',
+    /** One-sentence version for the page list. Restates `what`; never promise more. */
+    short: 'Hours, phone, website link, service areas and categories checked and fixed. Services and description rewritten from your notes, plus photos you send.',
     what: 'We check and fix your hours, phone, website link and service areas, rewrite your services and description from your notes, check your categories, and add photos you send us.',
     why: 'So people can see what you do, and when you’re open, at a glance.',
   },
   {
     name: 'Review link and QR code',
+    /** One-sentence version for the page list. Restates `what`; never promise more. */
+    short: 'A direct link to your Google review page, and a QR code to print or show at the counter.',
     what: 'A direct link to your Google review page, plus a digital QR code you can print or show at the counter.',
     why: 'So customers know exactly where to leave a review.',
   },
   {
     name: 'Two ready-to-send review requests',
+    /** One-sentence version for the page list. Restates `what`; never promise more. */
+    short: 'A short text and a short email to send after every job or visit, with a simple routine for asking.',
     what: 'A short text and a short email you can send after every job or visit, plus a simple routine for asking every customer.',
     why: 'So asking takes seconds and never feels pushy.',
   },
   {
     name: 'Replies to your reviews, written for you',
+    /** One-sentence version for the page list. Restates `what`; never promise more. */
+    short: 'Replies drafted to up to three of your existing reviews. Nothing is posted until you approve it.',
     what: 'We draft replies to up to three of your existing reviews. Nothing is posted until you approve it.',
     why: 'So your listing shows there’s someone behind it who cares.',
   },
   {
     name: 'Before-and-after report',
+    /** One-sentence version for the page list. Restates `what`; never promise more. */
+    short: 'Screenshots where available, and a checklist of what changed, what’s waiting on Google and what didn’t apply.',
     what: 'Screenshots where available, and a checklist of what we changed, what’s waiting on Google and what didn’t apply.',
     why: 'So you know exactly what you paid for.',
   },
   {
     name: '30-day check-up',
+    /** One-sentence version for the page list. Restates `what`; never promise more. */
+    short: 'About a month later, we check your listing again and fix anything we changed that has since been undone.',
     what: 'About a month later, we look at your listing again and fix anything we changed that has since been undone.',
     why: 'Because Google and the public can edit your details too.',
     isNew: true,
