@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
   AlertCircle, Building2, CalendarClock, Check, ChevronDown, Clock, KeyRound, MessageSquareText, Minus,
-  PencilLine, QrCode, Info, RotateCcw, UserCheck, X,
+  PencilLine, QrCode, Quote, Info, RotateCcw, UserCheck, X,
 } from 'lucide-react'
 import { SEO } from '@/components/SEO'
 import { OfferCta, OfferFooter, OfferNav } from '@/components/google/OfferChrome'
@@ -97,6 +97,16 @@ const schema = [
     mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   },
 ]
+
+/** Wraps the reviewer's own phrase in <mark>. If it isn't found verbatim, the text renders unchanged. */
+function highlightIn(text: string, phrase: string) {
+  const i = text.indexOf(phrase)
+  if (i < 0) return text
+  return <>{text.slice(0, i)}<mark>{phrase}</mark>{text.slice(i + phrase.length)}</>
+}
+
+/** "Dave C." → "DC" */
+const initials = (name: string) => name.replace(/[^A-Z]/g, '').slice(0, 2)
 
 /** Decorative QR-style grid for the illustration only. It does not scan. */
 function FauxQr() {
@@ -226,10 +236,17 @@ export default function GoogleOffer() {
             <div className="go-quotes">
               {testimonials.map(t => (
                 <figure key={t.name} className="go-quote">
+                  <span className="go-quote-mark" aria-hidden="true"><Quote size={20} strokeWidth={2.4} /></span>
                   <blockquote>
-                    {t.quote.map(para => <p key={para}>{para}</p>)}
+                    {t.quote.map(para => <p key={para}>{highlightIn(para, t.highlight)}</p>)}
                   </blockquote>
-                  <figcaption>{t.name}</figcaption>
+                  <figcaption>
+                    <span className="go-quote-avatar" aria-hidden="true">{initials(t.name)}</span>
+                    <span>
+                      <span className="go-quote-name">{t.name}</span>
+                      <span className="go-quote-role">Google listing client</span>
+                    </span>
+                  </figcaption>
                 </figure>
               ))}
             </div>

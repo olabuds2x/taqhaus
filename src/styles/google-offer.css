@@ -151,21 +151,47 @@
 .tq-offer .go-seasonal svg { flex-shrink: 0; margin-top: 1px; color: var(--coral-ink); }
 
 /* ── A3. Proof: real reviews ──────────────────────────────── */
-.tq-offer .go-proof { padding-top: clamp(24px, 4vw, 56px); }
-.tq-offer .go-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+/* Dark band: breaks up the ivory run between the trust strip and the examples. */
+.tq-offer .go-proof { background: var(--pine); color: var(--ivory); --em-color: var(--ghost-on-dark); }
+.tq-offer .go-proof .eyebrow,
+.tq-offer .go-proof .go-title { color: var(--ivory); }
+.tq-offer .go-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
 .tq-offer .go-quote {
-  position: relative; margin: 0; display: flex; flex-direction: column; gap: 20px;
-  padding: clamp(24px, 3vw, 36px); padding-top: clamp(52px, 5vw, 64px);
-  border-radius: var(--radius-lg); background: var(--card); border: 1px solid var(--hairline);
+  margin: 0; display: flex; flex-direction: column; gap: 22px;
+  padding: clamp(24px, 3vw, 40px);
+  border-radius: var(--radius-lg); background: var(--pine-2);
+  border: 1px solid color-mix(in srgb, var(--ivory) 12%, transparent);
 }
-.tq-offer .go-quote::before {
-  content: '\201C'; position: absolute; top: clamp(10px, 1.4vw, 16px); left: clamp(22px, 3vw, 34px);
-  font-family: var(--display); font-size: 64px; line-height: 1; color: var(--coral);
+.tq-offer .go-quote-mark {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
+  background: var(--coral); color: var(--ink);
 }
-.tq-offer .go-quote blockquote { margin: 0; display: flex; flex-direction: column; gap: 12px; }
-.tq-offer .go-quote blockquote p { margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--ink); }
-.tq-offer .go-quote figcaption { margin-top: auto; font-weight: 700; font-size: 15.5px; color: var(--ink); }
-.tq-offer .go-proof-note { margin: 16px 0 0; align-items: flex-start; line-height: 1.5; }
+.tq-offer .go-quote blockquote { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.tq-offer .go-quote blockquote p {
+  margin: 0; font-size: clamp(16.5px, 1.3vw, 18px); line-height: 1.62;
+  color: color-mix(in srgb, var(--ivory) 84%, transparent);
+}
+/* Highlighter: the reviewer's own words, emphasised; never reworded. */
+.tq-offer .go-quote mark {
+  color: var(--ivory); font-weight: 600; padding: 0 2px; margin: 0 -2px;
+  background: linear-gradient(transparent 58%, color-mix(in srgb, var(--coral) 55%, transparent) 58%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.tq-offer .go-quote figcaption {
+  display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 20px;
+  border-top: 1px solid color-mix(in srgb, var(--ivory) 12%, transparent);
+}
+.tq-offer .go-quote-avatar {
+  flex-shrink: 0; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--ivory); color: var(--pine);
+  font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: .02em;
+}
+.tq-offer .go-quote-name { display: block; font-weight: 700; font-size: 16px; color: var(--ivory); }
+.tq-offer .go-quote-role { display: block; margin-top: 2px; font-size: 14px; color: color-mix(in srgb, var(--ivory) 65%, transparent); }
+.tq-offer .go-proof .go-proof-note {
+  margin: 20px 0 0; align-items: flex-start; line-height: 1.5;
+  color: color-mix(in srgb, var(--ivory) 65%, transparent);
+}
 .tq-offer .go-proof-note svg { margin-top: 2px; }
 @media (max-width: 800px) { .tq-offer .go-quotes { grid-template-columns: 1fr; } }
 .tq-offer .go-secondary {

@@ -92,6 +92,8 @@ export const testimonials = [
       'Since then, we’ve been getting more customer enquiries and have seen an increase in new clients. We’re really pleased with the results and would happily recommend them.',
     ],
     name: 'Dave C.',
+    /** Must match the quote text exactly; it's emphasised, not changed. */
+    highlight: 'the difference has been noticeable',
   },
   {
     quote: [
@@ -100,6 +102,7 @@ export const testimonials = [
       'We’ve since seen more interest from potential customers, which has been great for the business. What I appreciated most was how simple they made everything. They knew what they were doing and got the job done.',
     ],
     name: 'Ben W.',
+    highlight: 'What I appreciated most was how simple they made everything.',
   },
 ] as const
 
