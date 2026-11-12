@@ -118,6 +118,8 @@ export const testimonialNote =
  */
 export const seasonalNote = {
   text: 'Holidays coming up? Customers check your hours on Google first. Get them right before the rush.',
+  /** Hero tag version of the same note. */
+  short: 'Get your holiday hours right before the rush',
   until: '2027-01-01',
 } as const
 
@@ -128,6 +130,8 @@ export const seasonalNote = {
 export const promise = {
   name: 'The 2-Day Promise',
   short: 'Done within 2 business days of getting access and your details, or your $99 back. We still finish the work.',
+  /** Hero version beside the button. The conditions (access + details) sit in the trust strip right below and in the terms. */
+  compact: ['Done in 2 business days', 'after we get access, or your $99 back.'],
 } as const
 
 /**

@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { SEO } from '@/components/SEO'
 import { OfferCta, OfferFooter, OfferNav } from '@/components/google/OfferChrome'
+import { HookArrow } from '@/components/site/HookArrow'
 import { captureUtm, track } from '@/lib/track'
 import { BUSINESS, COMPLEX_MAILTO, OFFER, TERMS_PATH } from '@/lib/googleOffer'
 import {
@@ -104,7 +105,14 @@ const reportRows = [
   { s: 'na', t: 'Photos: none supplied' },
 ] as const
 
-const statusLabel = { done: 'Completed', pending: 'Pending', na: 'Not applicable' } as const
+/* Hero illustration: the "after" state of the problem cards below. No ratings or review counts. */
+const afterRows = [
+  { k: 'Hours', v: 'Up to date' },
+  { k: 'Services', v: 'Clearly listed' },
+  { k: 'Review link', v: 'Ready to share' },
+] as const
+
+const statusLabel ={ done: 'Completed', pending: 'Pending', na: 'Not applicable' } as const
 
 /** Decorative QR-style grid for the illustration only. It does not scan. */
 function FauxQr() {
@@ -159,48 +167,88 @@ export default function GoogleOffer() {
 
         {/* A ── Hero */}
         <section className="go-hero" aria-labelledby="go-hero-title">
-          <div className="wrap go-hero-grid">
-            <div className="go-hero-copy">
-              <span className="eyebrow">For small businesses</span>
-              <h1 id="go-hero-title">
-                Make your Google listing <em>worth calling.</em>
-              </h1>
-              <p className="go-hero-sub">
-                Most people check your Google listing before they call, book or visit. We fix what&rsquo;s holding it
-                back and set you up to ask every customer for a review. Done for you within two business days.
-              </p>
-              {showSeasonal && (
-                <p className="go-seasonal">
-                  <CalendarClock size={18} strokeWidth={2.2} aria-hidden="true" /> {seasonalNote.text}
+          <div className="wrap">
+            <div className="go-hero-grid">
+              <div className="go-hero-copy">
+                <div className="go-hero-tags">
+                  <span className="go-tag go-tag--name">{OFFER.name}</span>
+                  {showSeasonal && (
+                    <span className="go-tag" title={seasonalNote.text}>
+                      <CalendarClock size={15} strokeWidth={2.4} aria-hidden="true" /> {seasonalNote.short}
+                    </span>
+                  )}
+                </div>
+                <h1 id="go-hero-title">
+                  <span className="ln">Make your Google</span>{' '}
+                  <span className="ln">
+                    listing{' '}
+                    <span className="go-tile" aria-hidden="true"><HookArrow /></span>{' '}
+                    <em>worth calling.</em>
+                  </span>
+                </h1>
+                <p className="go-hero-sub">
+                  Most people check your Google listing before they call, book or visit. We fix what&rsquo;s holding it
+                  back and set you up to ask every customer for a review.
                 </p>
-              )}
+
+                <div className="go-buy" aria-label="Price and order">
+                  <p className="go-price">
+                    <span className="amt"><span className="cur">$</span>99</span>
+                    <span className="unit">
+                      <strong>One-time · USD · No monthly fees</strong>
+                      <span>{PAYOFF}</span>
+                    </span>
+                  </p>
+                  <OfferCta
+                    location="hero"
+                    compactNote
+                    beside={
+                      <p className="go-promise go-promise--beside">
+                        <Clock size={20} strokeWidth={2.4} aria-hidden="true" />
+                        <span><strong>{promise.compact[0]}</strong> {promise.compact[1]}</span>
+                      </p>
+                    }
+                  />
+                </div>
+              </div>
+
+              {/* Photo is an AI-generated environment shot; the card is a labelled illustration. */}
+              <div className="go-hero-visual">
+                <figure className="go-hero-photo">
+                  <img src="/images/google/hero-storefront.jpg" alt="" width={1024} height={1280} fetchPriority="high" />
+                </figure>
+                <span className="go-badge" aria-hidden="true">
+                  <strong>2</strong>
+                  <span>business<br />days</span>
+                </span>
+                <figure className="go-after" aria-label="Illustration: a listing after the tune-up">
+                  <div className="go-sketch-head">
+                    <span className="go-sketch-avatar"><Building2 size={18} strokeWidth={2.2} /></span>
+                    <span>
+                      <span className="go-sketch-name">Your business</span>
+                      <span className="go-sketch-sub">Illustration: after the tune-up</span>
+                    </span>
+                  </div>
+                  {afterRows.map(r => (
+                    <span key={r.k} className="row">
+                      <span className="k"><Check size={15} strokeWidth={2.8} />{r.k}</span>
+                      <span className="v">{r.v}</span>
+                    </span>
+                  ))}
+                </figure>
+              </div>
             </div>
 
-            <aside className="go-offer" aria-label="Price and order">
-              <p className="go-offer-name">{OFFER.name}</p>
-              <div className="go-price-panel">
-                <p className="go-price">
-                  <span className="cur">$</span><span className="amt">99</span>
-                  <span className="unit">
-                    <strong>USD · one-time</strong>
-                    <span>No monthly commitment</span>
-                  </span>
-                </p>
-              </div>
-              <p className="go-payoff">{PAYOFF}</p>
-              <OfferCta location="hero" block />
-              <div className="go-promise">
-                <Clock size={20} strokeWidth={2.2} aria-hidden="true" />
-                <p><strong>{promise.name}:</strong> {promise.short}</p>
-              </div>
-              <p className="go-micro">No call needed. {capacityNote}</p>
-              <a href="#included" className="go-secondary">{OFFER.secondaryLabel}</a>
-              <ul className="go-offer-pillars" aria-label="What the $99 covers">
+            <div className="go-hero-foot">
+              <ul className="go-hero-incl" aria-label="What the $99 covers">
                 <li><PencilLine size={18} strokeWidth={2.2} aria-hidden="true" /> Listing tune-up</li>
                 <li><MessageSquareText size={18} strokeWidth={2.2} aria-hidden="true" /> Review link, QR code and ready-to-send requests</li>
-                <li><CalendarClock size={18} strokeWidth={2.2} aria-hidden="true" /> 30-day check-up included</li>
+                <li><CalendarClock size={18} strokeWidth={2.2} aria-hidden="true" /> 30-day check-up</li>
               </ul>
-            </aside>
+              <p className="go-hero-meta">
+                No call needed. {capacityNote} <a href="#included">{OFFER.secondaryLabel}</a>
+              </p>
+            </div>
           </div>
         </section>
 

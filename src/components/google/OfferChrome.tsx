@@ -75,13 +75,19 @@ export function OfferFooter() {
 
 /* ── Primary CTA ──────────────────────────────────────────────────────── */
 
-type CtaProps = { location: string; block?: boolean; tone?: 'coral' | 'pine' }
+type CtaProps = {
+  location: string; block?: boolean; tone?: 'coral' | 'pine'
+  /** Shown next to the button (wraps under it on small screens). */
+  beside?: React.ReactNode
+  /** One-line consent note for tight spots like the hero. Same terms, fewer words. */
+  compactNote?: boolean
+}
 
 /**
  * With checkout enabled: asks the server for a Stripe Checkout URL and
  * redirects. Without it: an honest email link, never a pretend purchase.
  */
-export function OfferCta({ location, block, tone = 'coral' }: CtaProps) {
+export function OfferCta({ location, block, tone = 'coral', beside, compactNote }: CtaProps) {
   const [state, setState] = useState<'idle' | 'loading' | 'error'>('idle')
   const cls = `pill-btn pill-btn--${tone} go-cta-btn${block ? ' pill-btn--block' : ''}`
 
@@ -126,15 +132,26 @@ export function OfferCta({ location, block, tone = 'coral' }: CtaProps) {
     }
   }
 
+  const button = (
+    <button type="button" className={cls} onClick={startCheckout} disabled={state === 'loading'} aria-busy={state === 'loading'}>
+      {state === 'loading' ? 'Opening secure checkout…' : OFFER.ctaLabel} {state !== 'loading' && <HookArrow />}
+    </button>
+  )
+
   return (
     <div className="go-cta">
-      <button type="button" className={cls} onClick={startCheckout} disabled={state === 'loading'} aria-busy={state === 'loading'}>
-        {state === 'loading' ? 'Opening secure checkout…' : OFFER.ctaLabel} {state !== 'loading' && <HookArrow />}
-      </button>
-      <p className="go-cta-note">
-        Secure checkout by Stripe. By ordering you agree to the <Link to={TERMS_PATH}>package terms</Link>, including{' '}
-        <Link to={`${TERMS_PATH}#refunds`}>refunds</Link>, and our <Link to={PRIVACY_POLICY_URL}>privacy policy</Link>.
-      </p>
+      {beside ? <div className="go-cta-row">{button}{beside}</div> : button}
+      {compactNote ? (
+        <p className="go-cta-note">
+          Secure checkout by Stripe. By ordering you agree to our <Link to={TERMS_PATH}>terms</Link>,{' '}
+          <Link to={`${TERMS_PATH}#refunds`}>refunds</Link> and <Link to={PRIVACY_POLICY_URL}>privacy policy</Link>.
+        </p>
+      ) : (
+        <p className="go-cta-note">
+          Secure checkout by Stripe. By ordering you agree to the <Link to={TERMS_PATH}>package terms</Link>, including{' '}
+          <Link to={`${TERMS_PATH}#refunds`}>refunds</Link>, and our <Link to={PRIVACY_POLICY_URL}>privacy policy</Link>.
+        </p>
+      )}
       {state === 'error' && (
         <p className="go-cta-error" role="alert">
           Checkout didn&rsquo;t open. You have not been charged. Please try again, or{' '}
