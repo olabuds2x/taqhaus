@@ -9,7 +9,7 @@ import {
   accessFailure, bestFor, deliverySummary, independenceNote, notFitYet, notIncluded, pillars, scopeNote, timeline, trademarkNote,
 } from '@/data/googleOffer'
 
-const LAST_UPDATED = '11 November 2026'
+const LAST_UPDATED = '13 November 2026'
 
 export default function GoogleOfferTerms() {
   useEffect(() => {

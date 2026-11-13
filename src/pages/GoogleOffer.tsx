@@ -100,7 +100,7 @@ const reportRows = [
   { s: 'done', t: 'Business hours checked and updated' },
   { s: 'done', t: 'Service descriptions rewritten from your notes' },
   { s: 'done', t: 'Review link and QR code created' },
-  { s: 'done', t: 'Replies drafted to 3 existing reviews, for your approval' },
+  { s: 'done', t: '3 review replies written, ready for you to post' },
   { s: 'pending', t: 'Category change: waiting on Google' },
   { s: 'na', t: 'Photos: none supplied' },
 ] as const

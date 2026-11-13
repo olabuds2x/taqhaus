@@ -21,7 +21,7 @@ export const pillars = [
     items: [
       'Create direct Google review link and downloadable digital QR asset.',
       'Provide two short neutral customer-review-request templates (SMS/email) and a recommended ask routine.',
-      'Draft up to three personalized responses to existing genuine reviews for owner approval.',
+      'Draft up to three review replies, ready to post. They are written for the business’s existing reviews first; where there are fewer than three reviews, we draft replies for common situations (for example, a positive, a mixed and a negative review). The business posts the replies itself; TaqHaus does not post them.',
       'Give the owner straightforward instructions for continuing to request reviews from actual customers.',
     ],
   },
@@ -71,8 +71,8 @@ export const stack = [
   {
     name: 'Replies to your reviews, written for you',
     /** One-sentence version for the page list. Restates `what`; never promise more. */
-    short: 'Replies drafted to up to three of your existing reviews. Nothing is posted until you approve it.',
-    what: 'We draft replies to up to three of your existing reviews. Nothing is posted until you approve it.',
+    short: 'Up to three replies, ready for you to copy and post. Written for your real reviews, or for common situations if you have fewer than three.',
+    what: 'We write up to three replies, ready for you to copy and post: for your real reviews first, or for common situations (a positive, a mixed and a negative review) if you have fewer than three. You post them yourself.',
     why: 'So your listing shows there’s someone behind it who cares.',
   },
   {

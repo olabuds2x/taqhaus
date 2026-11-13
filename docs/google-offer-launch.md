@@ -23,6 +23,7 @@ Grand Slam upgrade (11 Nov 2026, owner-approved):
 
 Review fixes (12 Nov 2026):
 - Up to **three** drafted review replies (page, sample summary, terms).
+- **13 Nov 2026:** the customer posts the replies themselves; TaqHaus doesn't post them. Replies are written for real reviews first, or for common situations (positive, mixed, negative) if there are fewer than three. Terms date: 13 November 2026.
 - `/google/terms#access-delays`: if access or information isn't provided, the team contacts the customer up to three times over seven days, then offers a full refund or an audit-only summary based on the public profile. **This is a manual process:** nothing automates the reminders, so track it from the order's `paid_at` in Stripe.
 - Stripe product name: "Google Business Profile optimization & review-request setup" (one-time payment mode, no subscription possible).
 - Tax: Stripe Tax is off by choice, and the terms say no tax is added at checkout. If Stripe Tax is switched on later, update the "Price and payment" paragraph in `GoogleOfferTerms.tsx` at the same time.
