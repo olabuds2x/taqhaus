@@ -15,7 +15,11 @@ const anchors = [
   { id: 'faqs', label: 'FAQs' },
 ]
 
-export function OfferNav({ mode = 'landing' }: { mode?: 'landing' | 'subpage' | 'order' }) {
+export function OfferNav({ mode = 'landing', showCta }: {
+  mode?: 'landing' | 'subpage' | 'order'
+  /** Landing page only: reveals the order button once the hero's buy box is off screen. */
+  showCta?: boolean
+}) {
   const base = mode === 'landing' ? '' : '/google'
   return (
     <header className="go-nav">
@@ -32,11 +36,26 @@ export function OfferNav({ mode = 'landing' }: { mode?: 'landing' | 'subpage' | 
             Help: {BUSINESS.email}
           </a>
         ) : (
-          <nav className="go-nav-links" aria-label="Package">
-            {anchors.map(a => (
-              <a key={a.id} href={`${base}#${a.id}`}>{a.label}</a>
-            ))}
-          </nav>
+          <div className="go-nav-right">
+            <nav className="go-nav-links" aria-label="Package">
+              {anchors.map(a => (
+                <a key={a.id} href={`${base}#${a.id}`}>{a.label}</a>
+              ))}
+            </nav>
+            {/* Jumps to the price and order button (with its terms note) instead of opening checkout itself. */}
+            {mode === 'landing' && (
+              <a
+                className="go-nav-cta"
+                href="#order"
+                data-show={showCta || undefined}
+                tabIndex={showCta ? undefined : -1}
+                aria-hidden={showCta ? undefined : true}
+                onClick={() => track('offer_primary_cta_click', { location: 'nav', mode: 'jump' })}
+              >
+                Order for $99 <HookArrow />
+              </a>
+            )}
+          </div>
         )}
       </div>
     </header>

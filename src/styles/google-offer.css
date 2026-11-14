@@ -33,6 +33,41 @@
   .tq-offer *, .tq-offer *::before, .tq-offer *::after { transition: none !important; animation: none !important; }
 }
 
+/* The site sets overflow-x: hidden on html and body, which turns body into the scroll
+   container and stops position: sticky from working. `clip` hides the same overflow
+   without that side effect. Scoped to the funnel pages only. */
+html:has(.tq-offer), body:has(.tq-offer) { overflow-x: clip; }
+
+/* ── Motion ───────────────────────────────────────────────── */
+/* Two quiet moves, both CSS-only so the prerendered HTML is never hidden:
+   the hero settles in on load, and each chapter rises as it scrolls into view. */
+@keyframes go-in { from { opacity: 0; transform: translateY(18px); } }
+@keyframes go-zoom { from { transform: scale(1.07); } }
+@keyframes go-pop { from { opacity: 0; transform: scale(.7) rotate(-12deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .tq-offer .go-hero-copy > *,
+  .tq-offer .go-after,
+  .tq-offer .go-after .row { animation: go-in .7s cubic-bezier(.2, .7, .2, 1) both; }
+  .tq-offer .go-hero-copy > :nth-child(2) { animation-delay: .06s; }
+  .tq-offer .go-hero-copy > :nth-child(3) { animation-delay: .12s; }
+  .tq-offer .go-hero-copy > :nth-child(4) { animation-delay: .18s; }
+  .tq-offer .go-hero-photo img { animation: go-zoom 1.6s cubic-bezier(.2, .7, .2, 1) both; }
+  .tq-offer .go-badge { animation: go-pop .6s .45s cubic-bezier(.3, 1.4, .5, 1) both; }
+  .tq-offer .go-after { animation-delay: .3s; }
+  .tq-offer .go-after .row:nth-of-type(1) { animation-delay: .55s; }
+  .tq-offer .go-after .row:nth-of-type(2) { animation-delay: .67s; }
+  .tq-offer .go-after .row:nth-of-type(3) { animation-delay: .79s; }
+
+  @supports (animation-timeline: view()) {
+    .tq-offer :is(.go-head, .go-trust-list, .go-quote, .go-listing, .go-issues li, .go-list li, .go-sample,
+      .go-stack-total, .go-steps li, .go-fit, .go-faq-item, .go-final-card) {
+      animation: go-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
+    }
+  }
+}
+
 /* ── Header ───────────────────────────────────────────────── */
 .tq-offer .go-nav {
   position: sticky; top: 0; z-index: 100;
@@ -47,7 +82,24 @@
   box-shadow: 0 18px 40px -24px rgba(18, 36, 31, .55);
 }
 .tq-offer .go-nav-logo img { height: 32px; width: auto; }
+.tq-offer .go-nav-right { display: flex; align-items: center; gap: 8px; }
 .tq-offer .go-nav-links { display: flex; align-items: center; gap: 6px; }
+/* Order button: grows in once the hero's buy box has scrolled away (useBuyPrompt). */
+.tq-offer .go-nav-cta {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px;
+  background: var(--coral); color: var(--ink); font-size: 15px; font-weight: 700; white-space: nowrap;
+  overflow: hidden; max-width: 0; padding-inline: 0; margin-left: -8px;
+  opacity: 0; visibility: hidden;
+  transition: max-width .45s cubic-bezier(.2, .7, .2, 1), padding .45s cubic-bezier(.2, .7, .2, 1), margin .45s,
+    opacity .25s, visibility 0s linear .45s, background .2s;
+}
+.tq-offer .go-nav-cta[data-show] {
+  max-width: 200px; padding-inline: 18px; margin-left: 0; opacity: 1; visibility: visible;
+  transition-delay: 0s, 0s, 0s, .12s, 0s, 0s;
+}
+.tq-offer .go-nav-cta:hover { background: var(--coral-deep); }
+.tq-offer .go-nav-cta .hook { width: 14px; height: 14px; }
+@media (max-width: 760px) { .tq-offer .go-nav-cta { display: none; } }
 .tq-offer .go-nav-links a,
 .tq-offer .go-nav-help {
   padding: 8px 14px; border-radius: 999px;
@@ -60,6 +112,8 @@
 .tq-offer .go-nav :focus-visible { outline-color: var(--coral); }
 
 @media (max-width: 640px) {
+  /* Phones keep the header in the page: the buy bar is the one thing that follows the thumb. */
+  .tq-offer .go-nav { position: static; }
   .tq-offer .go-nav-bar { min-height: 56px; padding: 8px 8px 8px 16px; gap: 8px; }
   .tq-offer .go-nav-logo img { height: 26px; }
   .tq-offer .go-nav-links { gap: 0; }
@@ -102,7 +156,7 @@
 /* ── A. Hero ──────────────────────────────────────────────── */
 /* Copy + buy box left, framed photo with a floating "after" listing right,
    then a quiet foot row with what's included. Coral: headline tile, button, badge numeral. */
-.tq-offer .go-hero { padding: clamp(28px, 4vw, 56px) 0 clamp(40px, 5vw, 72px); }
+.tq-offer .go-hero { padding: clamp(28px, 4vw, 56px) 0 clamp(36px, 4.5vw, 64px); }
 .tq-offer .go-hero-grid {
   display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
   gap: clamp(32px, 5vw, 88px); align-items: center;
@@ -186,7 +240,9 @@
   background: var(--card); border: 1px solid var(--hairline);
   box-shadow: 0 30px 60px -28px rgba(18, 36, 31, .45);
 }
-.tq-offer .go-after .go-sketch-head { margin-bottom: 4px; }
+.tq-offer .go-after .go-sketch-head { margin-bottom: 6px; }
+.tq-offer .go-after .go-sketch-avatar { width: 40px; height: 40px; border-radius: 12px; }
+.tq-offer .go-after .go-sketch-name { font-size: 17px; }
 .tq-offer .go-after .row {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   padding: 9px 12px; border-radius: 10px; background: var(--ivory);
@@ -196,20 +252,6 @@
 .tq-offer .go-after .row .k svg { flex-shrink: 0; color: var(--pine-3); }
 .tq-offer .go-after .row .v { font-weight: 700; color: var(--ink); }
 
-/* Foot row: what the $99 covers, then the quiet extras. */
-.tq-offer .go-hero-foot {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 32px;
-  margin-top: clamp(32px, 4vw, 56px); padding-top: 22px; border-top: 1px solid var(--hairline);
-}
-.tq-offer .go-hero-incl { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 28px; }
-.tq-offer .go-hero-incl li { display: flex; align-items: center; gap: 10px; font-size: 15.5px; font-weight: 600; color: var(--ink); }
-.tq-offer .go-hero-incl svg { flex-shrink: 0; width: 32px; height: 32px; padding: 7px; border-radius: 10px; background: var(--ivory-2); color: var(--pine); }
-.tq-offer .go-hero-meta { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
-.tq-offer .go-hero-meta a { font-weight: 700; white-space: nowrap; }
-
-@media (max-width: 1100px) {
-  .tq-offer .go-hero-foot { flex-direction: column; align-items: flex-start; }
-}
 @media (max-width: 900px) {
   .tq-offer .go-hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .tq-offer .go-hero h1 { font-size: clamp(36px, 6.6vw, 58px); }
@@ -229,7 +271,6 @@
   .tq-offer .go-price .amt { font-size: 52px; }
   .tq-offer .go-price .unit { padding-left: 14px; }
   .tq-offer .go-price .unit strong, .tq-offer .go-price .unit span { font-size: 13.5px; }
-  .tq-offer .go-hero-incl { flex-direction: column; }
   .tq-offer .go-tag { font-size: 13px; padding: 6px 12px; }
 }
 
@@ -281,7 +322,6 @@
   .tq-offer .go-after .go-sketch-avatar { width: 34px; height: 34px; border-radius: 10px; }
   .tq-offer .go-after .row { justify-content: flex-start; gap: 6px; padding: 7px 10px; font-size: 13px; }
   .tq-offer .go-after .row .v { font-weight: 600; }
-  .tq-offer .go-hero-foot { margin-top: 28px; }
 
   /* Glance layer: the first screen holds one decision (headline, one sentence, price, button).
      The seasonal note rides on the photo as a glass chip; the "2 days" badge, the after card
@@ -289,8 +329,7 @@
   .tq-offer .go-hero { padding-bottom: 28px; }
   .tq-offer .go-hero-photo { aspect-ratio: 8 / 7; }
   .tq-offer .go-badge,
-  .tq-offer .go-after,
-  .tq-offer .go-hero-foot { display: none; }
+  .tq-offer .go-after { display: none; }
   .tq-offer .go-hero-tags { grid-area: media; align-self: start; justify-self: start; position: relative; z-index: 2; margin: 12px; }
   .tq-offer .go-hero-tags .go-tag {
     padding: 6px 11px; font-size: 12.5px; color: var(--ink);
@@ -355,10 +394,8 @@
   border-radius: var(--radius-lg); background: var(--pine-2);
   border: 1px solid color-mix(in srgb, var(--ivory) 12%, transparent);
 }
-.tq-offer .go-quote-mark {
-  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
-  background: var(--coral); color: var(--ink);
-}
+.tq-offer .go-quote-mark { display: inline-flex; color: var(--ghost-on-dark); }
+.tq-offer .go-quote-mark svg { width: 30px; height: 30px; }
 .tq-offer .go-quote blockquote { margin: 0; display: flex; flex-direction: column; gap: 14px; }
 .tq-offer .go-quote blockquote p {
   margin: 0; font-size: clamp(16.5px, 1.3vw, 18px); line-height: 1.62;
@@ -389,7 +426,6 @@
 @media (max-width: 800px) { .tq-offer .go-quotes { grid-template-columns: 1fr; } }
 @media (max-width: 560px) {
   .tq-offer .go-quote { padding: 22px; gap: 18px; }
-  .tq-offer .go-quote-mark { width: 38px; height: 38px; }
   .tq-offer .go-quote blockquote { gap: 12px; }
   .tq-offer .go-quote blockquote p { font-size: 16px; line-height: 1.58; }
   .tq-offer .go-quote figcaption { padding-top: 16px; }
@@ -425,20 +461,30 @@
 }
 
 /* ── A2. Reassurance strip ────────────────────────────────── */
-.tq-offer .go-trust { padding: 0 0 clamp(40px, 5vw, 64px); }
+/* The hero's foot: four facts in one ruled row. Icons stay pine; coral is for buttons. */
+.tq-offer .go-trust { padding: 0 0 clamp(48px, 6vw, 88px); }
 .tq-offer .go-trust-list {
-  list-style: none; margin: 0; padding: clamp(20px, 2.4vw, 28px);
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.4vw, 32px);
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
 }
-.tq-offer .go-trust-list li { display: flex; align-items: flex-start; gap: 12px; }
-.tq-offer .go-trust-list svg { flex-shrink: 0; margin-top: 1px; color: var(--coral-ink); }
-.tq-offer .go-trust-list strong { display: block; font-size: 15.5px; line-height: 1.3; color: var(--ink); }
-.tq-offer .go-trust-list p { margin: 4px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
-.tq-offer .go-trust-more { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-2); }
+.tq-offer .go-trust-list li {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  padding: clamp(22px, 2.4vw, 30px) clamp(18px, 2vw, 28px);
+  border-left: 1px solid var(--hairline);
+}
+.tq-offer .go-trust-list li:first-child { padding-left: 0; border-left: 0; }
+.tq-offer .go-trust-list li:last-child { padding-right: 0; }
+.tq-offer .go-trust-list svg { flex-shrink: 0; width: 38px; height: 38px; padding: 9px; border-radius: 12px; background: var(--ivory-2); color: var(--pine); }
+.tq-offer .go-trust-list strong { display: block; font-family: var(--display); font-weight: 600; font-size: 18px; line-height: 1.25; letter-spacing: -0.02em; color: var(--ink); }
+.tq-offer .go-trust-list p { margin: 6px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+.tq-offer .go-trust-more { margin: 16px 0 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
 .tq-offer .go-trust-more a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--coral); text-underline-offset: 3px; }
-@media (max-width: 1000px) { .tq-offer .go-trust-list { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .tq-offer .go-trust-list { grid-template-columns: 1fr; padding: 20px 0; } }
+@media (max-width: 1000px) {
+  .tq-offer .go-trust-list { grid-template-columns: 1fr 1fr; }
+  .tq-offer .go-trust-list li { padding-inline: 0 24px; border-left: 0; }
+  .tq-offer .go-trust-list li:nth-child(n + 3) { border-top: 1px solid var(--hairline); }
+}
 /* Phones: four short cards in one swipeable row instead of a 700px stack. Same words, one glance tall. */
 @media (max-width: 640px) {
   .tq-offer .go-trust-list {
@@ -448,67 +494,134 @@
     border: 0;
   }
   .tq-offer .go-trust-list::-webkit-scrollbar { display: none; }
-  .tq-offer .go-trust-list li {
-    scroll-snap-align: start; flex-direction: column; gap: 10px;
+  .tq-offer .go-trust-list li,
+  .tq-offer .go-trust-list li:first-child,
+  .tq-offer .go-trust-list li:nth-child(n + 3) {
+    scroll-snap-align: start; gap: 12px;
     padding: 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--hairline);
   }
+  .tq-offer .go-trust-list strong { font-size: 17px; }
   .tq-offer .go-trust-list p { font-size: 14px; color: var(--ink-3); }
   .tq-offer .go-trust-more { font-size: 13.5px; color: var(--ink-3); }
 }
 
 /* ── B. Problem ───────────────────────────────────────────── */
+/* One illustrative listing with a Before / After switch (ListingDemo). The three problems
+   sit beside it as a plain ruled list; hovering one points at its rows. */
 .tq-offer .go-problem { background: var(--ivory-2); }
-.tq-offer .go-issues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.tq-offer .go-issue {
-  margin: 0; background: var(--card); border-radius: 20px; padding: 14px 14px 22px;
-  display: flex; flex-direction: column; gap: 20px;
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent);
+.tq-offer .go-problem-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.94fr);
+  grid-template-areas: "head card" "issues card";
+  gap: 0 clamp(40px, 6vw, 104px); align-items: start;
 }
-/* A plain, unbranded listing card: "Your business", then the rows that matter. */
-.tq-offer .go-sketch {
-  display: flex; flex-direction: column; gap: 8px;
-  padding: 16px; border-radius: 14px;
-  background: var(--ivory); border: 1px solid var(--hairline);
+.tq-offer .go-problem .go-head { grid-area: head; }
+.tq-offer .go-issues { grid-area: issues; }
+.tq-offer .go-listing { grid-area: card; align-self: center; }
+
+.tq-offer .go-listing {
+  margin: 0; padding: clamp(16px, 2vw, 26px); border-radius: 28px;
+  background: var(--card); border: 1px solid var(--hairline);
+  box-shadow: 0 60px 110px -64px rgba(18, 36, 31, .55), 0 2px 0 color-mix(in srgb, var(--ink) 4%, transparent);
 }
-.tq-offer .go-sketch-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.tq-offer .go-listing-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding: 4px 4px 18px; }
+.tq-offer .go-sketch-head { display: flex; align-items: center; gap: 12px; }
 .tq-offer .go-sketch-avatar {
-  display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px;
+  display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 13px;
   background: var(--pine); color: var(--ivory);
 }
-.tq-offer .go-sketch-name { display: block; font-family: var(--display); font-weight: 600; font-size: 17px; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); }
+.tq-offer .go-sketch-name { display: block; font-family: var(--display); font-weight: 600; font-size: 18px; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); }
 .tq-offer .go-sketch-sub { display: block; margin-top: 2px; font-size: 12.5px; color: var(--ink-3); }
-.tq-offer .go-sketch .row {
+
+/* Segmented switch with a sliding thumb */
+.tq-offer .go-switch {
+  position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
+  padding: 4px; border-radius: 999px; background: var(--ivory-2);
+}
+.tq-offer .go-switch::before {
+  content: ""; position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px);
+  border-radius: 999px; background: var(--pine);
+  box-shadow: 0 6px 14px -6px rgba(18, 36, 31, .6);
+  transition: transform .5s cubic-bezier(.3, 1.25, .5, 1);
+}
+.tq-offer [data-state="after"] .go-switch::before { transform: translateX(100%); }
+.tq-offer .go-switch button {
+  position: relative; min-width: 84px; min-height: 40px; padding: 0 18px;
+  border: 0; border-radius: 999px; background: none; cursor: pointer;
+  font: inherit; font-size: 14.5px; font-weight: 700; color: var(--ink-2);
+  transition: color .3s;
+}
+.tq-offer .go-switch button[aria-pressed="true"] { color: var(--ivory); }
+.tq-offer .go-switch button:focus-visible { border-radius: 999px; }
+
+.tq-offer .go-listing-rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.tq-offer .go-listing-rows li {
+  --d: calc(var(--i) * 70ms);
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 10px 12px; border-radius: 10px; background: var(--card);
-  font-size: 13.5px;
+  padding: 14px 16px; border-radius: 14px; background: var(--ivory);
+  box-shadow: inset 0 0 0 1.5px transparent;
+  font-size: 15px; line-height: 1.3;
+  transition: background .45s var(--d), box-shadow .45s var(--d), opacity .25s;
 }
-.tq-offer .go-sketch .row .k { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--ink-2); }
-.tq-offer .go-sketch .row .k svg { flex-shrink: 0; color: color-mix(in srgb, var(--ink) 38%, transparent); }
-.tq-offer .go-sketch .row .v { font-weight: 500; color: var(--ink-3); }
-.tq-offer .go-sketch .row--flag { box-shadow: inset 0 0 0 1.5px var(--coral); background: color-mix(in srgb, var(--coral) 7%, var(--card)); }
-.tq-offer .go-sketch .row--flag .k svg { color: var(--coral); }
-.tq-offer .go-sketch .row--flag .v { font-weight: 700; color: var(--coral-ink); }
-.tq-offer .go-issue figcaption { padding: 0 8px; }
-.tq-offer .go-issue h3 { margin: 0 0 8px; font-family: var(--display); font-size: 22px; line-height: 1.15; letter-spacing: -0.03em; }
-.tq-offer .go-issue figcaption p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
+.tq-offer .go-listing-rows .k { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink-2); }
+.tq-offer .go-listing-rows .v { display: grid; justify-items: end; text-align: right; font-weight: 500; color: var(--ink-3); }
+.tq-offer .go-listing-rows .v > span { grid-area: 1 / 1; transition: opacity .35s var(--d), transform .45s cubic-bezier(.2, .7, .2, 1) var(--d); }
+.tq-offer .go-listing-rows .v-before { font-weight: 700; color: var(--coral-ink); }
+.tq-offer .go-listing-rows .v-after { font-weight: 700; color: var(--ink); opacity: 0; transform: translateY(8px); }
+.tq-offer [data-state="before"] .go-listing-rows li[data-flag] {
+  background: color-mix(in srgb, var(--coral) 7%, var(--card));
+  box-shadow: inset 0 0 0 1.5px var(--coral);
+}
+.tq-offer [data-state="after"] .go-listing-rows .v-before { opacity: 0; transform: translateY(-8px); }
+.tq-offer [data-state="after"] .go-listing-rows .v-after { opacity: 1; transform: none; }
+.tq-offer .go-listing-rows li[data-dim],
+.tq-offer .go-issues li[data-dim] { opacity: .4; }
+
+/* Status icon: alert before, check after (shared by the rows and the problem list) */
+.tq-offer .go-problem .ico { display: grid; flex-shrink: 0; }
+.tq-offer .go-problem .ico svg { grid-area: 1 / 1; transition: opacity .3s var(--d, 0s), transform .5s cubic-bezier(.3, 1.4, .5, 1) var(--d, 0s); }
+.tq-offer .go-problem .ico-before { color: var(--coral); }
+.tq-offer .go-problem .ico-after { color: var(--pine-3); }
+.tq-offer .go-problem li:not([data-flag]) > .k .ico-after { color: color-mix(in srgb, var(--ink) 38%, transparent); }
+.tq-offer [data-state="before"] .ico-before + .ico-after,
+.tq-offer [data-state="after"] .ico-before { opacity: 0; transform: scale(.4); }
+
+.tq-offer .go-listing figcaption {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px;
+  padding: 16px 4px 2px; font-size: 13px; color: var(--ink-3);
+}
+.tq-offer .go-listing figcaption strong { font-size: 14.5px; font-weight: 700; color: var(--ink); }
+
+.tq-offer .go-issues ol { list-style: none; margin: 0; padding: 0; }
+.tq-offer .go-issues li {
+  display: grid; grid-template-columns: 32px 1fr; gap: 0 8px;
+  padding: 20px 0; border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  transition: opacity .25s;
+}
+.tq-offer .go-issues .ico { padding-top: 3px; }
+.tq-offer .go-issues h3 { margin: 0; font-family: var(--display); font-size: clamp(20px, 1.6vw, 23px); line-height: 1.2; letter-spacing: -0.03em; color: var(--ink); }
+.tq-offer .go-issues li p { margin: 6px 0 0; max-width: 48ch; font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+.tq-offer .go-issues ol { border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
 .tq-offer .go-issues-note {
-  margin: 28px 0 0; max-width: 68ch;
-  font-size: clamp(16px, 1.2vw, 17.5px); line-height: 1.6; color: var(--ink-2);
+  margin: 0; padding-top: 20px; max-width: 56ch;
+  font-size: 15.5px; line-height: 1.6; color: var(--ink-2);
 }
-.tq-offer .go-issues-note a {
-  color: var(--ink); font-weight: 600; white-space: nowrap;
-  text-decoration: underline; text-decoration-color: var(--coral); text-underline-offset: 3px;
-}
-/* Small screens: one swipeable row instead of three stacked cards. The next card peeks in as the cue. */
+.tq-offer .go-issues-note a { color: var(--ink); font-weight: 600; white-space: nowrap; }
+
 @media (max-width: 900px) {
-  .tq-offer .go-issues {
-    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(80%, 340px); gap: 12px;
-    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none;
-    margin-inline: calc(-1 * var(--gutter)); padding: 2px var(--gutter) 6px; scroll-padding-inline: var(--gutter);
-  }
-  .tq-offer .go-issues::-webkit-scrollbar { display: none; }
-  .tq-offer .go-issue { scroll-snap-align: start; }
-  .tq-offer .go-issues-note { margin-top: 18px; }
+  .tq-offer .go-problem-grid { grid-template-columns: 1fr; grid-template-areas: "head" "card" "issues"; }
+  .tq-offer .go-listing { align-self: stretch; max-width: 560px; }
+  .tq-offer .go-issues { margin-top: 28px; }
+}
+@media (max-width: 560px) {
+  .tq-offer .go-listing { border-radius: 22px; padding: 14px; }
+  .tq-offer .go-listing-top { padding: 2px 2px 14px; }
+  .tq-offer .go-sketch-avatar { width: 38px; height: 38px; border-radius: 11px; }
+  .tq-offer .go-sketch-name { font-size: 16.5px; }
+  .tq-offer .go-switch button { min-width: 68px; padding: 0 12px; font-size: 14px; }
+  .tq-offer .go-listing-rows li { padding: 12px; font-size: 14px; }
+  .tq-offer .go-listing-rows .k { gap: 8px; }
+  .tq-offer .go-issues li { padding: 18px 0; }
+  .tq-offer .go-issues li p { font-size: 15.5px; }
 }
 
 /* ── C. Included ──────────────────────────────────────────── */
@@ -561,6 +674,10 @@
 .tq-offer .go-qr span[data-on] { background: var(--ink); }
 .tq-offer .go-sample-label { position: absolute; left: 0; bottom: 40px; max-width: 40%; margin: 0; font-size: 13px; line-height: 1.4; color: var(--ink-3); }
 
+/* Wide screens: the sample stays in view while the six parts scroll past it. */
+@media (min-width: 1001px) {
+  .tq-offer .go-sample { position: sticky; top: 112px; align-self: start; }
+}
 @media (max-width: 1000px) {
   .tq-offer .go-incl-grid { grid-template-columns: 1fr; }
   .tq-offer .go-sample { max-width: 620px; }
@@ -609,55 +726,99 @@
 }
 
 /* ── D. How it works ──────────────────────────────────────── */
+/* A timeline, not four boxes: numbered stops joined by one line. */
 .tq-offer .go-how { background: var(--pine); color: var(--ivory); --em-color: var(--ghost-on-dark); }
 .tq-offer .go-how .eyebrow { color: var(--ivory); }
 .tq-offer .go-how .go-title { color: var(--ivory); }
-.tq-offer .go-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.tq-offer .go-steps li { padding: 24px; border-radius: 20px; background: var(--pine-2); border: 1px solid color-mix(in srgb, var(--ivory) 12%, transparent); }
-.tq-offer .go-step-n { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--coral); color: var(--ink); font-size: 13px; font-weight: 700; }
-.tq-offer .go-steps h3 { margin: 18px 0 10px; font-family: var(--display); font-size: 21px; line-height: 1.2; letter-spacing: -0.025em; color: var(--ivory); }
-.tq-offer .go-steps p { margin: 0; font-size: 15.5px; line-height: 1.55; color: color-mix(in srgb, var(--ivory) 80%, transparent); }
-@media (max-width: 1000px) { .tq-offer .go-steps { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) {
-  .tq-offer .go-steps { grid-template-columns: 1fr; gap: 10px; }
-  .tq-offer .go-steps li { padding: 18px 20px; }
-  .tq-offer .go-steps h3 { margin: 12px 0 6px; font-size: 19.5px; }
-  .tq-offer .go-steps p { font-size: 15px; line-height: 1.5; }
+.tq-offer .go-steps {
+  --gap: clamp(20px, 2.6vw, 40px); --node: 52px;
+  list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 var(--gap);
+}
+.tq-offer .go-steps li { position: relative; padding-top: calc(var(--node) + 26px); }
+.tq-offer .go-steps li::before {
+  content: ""; position: absolute; top: calc(var(--node) / 2); left: var(--node); right: calc(-1 * var(--gap));
+  height: 1.5px; background: color-mix(in srgb, var(--ivory) 22%, transparent);
+}
+.tq-offer .go-steps li:last-child::before { content: none; }
+.tq-offer .go-step-n {
+  position: absolute; top: 0; left: 0; display: grid; place-items: center;
+  width: var(--node); height: var(--node); border-radius: 50%;
+  background: var(--pine-2); border: 1.5px solid color-mix(in srgb, var(--ivory) 30%, transparent);
+  font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--ivory);
+}
+.tq-offer .go-steps li:last-child .go-step-n { background: var(--ivory); border-color: var(--ivory); color: var(--pine); }
+.tq-offer .go-steps h3 { margin: 0 0 10px; font-family: var(--display); font-size: clamp(20px, 1.7vw, 24px); line-height: 1.18; letter-spacing: -0.03em; color: var(--ivory); }
+.tq-offer .go-steps p { margin: 0; max-width: 34ch; font-size: 15.5px; line-height: 1.58; color: color-mix(in srgb, var(--ivory) 78%, transparent); }
+/* Narrower screens: the same line runs down the left. */
+@media (max-width: 1000px) {
+  .tq-offer .go-steps { --node: 44px; grid-template-columns: 1fr; gap: 0; max-width: 620px; }
+  .tq-offer .go-steps li { padding: 8px 0 34px calc(var(--node) + 20px); }
+  .tq-offer .go-steps li:last-child { padding-bottom: 0; }
+  .tq-offer .go-steps li::before { top: var(--node); bottom: 0; left: calc(var(--node) / 2); right: auto; width: 1.5px; height: auto; }
+  .tq-offer .go-step-n { font-size: 18px; }
+  .tq-offer .go-steps h3 { margin-bottom: 6px; }
+  .tq-offer .go-steps p { max-width: none; }
 }
 
-/* ── E. Fit ───────────────────────────────────────────────── */
-.tq-offer .go-fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.tq-offer .go-fit-card { padding: clamp(24px, 3vw, 36px); border-radius: var(--radius-lg); background: var(--card); border: 1px solid var(--hairline); display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
-.tq-offer .go-fit-card h3 { display: flex; align-items: center; gap: 10px; margin: 0; font-family: var(--display); font-size: 24px; letter-spacing: -0.03em; }
-.tq-offer .go-fit-card h3 svg { width: 34px; height: 34px; padding: 7px; border-radius: 10px; background: var(--ivory-2); color: var(--ink); }
-.tq-offer .go-fit-card--yes h3 svg { background: var(--coral); }
-.tq-offer .go-fit-card p { margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--ink-2); }
-.tq-offer .go-fit-card ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; list-style: disc; }
-.tq-offer .go-fit-card li { font-size: 16px; line-height: 1.5; color: var(--ink-2); }
-.tq-offer .go-fit-card li::marker { color: var(--ink-3); }
-.tq-offer .go-fit-card .go-text-link { margin-top: auto; padding-top: 6px; }
-@media (max-width: 800px) { .tq-offer .go-fit-grid { grid-template-columns: 1fr; } }
+/* ── E. Questions: fit + FAQs ─────────────────────────────── */
+/* One chapter. The heading stays put on wide screens while the answers scroll. */
+.tq-offer .go-ask { background: var(--card); }
+.tq-offer .go-ask-grid {
+  display: grid; grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.4fr);
+  gap: 32px clamp(40px, 6vw, 104px); align-items: start;
+}
+.tq-offer .go-ask-side { position: sticky; top: 120px; }
+.tq-offer .go-ask-side .go-head { margin-bottom: 20px; }
+.tq-offer .go-ask-contact { margin: 0; max-width: 30ch; font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.tq-offer .go-ask-contact a { font-weight: 600; }
 
-/* ── G. FAQ ───────────────────────────────────────────────── */
-.tq-offer .go-faq { background: var(--card); }
-.tq-offer .go-faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
-.tq-offer .go-faq-item { border: 1px solid var(--hairline); border-radius: 18px; background: var(--ivory); transition: background .2s, border-color .2s; }
-.tq-offer .go-faq-item[open] { background: var(--card); border-color: color-mix(in srgb, var(--ink) 25%, transparent); }
+.tq-offer .go-fit {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px clamp(24px, 3.4vw, 56px);
+  padding-bottom: clamp(28px, 3.4vw, 44px);
+}
+.tq-offer .go-fit > div { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.tq-offer .go-fit h3 { display: flex; align-items: center; gap: 10px; margin: 0; font-family: var(--display); font-size: 21px; letter-spacing: -0.03em; color: var(--ink); }
+.tq-offer .go-fit h3 svg { width: 30px; height: 30px; padding: 6px; border-radius: 9px; background: var(--ivory-2); color: var(--ink); }
+.tq-offer .go-fit > div:first-child h3 svg { background: var(--pine); color: var(--ivory); }
+.tq-offer .go-fit p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.tq-offer .go-fit ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; list-style: disc; }
+.tq-offer .go-fit li { font-size: 16px; line-height: 1.5; color: var(--ink-2); }
+.tq-offer .go-fit li::marker { color: var(--ink-3); }
+.tq-offer .go-fit .go-text-link { font-size: 15.5px; }
+
+.tq-offer .go-faq-list { border-top: 1px solid var(--hairline); }
+.tq-offer .go-faq-item { border-bottom: 1px solid var(--hairline); }
 .tq-offer .go-faq-item summary {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: 20px 24px; cursor: pointer; list-style: none;
-  font-family: var(--display); font-weight: 600; font-size: 19px; line-height: 1.3; letter-spacing: -0.02em; color: var(--ink);
+  padding: 22px 0; cursor: pointer; list-style: none;
+  font-family: var(--display); font-weight: 600; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.3; letter-spacing: -0.025em; color: var(--ink);
 }
 .tq-offer .go-faq-item summary::-webkit-details-marker { display: none; }
-.tq-offer .go-faq-icon { position: relative; width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: var(--ivory-2); transition: background .2s; }
-.tq-offer .go-faq-icon::before, .tq-offer .go-faq-icon::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; background: var(--ink); border-radius: 2px; transform: translate(-50%, -50%); }
-.tq-offer .go-faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform .3s; }
-.tq-offer .go-faq-item[open] .go-faq-icon { background: var(--coral); }
+.tq-offer .go-faq-item summary > span:first-child { transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+.tq-offer .go-faq-item summary:hover > span:first-child { transform: translateX(4px); }
+.tq-offer .go-faq-icon { position: relative; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: var(--ivory-2); transition: background .25s; }
+.tq-offer .go-faq-icon::before, .tq-offer .go-faq-icon::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; background: var(--ink); border-radius: 2px; transform: translate(-50%, -50%); transition: transform .35s cubic-bezier(.3, 1.3, .5, 1), background .25s; }
+.tq-offer .go-faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.tq-offer .go-faq-item[open] .go-faq-icon { background: var(--pine); }
+.tq-offer .go-faq-item[open] .go-faq-icon::before,
+.tq-offer .go-faq-item[open] .go-faq-icon::after { background: var(--ivory); }
 .tq-offer .go-faq-item[open] .go-faq-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
-.tq-offer .go-faq-item p { margin: 0; padding: 0 24px 22px; font-size: 16.5px; line-height: 1.6; color: var(--ink-2); max-width: 68ch; }
+.tq-offer .go-faq-item p { margin: 0; padding: 0 56px 24px 0; font-size: 16.5px; line-height: 1.62; color: var(--ink-2); max-width: 66ch; }
+/* Answers ease open where the browser can animate to auto height; elsewhere they just open. */
+@supports (interpolate-size: allow-keywords) {
+  .tq-offer .go-faq-item { interpolate-size: allow-keywords; }
+  .tq-offer .go-faq-item::details-content { block-size: 0; overflow: clip; transition: block-size .35s cubic-bezier(.2, .7, .2, 1), content-visibility .35s allow-discrete; }
+  .tq-offer .go-faq-item[open]::details-content { block-size: auto; }
+}
+@media (max-width: 900px) {
+  .tq-offer .go-ask-grid { grid-template-columns: 1fr; }
+  .tq-offer .go-ask-side { position: static; }
+  .tq-offer .go-ask-contact { max-width: none; }
+}
 @media (max-width: 560px) {
-  .tq-offer .go-faq-item summary { font-size: 16.5px; padding: 18px; }
-  .tq-offer .go-faq-item p { padding: 0 18px 18px; }
+  .tq-offer .go-fit { grid-template-columns: 1fr; }
+  .tq-offer .go-faq-item summary { padding: 18px 0; font-size: 17px; }
+  .tq-offer .go-faq-item p { padding: 0 0 20px; font-size: 16px; }
 }
 
 /* ── H. Final CTA ─────────────────────────────────────────── */

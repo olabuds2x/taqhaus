@@ -1,10 +1,10 @@
 import '../styles/taqhaus-editorial.css'
 import '../styles/google-offer.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
-  AlertCircle, Building2, CalendarClock, Check, ChevronDown, Clock, KeyRound, MessageSquareText, Minus,
-  PencilLine, QrCode, Quote, Info, RotateCcw, X,
+  AlertCircle, Building2, CalendarClock, Check, ChevronDown, Clock, KeyRound, Minus,
+  QrCode, Quote, Info, RotateCcw, X,
 } from 'lucide-react'
 import { SEO } from '@/components/SEO'
 import { OfferCta, OfferFooter, OfferNav } from '@/components/google/OfferChrome'
@@ -23,24 +23,31 @@ const DESCRIPTION =
 /** Owner-approved line (11 Nov 2026). Arithmetic about the price, not a promise of jobs. */
 const PAYOFF = 'One booked job more than covers $99.'
 
-/* Illustrative listings (labelled as such on the page). The stack below them
-   (src/data/googleOffer.ts) is the answer, so the cards show only the problem. */
+/* One illustrative listing (labelled as such on the page), shown before and after.
+   `issue` ties a row to the problem it illustrates. No ratings or review counts. */
 const issues = [
   {
     title: 'Unclear services',
     text: 'The listing says “general services.” A customer can’t tell what you actually do, so they choose someone whose listing says it clearly.',
-    rows: [{ k: 'Services', v: 'General services', flag: true }, { k: 'Service area', v: 'Listed' }],
   },
   {
     title: 'Missing or wrong details',
     text: 'No hours, an old phone number, or a website link that goes nowhere. People move on to the next business.',
-    rows: [{ k: 'Hours', v: 'Not listed', flag: true }, { k: 'Website', v: 'Missing', flag: true }],
   },
   {
     title: 'No easy way to ask for reviews',
     text: 'Happy customers would leave a review. Nobody asked them, and there’s no simple link to send.',
-    rows: [{ k: 'Review link', v: 'None set up', flag: true }, { k: 'Phone', v: 'Listed' }],
   },
+]
+
+type ListingRow = { k: string; before: string; after?: string; issue?: number }
+const listingRows: ListingRow[] = [
+  { k: 'Services', before: 'General services', after: 'Clearly listed', issue: 0 },
+  { k: 'Service area', before: 'Listed' },
+  { k: 'Hours', before: 'Not listed', after: 'Up to date', issue: 1 },
+  { k: 'Phone', before: 'Listed' },
+  { k: 'Website', before: 'Missing', after: 'Link added', issue: 1 },
+  { k: 'Review link', before: 'None set up', after: 'Ready to share', issue: 2 },
 ]
 
 /** Facts only: each point is backed by the package terms (REFUND_TERMS in src/lib/googleOffer.ts). */
@@ -144,13 +151,14 @@ export default function GoogleOffer() {
   }, [])
 
   const supportClick = (location: string) => () => track('contact_support_clicked', { location })
+  const buyPrompt = useBuyPrompt()
 
   return (
     <div className="tq-editorial tq-offer">
       <SEO title={TITLE} description={DESCRIPTION} canonical="/google" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
-      <OfferNav />
+      <OfferNav showCta={buyPrompt} />
 
       <main id="main">
         {cancelled && (
@@ -243,16 +251,6 @@ export default function GoogleOffer() {
               </div>
             </div>
 
-            <div className="go-hero-foot">
-              <ul className="go-hero-incl" aria-label="What the $99 covers">
-                <li><PencilLine size={18} strokeWidth={2.2} aria-hidden="true" /> Listing tune-up</li>
-                <li><MessageSquareText size={18} strokeWidth={2.2} aria-hidden="true" /> Review link, QR code and ready-to-send requests</li>
-                <li><CalendarClock size={18} strokeWidth={2.2} aria-hidden="true" /> 30-day check-up</li>
-              </ul>
-              <p className="go-hero-meta">
-                No call needed. {capacityNote} <a href="#included">{OFFER.secondaryLabel}</a>
-              </p>
-            </div>
           </div>
         </section>
 
@@ -271,7 +269,7 @@ export default function GoogleOffer() {
               ))}
             </ul>
             <p className="go-trust-more">
-              Questions before you buy? Email <a href={`mailto:${BUSINESS.email}`} onClick={supportClick('trust_strip')}>{BUSINESS.email}</a>.{' '}
+              No call needed. {capacityNote} Questions before you buy? Email <a href={`mailto:${BUSINESS.email}`} onClick={supportClick('trust_strip')}>{BUSINESS.email}</a>.{' '}
               <Link to={TERMS_PATH}>Read the package terms</Link>.
             </p>
           </div>
@@ -295,54 +293,10 @@ export default function GoogleOffer() {
           </div>
         </section>
 
-        {/* B ── The customer problem */}
+        {/* B ── The customer problem: one listing, before and after */}
         <section className="go-problem" aria-labelledby="go-problem-title">
           <div className="wrap">
-            <div className="go-head">
-              <h2 id="go-problem-title" className="go-title">When someone finds you on Google, <em>what do they see?</em></h2>
-              <p className="go-lede">
-                People decide fast. Wrong hours, vague services or no recent reviews can send them to the next business.
-                We fix the practical stuff.
-              </p>
-            </div>
-            <p className="go-label">
-              <Info size={15} strokeWidth={2.2} aria-hidden="true" /> Illustrative examples, not real businesses
-            </p>
-            <div className="go-issues" role="region" aria-label="Examples of common listing problems" tabIndex={0}>
-              {issues.map(issue => (
-                <figure key={issue.title} className="go-issue">
-                  <div className="go-sketch" aria-hidden="true">
-                    <div className="go-sketch-head">
-                      <span className="go-sketch-avatar"><Building2 size={18} strokeWidth={2.2} /></span>
-                      <span>
-                        <span className="go-sketch-name">Your business</span>
-                        <span className="go-sketch-sub">Local business</span>
-                      </span>
-                    </div>
-                    {issue.rows.map(r => {
-                      const flag = 'flag' in r && r.flag
-                      return (
-                        <span key={r.k} className={`row${flag ? ' row--flag' : ''}`}>
-                          <span className="k">
-                            {flag ? <AlertCircle size={15} strokeWidth={2.4} /> : <Check size={15} strokeWidth={2.6} />}
-                            {r.k}
-                          </span>
-                          <span className="v">{r.v}</span>
-                        </span>
-                      )
-                    })}
-                  </div>
-                  <figcaption>
-                    <h3>{issue.title}</h3>
-                    <p>{issue.text}</p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-            <p className="go-issues-note">
-              These are just a few examples. We go through your whole listing, fix what needs fixing, and give you an
-              easy way to keep asking for reviews. <a href="#included">{OFFER.secondaryLabel}</a>
-            </p>
+            <ListingDemo />
           </div>
         </section>
 
@@ -397,7 +351,7 @@ export default function GoogleOffer() {
               </div>
             </div>
 
-            <div className="go-stack-total">
+            <div id="order" className="go-stack-total">
               <div>
                 <p className="go-stack-total-price">Everything above: <strong>$99, one time.</strong></p>
                 <p className="go-stack-total-sub">{PAYOFF}</p>
@@ -435,7 +389,7 @@ export default function GoogleOffer() {
             <ol className="go-steps">
               {steps.map((s, i) => (
                 <li key={s.title}>
-                  <span className="go-step-n">Step {i + 1}</span>
+                  <span className="go-step-n"><span className="sr-only">Step </span>{i + 1}</span>
                   <h3>{s.title}</h3>
                   <p>{s.desc}</p>
                 </li>
@@ -444,49 +398,51 @@ export default function GoogleOffer() {
           </div>
         </section>
 
-        {/* E ── Who this is for */}
-        <section className="go-fit" aria-labelledby="go-fit-title">
+        {/* E ── Questions: who it's for, then the FAQs. One chapter, no cards. */}
+        <section id="faqs" className="go-ask" aria-labelledby="go-faq-title">
           <div className="wrap">
-            <div className="go-head">
-              <span className="eyebrow">Who this is for</span>
-              <h2 id="go-fit-title" className="go-title">Is this <em>the right fit?</em></h2>
-            </div>
-            <div className="go-fit-grid">
-              <div className="go-fit-card go-fit-card--yes">
-                <h3><Check size={20} strokeWidth={3} aria-hidden="true" /> Best for</h3>
-                <p>{bestFor}</p>
+            <div className="go-ask-grid">
+              <div className="go-ask-side">
+                <div className="go-head">
+                  <span className="eyebrow">Questions</span>
+                  <h2 id="go-faq-title" className="go-title">Straight <em>answers.</em></h2>
+                </div>
+                <p className="go-ask-contact">
+                  Something we haven&rsquo;t covered? Email{' '}
+                  <a href={`mailto:${BUSINESS.email}`} onClick={supportClick('faq_side')}>{BUSINESS.email}</a>.
+                </p>
               </div>
-              <div className="go-fit-card">
-                <h3><Minus size={20} strokeWidth={3} aria-hidden="true" /> Not the right fit yet</h3>
-                <ul>{notFitYet.map(n => <li key={n}>{n}</li>)}</ul>
-                <a href={COMPLEX_MAILTO} className="go-text-link" onClick={supportClick('fit_section')}>
-                  Have a more complex situation? Email us
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* G ── FAQs */}
-        <section id="faqs" className="go-faq" aria-labelledby="go-faq-title">
-          <div className="wrap">
-            <div className="go-head go-head--center">
-              <span className="eyebrow">FAQs</span>
-              <h2 id="go-faq-title" className="go-title">Straight answers.</h2>
-            </div>
-            <div className="go-faq-list">
-              {faqs.map(f => (
-                <details key={f.q} className="go-faq-item">
-                  <summary>
-                    <span>{f.q}</span>
-                    <span className="go-faq-icon" aria-hidden="true" />
-                  </summary>
-                  <p>
-                    {f.a}
-                    {f.link && <> <Link to={f.link.to}>{f.link.label}</Link>.</>}
-                  </p>
-                </details>
-              ))}
+              <div className="go-ask-main">
+                <div className="go-fit" aria-label="Who this is for">
+                  <div>
+                    <h3><Check size={18} strokeWidth={3} aria-hidden="true" /> Best for</h3>
+                    <p>{bestFor}</p>
+                  </div>
+                  <div>
+                    <h3><Minus size={18} strokeWidth={3} aria-hidden="true" /> Not the right fit yet</h3>
+                    <ul>{notFitYet.map(n => <li key={n}>{n}</li>)}</ul>
+                    <a href={COMPLEX_MAILTO} className="go-text-link" onClick={supportClick('fit_section')}>
+                      Have a more complex situation? Email us
+                    </a>
+                  </div>
+                </div>
+
+                <div className="go-faq-list">
+                  {faqs.map(f => (
+                    <details key={f.q} className="go-faq-item">
+                      <summary>
+                        <span>{f.q}</span>
+                        <span className="go-faq-icon" aria-hidden="true" />
+                      </summary>
+                      <p>
+                        {f.a}
+                        {f.link && <> <Link to={f.link.to}>{f.link.label}</Link>.</>}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -506,15 +462,11 @@ export default function GoogleOffer() {
       </main>
 
       <OfferFooter />
-      <MobileBuyBar />
+      <MobileBuyBar show={buyPrompt} />
     </div>
   )
 }
 
-/**
- * Phones only (CSS hides it above 640px). Slides up once the hero's buy box has
- * scrolled away, and steps aside while another buy button or the footer is on screen.
- */
 /**
  * One review. Phones open on the reviewer's highlighted line (their exact words) with the
  * full verbatim review behind "Read the full review"; wider screens always show it all (CSS).
@@ -544,7 +496,11 @@ function QuoteCard({ t }: { t: (typeof testimonials)[number] }) {
   )
 }
 
-function MobileBuyBar() {
+/**
+ * True once the hero's buy box has scrolled away and no other buy button (or the footer)
+ * is on screen. Drives the phone buy bar and the order button in the desktop header.
+ */
+function useBuyPrompt() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -566,6 +522,11 @@ function MobileBuyBar() {
     return () => io.disconnect()
   }, [])
 
+  return show
+}
+
+/** Phones only (CSS hides it above 640px). Slides up while `show` is true. */
+function MobileBuyBar({ show }: { show: boolean }) {
   return (
     <div className="go-bar" data-show={show || undefined} role="region" aria-label="Order the tune-up">
       <div className="go-bar-info">
@@ -573,6 +534,124 @@ function MobileBuyBar() {
         <span>By ordering you agree to our <Link to={TERMS_PATH}>terms</Link>.</span>
       </div>
       <OfferCta location="mobile_bar" bare label="Improve my listing" />
+    </div>
+  )
+}
+
+/**
+ * The problem, shown instead of described: one illustrative listing with a Before / After
+ * switch. It flips to "After" by itself once, the first time it is properly on screen, and
+ * the visitor can flip it back. Hovering a problem on the left points at its rows.
+ */
+function ListingDemo() {
+  const [after, setAfter] = useState(false)
+  const [focus, setFocus] = useState<number | null>(null)
+  const touched = useRef(false)
+  const cardRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let timer: number | undefined
+    const io = new IntersectionObserver(([e]) => {
+      window.clearTimeout(timer)
+      if (!e.isIntersecting) return
+      timer = window.setTimeout(() => {
+        if (!touched.current) setAfter(true)
+        io.disconnect()
+      }, 1500)
+    }, { threshold: 0.75 })
+    io.observe(el)
+    return () => { io.disconnect(); window.clearTimeout(timer) }
+  }, [])
+
+  const choose = (value: boolean) => () => { touched.current = true; setAfter(value) }
+  const flagged = listingRows.filter(r => r.after).length
+
+  return (
+    <div className="go-problem-grid" data-state={after ? 'after' : 'before'}>
+      <div className="go-head">
+        <h2 id="go-problem-title" className="go-title">When someone finds you on Google, <em>what do they see?</em></h2>
+        <p className="go-lede">
+          People decide fast. Wrong hours, vague services or no recent reviews can send them to the next business.
+          We fix the practical stuff.
+        </p>
+      </div>
+
+      <figure className="go-listing" ref={cardRef}>
+        <div className="go-listing-top">
+          <div className="go-sketch-head">
+            <span className="go-sketch-avatar"><Building2 size={20} strokeWidth={2.2} aria-hidden="true" /></span>
+            <span>
+              <span className="go-sketch-name">Your business</span>
+              <span className="go-sketch-sub">Local business</span>
+            </span>
+          </div>
+          <div className="go-switch" role="group" aria-label="Show the listing before or after the tune-up">
+            <button type="button" aria-pressed={!after} onClick={choose(false)}>Before</button>
+            <button type="button" aria-pressed={after} onClick={choose(true)}>After</button>
+          </div>
+        </div>
+        <ul className="go-listing-rows">
+          {listingRows.map((r, i) => (
+            <li
+              key={r.k}
+              data-flag={r.after ? '' : undefined}
+              data-dim={focus !== null && r.issue !== focus ? '' : undefined}
+              style={{ '--i': i } as CSSProperties}
+            >
+              <span className="k">
+                <span className="ico" aria-hidden="true">
+                  {r.after && <AlertCircle className="ico-before" size={18} strokeWidth={2.4} />}
+                  <Check className="ico-after" size={18} strokeWidth={2.8} />
+                </span>
+                {r.k}
+              </span>
+              <span className="v">
+                {r.after ? (
+                  <>
+                    <span className="v-before" aria-hidden={after}>{r.before}</span>
+                    <span className="v-after" aria-hidden={!after}>{r.after}</span>
+                  </>
+                ) : r.before}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <figcaption>
+          <strong aria-live="polite">
+            {after ? `All ${flagged} fixed` : `${flagged} things holding this listing back`}
+          </strong>
+          <span>Illustration, not a real business</span>
+        </figcaption>
+      </figure>
+
+      <div className="go-issues">
+        <ol>
+          {issues.map((issue, i) => (
+            <li
+              key={issue.title}
+              data-dim={focus !== null && focus !== i ? '' : undefined}
+              onMouseEnter={() => setFocus(i)}
+              onMouseLeave={() => setFocus(null)}
+            >
+              <span className="ico" aria-hidden="true">
+                <AlertCircle className="ico-before" size={20} strokeWidth={2.2} />
+                <Check className="ico-after" size={20} strokeWidth={2.6} />
+              </span>
+              <div>
+                <h3>{issue.title}</h3>
+                <p>{issue.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p className="go-issues-note">
+          These are just a few examples. We go through your whole listing, fix what needs fixing, and give you an
+          easy way to keep asking for reviews. <a href="#included">{OFFER.secondaryLabel}</a>
+        </p>
+      </div>
     </div>
   )
 }
