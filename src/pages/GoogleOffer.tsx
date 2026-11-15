@@ -16,9 +16,9 @@ import {
   testimonialNote, testimonials,
 } from '@/data/googleOffer'
 
-const TITLE = 'The 2-Day Google Listing Tune-Up for Small Businesses | $99 | TaqHaus'
+const TITLE = 'The 2-Day Google Listing Tune-Up: Local SEO for Small Businesses | $99'
 const DESCRIPTION =
-  'Your Google Business Profile fixed and a simple review-request setup, done for you in two business days or your $99 back. Includes a 30-day check-up. One time, no call needed.'
+  'The Google listing side of local SEO, done for you: your Google Business Profile fixed and a simple review-request setup, in two business days or your $99 back. Includes a 30-day check-up. One time, no call needed.'
 
 /** Owner-approved line (11 Nov 2026). Arithmetic about the price, not a promise of jobs. */
 const PAYOFF = 'One booked job more than covers $99.'
@@ -306,6 +306,8 @@ export default function GoogleOffer() {
             <div className="go-head">
               <span className="eyebrow">{OFFER.name}</span>
               <h2 id="go-included-title" className="go-title">Six parts. <em>One price: $99.</em></h2>
+              {/* Same claim as the "Is this SEO?" FAQ: the listing side only, no ranking promise. */}
+              <p className="go-lede">This is the Google listing side of local SEO, done for you.</p>
             </div>
 
             <div className="go-incl-grid">
